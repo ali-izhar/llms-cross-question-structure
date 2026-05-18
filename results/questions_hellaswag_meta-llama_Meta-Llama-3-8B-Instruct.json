@@ -1,0 +1,1802 @@
+[
+  {
+    "index": 0,
+    "ind": 208,
+    "activity_label": "Family Life",
+    "context": "[header] How to find excellent day care [title] Begin as soon as possible. [step] Many child care centers have long waiting lists, so it is never too early to start looking. If you are pregnant, start",
+    "correct_letter": "B",
+    "flip_rate": 0.92,
+    "borderline": true
+  },
+  {
+    "index": 1,
+    "ind": 211,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to play five nights at freddy 's [title] Listen to the phone guy. [step] The phone guy was a previous security guard at freddy fazbear's pizza. He will give you useful and important infor",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 2,
+    "ind": 669,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to find the right sexy bathing suit [title] Take a body inventory. [step] Stand nude before a full-length mirror. Do you have the type of body that will show well in a skimpy bathing suit",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 3,
+    "ind": 719,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to make vegan tangerine fudge brownie cake [title] Start preheating the oven to 375\u00baf/190\u00bac as you line your baking pan with parchment paper. [title] Melt the chocolate chips and margarin",
+    "correct_letter": "C",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 4,
+    "ind": 800,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make foundation with eyeshadow [title] Buy an eye shadow slightly darker than your skin. [step] The eye shadow will provide color to your foundation. Select a shade that matches your s",
+    "correct_letter": "B",
+    "flip_rate": 0.5,
+    "borderline": true
+  },
+  {
+    "index": 5,
+    "ind": 884,
+    "activity_label": "Playing harmonica",
+    "context": "A woman walks near the train tracks while a train drives by. The woman sees the harmonica playing man in the distance. she",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 6,
+    "ind": 1303,
+    "activity_label": "Youth",
+    "context": "[header] How to be a scene kid without seeming fake [title] Learn what emo is, even if you aren't emo , [substeps] Wikipedia is great place to learn these things. Make sure you know where emo came fro",
+    "correct_letter": "A",
+    "flip_rate": 0.9,
+    "borderline": true
+  },
+  {
+    "index": 7,
+    "ind": 1966,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to wear black lipstick [title] Exfoliate and moisturize your lips. [step] Black lipstick starts to look streaky and flaky more quickly than other colors. To prevent this from happening, i",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 8,
+    "ind": 2407,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make a honey face mask [title] Make a simple mask with honey and almond oil. [step] In a small dish, mix together 1 tablespoon of honey and \u00bd tablespoon of sweet almond oil. Apply the ",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 9,
+    "ind": 2558,
+    "activity_label": "Getting a piercing",
+    "context": "A girl is seen laying on a table with a man piercing her belly button below her. the girl",
+    "correct_letter": "D",
+    "flip_rate": 0.04,
+    "borderline": false
+  },
+  {
+    "index": 10,
+    "ind": 2583,
+    "activity_label": "Family Life",
+    "context": "[header] How to improve your child's behavior [title] Communicate your expectations for your child's behavior clearly. [step] Children need to know what you expect from them. Sit your child down in a ",
+    "correct_letter": "C",
+    "flip_rate": 0.74,
+    "borderline": true
+  },
+  {
+    "index": 11,
+    "ind": 3392,
+    "activity_label": "Health",
+    "context": "[header] How to keep your child healthy [title] Establish a sleeping schedule. [step] It is important for your child to get around 10 hours of sleep every night, depending on age. Going to sleep at th",
+    "correct_letter": "D",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 12,
+    "ind": 3647,
+    "activity_label": "Education and Communications",
+    "context": "[header] How to choose a good book for a report (middle school ) [title] Start working early. [step] Starting the night before the book report is due is way too late. Starting a few days before might ",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 13,
+    "ind": 4153,
+    "activity_label": "Family Life",
+    "context": "[header] How to deal with a stepchild [title] Respect the child's level of comfort with you. [step] You want to make a positive impression on any stepchildren in your life, but be patient about doing ",
+    "correct_letter": "C",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 14,
+    "ind": 4342,
+    "activity_label": "High jump",
+    "context": "A large mat is seen with a bar on top and two people watching on the sides. A man is then seen running in from the side. the man",
+    "correct_letter": "B",
+    "flip_rate": 0.84,
+    "borderline": true
+  },
+  {
+    "index": 15,
+    "ind": 4745,
+    "activity_label": "Finance and Business",
+    "context": "[header] How to check a website for optimization [title] Search for a website optimization service. [step] Google and sitereportcard both offer free website optimizer tools. [substeps] Sign up for an ",
+    "correct_letter": "B",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 16,
+    "ind": 4778,
+    "activity_label": "Pets and Animals",
+    "context": "[header] How to take care of a friend's dog [title] Make sure you have the time and space to care for a dog. [step] If a friend asks you to watch their dog, only agree to do so if you have the time an",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 17,
+    "ind": 5311,
+    "activity_label": "Health",
+    "context": "[header] How to treat melasma [title] See your primary care physician. [step] Talk to your primary care physician about any hormonal medication changes and creams you can try for melasma before going ",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 18,
+    "ind": 5670,
+    "activity_label": "Pets and Animals",
+    "context": "[header] How to stop a budgie from biting [title] Keep a diary of when your budgie bites. [step] The first step to addressing biting is to keep track of when biting occurs. Budgies may bite for a vari",
+    "correct_letter": "A",
+    "flip_rate": 0.1,
+    "borderline": true
+  },
+  {
+    "index": 19,
+    "ind": 6064,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to bring discipline into your life [title] Analyze yourself first. [step] Work out what things stand in the way of you being more disciplined at the moment. They may be character flaws, a",
+    "correct_letter": "B",
+    "flip_rate": 0.76,
+    "borderline": true
+  },
+  {
+    "index": 20,
+    "ind": 6302,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to use a fan brush [title] Create an airbrushed effect by fan brushing foundation. [step] Use a large fan brush to even out your powdered foundation, using the top of the brush to gently ",
+    "correct_letter": "A",
+    "flip_rate": 0.66,
+    "borderline": true
+  },
+  {
+    "index": 21,
+    "ind": 6522,
+    "activity_label": "Ice fishing",
+    "context": "This man is ice fishing in the cold weather and he is well dressed. this man",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 22,
+    "ind": 6565,
+    "activity_label": "Philosophy and Religion",
+    "context": "[header] How to overcome family pressure to be in a religion [title] Understand the reasoning for this article. [step] Perhaps you live in an area where there are few people who think exactly like you",
+    "correct_letter": "D",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 23,
+    "ind": 6621,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to clean pergo floor [title] Clean the floor regularly with a damp dust mop. [step] Pergo floors will attract dust, so you'll want to make sure you wipe it clean regularly with a dust mop",
+    "correct_letter": "B",
+    "flip_rate": 0.34,
+    "borderline": true
+  },
+  {
+    "index": 24,
+    "ind": 6697,
+    "activity_label": "Layup drill in basketball",
+    "context": "A man is talking on a basketball court. he",
+    "correct_letter": "A",
+    "flip_rate": 0.08,
+    "borderline": true
+  },
+  {
+    "index": 25,
+    "ind": 6716,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to become fashionable [title] Learn the basics of fashion. [step] You might not have an idea of what it means to be fashionable. If you're unsure what constitutes a fashionable style, spe",
+    "correct_letter": "A",
+    "flip_rate": 0.78,
+    "borderline": true
+  },
+  {
+    "index": 26,
+    "ind": 6792,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to apply makeup for a beauty pageant [title] Wash your face. [step] You want to clean your face of any dirt or oil. Think of this step as preparing your face so it is a blank canvas.",
+    "correct_letter": "C",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 27,
+    "ind": 7478,
+    "activity_label": "Washing face",
+    "context": "A rabbit is cleaning itself with its tongue. It is underneath a chair. it",
+    "correct_letter": "C",
+    "flip_rate": 0.16,
+    "borderline": true
+  },
+  {
+    "index": 28,
+    "ind": 7802,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to get rid of static in hair [title] Use dryer sheets to quickly get rid of static. [step] If you have dryer sheets around the house, use one to wipe your hair down when static hairs are ",
+    "correct_letter": "B",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 29,
+    "ind": 7813,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to make slow cooker shredded chicken [title] Place the ingredients in the slow cooker. [step] Add the chicken, liquid, and a dash of salt and pepper to the slow cooker. It's best to use b",
+    "correct_letter": "B",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 30,
+    "ind": 7816,
+    "activity_label": "Sharpening knives",
+    "context": "We are instructed and shown how to use the sharpening steel. We are instructed and shown how to use a bowl to sharpen a knife. we",
+    "correct_letter": "A",
+    "flip_rate": 0.22,
+    "borderline": true
+  },
+  {
+    "index": 31,
+    "ind": 7823,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to disinfect gardening tools [title] Remove dirt and debris from tools with water. [step] Before disinfecting tools, remove dirt and grime using a forceful stream of water. Wash them bene",
+    "correct_letter": "A",
+    "flip_rate": 0.88,
+    "borderline": true
+  },
+  {
+    "index": 32,
+    "ind": 7854,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to create a bathroom shelving unit [title] Identify an area in your bathroom where you can hang the shelves and take measurements. [step] Visit the home improvement store and ask the lumb",
+    "correct_letter": "A",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 33,
+    "ind": 8998,
+    "activity_label": "Carving jack-o-lanterns",
+    "context": "A camera pans over a picture of a man holding a cat and leads into a person cutting out a pumpkin. He then places a mask on the pumpkin and traces out the lining of the picture. the man",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 34,
+    "ind": 9515,
+    "activity_label": "Finance and Business",
+    "context": "[header] How to annoy your roommate [title] Leave trash around the room. [step] First of all, this will make your room smell bad. Secondly, it'll attract flies, ants, and other bugs, which will gross ",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 35,
+    "ind": 9640,
+    "activity_label": "Skiing",
+    "context": "This man is skiing in the snow while holding a selfie stick recording himself. First he starts at the start line where racers are who participate in skiing competitions. then he",
+    "correct_letter": "D",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 36,
+    "ind": 9693,
+    "activity_label": "Hand car wash",
+    "context": "The person kneels next to his car and shows cleaning products. The man shakes up the product before applying it to a sponge. the man",
+    "correct_letter": "A",
+    "flip_rate": 0.04,
+    "borderline": false
+  },
+  {
+    "index": 37,
+    "ind": 10122,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to avoid losing socks in the washing machine [title] Keep pairs matching through the washing process. [step] Use safety pins, clothespins, or just roll each sock pair together to keep the",
+    "correct_letter": "B",
+    "flip_rate": 0.34,
+    "borderline": true
+  },
+  {
+    "index": 38,
+    "ind": 10277,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to dress for spring [title] Aim for bright colors and patterns to give your outfit some style. [step] Light colors give a cheerful, happy, and fresh look to spring fashion. Dark colors, h",
+    "correct_letter": "D",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 39,
+    "ind": 10296,
+    "activity_label": "Work World",
+    "context": "[header] How to be a purchasing agent [title] Secure your high school diploma or ged. [step] Take classes to complete your high school degree, if you have not done so already. If enrolling in school i",
+    "correct_letter": "A",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 40,
+    "ind": 10552,
+    "activity_label": "Clean and jerk",
+    "context": "An intro of titles eventually leads to an athlete holding a large amount of weights over his head. the same man",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 41,
+    "ind": 10635,
+    "activity_label": "Playing beach volleyball",
+    "context": "A large group of people are seen standing around a beach as well as several shots of cars and people riding bulls. various people",
+    "correct_letter": "D",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 42,
+    "ind": 10810,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to treat dry, rough and wavy hair [title] Use sulfate-free shampoo. [step] You may have a collection of shampoos that are meant to tame frizz, define curls, and smooth waves. What they pr",
+    "correct_letter": "B",
+    "flip_rate": 0.94,
+    "borderline": true
+  },
+  {
+    "index": 43,
+    "ind": 10846,
+    "activity_label": "Family Life",
+    "context": "[header] How to help your child get through drug abuse treatment [title] Be aware of the influence of drug addiction on the brain. [step] When a person is addicted to drugs, it affects their brain and",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 44,
+    "ind": 11389,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to make avgolemono soup [title] Pat the chicken dry with paper towels. [step] This will help promote a better sear later on. [title] Season the chicken with salt and pepper.",
+    "correct_letter": "D",
+    "flip_rate": 0.14,
+    "borderline": true
+  },
+  {
+    "index": 45,
+    "ind": 11506,
+    "activity_label": "Washing face",
+    "context": "A little girl is wiping water all over her face. she",
+    "correct_letter": "D",
+    "flip_rate": 0.88,
+    "borderline": true
+  },
+  {
+    "index": 46,
+    "ind": 12110,
+    "activity_label": "Layup drill in basketball",
+    "context": "A person is seen passing a basketball all around a court to others and ending by shooting a basket. the group",
+    "correct_letter": "D",
+    "flip_rate": 0.08,
+    "borderline": true
+  },
+  {
+    "index": 47,
+    "ind": 12295,
+    "activity_label": "Health",
+    "context": "[header] How to heal ligaments [title] Apply cold to the ligament. [step] Make sure to apply an ice pack to the injury as quickly as you can. Do this by covering your skin with a towel and then placin",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 48,
+    "ind": 12596,
+    "activity_label": "Snow tubing",
+    "context": "People are pulled up a hill on a tug rope sitting on inter tubes. A family pulls their inter tubes along by hand and the top of the hill. a person",
+    "correct_letter": "D",
+    "flip_rate": 0.9,
+    "borderline": true
+  },
+  {
+    "index": 49,
+    "ind": 12984,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to prevent sheets from slipping off a bed [title] Find a set of stretchy bands for beds. [step] These bands are basically like large rubber bands that fit over the mattress. They fit over",
+    "correct_letter": "B",
+    "flip_rate": 0.9,
+    "borderline": true
+  },
+  {
+    "index": 50,
+    "ind": 13277,
+    "activity_label": "Using parallel bars",
+    "context": "A man steps up to a set of uneven bars while a man does flips behind him and begins performing a gymnastics routine. the man",
+    "correct_letter": "A",
+    "flip_rate": 0.7,
+    "borderline": true
+  },
+  {
+    "index": 51,
+    "ind": 13613,
+    "activity_label": "Sports and Fitness",
+    "context": "[header] How to do a sitting abductor exercise [title] Sit in a chair with your knees bent. [step] You want the chair to remain firmly in one place. Your feet should be planted on the floor, with your",
+    "correct_letter": "B",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 52,
+    "ind": 13855,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to protect your home when you are away [title] Install a home security system. [step] Standard home security alarms generally include sensors on all entry doors, sensors on easily accesse",
+    "correct_letter": "B",
+    "flip_rate": 0.74,
+    "borderline": true
+  },
+  {
+    "index": 53,
+    "ind": 13921,
+    "activity_label": "Health",
+    "context": "[header] How to know who you are [title] Figure out what you like and don't like. [step] People often concentrate the hardest on what they like. While figuring out what brings you joy or pleasure is i",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 54,
+    "ind": 14587,
+    "activity_label": "Shoveling snow",
+    "context": "A man walks across some snow carrying a large snow shovel. The man shovels a long path of snow. the man",
+    "correct_letter": "A",
+    "flip_rate": 0.82,
+    "borderline": true
+  },
+  {
+    "index": 55,
+    "ind": 14646,
+    "activity_label": "Pets and Animals",
+    "context": "[header] How to find safe placement for your cat after foreclosure [title] Ask friends or family to take your cat. [step] If you've been foreclosed on, the first people you should ask to take your cat",
+    "correct_letter": "A",
+    "flip_rate": 0.34,
+    "borderline": true
+  },
+  {
+    "index": 56,
+    "ind": 14914,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make a yarn headband [title] Choose your yarn colors. [step] Choose one to three different colors. The length doesn't matter as long as it goes around your head.",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 57,
+    "ind": 15053,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to protect yourself from phishing attacks on facebook [title] Verify that the facebook platform you're using is legitimate. [step] The individuals behind phishing attacks, also known as \"",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 58,
+    "ind": 15059,
+    "activity_label": "Ice fishing",
+    "context": "A large fish is seen swimming under frozen water. a man",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 59,
+    "ind": 15377,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to make homemade photography lighting [title] Have some 100 watt light bulbs. [step] Be sure that they are marked' full spectrum' or' daylight'. [title] Get some shop lights.",
+    "correct_letter": "C",
+    "flip_rate": 0.62,
+    "borderline": true
+  },
+  {
+    "index": 60,
+    "ind": 15379,
+    "activity_label": "Relationships",
+    "context": "[header] How to have an open relationship [title] Ask yourself deeply why you want an open relationship. [step] Are you no longer satisfied with your partner? Do you simply want to try it? Do you thin",
+    "correct_letter": "A",
+    "flip_rate": 0.82,
+    "borderline": true
+  },
+  {
+    "index": 61,
+    "ind": 15522,
+    "activity_label": "Family Life",
+    "context": "[header] How to choose a modest wedding dress [title] Set your budget. [step] Before buying any wedding dress, it's important to determine your budget. You should figure out the total cost of everythi",
+    "correct_letter": "D",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 62,
+    "ind": 15947,
+    "activity_label": "Family Life",
+    "context": "[header] How to teach your baby to talk [title] Play music. [step] You can do this as you would normally, listening to music on a stereo or through the speakers of your car. Avoid putting headphones d",
+    "correct_letter": "C",
+    "flip_rate": 0.54,
+    "borderline": true
+  },
+  {
+    "index": 63,
+    "ind": 16267,
+    "activity_label": "Futsal",
+    "context": "An indoor arena appears and a brazil team is competing with a team from japan in a game of indoor soccer. a penalty kick",
+    "correct_letter": "D",
+    "flip_rate": 0.1,
+    "borderline": true
+  },
+  {
+    "index": 64,
+    "ind": 16362,
+    "activity_label": "Family Life",
+    "context": "[header] How to prevent toddler accidents [title] Keep an eye on your toddler as much as possible. [step] While there are all kinds of safety measures you can take, there's no substitute for parental ",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 65,
+    "ind": 16648,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to color hair with food coloring [title] Lighten or bleach your hair, if needed. [step] Food coloring is translucent. This means that it only adds to whatever color is already there.",
+    "correct_letter": "B",
+    "flip_rate": 0.9,
+    "borderline": true
+  },
+  {
+    "index": 66,
+    "ind": 16916,
+    "activity_label": "Sharpening knives",
+    "context": "A man comes onto the screen and shows people how to best sharpen their knives while commenting on the best way to do it. the video",
+    "correct_letter": "C",
+    "flip_rate": 0.2,
+    "borderline": true
+  },
+  {
+    "index": 67,
+    "ind": 17001,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to use a microphone on a pc [title] Figure out if you need an external microphone. [step] Sometimes, it's text that gets the word across easier than if you talk. However, there are other ",
+    "correct_letter": "A",
+    "flip_rate": 0.82,
+    "borderline": true
+  },
+  {
+    "index": 68,
+    "ind": 17247,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to tie a doo rag [title] Place the durag on your head. [step] You can choose a color and style of durag that work for you. Many people prefer doo rag that are a stretchy material that can",
+    "correct_letter": "B",
+    "flip_rate": 0.66,
+    "borderline": true
+  },
+  {
+    "index": 69,
+    "ind": 17824,
+    "activity_label": "Family Life",
+    "context": "[header] How to teach your kids to be frugal [title] Teach children age-appropriate lessons. [step] All kids want an allowance, but in order to teach your children the true value of money, you may wan",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 70,
+    "ind": 18033,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make an infinity scarf [title] Cut the fabric. [step] Cut a strip of fabric 25 \"/64 cm wide, across the full 60 \"/150 cm width. [substeps] It's a good idea to prewash the fabric before",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 71,
+    "ind": 18421,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to create an autumn inspired eye makeup look [title] Put eye primer around your entire eye lid. [title] Apply a copper color eye shadow on your upper as well as lower lash line. [title] T",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 72,
+    "ind": 18532,
+    "activity_label": "Playing pool",
+    "context": "A close up is shown of a pool table with a man standing around the side. several people",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 73,
+    "ind": 18593,
+    "activity_label": "Health",
+    "context": "[header] How to do hand stretches for carpal tunnel [title] Do the prayer stretch. [step] Stretches alone will not resolve an issue you have with carpal tunnel, but combined with effective treatments,",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 74,
+    "ind": 18790,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to be remarkable [title] Speak your mind. [step] You have your own opinions and ideas, and it's time to start sharing them with the rest of the world. Hiding behind popular opinion is a g",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 75,
+    "ind": 19372,
+    "activity_label": "Hitting a pinata",
+    "context": "A group of people are standing outside a mobile home. A man spins in circles to make himself dizzy and disoriented. he",
+    "correct_letter": "A",
+    "flip_rate": 0.94,
+    "borderline": true
+  },
+  {
+    "index": 76,
+    "ind": 19577,
+    "activity_label": "Family Life",
+    "context": "[header] How to reduce stress when you have young teens [title] Accept your teen. [step] Traditionally, parents tend to see themselves as knowing more than their child, with a responsibility to guide ",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 77,
+    "ind": 19782,
+    "activity_label": "Having an ice cream",
+    "context": "A lady licks an ice cream cone and holds a baby. The lady takes the pacifier from the baby and lets the baby eat ice cream. the baby",
+    "correct_letter": "B",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 78,
+    "ind": 19799,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to wear wedge sneakers [title] Wear skinny jeans. [step] Wedge sneakers are large and a little clunky, but they can still look stylish as long as the rest of the leg looks slender and lon",
+    "correct_letter": "C",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 79,
+    "ind": 20063,
+    "activity_label": "Relationships",
+    "context": "[header] How to plan a date [title] Select a date activity. [step] In general, the person who asks for a date also chooses the activities--however, it is perfectly appropriate (and advisable) to ask t",
+    "correct_letter": "A",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 80,
+    "ind": 20093,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to style wavy frizzy hair [title] Use a moisturizing shampoo and conditioner. [step] If you have naturally wavy and frizzy hair, then using the right shower products is very important. Lo",
+    "correct_letter": "A",
+    "flip_rate": 0.64,
+    "borderline": true
+  },
+  {
+    "index": 81,
+    "ind": 20110,
+    "activity_label": "Family Life",
+    "context": "[header] How to offer help and support to a widowed mother [title] Contact her after the passing of the loved one. [step] In times of crisis people gather to provide support to one another. When someo",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 82,
+    "ind": 20439,
+    "activity_label": "Gargling mouthwash",
+    "context": "After taking about it, the girls takes a gulp of it and starts to gargle it and holds it in her mouth. finally",
+    "correct_letter": "C",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 83,
+    "ind": 20553,
+    "activity_label": "Holidays and Traditions",
+    "context": "[header] How to make mother's day gifts [title] Create homemade lip balm. [step] Mix 3 parts of liquid oil and 1 part beeswax in a pyrex measuring cup or heatproof canning jar. Set the jar in a pan wi",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 84,
+    "ind": 21081,
+    "activity_label": "Work World",
+    "context": "[header] How to become an internist [title] Take science and math classes in high school. [step] Enroll in challenging advanced placement (ap) classes whenever possible and prioritize subjects like bi",
+    "correct_letter": "C",
+    "flip_rate": 0.6,
+    "borderline": true
+  },
+  {
+    "index": 85,
+    "ind": 21145,
+    "activity_label": "Making a lemonade",
+    "context": "A man in red turban stands in a kitchen. He pours some ingredients into a glass. He explains his methods holding a spoon. he",
+    "correct_letter": "A",
+    "flip_rate": 0.92,
+    "borderline": true
+  },
+  {
+    "index": 86,
+    "ind": 21240,
+    "activity_label": "Making a cake",
+    "context": "A persons hands are seen laying clay out onto a cake and begins painting objects on the side. the woman",
+    "correct_letter": "D",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 87,
+    "ind": 21490,
+    "activity_label": "Family Life",
+    "context": "[header] How to cope with the death of a baby who died during labor and delivery [title] Say goodbye to the baby. [step] A stillbirth or death during delivery can be emotionally devastating. Many pare",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 88,
+    "ind": 21547,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to become a laser hair removal technician [title] Know your state requirements for laser hair removal technicians. [step] There are no federal laws governing laser hair removal, so each s",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 89,
+    "ind": 21723,
+    "activity_label": "Youth",
+    "context": "[header] How to participate in class [title] Develop a relationship with your teacher. [step] Make a point to introduce yourself to your teacher before class starts. This is a great way to make a good",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 90,
+    "ind": 21734,
+    "activity_label": "Surfing",
+    "context": "A man is riding a surfboard in the ocean. he",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 91,
+    "ind": 22345,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to make crab ravioli [title] Make a quick roux for the filling. [step] Melt 1/2 tablespoon of unsalted butter in a medium saucepan over medium heat. Stir in 1/2 tablespoon of all-purpose ",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 92,
+    "ind": 22421,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to implement freezer cooking and organzing tips [title] Freeze batches of fried onion. [step] When you have a chance, chop a whole load of onions. Pour a little oil into a large pot and f",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 93,
+    "ind": 23000,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to choose fall makeup colors [title] Ditch the bronzer. [step] Summer is all about airy, light coverage and a sun-kissed bronze. When fall arrives, it's time to swap out the shimmery tan ",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 94,
+    "ind": 23061,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to get a sunkissed look [title] Apply bronzer. [step] Bronzer is a fast and easy way to achieve the sun-kissed look. You can buy bronzer at a cosmetics store, like sephora, or at many sup",
+    "correct_letter": "B",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 95,
+    "ind": 23073,
+    "activity_label": "Health",
+    "context": "[header] How to stop labeling yourself as an underachiever [title] Look closely at your expectations. [step] If you are labeling yourself as an underachiever, this means that you are accomplishing les",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 96,
+    "ind": 23301,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make cleopatra's milk bath [title] Fill a large jar with 1 to 2 cups (240 to 475 milliliters) of milk. [step] Try to use whole milk. It will be more exfoliating and moisturizing than l",
+    "correct_letter": "B",
+    "flip_rate": 0.06,
+    "borderline": true
+  },
+  {
+    "index": 97,
+    "ind": 23584,
+    "activity_label": "Running a marathon",
+    "context": "There's a woman talking about being the first woman to participate in a marathon in 1967. A picture of the participant when she was young is shown. she",
+    "correct_letter": "A",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 98,
+    "ind": 23684,
+    "activity_label": "Home and Garden",
+    "context": "[header] How to remove the odor of sulfur from clothing [title] Soak your clothes in a baking soda solution prior to washing them. [step] Baking soda is a common household product that is used for muc",
+    "correct_letter": "A",
+    "flip_rate": 0.54,
+    "borderline": true
+  },
+  {
+    "index": 99,
+    "ind": 23700,
+    "activity_label": "Spinning",
+    "context": "We wee the fourth rider in the scene. The lady is riding her bike slower. The lady is riding her bike slowly. we",
+    "correct_letter": "C",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 100,
+    "ind": 23710,
+    "activity_label": "Family Life",
+    "context": "[header] How to work with children [title] Tell the children the goal they are to achieve through the task. [step] Children are often very anxious and cautious. They like to know exactly what they wil",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 101,
+    "ind": 24047,
+    "activity_label": "Clean and jerk",
+    "context": ". a very slow playing video of a very strong man",
+    "correct_letter": "A",
+    "flip_rate": 0.2,
+    "borderline": true
+  },
+  {
+    "index": 102,
+    "ind": 24081,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make your hair stay straight all day [title] Use shampoos and conditioners that help straighten hair. [step] Look for shampoos and conditioners that have lots of vitamins and minerals ",
+    "correct_letter": "D",
+    "flip_rate": 0.46,
+    "borderline": true
+  },
+  {
+    "index": 103,
+    "ind": 24492,
+    "activity_label": "Applying sunscreen",
+    "context": "There is a boy sitting on the bed showing off his sunburn and putting cream on it. a friend",
+    "correct_letter": "A",
+    "flip_rate": 0.08,
+    "borderline": true
+  },
+  {
+    "index": 104,
+    "ind": 25329,
+    "activity_label": "Family Life",
+    "context": "[header] How to babysit a toddler [title] Don't leave them alone. [step] Be alert. Keep an eye on them all the time; you never know what one may try to do, open up, dig out ,...fall off or pull down.",
+    "correct_letter": "A",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 105,
+    "ind": 25494,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to get a dark beard [title] Select a color that is slightly lighter than your natural color. [step] When you are selecting a color for your beard dye, choose a color that is slightly ligh",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 106,
+    "ind": 26136,
+    "activity_label": "Playing water polo",
+    "context": "A small group of people are seen swimming around a pool. The people throw a ball around the water. the people",
+    "correct_letter": "A",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 107,
+    "ind": 26169,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to send an international fax [title] Find a fax machine with international capability. [step] Not all fax machines or public fax kiosks can send documents abroad. When you see a fax machi",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 108,
+    "ind": 26190,
+    "activity_label": "Disc dog",
+    "context": "A man and brown dog are in a fenced off area of an arena with people watching them. The man throws frisbees for the dog to catch. the man",
+    "correct_letter": "C",
+    "flip_rate": 0.86,
+    "borderline": true
+  },
+  {
+    "index": 109,
+    "ind": 27352,
+    "activity_label": "Clipping cat claws",
+    "context": "A close up of products are shown and leads into a woman holding and petting a cat. another women",
+    "correct_letter": "A",
+    "flip_rate": 0.64,
+    "borderline": true
+  },
+  {
+    "index": 110,
+    "ind": 27799,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make pin straight hair [title] Shampoo and condition your hair. [step] You'll need to start with wet hair, so shampoo and condition as normal. If your hair is on the dry and frizzy sid",
+    "correct_letter": "C",
+    "flip_rate": 0.72,
+    "borderline": true
+  },
+  {
+    "index": 111,
+    "ind": 28152,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to clean silver jewelry with vinegar [title] Immerse your jewelry in white vinegar. [step] Place your jewelry in a clean mason jar or another suitable container. Cover it with white vineg",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 112,
+    "ind": 28465,
+    "activity_label": "Having an ice cream",
+    "context": "A teenage boy is sitting at a table with his friends and begins sticking his face in his food then they all begin to laugh about it and he gets up. after",
+    "correct_letter": "C",
+    "flip_rate": 0.04,
+    "borderline": false
+  },
+  {
+    "index": 113,
+    "ind": 28742,
+    "activity_label": "Health",
+    "context": "[header] How to ease a stomach virus [title] Avoid solid foods for a few hours to let your stomach settle. [step] When you first notice symptoms of the stomach virus, you should allow your stomach to ",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 114,
+    "ind": 28938,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to protect your skin and hair from chlorine [title] Wet your head. [step] As tempting as a dive into the pool might be, take a minute to wet your hair in the shower before you swim. Wet h",
+    "correct_letter": "C",
+    "flip_rate": 0.9,
+    "borderline": true
+  },
+  {
+    "index": 115,
+    "ind": 29275,
+    "activity_label": "Health",
+    "context": "[header] How to cure a cold with garlic [title] Investigate whether garlic helps with cold symptoms. [step] A recent study looked at the effectiveness of garlic in 146 people over a three month period",
+    "correct_letter": "C",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 116,
+    "ind": 29549,
+    "activity_label": "Calf roping",
+    "context": "A man on a horse chases after a cow with a ripe. A crowd around him watches. He catches the cow with the rope. he",
+    "correct_letter": "B",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 117,
+    "ind": 30495,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to remove whitesmoke [title] Click on \" start, \" then click on \" control panel. [substeps] If using windows 8, position your mouse at the right edge of the screen, click on \" search, \" th",
+    "correct_letter": "D",
+    "flip_rate": 0.68,
+    "borderline": true
+  },
+  {
+    "index": 118,
+    "ind": 30999,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to choose a university (uk ) [title] Make sure that you start early enough. [step] Ideally you should start looking for a university about 18 months before commencement of the course and ",
+    "correct_letter": "B",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 119,
+    "ind": 31375,
+    "activity_label": "Ice fishing",
+    "context": "The man appears to have caught something and kneels down to pull his fishing line by hand. The man pulls a fish out of the water and poses with it. the man",
+    "correct_letter": "D",
+    "flip_rate": 0.86,
+    "borderline": true
+  },
+  {
+    "index": 120,
+    "ind": 32226,
+    "activity_label": "Education and Communications",
+    "context": "[header] How to write a quest story [title] Think of a story idea. [step] Be sure to have a thick plot because the quest story is not only about the outward physical journey but also involves the prot",
+    "correct_letter": "A",
+    "flip_rate": 0.04,
+    "borderline": false
+  },
+  {
+    "index": 121,
+    "ind": 32319,
+    "activity_label": "Education and Communications",
+    "context": "[header] How to make fun experiments home [title] Assemble the ink ingredients. [step] To make invisible ink many things can be used, choose from one of the following : [substeps] Orange juice milk li",
+    "correct_letter": "A",
+    "flip_rate": 0.84,
+    "borderline": true
+  },
+  {
+    "index": 122,
+    "ind": 32406,
+    "activity_label": "Playing guitarra",
+    "context": "There's a young man in a red shirt playing an acoustic guitar. he",
+    "correct_letter": "A",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 123,
+    "ind": 32585,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to bounce back from disappointment [title] Acknowledge your feelings. [step] The first step in bouncing back from disappointment is acknowledging your feelings. Avoiding your feelings or ",
+    "correct_letter": "D",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 124,
+    "ind": 32716,
+    "activity_label": "Finance and Business",
+    "context": "[header] How to create an organization chart [title] Look at how your organization makes decisions. [step] Most businesses are generally either arranged horizontally or vertically. Horizontally means ",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 125,
+    "ind": 32904,
+    "activity_label": "Playing violin",
+    "context": "A man stands holding a violin and bow discussing its features. the man",
+    "correct_letter": "C",
+    "flip_rate": 0.84,
+    "borderline": true
+  },
+  {
+    "index": 126,
+    "ind": 32916,
+    "activity_label": "Cars & Other Vehicles",
+    "context": "[header] How to ride a bus [title] Figure out how to get where you are going. [step] Contact your local bus or transit system and get help from a \" route planner \" or buy a map book. Make sure your ma",
+    "correct_letter": "B",
+    "flip_rate": 0.84,
+    "borderline": true
+  },
+  {
+    "index": 127,
+    "ind": 32958,
+    "activity_label": "Finance and Business",
+    "context": "[header] How to get legal advice [title] Define your legal problem. [step] Before you can start looking for legal information and assistance, you need to be able to explain your problem. A family law ",
+    "correct_letter": "D",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 128,
+    "ind": 32976,
+    "activity_label": "Education and Communications",
+    "context": "[header] How to ask someone to be your study buddy [title] Reflect on your goals. [step] Ask yourself what kind of study buddy might be good for you, what kind of person you would like to study with, ",
+    "correct_letter": "A",
+    "flip_rate": 0.84,
+    "borderline": true
+  },
+  {
+    "index": 129,
+    "ind": 33167,
+    "activity_label": "Rope skipping",
+    "context": "A man in a grey track suit performs jump rope tricks in front of a group of students. the man in the grey track suit",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 130,
+    "ind": 33448,
+    "activity_label": "Washing face",
+    "context": "A young child is seen sitting next to a tub and bending over the side. a person",
+    "correct_letter": "A",
+    "flip_rate": 0.62,
+    "borderline": true
+  },
+  {
+    "index": 131,
+    "ind": 33748,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to get constellation piercings [title] Ask friends or family who have piercing. [step] To find a good piercing artist, you can start by asking others about their piercings and who did the",
+    "correct_letter": "B",
+    "flip_rate": 0.4,
+    "borderline": true
+  },
+  {
+    "index": 132,
+    "ind": 33813,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to measure for jeans [title] Put on the shoes you plan to wear with your jeans while taking the measurements. [step] You will finish taking the measurements at approximately where your sh",
+    "correct_letter": "A",
+    "flip_rate": 0.26,
+    "borderline": true
+  },
+  {
+    "index": 133,
+    "ind": 33867,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to look gorgeous as a heavily obese girl [title] Play up your upper body if you're pear-shaped. [step] By figuring out your proportions, you can more easily choose clothes that will reall",
+    "correct_letter": "C",
+    "flip_rate": 0.06,
+    "borderline": true
+  },
+  {
+    "index": 134,
+    "ind": 33900,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to wear green eyeshadow [title] Choose eyeshadow shades. [step] For this look, choose three bright green shadows: a light, medium, and dark shade. The lighter shade can even be a lime gre",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 135,
+    "ind": 34029,
+    "activity_label": "Painting furniture",
+    "context": "We see a title in the upper left corner. a man",
+    "correct_letter": "D",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 136,
+    "ind": 34376,
+    "activity_label": "Pets and Animals",
+    "context": "[header] How to treat botulism in a duck [title] Watch for the symptoms. [step] Botulism poisons the duck, causing what's sometimes known as \" limberneck disease. \" it causes paralysis, starting with ",
+    "correct_letter": "A",
+    "flip_rate": 0.86,
+    "borderline": true
+  },
+  {
+    "index": 137,
+    "ind": 34599,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to lowlight gray hair [title] Choose a hair dye that is 1 to 2 shades darker than your current color. [step] If you go too dark, your hair will look stark, streaky, and unnatural. The dar",
+    "correct_letter": "D",
+    "flip_rate": 0.06,
+    "borderline": true
+  },
+  {
+    "index": 138,
+    "ind": 34687,
+    "activity_label": "Family Life",
+    "context": "[header] How to get rid of an \" asleep \" foot [title] Change your leg position. [step] In most cases, cutting off the circulation to your foot by crossing your legs is the reason it goes numb. The blo",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 139,
+    "ind": 34778,
+    "activity_label": "Family Life",
+    "context": "[header] How to choose an alternative to a flower girl [title] Invite other members of the family to join your wedding party. [step] Instead of having young flower girls, consider using older women in",
+    "correct_letter": "D",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 140,
+    "ind": 35132,
+    "activity_label": "Cheerleading",
+    "context": "After some more team-flips the team poses and celebrates as the routine ends. Several members hug and talk. The judges submit their scores and the team anticipates the results. the team",
+    "correct_letter": "D",
+    "flip_rate": 0.02,
+    "borderline": false
+  },
+  {
+    "index": 141,
+    "ind": 35455,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to choose and use facial wipes [title] Check the ingredients in face wipes. [step] Facial wipes can be filled with chemicals and preservatives that can be harmful to your skin. When shopp",
+    "correct_letter": "A",
+    "flip_rate": 0.92,
+    "borderline": true
+  },
+  {
+    "index": 142,
+    "ind": 36193,
+    "activity_label": "Camel ride",
+    "context": ". \" a camel ride - desrt of doha - qatar \"",
+    "correct_letter": "C",
+    "flip_rate": 0.4,
+    "borderline": true
+  },
+  {
+    "index": 143,
+    "ind": 37028,
+    "activity_label": "Waterskiing",
+    "context": "The young boy gets fitted for a pair of water skis on home patio. The young boy is pulled by the water ski instructor while on different types of floating devices. the child",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 144,
+    "ind": 37374,
+    "activity_label": "Finance and Business",
+    "context": "[header] How to save money on video game purchases [title] Rent video games before you buy them. [step] Renting video games will allow you to test and preview video games to determine if you like them",
+    "correct_letter": "A",
+    "flip_rate": 0.96,
+    "borderline": false
+  },
+  {
+    "index": 145,
+    "ind": 37397,
+    "activity_label": "Cutting the grass",
+    "context": "The adult mows the lawn with his child. The man moves toys to the side of the yard to clear the area. the man",
+    "correct_letter": "D",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 146,
+    "ind": 37549,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to care for damaged african hair [title] Trim away damage if possible. [step] Caring for damaged hair is a long, difficult process, and it will likely never return to full healthy. If you",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 147,
+    "ind": 37720,
+    "activity_label": "Sports and Fitness",
+    "context": "[header] How to improve your hiking technique [title] Invest in a good pair of hiking boots. [step] Good boots are critical and sometimes expensive. They don't have to be expensive boots (though profe",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 148,
+    "ind": 39318,
+    "activity_label": "Cleaning windows",
+    "context": "How to clean your rv windows and mirrors fast without using any spray. you",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 149,
+    "ind": 40380,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to apply invisible foundation [title] Determine your skin type. [step] Choose a foundation for oily skin if your face tends to get shiny or greasy, and avoid dewy finishes. Choose a miner",
+    "correct_letter": "D",
+    "flip_rate": 0.94,
+    "borderline": true
+  },
+  {
+    "index": 150,
+    "ind": 40458,
+    "activity_label": "Arm wrestling",
+    "context": "Two men are seen leading over the hood of the car while grabbing onto each other's hands. they",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 151,
+    "ind": 40491,
+    "activity_label": "Scuba diving",
+    "context": "The focus goes back to the snorkelers as they continue to explore the area with their flashlights. the outro video",
+    "correct_letter": "C",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 152,
+    "ind": 40983,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to present yourself and business powerfully [title] Show your confidence in yourself. [step] When you make a presentation, whether to one person when you attend networking events or to 10",
+    "correct_letter": "D",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 153,
+    "ind": 41104,
+    "activity_label": "Family Life",
+    "context": "[header] How to prevent your teen from joining a gang [title] Learn the appeal of gangs. [step] There are many reasons why a teen might join a gang. Learning the potential draw of gangs for teens can ",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 154,
+    "ind": 41130,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to be safe, be yourself and still have fun in high school [title] Shake the idea that being good is boring. [step] Being a good kid doesn't make you a goody-two shoes. Most of the time, f",
+    "correct_letter": "C",
+    "flip_rate": 0.22,
+    "borderline": true
+  },
+  {
+    "index": 155,
+    "ind": 41368,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to dry your painted nails quickly [title] Pick the right clean bowl. [step] You want a deep enough, and large enough, bowl that you can submerge the entire nail into the bowl. Ideally, yo",
+    "correct_letter": "B",
+    "flip_rate": 0.08,
+    "borderline": true
+  },
+  {
+    "index": 156,
+    "ind": 41576,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to make ghevar [title] Combine the milk and ghee in a mixing bowl. [step] Start with each of these ingredients separated, then add your ghee (clarified butter) and milk to your mixing bow",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 157,
+    "ind": 42034,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to open a bostitch heavy duty stapler [title] Set your bostitch stapler on a hard, flat surface. [title] Look for the back assembly, sometimes called a pusher. [step] On some models this ",
+    "correct_letter": "C",
+    "flip_rate": 0.04,
+    "borderline": false
+  },
+  {
+    "index": 158,
+    "ind": 42047,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to delete an eharmony account [title] Login to eharmony.com using your username and password. [step] If you can't remember your login details, you can click the \" forgot password \" link a",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 159,
+    "ind": 42200,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to make a themed calendar with microsoft powerpoint [title] First find a theme you want. [step] Themes can be anything you are interested in or that you like. The theme of this calendar i",
+    "correct_letter": "C",
+    "flip_rate": 0.3,
+    "borderline": true
+  },
+  {
+    "index": 160,
+    "ind": 42383,
+    "activity_label": "High jump",
+    "context": "A male athlete is running on a track. He jumps high into the air. He vaults backwards over a high beam. this",
+    "correct_letter": "B",
+    "flip_rate": 0.16,
+    "borderline": true
+  },
+  {
+    "index": 161,
+    "ind": 42525,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to make tomato soup [title] Bring a large pot of water to a boil. [step] Fill the pot about halfway with water, then place it on a burner over high heat and allow it to come to a full boi",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 162,
+    "ind": 42599,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to tone sagging skin [title] Moisturize, moisturize, moisturize. [step] A good moisturizer won't solve the problem of sagging skin, but it will mask the effect. Moisturizing will make you",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 163,
+    "ind": 42687,
+    "activity_label": "Youth",
+    "context": "[header] How to be attentive in end of day classes [title] Eat less during breaks. [step] Having a heavy stomach after lunch or dinner can cause you to feel drowsy as your body focuses in digesting fo",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 164,
+    "ind": 42765,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to get rid of sandfleas [title] Learn to identify sand fleas. [step] The average sand flea can range in size from a speck of salt to a grain of rice. In fact, sand fleas often look like s",
+    "correct_letter": "A",
+    "flip_rate": 0.82,
+    "borderline": true
+  },
+  {
+    "index": 165,
+    "ind": 43063,
+    "activity_label": "Cutting the grass",
+    "context": "A kneeing man runs a small grass cutter over the surface of the lawn. the man",
+    "correct_letter": "A",
+    "flip_rate": 0.72,
+    "borderline": true
+  },
+  {
+    "index": 166,
+    "ind": 43297,
+    "activity_label": "Computers and Electronics",
+    "context": "[header] How to change speed on youtube on iphone or ipad [title] Open the youtube app. [step] It's the red app that resembles a tv screen with a white play button in the middle. [substeps] Download t",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 167,
+    "ind": 43680,
+    "activity_label": "Sports and Fitness",
+    "context": "[header] How to get rid of wasps in your house [title] Gather your materials. [step] This is easy to make and can be put in the corner of the room that has a wasp problem. [substeps] Scissors empty pl",
+    "correct_letter": "A",
+    "flip_rate": 0.56,
+    "borderline": true
+  },
+  {
+    "index": 168,
+    "ind": 43763,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make a pig pin brooch [title] Make the pig's head pieces. [step] Draw a circle for the face on a piece of paper. Choose the size for the circles according to what you consider as appro",
+    "correct_letter": "C",
+    "flip_rate": 0.92,
+    "borderline": true
+  },
+  {
+    "index": 169,
+    "ind": 44143,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to make glaze for ham [title] Whisk the ingredients together. [step] Combine the maple syrup, brown sugar, and black pepper in a small mixing bowl, whisking well until evenly combined. [s",
+    "correct_letter": "C",
+    "flip_rate": 0.8,
+    "borderline": true
+  },
+  {
+    "index": 170,
+    "ind": 44448,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to do undercut hair for men [title] Choose the right clipper for the person's hair. [step] Without a good clipper, doing undercut hair for men can be difficult. Ideally, your clipper will",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 171,
+    "ind": 44835,
+    "activity_label": "Baking cookies",
+    "context": "Woman puts butter in a bowl with sugar, and flour and mix it in a kitchen aid, adding eggs, vanilla and flour, when the mix is homogenous add chocolate chips. the dough",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 172,
+    "ind": 44837,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to ride a horse on the beach [title] Find seasoned horses to ride with. [step] Give your horse a calming influence for beach riding by finding other riders who frequent the beach. If it's",
+    "correct_letter": "B",
+    "flip_rate": 0.44,
+    "borderline": true
+  },
+  {
+    "index": 173,
+    "ind": 44982,
+    "activity_label": "Pets and Animals",
+    "context": "[header] How to take care of a blind cat [title] Schedule an appointment with your cat's veterinarian. [step] If you suspect that your cat has gone blind or is losing her sight, schedule an appointmen",
+    "correct_letter": "C",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 174,
+    "ind": 45122,
+    "activity_label": "Playing harmonica",
+    "context": "A woman is seen looking off in the distance who holds onto a harmonica. she",
+    "correct_letter": "C",
+    "flip_rate": 0.74,
+    "borderline": true
+  },
+  {
+    "index": 175,
+    "ind": 45216,
+    "activity_label": "Food and Entertaining",
+    "context": "[header] How to have a party without your parents knowing [title] Research! [step] Find a time when your parents will be gone, and all your siblings and other family members (if you have any) are also",
+    "correct_letter": "B",
+    "flip_rate": 0.14,
+    "borderline": true
+  },
+  {
+    "index": 176,
+    "ind": 45630,
+    "activity_label": "Cutting the grass",
+    "context": "A young boy is seen standing behind a lawn mower and begins pushing. He stops to throw a rock out of the way and another man helps him start it. he",
+    "correct_letter": "B",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 177,
+    "ind": 45793,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to look shorter if you're tall [title] Break up your body with layers and colors. [step] Anything that you can do to break your body into sections rather than emphasizing the length with ",
+    "correct_letter": "D",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 178,
+    "ind": 45796,
+    "activity_label": "Sharpening knives",
+    "context": "A group of tools and knives are on a table top. a man",
+    "correct_letter": "C",
+    "flip_rate": 0.94,
+    "borderline": true
+  },
+  {
+    "index": 179,
+    "ind": 46393,
+    "activity_label": "Having an ice cream",
+    "context": "The woman on the far end finishes hers first, followed by the other two. Credits animate on the screen. the collage",
+    "correct_letter": "A",
+    "flip_rate": 0.92,
+    "borderline": true
+  },
+  {
+    "index": 180,
+    "ind": 46482,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make your period eco friendly [title] Be open to trying something new. [step] It's different than what you're probably used to, but definitely worth it. One misconception is that reusa",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 181,
+    "ind": 46856,
+    "activity_label": "Family Life",
+    "context": "[header] How to help your children build their first budget [title] Establish an allowance. [step] If you want children to budget, you need to give them some money to work with. Establish an allowance",
+    "correct_letter": "C",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 182,
+    "ind": 46923,
+    "activity_label": "Family Life",
+    "context": "[header] How to choose a colorful wedding dress [title] Try blush. [step] A light pink or peach blush shade can be great to add a subtle splash of color to your wedding day. A blush tone is flattering",
+    "correct_letter": "B",
+    "flip_rate": 0.72,
+    "borderline": true
+  },
+  {
+    "index": 183,
+    "ind": 47177,
+    "activity_label": "Travel",
+    "context": "[header] How to obtain italian citizenship through jure sanguinis [title] Determine who your last italian-born ancestor was. [step] For example, if your great grandparent was born in italy in 1911 but",
+    "correct_letter": "B",
+    "flip_rate": 0.98,
+    "borderline": false
+  },
+  {
+    "index": 184,
+    "ind": 47282,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to dye kids hair [title] Protect your child's clothing and your hands. [step] Have your child sit some place comfortable. Drape an old towel around their shoulders and secure it with a cl",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 185,
+    "ind": 47629,
+    "activity_label": "Family Life",
+    "context": "[header] How to handle loved ones critical of your divorce [title] Decide how much you're comfortable revealing. [step] You may be able to overcome criticism about your divorce by opening up about you",
+    "correct_letter": "C",
+    "flip_rate": 0.04,
+    "borderline": false
+  },
+  {
+    "index": 186,
+    "ind": 47677,
+    "activity_label": "Playing violin",
+    "context": "Several clips are shown of people walking around and speaking to the camera. the people",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 187,
+    "ind": 47890,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to be someone else [title] Analyze why you want to be somebody else. [step] Ask yourself what the reasons are behind your desire to change. This way you can discover the root of your prob",
+    "correct_letter": "C",
+    "flip_rate": 0.54,
+    "borderline": true
+  },
+  {
+    "index": 188,
+    "ind": 47923,
+    "activity_label": "Running a marathon",
+    "context": "The camera pans into a man and leads into shots of him running as well as pictures of him. A camera then shows a large group of people running and the camera panning around the man. more shots",
+    "correct_letter": "B",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 189,
+    "ind": 47974,
+    "activity_label": "Wrapping presents",
+    "context": "Then you get scissors and you cut off some of it, you put the gift in a different piece of tissue paper and fold it up nicely. after that",
+    "correct_letter": "B",
+    "flip_rate": 0.62,
+    "borderline": true
+  },
+  {
+    "index": 190,
+    "ind": 48186,
+    "activity_label": "Health",
+    "context": "[header] How to diagnose and treat salpingitis [title] Understand that women with salpingitis sometimes have no symptoms. [step] In some cases, salpingitis causes no noticeable symptoms. Therefore, yo",
+    "correct_letter": "C",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 191,
+    "ind": 48430,
+    "activity_label": "Clean and jerk",
+    "context": "The woman picked up the barbell pause at her chest and then push the barbell up. the woman",
+    "correct_letter": "D",
+    "flip_rate": 0.0,
+    "borderline": false
+  },
+  {
+    "index": 192,
+    "ind": 48451,
+    "activity_label": "Running a marathon",
+    "context": "People are dancing having fun at a party. A race starts and people are running. Cheerleaders are standing on the side of the road. people",
+    "correct_letter": "C",
+    "flip_rate": 0.12,
+    "borderline": true
+  },
+  {
+    "index": 193,
+    "ind": 48460,
+    "activity_label": "High jump",
+    "context": "Another male is then shown as he takes off and clears the bar of the high jump and there's an instant replay. then a man",
+    "correct_letter": "A",
+    "flip_rate": 0.44,
+    "borderline": true
+  },
+  {
+    "index": 194,
+    "ind": 48888,
+    "activity_label": "Family Life",
+    "context": "[header] How to teach your kid adding and subtracting [title] Have them recite 1-10, and then 10-20. [step] Start by saying \" 1 \" and then have your child repeat after you. Count up to 10 together.",
+    "correct_letter": "B",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 195,
+    "ind": 49717,
+    "activity_label": "Playing violin",
+    "context": "A girl dressed in a white blouse and black skirt is standing on stage in front of an orchestra with her violin. The orchestra begins to play and close ups of the clarinets are shown. finally",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 196,
+    "ind": 50179,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to dress business casual for the plus size woman [title] Define business casual. [step] The very first question for many people is, \" what is business casual? \" it seems like a contradict",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 197,
+    "ind": 50240,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to make fake nails look real [title] Choose an artificial nail kit. [step] There are three main types of at-home kits for artificial nails: gel, acrylic, and press-on. Each has its own ad",
+    "correct_letter": "A",
+    "flip_rate": 1.0,
+    "borderline": false
+  },
+  {
+    "index": 198,
+    "ind": 50390,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to care for kid's dancewear [title] Keep dance shoes dry. [step] Shoes have a tendency to fray, especially satin shoes. To prevent shoes from fraying, avoid getting your shoes wet.",
+    "correct_letter": "D",
+    "flip_rate": 0.78,
+    "borderline": true
+  },
+  {
+    "index": 199,
+    "ind": 50601,
+    "activity_label": "Personal Care and Style",
+    "context": "[header] How to clean dress shoes [title] Brush or wipe away surface dirt and debris. [step] Use the horsehair brush that comes with many shoe cleaning kits, or another soft-bristled brush. Alternativ",
+    "correct_letter": "B",
+    "flip_rate": 0.1,
+    "borderline": true
+  }
+]

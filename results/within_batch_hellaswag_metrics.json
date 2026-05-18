@@ -1,0 +1,94 @@
+{
+  "per_model": [
+    {
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "benchmark": "hellaswag",
+      "K": 50,
+      "N": 200,
+      "temperature": 1.0,
+      "load_time_sec": 84.1,
+      "inference_time_sec": 3746.3,
+      "mean_accuracy": 0.8495,
+      "n_always_correct": 157,
+      "n_always_wrong": 21,
+      "n_borderline": 15
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "benchmark": "hellaswag",
+      "K": 50,
+      "N": 200,
+      "temperature": 1.0,
+      "load_time_sec": 118.8,
+      "inference_time_sec": 9117.9,
+      "mean_accuracy": 0.6899000000000001,
+      "n_always_correct": 76,
+      "n_always_wrong": 26,
+      "n_borderline": 58
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "benchmark": "hellaswag",
+      "K": 50,
+      "N": 200,
+      "temperature": 1.0,
+      "load_time_sec": 90.1,
+      "inference_time_sec": 4238.5,
+      "mean_accuracy": 0.6705,
+      "n_always_correct": 62,
+      "n_always_wrong": 18,
+      "n_borderline": 82
+    }
+  ],
+  "K": 50,
+  "N": 200,
+  "temperature": 1.0,
+  "benchmark": "hellaswag",
+  "elapsed_min": 290.0,
+  "stratification": {
+    "n_examples": 200,
+    "n_strata": 60,
+    "top_strata": [
+      [
+        "Personal Care and Style",
+        53
+      ],
+      [
+        "Family Life",
+        20
+      ],
+      [
+        "Food and Entertaining",
+        10
+      ],
+      [
+        "Health",
+        9
+      ],
+      [
+        "Computers and Electronics",
+        9
+      ],
+      [
+        "Home and Garden",
+        8
+      ],
+      [
+        "Finance and Business",
+        5
+      ],
+      [
+        "Pets and Animals",
+        5
+      ],
+      [
+        "Education and Communications",
+        4
+      ],
+      [
+        "Youth",
+        3
+      ]
+    ]
+  }
+}

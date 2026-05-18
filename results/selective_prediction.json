@@ -1,0 +1,518 @@
+{
+  "task": "Predict Qwen2.5-7B-Instruct tau=0 correctness on 500 MMLU questions",
+  "ground_truth_source": "Row of ensemble_expanded_correctness.npy at index 8 (Qwen/Qwen2.5-7B-Instruct)",
+  "cost_unit": "Qwen-7B-equivalent forward passes = sum(model_params_B) / 7.0",
+  "headline": {
+    "target_accuracy": 0.774,
+    "N_questions": 500,
+    "N_correct": 387,
+    "N_incorrect": 113,
+    "SC100_AUROC_operational": 0.71225217808877,
+    "SC10_AUROC_operational": 0.6055887128124213,
+    "SC2_AUROC_operational": 0.5099128764492008,
+    "SC100_AUROC_oracle": 0.9555921428734766,
+    "SC10_AUROC_oracle": 0.9492808305321169,
+    "SC2_AUROC_oracle": 0.9250874665569047,
+    "Ensemble1_AUROC": 0.7484621892936361,
+    "Ensemble2_AUROC": 0.8069904644302668,
+    "Ensemble3_AUROC": 0.8394159749376873,
+    "SC100_cost": 100.0,
+    "Ensemble2_cost": 2.457142857142857,
+    "cost_savings_factor_ens2_vs_sc100": 40.697674418604656,
+    "ensemble2_beats_sc100_operational": true,
+    "ensemble2_beats_sc10_operational": true,
+    "ensemble2_models": [
+      "meta-llama/Llama-3.1-8B-Instruct",
+      "google/gemma-2-9b-it"
+    ]
+  },
+  "SC_K": [
+    {
+      "predictor": "SC_K",
+      "K_or_k": 2,
+      "models_used": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "AUROC_operational": 0.5099128764492008,
+      "AUPR_operational": 0.7774849267872525,
+      "AUROC_oracle_upper_bound": 0.9250874665569047,
+      "AUPR_oracle_upper_bound": 0.9637324851278339,
+      "cost_units_qwen7b_equivalent": 2.0
+    },
+    {
+      "predictor": "SC_K",
+      "K_or_k": 5,
+      "models_used": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "AUROC_operational": 0.5675950698589102,
+      "AUPR_operational": 0.800622528115455,
+      "AUROC_oracle_upper_bound": 0.942020534632183,
+      "AUPR_oracle_upper_bound": 0.9753475546594184,
+      "cost_units_qwen7b_equivalent": 5.0
+    },
+    {
+      "predictor": "SC_K",
+      "K_or_k": 10,
+      "models_used": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "AUROC_operational": 0.6055887128124213,
+      "AUPR_operational": 0.8177794909165588,
+      "AUROC_oracle_upper_bound": 0.9492808305321169,
+      "AUPR_oracle_upper_bound": 0.9802678825058254,
+      "cost_units_qwen7b_equivalent": 10.0
+    },
+    {
+      "predictor": "SC_K",
+      "K_or_k": 20,
+      "models_used": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "AUROC_operational": 0.6367336671926094,
+      "AUPR_operational": 0.8343733957791133,
+      "AUROC_oracle_upper_bound": 0.9502412476275411,
+      "AUPR_oracle_upper_bound": 0.9814637013398679,
+      "cost_units_qwen7b_equivalent": 20.0
+    },
+    {
+      "predictor": "SC_K",
+      "K_or_k": 50,
+      "models_used": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "AUROC_operational": 0.7009444101438339,
+      "AUPR_operational": 0.8703636215200543,
+      "AUROC_oracle_upper_bound": 0.9503670165328942,
+      "AUPR_oracle_upper_bound": 0.9823748561085797,
+      "cost_units_qwen7b_equivalent": 50.0
+    },
+    {
+      "predictor": "SC_K",
+      "K_or_k": 100,
+      "models_used": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "AUROC_operational": 0.71225217808877,
+      "AUPR_operational": 0.8800215848341306,
+      "AUROC_oracle_upper_bound": 0.9555921428734766,
+      "AUPR_oracle_upper_bound": 0.9855355560807164,
+      "cost_units_qwen7b_equivalent": 100.0
+    }
+  ],
+  "Ensemble_topk": [
+    {
+      "predictor": "Ensemble_topk",
+      "K_or_k": 1,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct"
+      ],
+      "AUROC": 0.7484621892936361,
+      "AUPR": 0.8735363927114422,
+      "cost_units_qwen7b_equivalent": 1.1428571428571428
+    },
+    {
+      "predictor": "Ensemble_topk",
+      "K_or_k": 2,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it"
+      ],
+      "AUROC": 0.8069904644302668,
+      "AUPR": 0.9046920327893192,
+      "cost_units_qwen7b_equivalent": 2.457142857142857
+    },
+    {
+      "predictor": "Ensemble_topk",
+      "K_or_k": 3,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct"
+      ],
+      "AUROC": 0.8394159749376873,
+      "AUPR": 0.9240224729909536,
+      "cost_units_qwen7b_equivalent": 3.0
+    },
+    {
+      "predictor": "Ensemble_topk",
+      "K_or_k": 5,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct",
+        "Qwen/Qwen2-7B-Instruct",
+        "Qwen/Qwen2.5-3B-Instruct"
+      ],
+      "AUROC": 0.879524822208502,
+      "AUPR": 0.9460754163868557,
+      "cost_units_qwen7b_equivalent": 4.428571428571429
+    },
+    {
+      "predictor": "Ensemble_topk",
+      "K_or_k": 10,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct",
+        "Qwen/Qwen2-7B-Instruct",
+        "Qwen/Qwen2.5-3B-Instruct",
+        "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Qwen/Qwen2.5-1.5B-Instruct",
+        "google/gemma-2-2b-it",
+        "allenai/OLMo-2-1124-7B-Instruct",
+        "mistralai/Mistral-Small-Instruct-2409"
+      ],
+      "AUROC": 0.8878484370355126,
+      "AUPR": 0.9566645830782949,
+      "cost_units_qwen7b_equivalent": 10.299999999999999
+    }
+  ],
+  "Ensemble_familydiverse": [
+    {
+      "predictor": "Ensemble_familydiverse",
+      "K_or_k": 1,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct"
+      ],
+      "AUROC": 0.7484621892936361,
+      "AUPR": 0.8735363927114422,
+      "cost_units_qwen7b_equivalent": 1.1428571428571428
+    },
+    {
+      "predictor": "Ensemble_familydiverse",
+      "K_or_k": 2,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it"
+      ],
+      "AUROC": 0.8069904644302668,
+      "AUPR": 0.9046920327893192,
+      "cost_units_qwen7b_equivalent": 2.457142857142857
+    },
+    {
+      "predictor": "Ensemble_familydiverse",
+      "K_or_k": 3,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct"
+      ],
+      "AUROC": 0.8394159749376873,
+      "AUPR": 0.9240224729909536,
+      "cost_units_qwen7b_equivalent": 3.0
+    },
+    {
+      "predictor": "Ensemble_familydiverse",
+      "K_or_k": 5,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct",
+        "allenai/OLMo-2-1124-7B-Instruct",
+        "mistralai/Mistral-Small-Instruct-2409"
+      ],
+      "AUROC": 0.8450755756785804,
+      "AUPR": 0.9300826640489728,
+      "cost_units_qwen7b_equivalent": 7.142857142857143
+    },
+    {
+      "predictor": "Ensemble_familydiverse",
+      "K_or_k": 10,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct",
+        "allenai/OLMo-2-1124-7B-Instruct",
+        "mistralai/Mistral-Small-Instruct-2409",
+        "01-ai/Yi-1.5-6B-Chat",
+        "ibm-granite/granite-3.1-8b-instruct",
+        "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+        "deepseek-ai/deepseek-llm-7b-chat",
+        "Qwen/Qwen2-7B-Instruct"
+      ],
+      "AUROC": 0.8658388785987057,
+      "AUPR": 0.9475554464786127,
+      "cost_units_qwen7b_equivalent": 11.385714285714286
+    }
+  ],
+  "Ensemble_family_compare_k3": [
+    {
+      "predictor": "Ensemble_k3_same_family_qwen",
+      "K_or_k": 3,
+      "models_used": [
+        "Qwen/Qwen2.5-0.5B-Instruct",
+        "Qwen/Qwen2.5-1.5B-Instruct",
+        "Qwen/Qwen2.5-3B-Instruct"
+      ],
+      "AUROC": 0.8109236011067664,
+      "AUPR": 0.908782391751507,
+      "cost_units_qwen7b_equivalent": 0.7142857142857143
+    },
+    {
+      "predictor": "Ensemble_k3_different_family",
+      "K_or_k": 3,
+      "models_used": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-2-9b-it",
+        "microsoft/Phi-3-mini-4k-instruct"
+      ],
+      "AUROC": 0.8394159749376873,
+      "AUPR": 0.9240224729909536,
+      "cost_units_qwen7b_equivalent": 3.0
+    }
+  ],
+  "model_accuracies_tau0": {
+    "HuggingFaceTB/SmolLM2-1.7B-Instruct": 0.622,
+    "Qwen/Qwen2.5-0.5B-Instruct": 0.558,
+    "Qwen/Qwen2.5-1.5B-Instruct": 0.704,
+    "microsoft/phi-2": 0.556,
+    "microsoft/Phi-3-mini-4k-instruct": 0.75,
+    "microsoft/Phi-3.5-mini-instruct": 0.68,
+    "Qwen/Qwen2.5-3B-Instruct": 0.74,
+    "Qwen/Qwen2-7B-Instruct": 0.746,
+    "Qwen/Qwen2.5-7B-Instruct": 0.774,
+    "mistralai/Mistral-7B-Instruct-v0.2": 0.498,
+    "mistralai/Mistral-7B-Instruct-v0.3": 0.64,
+    "HuggingFaceH4/zephyr-7b-beta": 0.566,
+    "allenai/OLMo-2-1124-7B-Instruct": 0.686,
+    "01-ai/Yi-1.5-6B-Chat": 0.678,
+    "deepseek-ai/deepseek-llm-7b-chat": 0.442,
+    "ibm-granite/granite-3.1-8b-instruct": 0.654,
+    "mistralai/Ministral-8B-Instruct-2410": 0.654,
+    "google/gemma-2-2b-it": 0.688,
+    "meta-llama/Llama-3.1-8B-Instruct": 0.774,
+    "google/gemma-2-9b-it": 0.766,
+    "mistralai/Mistral-Small-Instruct-2409": 0.684,
+    "meta-llama/Llama-3.2-1B-Instruct": 0.402,
+    "meta-llama/Llama-3.2-3B-Instruct": 0.684,
+    "meta-llama/Meta-Llama-3-8B-Instruct": 0.728
+  },
+  "fair_comparison_analysis": {
+    "summary": "Side-by-side comparison of selection rules answering the reviewer question: is Ensemble_2 win from diversity or from picking two strong models?",
+    "status": "verified_by_rerun",
+    "finding": {
+      "at_k_1_2_3_topk_equals_familydiverse": true,
+      "reason": "By tau=0 accuracy, the top 3 non-Qwen models (Llama-3.1-8B, Gemma-2-9B, Phi-3-mini) are already in 3 distinct families, so both rules select identical model sets.",
+      "rules_diverge_at_k_ge_5": true,
+      "at_k_5_topk_beats_familydiverse": {
+        "topk_auroc": 0.879524822208502,
+        "fd_auroc": 0.8450755756785804,
+        "delta": 0.03444924652992165
+      },
+      "at_k_10_topk_beats_familydiverse": {
+        "topk_auroc": 0.8878484370355126,
+        "fd_auroc": 0.8658388785987057,
+        "delta": 0.022009558436806964
+      }
+    },
+    "matched_AUROC_vs_SC100": {
+      "sc100_auroc_op": 0.71225217808877,
+      "sc100_cost": 100.0,
+      "cheapest_ensemble_beating_sc100": {
+        "topk": {
+          "k": 1,
+          "auroc": 0.7484621892936361,
+          "cost": 1.1428571428571428,
+          "savings_x": 87.5
+        },
+        "familydiverse": {
+          "k": 1,
+          "auroc": 0.7484621892936361,
+          "cost": 1.1428571428571428,
+          "savings_x": 87.5
+        }
+      }
+    },
+    "matched_cost_vs_SC10": {
+      "sc10_cost": 10.0,
+      "sc10_auroc_op": 0.6055887128124213,
+      "topk_k10_auroc": 0.8878484370355126,
+      "topk_k10_cost": 10.299999999999999,
+      "fd_k10_auroc": 0.8658388785987057,
+      "fd_k10_cost": 11.385714285714286
+    },
+    "implication_for_paper": "The 0.81 vs 0.71 AUROC headline at 1/40x cost holds under top-k (identical selection at k=2). Diversity is not the driver of the headline; it becomes relevant only for k>=5, where top-k actually wins. Paper should reframe: ensemble beats SC not because of family diversity but because independent models exceed repeated samples; diversity is a second-order effect."
+  }
+}

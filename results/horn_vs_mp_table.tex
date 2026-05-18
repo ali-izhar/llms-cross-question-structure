@@ -1,0 +1,28 @@
+\begin{table}[t]
+\caption{Marchenko--Pastur vs Horn's parallel analysis signal count on every within-model configuration ($\varepsilon=0.05$ borderline filter, 200 column-shuffled surrogates, seed 20260417). Horn$_{\text{cont}}$ is the classical Horn (1965) leading-factor count; Horn$_{\text{any}}$ is a literal reading of \S\ref{sec:method-pa} (ranks with observed $>p_{95}$), which over-counts at $\approx 5\%$ per rank by chance. MP and Horn$_{\text{cont}}$ agree on 8/9 configs; the single exception (SmolLM2-1.7B) has $\lambda_{\max}\!-\!\lambda_+=+0.007$, within Tracy--Widom sampling noise ($z\!=\!+0.05$).}
+\label{tab:horn_vs_mp}
+\vskip 0.1in
+\centering
+\begin{small}
+\begin{tabular}{@{}llcccccccc@{}}
+\toprule
+\textbf{Model} & $N_b$ & $\gamma$ & $\lambda_+$ & $\lambda_{\max}$ & \textbf{MP} & \textbf{Horn $p_{95}^{(1)}$} & \textbf{Horn$_{\text{cont}}$} & \textbf{Horn$_{\text{any}}$} & \textbf{Agree} \\
+\midrule
+\multicolumn{10}{@{}l}{\emph{MMLU ($K\!=\!100$, $N\!=\!500$)}} \\
+Qwen2.5-7B & 121 & 1.21 & 4.41 & 4.17 & 0 & 4.44 & 0 & 15 & $\checkmark$ \\
+Mistral-7B-v0.3 & 283 & 2.83 & 7.19 & 6.85 & 0 & 7.24 & 0 & 17 & $\checkmark$ \\
+SmolLM2-1.7B & 403 & 4.03 & 9.04 & 9.05 & 1 & 9.14 & 0 & 5 & $\times$ \\
+Phi-3-mini & 269 & 2.69 & 6.97 & 6.78 & 0 & 7.00 & 0 & 8 & $\checkmark$ \\
+Meta-Llama-3-8B & 173 & 1.73 & 5.36 & 5.05 & 0 & 5.37 & 0 & 13 & $\checkmark$ \\
+\midrule
+\multicolumn{10}{@{}l}{\emph{HellaSwag ($K\!=\!50$, $N\!=\!200$)}} \\
+Qwen2.5-7B & 15 & 0.30 & 2.40 & 2.21 & 0 & 2.32 & 0 & 0 & $\checkmark$ \\
+Mistral-7B-v0.3 & 58 & 1.16 & 4.31 & 4.04 & 0 & 4.33 & 0 & 2 & $\checkmark$ \\
+Meta-Llama-3-8B & 82 & 1.64 & 5.20 & 4.80 & 0 & 5.27 & 0 & 3 & $\checkmark$ \\
+\midrule
+\multicolumn{10}{@{}l}{\emph{GSM8K ($K\!=\!30$, $N\!=\!100$)}} \\
+Qwen2.5-7B & 65 & 2.17 & 6.11 & 5.72 & 0 & 6.27 & 0 & 2 & $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{table}

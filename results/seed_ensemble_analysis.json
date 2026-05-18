@@ -1,0 +1,40 @@
+{
+  "Qwen": {
+    "M": 5,
+    "d_across": 3.58,
+    "ceiling": 4,
+    "pct_ceiling": 89.6,
+    "N_disagree": 263
+  },
+  "Mistral": {
+    "M": 4,
+    "d_across": 2.94,
+    "ceiling": 3,
+    "pct_ceiling": 98.0,
+    "N_disagree": 246
+  },
+  "Phi": {
+    "M": 3,
+    "d_across": 1.82,
+    "ceiling": 2,
+    "pct_ceiling": 91.2,
+    "N_disagree": 196
+  },
+  "Llama": {
+    "M": 4,
+    "d_across": 2.51,
+    "ceiling": 3,
+    "pct_ceiling": 83.7,
+    "N_disagree": 327
+  },
+  "cross_family_11": {
+    "d_across": 8.86,
+    "ceiling": 10,
+    "pct_ceiling": 88.6
+  },
+  "full_ensemble_24": {
+    "d_across": 18.74,
+    "ceiling": 23,
+    "pct_ceiling": 81.5
+  }
+}

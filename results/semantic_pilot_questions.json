@@ -1,0 +1,402 @@
+[
+  {
+    "index": 0,
+    "original_index": 0,
+    "question": "Statement 1 | If a group has an element of order 10, then it has elements of orders 1, 2, and 5. Statement 2 | If a group has an element of order 2 an",
+    "subject": "abstract_algebra",
+    "correct_letter": "C",
+    "original_flip_rate": 0.45
+  },
+  {
+    "index": 1,
+    "original_index": 8,
+    "question": "Statement 1 | If H is a subgroup of G and a belongs to G then |aH| = |Ha|. Statement 2 | If H is a subgroup of G and a and b belong to G, then aH and ",
+    "subject": "abstract_algebra",
+    "correct_letter": "C",
+    "original_flip_rate": 0.74
+  },
+  {
+    "index": 2,
+    "original_index": 10,
+    "question": "Macrostomia results from failure of fusion of",
+    "subject": "anatomy",
+    "correct_letter": "A",
+    "original_flip_rate": 0.5
+  },
+  {
+    "index": 3,
+    "original_index": 21,
+    "question": "Find the best approximation for the surface temperature of the Sun:",
+    "subject": "astronomy",
+    "correct_letter": "A",
+    "original_flip_rate": 0.71
+  },
+  {
+    "index": 4,
+    "original_index": 37,
+    "question": "Post-modern ethics assert that ethics are context and individual specific and as such have an internal guide to ethics.",
+    "subject": "business_ethics",
+    "correct_letter": "B",
+    "original_flip_rate": 0.46
+  },
+  {
+    "index": 5,
+    "original_index": 55,
+    "question": "In Sweden, the red fox (Vulpes vulpes) severely limits populations of its prey, including hares. However, red fox populations are sometimes attacked b",
+    "subject": "college_biology",
+    "correct_letter": "C",
+    "original_flip_rate": 0.6
+  },
+  {
+    "index": 6,
+    "original_index": 66,
+    "question": "At 25\u00b0C, the maximum amount of PbI2 that can be dissolved in 1.00 L of pure water is 1.0 mmol. Assuming complete dissociation, the solubility product,",
+    "subject": "college_chemistry",
+    "correct_letter": "D",
+    "original_flip_rate": 0.66
+  },
+  {
+    "index": 7,
+    "original_index": 78,
+    "question": "Mergesort works by splitting a list of n numbers in half, sorting each half recursively, and merging the two halves. Which of the following data struc",
+    "subject": "college_computer_science",
+    "correct_letter": "D",
+    "original_flip_rate": 0.6
+  },
+  {
+    "index": 8,
+    "original_index": 80,
+    "question": "If the finite group G contains a subgroup of order seven but no element (other than the identity) is its own inverse, then the order of G could be",
+    "subject": "college_mathematics",
+    "correct_letter": "C",
+    "original_flip_rate": 0.5
+  },
+  {
+    "index": 9,
+    "original_index": 81,
+    "question": "What is the area of an equilateral triangle whose inscribed circle has radius 2?",
+    "subject": "college_mathematics",
+    "correct_letter": "C",
+    "original_flip_rate": 0.34
+  },
+  {
+    "index": 10,
+    "original_index": 82,
+    "question": "Water drips out of a hole at the vertex of an upside down cone at a rate of 3 cm^3 per minute. The\ncone\u2019s height and radius are 2 cm and 1 cm, respect",
+    "subject": "college_mathematics",
+    "correct_letter": "D",
+    "original_flip_rate": 0.52
+  },
+  {
+    "index": 11,
+    "original_index": 95,
+    "question": "The conversion of one molecule of glucose to two molecules of pyruvate results in the net formation of:",
+    "subject": "college_medicine",
+    "correct_letter": "B",
+    "original_flip_rate": 0.45
+  },
+  {
+    "index": 12,
+    "original_index": 96,
+    "question": "The net production of ATP via substrate-level phosphorylation in glycolysis is:",
+    "subject": "college_medicine",
+    "correct_letter": "A",
+    "original_flip_rate": 0.35
+  },
+  {
+    "index": 13,
+    "original_index": 117,
+    "question": "A __________ is a sequential segment of the memory location that is allocated for containing some data such as a character string or an array of integ",
+    "subject": "computer_security",
+    "correct_letter": "D",
+    "original_flip_rate": 0.35
+  },
+  {
+    "index": 14,
+    "original_index": 122,
+    "question": "The mass of an atom comes mostly from its _ ; and its volume from its _.",
+    "subject": "conceptual_physics",
+    "correct_letter": "D",
+    "original_flip_rate": 0.49
+  },
+  {
+    "index": 15,
+    "original_index": 134,
+    "question": "Under which of the following situations would bootstrapping be preferred to pure simulation?\n\ni) If it is desired that the distributional properties o",
+    "subject": "econometrics",
+    "correct_letter": "B",
+    "original_flip_rate": 0.57
+  },
+  {
+    "index": 16,
+    "original_index": 147,
+    "question": "The illumination at a point 5 meters below a lamp in 6 lux. The candle power of the lamp is",
+    "subject": "electrical_engineering",
+    "correct_letter": "C",
+    "original_flip_rate": 0.3
+  },
+  {
+    "index": 17,
+    "original_index": 155,
+    "question": "Find the value of 6 \u2022 24 \u00f7 (8 \u2212 5).",
+    "subject": "elementary_mathematics",
+    "correct_letter": "A",
+    "original_flip_rate": 0.6
+  },
+  {
+    "index": 18,
+    "original_index": 156,
+    "question": "Find the median in the set of data $79.88, $21.88, $29.88, $19.88, $17.88.",
+    "subject": "elementary_mathematics",
+    "correct_letter": "C",
+    "original_flip_rate": 0.35
+  },
+  {
+    "index": 19,
+    "original_index": 164,
+    "question": " Select the best translation into predicate logic. Marco doesn't move from Spain to Italy. (i: Italy; m: Marco; s: Spain; Mxyz: x moves to y from z)",
+    "subject": "formal_logic",
+    "correct_letter": "C",
+    "original_flip_rate": 0.38
+  },
+  {
+    "index": 20,
+    "original_index": 173,
+    "question": "About how many people are infected by HIV/AIDS as of 2020?",
+    "subject": "global_facts",
+    "correct_letter": "C",
+    "original_flip_rate": 0.61
+  },
+  {
+    "index": 21,
+    "original_index": 174,
+    "question": "Which of the following causes more deaths globally each year (as of 2017)?",
+    "subject": "global_facts",
+    "correct_letter": "C",
+    "original_flip_rate": 0.53
+  },
+  {
+    "index": 22,
+    "original_index": 176,
+    "question": "In 1997, the World Bank found that the fraction of the world\u2019s population living in low and lower-middle income countries\u2014that is, countries with per ",
+    "subject": "global_facts",
+    "correct_letter": "D",
+    "original_flip_rate": 0.26
+  },
+  {
+    "index": 23,
+    "original_index": 178,
+    "question": "As of 2018, about what percentage of Indians say that having an increasing number of people of many different races, ethnic groups and nationalities i",
+    "subject": "global_facts",
+    "correct_letter": "D",
+    "original_flip_rate": 0.48
+  },
+  {
+    "index": 24,
+    "original_index": 207,
+    "question": "In Python 3, what is the output of ['Hi!'] * 4?",
+    "subject": "high_school_computer_science",
+    "correct_letter": "A",
+    "original_flip_rate": 0.71
+  },
+  {
+    "index": 25,
+    "original_index": 229,
+    "question": "Which of the following factors has little or no impact on mortality rates in the developing countries?",
+    "subject": "high_school_geography",
+    "correct_letter": "B",
+    "original_flip_rate": 0.52
+  },
+  {
+    "index": 26,
+    "original_index": 252,
+    "question": "A virus is spreading throughout the population of a town, and the number of people who have the virus doubles every 3 days. If there are 1,000 people ",
+    "subject": "high_school_mathematics",
+    "correct_letter": "B",
+    "original_flip_rate": 0.38
+  },
+  {
+    "index": 27,
+    "original_index": 253,
+    "question": "Find the length of the curve y = ln x between the points where y = 1/2 and y = 1.",
+    "subject": "high_school_mathematics",
+    "correct_letter": "C",
+    "original_flip_rate": 0.32
+  },
+  {
+    "index": 28,
+    "original_index": 256,
+    "question": "The $n^{\\text{th}}$ term of a certain geometric series is given by $a\\cdot r^{n-1}$, where $a$ and $r$ are positive integers and $r$ is greater than 1",
+    "subject": "high_school_mathematics",
+    "correct_letter": "A",
+    "original_flip_rate": 0.51
+  },
+  {
+    "index": 29,
+    "original_index": 259,
+    "question": "An object moving along a line has velocity v(t) = t cos(t) - ln (t + 2), where 0 <= t <= 10. How many times does the object reverse direction?",
+    "subject": "high_school_mathematics",
+    "correct_letter": "C",
+    "original_flip_rate": 0.34
+  },
+  {
+    "index": 30,
+    "original_index": 261,
+    "question": "Ray and Dorothy can both cook and can both pull weeds in the garden on a Saturday afternoon. For every hour of cooking, Ray can pull 50 weeds and Doro",
+    "subject": "high_school_microeconomics",
+    "correct_letter": "D",
+    "original_flip_rate": 0.44
+  },
+  {
+    "index": 31,
+    "original_index": 262,
+    "question": "Which of the following is likely to have a demand curve that is the least elastic?",
+    "subject": "high_school_microeconomics",
+    "correct_letter": "D",
+    "original_flip_rate": 0.35
+  },
+  {
+    "index": 32,
+    "original_index": 266,
+    "question": "The industry that makes plastic army figures uses a small fraction of the plastic demanded for all purposes. On this basis, we can conclude that the a",
+    "subject": "high_school_microeconomics",
+    "correct_letter": "B",
+    "original_flip_rate": 0.65
+  },
+  {
+    "index": 33,
+    "original_index": 272,
+    "question": "Two charged, massive particles are isolated from all influence except those between the particles. They have charge and mass such that the net force b",
+    "subject": "high_school_physics",
+    "correct_letter": "A",
+    "original_flip_rate": 0.32
+  },
+  {
+    "index": 34,
+    "original_index": 277,
+    "question": "The circumference of a helium-filled balloon is measured for three different conditions: at room temperature, after being in a warm oven for 30 minute",
+    "subject": "high_school_physics",
+    "correct_letter": "C",
+    "original_flip_rate": 0.35
+  },
+  {
+    "index": 35,
+    "original_index": 278,
+    "question": "An object is placed 10 cm in front of a diverging mirror. What is the focal length of the mirror if the image appears 2 cm behind the mirror?",
+    "subject": "high_school_physics",
+    "correct_letter": "D",
+    "original_flip_rate": 0.38
+  },
+  {
+    "index": 36,
+    "original_index": 294,
+    "question": "If all the other variables remain constant, which of the following will increase the power of a hypothesis test? I.Increasing the sample size. II.Incr",
+    "subject": "high_school_statistics",
+    "correct_letter": "D",
+    "original_flip_rate": 0.35
+  },
+  {
+    "index": 37,
+    "original_index": 303,
+    "question": "This question refers to the following information.\n\"The far-reaching, the boundless future will be the era of American greatness. In its magnificent d",
+    "subject": "high_school_us_history",
+    "correct_letter": "D",
+    "original_flip_rate": 0.33
+  },
+  {
+    "index": 38,
+    "original_index": 333,
+    "question": "Secretions of Cowper's gland fluid at the tip of the penis are first evident:",
+    "subject": "human_sexuality",
+    "correct_letter": "D",
+    "original_flip_rate": 0.69
+  },
+  {
+    "index": 39,
+    "original_index": 344,
+    "question": "Who is entitled to request an advisory opinion of the ICJ?",
+    "subject": "international_law",
+    "correct_letter": "C",
+    "original_flip_rate": 0.49
+  },
+  {
+    "index": 40,
+    "original_index": 345,
+    "question": "What is functional (ratione materiae) immunity?",
+    "subject": "international_law",
+    "correct_letter": "B",
+    "original_flip_rate": 0.73
+  },
+  {
+    "index": 41,
+    "original_index": 353,
+    "question": "Why is it important to separate the concept of punishment from its justification?",
+    "subject": "jurisprudence",
+    "correct_letter": "B",
+    "original_flip_rate": 0.45
+  },
+  {
+    "index": 42,
+    "original_index": 358,
+    "question": "Which of the following most accurately describes Hart's response to Fuller's argument concerning the invalidity of Nazi law?",
+    "subject": "jurisprudence",
+    "correct_letter": "A",
+    "original_flip_rate": 0.34
+  },
+  {
+    "index": 43,
+    "original_index": 376,
+    "question": "MLE estimates are often undesirable because",
+    "subject": "machine_learning",
+    "correct_letter": "B",
+    "original_flip_rate": 0.71
+  },
+  {
+    "index": 44,
+    "original_index": 412,
+    "question": "Which of the following best describes the situation after the price is raised on a product that has an inelastic demand?",
+    "subject": "miscellaneous",
+    "correct_letter": "A",
+    "original_flip_rate": 0.3
+  },
+  {
+    "index": 45,
+    "original_index": 417,
+    "question": "Which of these Democrats lost to Ronald Reagan in the 1984 presidential elections?",
+    "subject": "miscellaneous",
+    "correct_letter": "B",
+    "original_flip_rate": 0.27
+  },
+  {
+    "index": 46,
+    "original_index": 434,
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards ",
+    "subject": "moral_scenarios",
+    "correct_letter": "C",
+    "original_flip_rate": 0.53
+  },
+  {
+    "index": 47,
+    "original_index": 453,
+    "question": "According to Baier\u2019s theory, the second step in assessing whether an action is morally permissible is to find out:",
+    "subject": "philosophy",
+    "correct_letter": "B",
+    "original_flip_rate": 0.48
+  },
+  {
+    "index": 48,
+    "original_index": 460,
+    "question": "What evidence is there that Neandertals were hunters?",
+    "subject": "prehistory",
+    "correct_letter": "B",
+    "original_flip_rate": 0.49
+  },
+  {
+    "index": 49,
+    "original_index": 477,
+    "question": "Carson owned 40% of the outstanding stock of a C corporation. During a tax year, the corporation reported $400,000 in taxable income and distributed a",
+    "subject": "professional_accounting",
+    "correct_letter": "C",
+    "original_flip_rate": 0.4
+  }
+]

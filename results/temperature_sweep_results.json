@@ -1,0 +1,24 @@
+{
+  "0.5": {
+    "tau": 0.5,
+    "K": 30,
+    "N": 100,
+    "accuracy": 0.6659999999999999,
+    "n_borderline": 3,
+    "mp_n_signal": -1,
+    "mp_lambda_max": 0.0,
+    "mp_lambda_plus": 0.0,
+    "elapsed_minutes": 15.658503480752309
+  },
+  "1.5": {
+    "tau": 1.5,
+    "K": 30,
+    "N": 100,
+    "accuracy": 0.6656666666666666,
+    "n_borderline": 16,
+    "mp_n_signal": 0,
+    "mp_lambda_max": 2.743611710279962,
+    "mp_lambda_plus": 2.993926820013776,
+    "elapsed_minutes": 15.839068718751271
+  }
+}

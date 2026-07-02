@@ -49,16 +49,21 @@ turns the variation into a per-question uncertainty estimate via
 majority voting. But does the same variation reveal cross-question
 structure---related questions flipping together, the way a diverse
 ensemble does? We compare two regimes on the same questions:
-one model run $100$ times at $\tau=1$ versus an ensemble of $24$ LLMs run once
-each at $\tau=0$. A Marchenko--Pastur random-matrix test separates
+one model run $100$ times at $\tau=1$ (each completion an
+independent forward pass, as in deployed self-consistency) versus
+an ensemble of $24$ LLMs run once each at $\tau=0$. A
+Marchenko--Pastur random-matrix test separates
 signal from sampling noise on both sides. Within any single
 model, at most one dimension rises above noise across five
-families and three benchmarks (MMLU, HellaSwag, GSM8K). Across the
-ensemble, four eigenvalues clear the noise edge, while a
+families and three benchmarks (MMLU, HellaSwag, GSM8K), and a
+richer answer-choice-identity signal is null under the same test.
+Across the ensemble, four eigenvalues clear the noise edge, while a
 matched-difficulty Bernoulli null produces at most one in $500$
-Monte Carlo draws. Self-consistency gives accurate per-question
-uncertainty but no detectable cross-question structure; only a
-diverse ensemble surfaces what a model does not know.
+Monte Carlo draws; the structure persists even within a single
+model family sampled across scale. Under the standard
+per-prompt-independent protocol, self-consistency gives accurate
+per-question uncertainty but no detectable cross-question
+structure; only model diversity surfaces it.
 \end{abstract}
 ]
 
@@ -83,7 +88,13 @@ they can reveal \emph{cross-question} structure: correlated errors
 across related questions, the way a diverse ensemble
 does~\citep{kendall2017uncertainties,huellermeier2021aleatoric}.
 To substitute for an ensemble, self-consistency needs the second
-kind too.
+kind too. There is reason to doubt it does: temperature rescales the
+logits uniformly, injecting per-prompt noise with no
+question-specific bias, and much of an LLM's apparent stochasticity
+may be a thin surface effect~\citep{illusionofstochasticity2026},
+whereas a deep ensemble varies the function itself and can be
+systematically strong or weak across whole domains. Background on
+both regimes is in App.~\ref{app:background}.
 
 Cross-model dimensionality is well characterized---a single factor
 captures 79\% of variance on 5,000+ models~\citep{metabench2025},
@@ -92,12 +103,21 @@ models~\citep{iqtest2025}, low-dimensional joint
 embeddings~\citep{jeirt2025}---but these
 all analyze a model$\times$benchmark score matrix. Within-model
 dimensionality, under a sampling-noise null, has not been
-measured. We close this gap with a Marchenko--Pastur
-test~\citep{marchenkopastur1967} on the run$\times$question
-correctness matrix.
+measured. Our primary object is therefore the within-model
+run$\times$question correctness matrix, tested with a
+Marchenko--Pastur null~\citep{marchenkopastur1967}. The across-model
+ensemble is not a second contribution but a \emph{calibration
+reference}: run through the identical test, it shows what genuine
+cross-question structure looks like, so the within-model null reads
+as a real absence of signal, not a limitation of the test.
 
 One dimension within, four across: this is the
-\emph{dimensionality gap}.
+\emph{dimensionality gap}. Its source is an asymmetry we return to
+in \S\ref{sec:construction}---model identity is a factor shared
+across all of a model's questions, whereas per-prompt-independent
+sampling shares none---so whether stochastic depth can nonetheless
+manufacture cross-question structure is an empirical question, which
+we answer in the negative.
 
 \paragraph{Contributions.}
 \begin{enumerate}
@@ -106,9 +126,16 @@ number of independent directions of structured error in one
 model's stochastic samples.
 \item Empirically, we find at most one above-noise dimension
 within each of five LLMs across three benchmarks (MMLU, HellaSwag,
-GSM8K chain-of-thought), but four above-noise dimensions across
-$24$ diverse models on MMLU---unmatched by any of $500$
+GSM8K chain-of-thought)---and none in a richer
+answer-choice-identity signal---but four above-noise dimensions
+across $24$ diverse models on MMLU, unmatched by any of $500$
 matched-difficulty Bernoulli null draws.
+\item We scope the negative result to the deployed
+per-prompt-independent protocol, show the ensemble structure does
+not require architectural diversity (it appears within a single
+family across scale), and trace the deployment consequence: two
+peer models beat $100$-sample self-consistency at ${\sim}1/40$th
+the cost.
 \end{enumerate}
 
 %======================================================================
@@ -125,6 +152,19 @@ define
 c_{ki} = \begin{cases} 1 & \text{if } \mathcal{M} \text{ answers } q_i \text{ correctly in run } k, \\ 0 & \text{otherwise.} \end{cases}
 \]
 This gives a $K \times N$ binary matrix $\mathbf{C}$.
+
+\paragraph{Sampling protocol (what a row is).} Entry $c_{ki}$ is
+the $k$-th \emph{independent} completion of $q_i$: a fresh forward
+pass with its own sampling RNG and no shared KV cache
+($\tau\!=\!1.0$, top-$p\!=\!1.0$, top-$k$ at the model default,
+$\mathtt{max\_new\_tokens}\!=\!6$, chat-formatted prompt). A row $k$
+is thus not a trajectory threading a shared latent state through all
+questions but a slice across $N$ mutually independent per-prompt
+draws---exactly how self-consistency is
+deployed~\citep{selfconsistency2023}. Any cross-question correlation
+the test detects must therefore come from the model, not a seed we
+injected; \S\ref{sec:construction} returns to what this design can
+and cannot reveal.
 
 A question is \emph{borderline} if its pass rate
 $f_i = \frac{1}{K}\sum_k c_{ki}$ lies in
@@ -152,12 +192,10 @@ as a coarse summary; cross-checked against Horn's parallel
 analysis~\citep{horn1965} (App.~\ref{app:pa}).
 
 Rejecting this null is direct evidence of structured internal
-uncertainty: temperature sampling injects independent noise per
-prompt, so cross-question covariation requires a coupling
-mechanism it does not supply. If each question flips
-independently, the correlation matrix is asymptotically pure
-noise---no eigenvalue exceeds $\lambda_+$ beyond Tracy--Widom (TW)
-fluctuations (Proposition~\ref{prop:null}, App.~\ref{app:null}).
+uncertainty: if each question flips independently the correlation
+matrix is asymptotically pure noise, so no eigenvalue exceeds
+$\lambda_+$ beyond Tracy--Widom (TW) fluctuations
+(Prop.~\ref{prop:null}, App.~\ref{app:null}).
 
 \subsection{Across-Model Comparison}
 \label{sec:method-across}
@@ -190,7 +228,8 @@ Phi-3-mini-4k-Instruct, Meta-Llama-3-8B-Instruct. Temperature robustness:
 $\tau \in \{0.5, 1.5\}$, $K = 30$, $N = 100$ on Qwen2.5-7B.
 
 \paragraph{Across-model.} $N = 500$ MMLU questions, $K = 1$ run
-per model at $\tau = 0$, across 24 instruction-tuned models
+per model at $\tau = 0$ (greedy decoding,
+$\mathtt{do\_sample}\!=\!\mathrm{False}$), across 24 instruction-tuned models
 spanning eleven families and 0.5B--22B: Qwen~(5), Mistral~(4),
 Zephyr-7B, Phi~(3), SmolLM2-1.7B, OLMo-2-7B, Yi-1.5-6B,
 DeepSeek-7B, Granite-3.1-8B, Llama~(4), Gemma-2~(2).
@@ -227,16 +266,27 @@ $\lambda_+\!=\!9.04$ but stays within MP sampling noise
 (TW $z\!=\!+0.05$; Table~\ref{tab:within_all}). Five families,
 $1.7$B--$8$B parameters, none with MP-significant signal.
 
+\paragraph{Beyond binary correctness.} The null is not an artifact
+of binarizing. The full answer-choice identity---a strictly richer
+signal, tested with a permutation null that controls for the
+one-hot simplex constraint---shows no pairwise association above the
+$99$th percentile across all five models ($1{,}242$ borderline
+questions; App.~\ref{app:local}).
+
 \subsection{Generalization: HellaSwag and GSM8K}
 \label{sec:gsm8k}
 
-The null is not an MMLU artifact. Three models on
-HellaSwag~\citep{zellers2019hellaswag} ($N\!=\!200$, $K\!=\!50$)
-and Qwen2.5-7B on GSM8K chain-of-thought~\citep{gsm8k2021}
-($N\!=\!100$, $K\!=\!30$) also give zero signal eigenvalues
-(Table~\ref{tab:within_all}). Within- and between-category
-correlations on HellaSwag are near zero ($|r|\!\leq\!0.05$): no
-semantic coupling even under the dataset's activity grouping.
+The null is not an MMLU artifact, nor a multiple-choice artifact.
+Three models on HellaSwag~\citep{zellers2019hellaswag}
+($N\!=\!200$, $K\!=\!50$) and Qwen2.5-7B on GSM8K
+chain-of-thought~\citep{gsm8k2021} ($N\!=\!100$, $K\!=\!30$) both
+give zero signal eigenvalues (Table~\ref{tab:within_all}). GSM8K,
+whose stochasticity enters through a multi-step reasoning trace
+where an early misstep could plausibly cascade, is the sharper
+test---yet its spectrum stays flat. On HellaSwag, within- and
+between-category correlations are near zero ($|r|\!\leq\!0.05$): no
+coupling even along the dataset's own activity grouping, the natural
+axis for correlated error if one existed.
 
 \begin{figure*}[t]
 \centering
@@ -316,37 +366,12 @@ But $\exp(H)$ does not discriminate regimes: within- and
 across-model values both sit in a ceiling-adjacent band
 (Table~\ref{tab:results}; App.~\ref{app:shannon}).
 
-\begin{table}[t]
-\caption{The dimensionality gap on 500 MMLU questions.
-Within-model columns report ranges across the five MMLU models
-(Table~\ref{tab:within_all}). $\lambda_{\max}$: top eigenvalue
-of the correctness correlation matrix (both sides). MP signal
-count is primary and separates the regimes ($\leq\!1$ vs.\ $4$);
-Shannon $\exp(H)$ saturates near its ceiling on both sides
-($64$--$87\%$ vs.\ $81\%$).}
-\label{tab:results}
-\vskip 0.1in
-\centering
-\begin{small}
-\begin{tabular}{lcc}
-\toprule
-& \textbf{Within-model} & \textbf{Across-model} \\
-& (5 models) & (ensemble) \\
-\midrule
-Variation source & stochastic sampling & model identity ($\tau=0$) \\
-Runs / models & $K=100$ & $M=24$ \\
-Questions & 500 & 500 \\
-Borderline / disagree & 121--403 & 459 \\
-Pairwise corr. & $|r|<.005$ & $.01$--$.63$ \\
-$\lambda_{\max}$ & $4.17$--$9.05$ & $83.0$ \\
-$\lambda_{\max}/\lambda_+$ & $0.94$--$1.00$ & $2.87$ \\
-\textbf{MP signal count} & $\mathbf{\leq 1}$ & $\mathbf{4}$ \\
-Shannon $\exp(H)$ & $63.5$--$86.0$ & $18.7$ \\
-\% of ceiling & $64$--$87\%$ ($K{-}1$) & $81\%$ ($M{-}1$) \\
-\bottomrule
-\end{tabular}
-\end{small}
-\end{table}
+\paragraph{Which diversity?} The structure does not require
+architecturally distinct models: an ensemble drawn from a single
+family across scale already carries it, and captures most of the
+selective-prediction gain, with cross-family diversity a small
+further increment (App.~\ref{app:sel-family}). Table~\ref{tab:results}
+consolidates the gap across every statistic.
 
 \subsection{Robustness and Downstream Impact}
 \label{sec:robustness}
@@ -362,105 +387,127 @@ Split-half $p_i$ on Qwen2.5-7B correlates at $r\!=\!0.994$
 sampling captures each scalar $p_i$ precisely but carries no
 cross-question information.
 
-\paragraph{Selective prediction.} Two peer models beat $100$-sample
-self-consistency at ${\sim}\,1/40$th the cost. The task is
-predicting whether Qwen2.5-7B's $\tau\!=\!0$ answer is correct,
-with no ground-truth labels at inference. Operational SC$_{100}$
-(fraction of the $100$ samples agreeing with the modal answer)
-reaches AUROC $0.712$.
-
-Llama-3.1-8B + Gemma-2-9B, each run once at $\tau\!=\!0$, reach
-$0.807$ at ${\sim}\,1/40$th the cost (Qwen-7B-equivalent forward
-passes; App.~\ref{app:selective}). A single external model
-(Llama-3.1-8B) edges past SC$_{100}$ at ${\sim}\,1/88$th the
-cost (AUROC $0.749$ vs.\ $0.712$), though this single-peer gap is
-marginal at $N\!=\!500$ (DeLong $p\!\approx\!0.2$); the two-peer gap
-is highly significant ($p\!<\!0.005$).
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=\columnwidth]{figures/selective_prediction.pdf}
-\caption{\textbf{Cost-AUROC Pareto frontier for selective
-prediction on Qwen2.5-7B ($\tau\!=\!0$), 500 MMLU questions.}
-Ensemble$_2$ (AUROC $0.81$) beats SC$_{100}$ ($0.71$) at
-${\sim}\,1/40$th the compute cost. Grey dotted: SC oracle upper
-bound (requires ground-truth labels at inference, not deployable). Ensemble
-Pareto-dominates operational SC across the entire cost range.
-Cost: Qwen-7B-equivalent forward passes.}
-\label{fig:selective}
-\end{figure}
+\paragraph{Selective prediction.} Predicting whether Qwen2.5-7B's
+$\tau\!=\!0$ answer is correct without labels, operational
+SC$_{100}$ (fraction of samples agreeing with the modal answer)
+reaches AUROC $0.712$. Two peer models (Llama-3.1-8B + Gemma-2-9B),
+each run once at $\tau\!=\!0$, reach $0.807$ at ${\sim}\,1/40$th the
+cost (Qwen-7B-equivalent passes; App.~\ref{app:selective}); a single
+peer already edges past SC$_{100}$ at ${\sim}\,1/88$th the cost
+($0.749$, though marginal at $N\!=\!500$: DeLong $p\!\approx\!0.2$),
+and the two-peer gap is highly significant ($p\!<\!0.005$).
 
 %======================================================================
 \section{Discussion}
 
 \paragraph{Why temperature variation is shallow.}
-Temperature is a uniform dilation of the logits: it does not
-selectively modulate any knowledge domain. Consistent with this,
-within- and between-subject correlations are both ${\approx}\,0$
-(\S\ref{sec:replication}), and TW $z$-scores across five models
-and three benchmarks are individually consistent with the null
-(all $z\!\le\!+0.05$; Prop.~\ref{prop:null},
+Temperature is a uniform dilation of the logits: it modulates no
+knowledge domain selectively. Consistent with this, within- and
+between-subject correlations are both ${\approx}\,0$
+(\S\ref{sec:replication}), and TW $z$-scores across all five models
+and three benchmarks are consistent with the null ($z\!\le\!+0.05$;
 Table~\ref{tab:within_all}).
 
+\paragraph{What the design can and cannot show.}
+\label{sec:construction}
+One might object that per-prompt-independent draws
+(\S\ref{sec:method-within}) \emph{cannot} show cross-question
+covariance---with no latent threaded across questions, zero
+structure is built in. We read the asymmetry the other way: the
+ensemble matrix is generated the same way, each entry an independent
+$(\text{model},\text{question})$ pass, yet it is full of structure
+because model identity is a factor shared across all of a model's
+questions. The test is not blind to coupling; it detects exactly the
+coupling a shared factor induces, and the finding is that
+per-prompt-independent sampling supplies none. This is not a defect
+of temperature but the definition of the protocol as deployed:
+self-consistency draws are independent by design. Our claim is
+scoped accordingly---\emph{under the standard protocol, stochastic
+depth carries no cross-question structure}---not a proof that no
+within-model mechanism could. A mechanism that deliberately shares a
+latent (a fixed prompt perturbation, a common dropout
+mask~\citep{mcdropout2016}, a benchmark-wide logit bias) would
+supply the missing factor and separate intrinsic from
+protocol-induced shallowness (\S\ref{sec:limitations}).
+
 \paragraph{Locally committed, globally incoherent.}
-When Qwen2.5-7B errs on a borderline question, it picks the same
-wrong answer $87.4\%$ of the time across samples---yet these
-wrong-answer preferences do not associate across questions
-(Appendix~\ref{app:local}). The model has strong local
-commitments; it just doesn't chain them into global structure.
+When Qwen2.5-7B errs on a borderline question it picks the same
+wrong answer $87.4\%$ of the time, yet these preferences do not
+associate across questions (App.~\ref{app:local}): strong local
+commitments, never chained into global structure.
+
+\paragraph{When agreement is not truth.}
+The ensemble signal is structured disagreement, not a certificate of
+correctness. Models sharing pretraining corpora, benchmark
+contamination, or instruction-tuning recipes can agree \emph{and be
+wrong together}, so agreement structure locates contested knowledge
+without guaranteeing the majority is right. The selective-prediction
+gains (\S\ref{sec:robustness}) rank likely-correct answers better;
+they are not calibrated truth, and correlated bias caps any
+agreement-based method, diversity included.
 
 \paragraph{Exception: SmolLM2.}
 SmolLM2 reaches TW $z\!\approx\!+1.77$ at
 $\varepsilon\!=\!0.15$ ($\sim$99th percentile), consistent with
 slight residual cross-question coupling that
 Assumption~\ref{assn:indep} idealizes away; a candidate mechanism
-is chat-template randomness.
-
-\paragraph{Implications for epistemic intelligence.}
-Selective-prediction research should budget for diverse models,
-not deeper sampling. Stacking more samples from a single model
-cannot recover a dimensionality that is not there.
+is chat-template randomness. The practical implication is direct:
+selective-prediction research should budget for diverse models, as
+stacking samples from one model cannot recover a dimensionality that
+is not there.
 
 %======================================================================
 \section{Limitations and Future Work}
 \label{sec:limitations}
 
+\paragraph{Scope of the claim.} The result concerns the deployed
+estimator on correctness-type signals: no cross-question structure
+under the standard protocol, across five families, three formats,
+and a broad $\varepsilon$ sweep. It does \emph{not} establish that
+within-model sampling is intrinsically structureless---a signal
+could live in log-probabilities, hidden states, or a shared-latent
+mechanism (\S\ref{sec:construction})---nor that ensemble agreement
+tracks truth.
+
 \begin{itemize}
 \setlength\itemsep{1pt}
-\item \emph{Binary correctness.} We test for structure in
-correctness; richer signals (log-probabilities, semantic clusters)
-could carry structure that correctness misses.
 \item \emph{MP power.} The test operates at $\gamma\!\in\![0.3,4.0]$;
-$K\!\gg\!N_b$ would sharpen detection of structure near the MP edge.
-\item \emph{Across-model ceiling.} $d_{\text{across}}$ has not
-asymptoted by $M\!=\!24$, so ``four'' is a lower bound on the
-true rank.
+$K\!\gg\!N_b$ would sharpen detection near the MP edge.
+\item \emph{Across-model source.} $d_{\text{across}}$ has not
+asymptoted by $M\!=\!24$ (so ``four'' is a lower bound), and the MP
+count is capped near $M\!-\!1$ for small ensembles, so we cannot
+cleanly separate scale, family, training data, and decoding. A
+same-architecture, multi-seed ensemble would isolate these.
 \item \emph{Post-training.} Instruction-tuned models may differ
 from pretrained-only bases.
 \end{itemize}
 
-\paragraph{Future work.}
-\begin{itemize}
-\setlength\itemsep{1pt}
-\item \emph{Scope.} Open-generation benchmarks (TruthfulQA,
-HaluEval) and a 70B-tier within-model test.
-\item \emph{Richer probes.} Log-probability or semantic-cluster
-within-model null; prompt perturbation as a second stochastic axis.
-\item \emph{Mechanism.} Decompose the same-family SC$_{100}$ win
-(\S\ref{app:sel-family}) into disagreement vs.\ calibration;
-compare against a multi-seed Pythia ensemble
-\citep{lakshminarayanan2017}.
-\item \emph{Matched sweep.} Temperature sweep at matched $K$ to
-separate sample-count from temperature effects.
-\end{itemize}
+\paragraph{Broader impact.} Preferring a few diverse models over
+deep single-model sampling also saves energy: a two-model ensemble
+that beats $100$-sample self-consistency at ${\sim}\,1/40$th the
+inference cost (\S\ref{sec:robustness}) is roughly that much cheaper
+to run. The countervailing cost is serving several models, so the
+efficient regime reuses already-trained public models rather than
+training redundant ones. We see no harms beyond those general to LLM
+deployment.
+
+\paragraph{Future work.} Open-generation benchmarks (TruthfulQA,
+HaluEval) and a 70B-tier test; a log-probability or semantic-cluster
+within-model null, and prompt perturbation as a shared stochastic
+axis (\S\ref{sec:construction}); decomposing the same-family
+SC$_{100}$ win into disagreement vs.\ calibration against a
+multi-seed Pythia ensemble~\citep{lakshminarayanan2017}; and a
+temperature sweep at matched $K$ to separate sample-count from
+temperature effects.
 
 %======================================================================
 \section{Conclusion}
 
 Per-question uncertainty lives within a model ($r\!=\!0.994$);
 multi-dimensional, cross-question uncertainty lives between them.
-Temperature sampling cannot couple errors across questions; model
-diversity can---and two peer models outperform $100$-sample
+Under the standard per-prompt-independent protocol, stochastic
+sampling supplies no factor that couples errors across questions;
+model diversity does---and two peer models outperform $100$-sample
 operational self-consistency at $1/40$th the cost
 (\S\ref{sec:robustness}). To go beyond a single scalar per
 question, ask a different model.
@@ -577,6 +624,39 @@ to the choice of $\varepsilon$.}
 \label{fig:eps_sweep}
 \end{figure}
 
+\begin{table}[t]
+\caption{The dimensionality gap on 500 MMLU questions.
+Within-model columns report ranges across the five MMLU models
+(Table~\ref{tab:within_all}). $\lambda_{\max}$: top eigenvalue
+of the correctness correlation matrix (both sides). MP signal
+count is primary and separates the regimes ($\leq\!1$ vs.\ $4$);
+Shannon $\exp(H)$ saturates near its ceiling on both sides
+($64$--$87\%$ vs.\ $81\%$).}
+\label{tab:results}
+\vskip 0.1in
+\centering
+\begin{small}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+& \textbf{Within-model} & \textbf{Across-model} \\
+& (5 models) & (ensemble) \\
+\midrule
+Variation source & stochastic sampling & model id.\ ($\tau{=}0$) \\
+Runs / models & $K=100$ & $M=24$ \\
+Questions & 500 & 500 \\
+Borderline / disagree & 121--403 & 459 \\
+Pairwise corr. & $|r|<.005$ & $.01$--$.63$ \\
+$\lambda_{\max}$ & $4.17$--$9.05$ & $83.0$ \\
+$\lambda_{\max}/\lambda_+$ & $0.94$--$1.00$ & $2.87$ \\
+\textbf{MP signal count} & $\mathbf{\leq 1}$ & $\mathbf{4}$ \\
+Shannon $\exp(H)$ & $63.5$--$86.0$ & $18.7$ \\
+\% of ceiling & $64$--$87\%$ ($K{-}1$) & $81\%$ ($M{-}1$) \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{table}
+
 \subsection{Shannon Effective Rank: Definition and Extended Analysis}
 \label{app:shannon}
 
@@ -661,9 +741,22 @@ setups with different base accuracies.
 \subsection{Full AUROC/AUPR Table}
 \label{app:sel-table}
 
-Table~\ref{tab:sel_full} reports every predictor at every budget we
-swept, with cost in Qwen-7B-equivalent forward passes. Two patterns
-stand out: (i) operational SC$_K$ improves slowly with $K$
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/selective_prediction.pdf}
+\caption{\textbf{Cost-AUROC Pareto frontier for selective
+prediction on Qwen2.5-7B ($\tau\!=\!0$), 500 MMLU questions.}
+Ensemble$_2$ (AUROC $0.81$) beats SC$_{100}$ ($0.71$) at
+${\sim}\,1/40$th the compute cost. Grey dotted: SC oracle upper
+bound (requires ground-truth labels at inference, not deployable).
+Ensemble Pareto-dominates operational SC across the entire cost
+range. Cost: Qwen-7B-equivalent forward passes.}
+\label{fig:selective}
+\end{figure}
+
+Table~\ref{tab:sel_full} (and Fig.~\ref{fig:selective}) reports
+every predictor at every budget we swept, with cost in
+Qwen-7B-equivalent forward passes. Two patterns stand out: (i) operational SC$_K$ improves slowly with $K$
 ($+0.20$ AUROC over a $50\!\times$ cost range) and plateaus well
 below the cheapest ensemble---the marginal gain from $K\!=\!50$ to
 $K\!=\!100$ is only $+0.011$ AUROC; (ii) Ensemble$_k$
@@ -745,6 +838,19 @@ so much richer than the within-model signal that even
 within-\emph{family}-but-across-\emph{scale} disagreement clears
 the SC$_{100}$ bar by a wide margin.
 
+\paragraph{Same-family structure is spectral, not just predictive.}
+The effect is visible in the MP spectrum too. An ensemble of five
+Qwen2.5 models ($0.5$B--$7$B) has a leading eigenvalue far above its
+MP edge ($129.9$ vs.\ $\lambda_+\!=\!68.1$ on $263$ split
+questions); the Llama family gives $208.9$ vs.\ $100.8$. The MP
+\emph{count} for these sub-ensembles is capped at one by the small
+member count ($M\!-\!1$ nonzero eigenvalues), but the above-noise
+leading direction is unambiguous---and it appears among models each
+of which, probed alone by stochastic depth, shows none. Scale-varying
+members of one family thus already differ along a shared competence
+axis; architectural diversity adds further dimensions but is not what
+creates the gap.
+
 %======================================================================
 \section{Strong Local Preferences, Zero Global Coherence}
 \label{app:local}
@@ -759,6 +865,21 @@ tests find no pairwise associations above the 99th percentile of
 the null, across all five models
 ($1{,}242$ borderline questions, $200$ permutations per model).
 Locally committed, globally incoherent.
+
+This doubles as the richer-signal check promised in
+\S\ref{sec:replication}: the object tested here is the full
+answer-choice identity (which of A/B/C/D each sample picks), a
+strictly richer signal than binary correctness. We test it with a
+per-pair permutation null rather than a Marchenko--Pastur spectrum
+because a naive MP test on the one-hot encoding is confounded: the
+four indicator columns of one question are mutually exclusive,
+hence structurally anti-correlated, which alone pushes several
+eigenvalues past the MP edge (we observe $3$ such ``signals'' on
+full-scale Qwen data) even under complete cross-question
+independence. The permutation test, which shuffles each column
+independently, controls for this within-question simplex constraint
+and isolates genuine cross-question association---of which there is
+none.
 
 %======================================================================
 \section{Pairwise Model Correlations}
@@ -784,6 +905,41 @@ overlap substantially. The top-3 pairs by $r$ are annotated with
 their model names.}
 \label{fig:supp}
 \end{figure}
+
+%======================================================================
+\section{Extended Background}
+\label{app:background}
+
+\paragraph{Two uncertainties from one variation.} Repeated sampling
+yields variation readable two ways. \emph{Per-question}: the fraction
+of samples that are correct estimates a success probability $p_i$,
+and averaging independent draws sharpens it---the basis of
+self-consistency~\citep{selfconsistency2023} and its
+relatives~\citep{kadavath2022,selfcheckgpt2023,semanticentropy2024}.
+\emph{Cross-question}: if errors on related questions rise and fall
+together, the variation carries low-dimensional structure that
+locates \emph{which} knowledge is shaky. The two are independent
+properties of the same matrix, and it is the second that a deep
+ensemble~\citep{lakshminarayanan2017} is prized for.
+
+\paragraph{Depth versus diversity.} Temperature rescales the
+next-token logits uniformly---fresh per-prompt noise, no
+question-specific bias---and much of an LLM's apparent stochasticity
+may be a surface effect~\citep{illusionofstochasticity2026}. A deep
+ensemble varies the function itself (weights, data, inductive
+biases), so members can be systematically strong or weak over whole
+domains: the mechanism that couples questions. Inference-time
+stochastic mechanisms such as MC dropout~\citep{mcdropout2016} sit
+between these extremes.
+
+\paragraph{Signal versus sampling noise.} Finite samples make even
+independent columns correlate, so structure must be judged against a
+noise null. For a correlation matrix of independent columns the
+spectrum concentrates on the Marchenko--Pastur
+interval~\citep{marchenkopastur1967}, with the top eigenvalue
+fluctuating on the Tracy--Widom scale at the edge; eigenvalues past
+that edge signal genuine cross-column structure. We apply this test
+on both sides of the comparison (App.~\ref{app:null}).
 
 %======================================================================
 \section{Extended Related Work}

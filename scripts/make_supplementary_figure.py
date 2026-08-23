@@ -1,64 +1,118 @@
 """
-Supplementary figure (single panel).
+make_supplementary_figure.py -- Figure 2(b) of the EIML@ICML 2026 paper.
 
-  Sorted pair-correlation dot plot of all 276 model pairs, split by
-  same-family vs cross-family.  A side-panel KDE shows the two
-  distributions' substantial overlap — the family signal is a weak
-  nudge on a broadly-diverse population, which strengthens the
-  across-model diversity claim.  Top-3 pairs labelled.  Cohen's d and
-  KS statistic printed as a headline effect-size.
+Story: the four across-model directions are not a family effect -- same-family
+pairs correlate only a little more than cross-family pairs, and the best
+cross-family pair is as strong as the second-best same-family pair.
 
-Threshold-robustness panel (formerly panel b) now lives in main-text
-Figure 4 (eps_sweep) and has been removed from this figure.
-
-Style: tueplots ICML half-column + Paul Tol colorblind-safe palette.
+x = rank of a model pair among all 276, sorted ascending by Pearson r over
+    the 500 MMLU items;  y = that r.  Warm = same family (n=30), grey =
+    cross-family (n=246).  The strip on the right is the kernel density of
+    each group on the same y-scale, with the two group means marked.
+Data: results/ensemble_expanded_correctness.npy + ensemble_expanded_models.json
+      (single source of truth; every value is recomputed here and printed).
+Output: paper/figures/supplementary_figure.pdf, exactly 3.35 x 2.15 in so
+        \\includegraphics[height=2.15in] scales it 1:1, plus a 300-DPI PNG.
 """
 
-import pathlib
-import numpy as np
+from __future__ import annotations
+
 import json
+import pathlib
+import shutil
+import subprocess
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
-from matplotlib.transforms import blended_transform_factory
+import numpy as np
 from scipy.stats import gaussian_kde, ks_2samp
-from tueplots import bundles
-from tueplots.constants.color import palettes
 
 PROJECT = pathlib.Path(__file__).resolve().parent.parent
 RESULTS = PROJECT / "results"
 OUT = PROJECT / "paper" / "figures"
+OUT.mkdir(parents=True, exist_ok=True)
 
-# ── style ───────────────────────────────────────────────────────────
-rc = bundles.icml2024(column="half", usetex=False, family="serif")
-rc["figure.figsize"] = (3.25, 3.20)
-rc["figure.constrained_layout.use"] = False
-rc["axes.spines.top"] = False
-rc["axes.spines.right"] = False
-rc["axes.linewidth"] = 0.8
-rc["xtick.major.width"] = 0.7
-rc["ytick.major.width"] = 0.7
-rc["xtick.major.size"] = 3.2
-rc["ytick.major.size"] = 3.2
-rc["mathtext.fontset"] = "cm"
-rc["axes.labelsize"] = 9.5
-rc["axes.titlesize"] = 10.0
-plt.rcParams.update(rc)
+# ═════════════════════════════════════════════════════════════════════
+# HOUSE STYLE -- identical block in make_hero_figure.py and
+# make_epsilon_sweep_figure.py.  Edit all three together or the paper
+# stops reading as one visual system.
+# ═════════════════════════════════════════════════════════════════════
+OSLO = ["#010101", "#0E1E2E", "#15395B", "#26578C",
+        "#507BBC", "#7B98CA", "#A2B0CA", "#CED1D7", "#FFFFFF"]
+COOL_DK, COOL, COOL_MD, COOL_LT = OSLO[2], OSLO[3], OSLO[4], OSLO[5]
+WARM, WARM_DK = "#B75A26", "#852206"
+INK, MUTED, FAINT, HAIR = "#1A1A1A", "#5B5B5B", "#8C8C8C", "#D9D9D9"
 
-_tol = palettes.paultol_bright
-GREY    = f"#{_tol[6]}"
-GREY_LT = "#c5cdd4"
-GREY_MID = "#5c6773"
-ENSEMBLE = "#CC3311"
 
-# ── data ────────────────────────────────────────────────────────────
+def tint(hex_color: str, f: float) -> str:
+    r, g, b = (int(hex_color[i:i + 2], 16) for i in (1, 3, 5))
+    m = lambda c: int(round(c + (255 - c) * f))  # noqa: E731
+    return f"#{m(r):02X}{m(g):02X}{m(b):02X}"
+
+
+BODY, TICK, SMALL, TINY = 9.0, 8.0, 7.5, 7.0
+
+
+def _usetex_available() -> bool:
+    if shutil.which("pdflatex") is None:
+        return False
+    try:
+        r = subprocess.run(["kpsewhich", "type1ec.sty"],
+                           capture_output=True, text=True, timeout=20)
+        return r.returncode == 0 and r.stdout.strip() != ""
+    except Exception:
+        return False
+
+
+_usetex = _usetex_available()
+RC = {
+    "text.usetex": _usetex,
+    "font.family": "serif",
+    "font.serif": ["Nimbus Roman", "Times New Roman", "DejaVu Serif"],
+    "mathtext.fontset": "cm",
+    "font.size": BODY,
+    "axes.labelsize": BODY,
+    "axes.titlesize": BODY,
+    "xtick.labelsize": TICK,
+    "ytick.labelsize": TICK,
+    "legend.fontsize": SMALL,
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "axes.linewidth": 0.7,
+    "axes.edgecolor": INK,
+    "axes.labelcolor": INK,
+    "text.color": INK,
+    "xtick.color": INK,
+    "ytick.color": INK,
+    "xtick.major.width": 0.7,
+    "ytick.major.width": 0.7,
+    "xtick.major.size": 2.8,
+    "ytick.major.size": 2.8,
+    "xtick.direction": "out",
+    "ytick.direction": "out",
+    "lines.linewidth": 1.3,
+    "patch.linewidth": 0.6,
+    "figure.constrained_layout.use": False,
+    "savefig.facecolor": "white",
+}
+if _usetex:
+    RC["text.latex.preamble"] = r"\usepackage{times}"
+
+FIG_W, FIG_H = 3.35, 2.15
+
+
+def bf(s: str) -> str:
+    return rf"\textbf{{{s}}}" if _usetex else s
+
+
+# ── data ─────────────────────────────────────────────────────────────
 C_ens = np.load(RESULTS / "ensemble_expanded_correctness.npy")
-with open(RESULTS / "ensemble_expanded_models.json") as f:
-    model_names = json.load(f)
+model_names = json.loads(
+    (RESULTS / "ensemble_expanded_models.json").read_text())
 R_ens = np.corrcoef(C_ens)
 
-_SHORT_FAM = {
+SHORT_FAM = {
     "HuggingFaceTB/SmolLM2-1.7B-Instruct":    ("Smol2",   "SmolLM"),
     "Qwen/Qwen2.5-0.5B-Instruct":             ("Q-0.5B",  "Qwen"),
     "Qwen/Qwen2.5-1.5B-Instruct":             ("Q-1.5B",  "Qwen"),
@@ -85,151 +139,140 @@ _SHORT_FAM = {
     "ibm-granite/granite-3.1-8b-instruct":    ("Gran-8B", "Granite"),
 }
 M = R_ens.shape[0]
-short = [_SHORT_FAM[n][0] for n in model_names]
-fams = [_SHORT_FAM[n][1] for n in model_names]
+short = [SHORT_FAM[n][0] for n in model_names]
+fams = [SHORT_FAM[n][1] for n in model_names]
 
-# All 276 pairs, sorted ascending by r, with labels & same-family flag.
-_pairs = []
-for i in range(M):
-    for j in range(i + 1, M):
-        _pairs.append((R_ens[i, j], short[i], short[j],
-                       fams[i] == fams[j]))
-_pairs.sort(key=lambda x: x[0])  # ascending
-_rs = np.array([p[0] for p in _pairs])
-_labels = [(p[1], p[2]) for p in _pairs]
-_same = np.array([p[3] for p in _pairs])
+pairs = [(R_ens[i, j], short[i], short[j], fams[i] == fams[j])
+         for i in range(M) for j in range(i + 1, M)]
+pairs.sort(key=lambda p: p[0])              # sort order is stated in-figure
+rs = np.array([p[0] for p in pairs])
+labels = [(p[1], p[2]) for p in pairs]
+same = np.array([p[3] for p in pairs])
+ranks = np.arange(1, len(rs) + 1)
 
-# Summary stats
-_w_r = _rs[_same]
-_c_r = _rs[~_same]
-_nw, _nc = len(_w_r), len(_c_r)
-_sp = np.sqrt(((_nw - 1) * _w_r.var(ddof=1) + (_nc - 1) * _c_r.var(ddof=1))
-              / (_nw + _nc - 2))
-_cohen_d = (_w_r.mean() - _c_r.mean()) / _sp
-_ks = ks_2samp(_w_r, _c_r)
+r_same, r_cross = rs[same], rs[~same]
+n_same, n_cross = len(r_same), len(r_cross)
+s_pool = np.sqrt(((n_same - 1) * r_same.var(ddof=1)
+                  + (n_cross - 1) * r_cross.var(ddof=1))
+                 / (n_same + n_cross - 2))
+cohen_d = (r_same.mean() - r_cross.mean()) / s_pool
+ks = ks_2samp(r_same, r_cross)
 
-# ── figure layout ────────────────────────────────────────────────────
-fig = plt.figure(figsize=(3.25, 3.20))
-# Dot plot + narrow KDE strip on the right.
-gs = GridSpec(
-    1, 2, width_ratios=[5.2, 1.0], wspace=0.08,
-    left=0.155, right=0.89, bottom=0.135, top=0.955, figure=fig,
-)
-ax_dot = fig.add_subplot(gs[0, 0])
-ax_kde = fig.add_subplot(gs[0, 1], sharey=ax_dot)
+# The two pairs worth naming: the strongest pair overall, and the strongest
+# pair drawn from two different families.  Their near-equality is the
+# panel's argument, so these are the annotations that earn their place.
+i_top_same = int(np.where(same)[0][-1])
+i_top_cross = int(np.where(~same)[0][-1])
 
-# ════════════════════════════════════════════════════════════════════
-# Sorted pair correlations + side KDE
-# ════════════════════════════════════════════════════════════════════
-ax = ax_dot
-ranks = np.arange(1, len(_rs) + 1)
-_mean_r = _rs.mean()
+Y_LO, Y_HI = -0.015, 0.748
 
-# Mean reference line
-ax.axhline(_mean_r, color=GREY_LT, lw=0.8, ls=(0, (2, 2)), zorder=1)
-ax.text(0.01, _mean_r + 0.012,
-        f"overall mean $r = {_mean_r:.2f}$",
-        transform=blended_transform_factory(ax.transAxes, ax.transData),
-        fontsize=7.4, color=GREY_MID, ha="left", va="bottom", style="italic")
+with plt.rc_context(RC):
+    fig = plt.figure(figsize=(FIG_W, FIG_H))
+    AX_B, AX_H = 0.350 / FIG_H, 1.500 / FIG_H
+    ax = fig.add_axes([0.455 / FIG_W, AX_B, 2.070 / FIG_W, AX_H])
+    ax_k = fig.add_axes([2.560 / FIG_W, AX_B, 0.380 / FIG_W, AX_H],
+                        sharey=ax)
 
-# Dots: cross-family first (grey, background), same-family on top (red)
-ax.scatter(ranks[~_same], _rs[~_same], s=10, color=GREY, alpha=0.70,
-           edgecolors="white", linewidths=0.2, zorder=3,
-           label=f"cross-family  ($n{{=}}{_nc}$)")
-ax.scatter(ranks[_same], _rs[_same], s=17, color=ENSEMBLE,
-           edgecolors="white", linewidths=0.4, zorder=4,
-           label=f"same-family  ($n{{=}}{_nw}$)")
+    # ── sorted pair correlations ─────────────────────────────────────
+    mean_r = rs.mean()
+    ax.axhline(mean_r, color=tint(FAINT, 0.45), lw=0.7, ls=(0, (2.4, 2.0)),
+               zorder=1)
+    ax.text(272, mean_r - 0.018, rf"all pairs $\bar r = {mean_r:.2f}$",
+            fontsize=TINY, color=MUTED, ha="right", va="top", style="italic")
 
-# Label the top 3 pairs with their model names; leaders drawn up-left.
-_top3 = sorted(zip(ranks, _rs, _labels, _same), key=lambda x: -x[1])[:3]
-# Assign vertical label positions to avoid collisions
-_label_ys = [0.68, 0.59, 0.50]
-for (rnk, r_val, (a, b), same), ylbl in zip(_top3, _label_ys):
-    col = ENSEMBLE if same else GREY_MID
-    ax.annotate(
-        f"{a}$\\times${b}  ($r{{=}}{r_val:.2f}$)",
-        xy=(rnk, r_val), xytext=(rnk - 55, ylbl),
-        fontsize=7.2, color=col, ha="right", va="center",
-        fontweight="bold" if same else "normal",
-        arrowprops=dict(arrowstyle="-", color=col, lw=0.5, alpha=0.65,
-                        shrinkA=0, shrinkB=4),
-        zorder=8,
-    )
+    ax.scatter(ranks[~same], rs[~same], s=7.5, color=tint(FAINT, 0.30),
+               alpha=0.85, edgecolors="none", zorder=3,
+               label=rf"cross-family ($n\!=\!{n_cross}$)")
+    ax.scatter(ranks[same], rs[same], s=13, color=WARM,
+               edgecolors="white", linewidths=0.35, zorder=4,
+               label=rf"same family ($n\!=\!{n_same}$)")
 
-# Effect-size callout — placed right above the legend in bottom-right,
-# clear of the top-3 pair-labels that live in the upper-left region.
-ax.text(0.995, 0.32,
-        ("Family signal is weak:\n"
-         rf"Cohen's $d = {_cohen_d:.2f}$  "
-         rf"(KS $p<10^{{-3}}$)" + "\n"
-         r"distributions overlap $>80\%$ of pairs"),
-        transform=ax.transAxes, fontsize=7.2, color=ENSEMBLE,
-        ha="right", va="bottom", linespacing=1.3, fontweight="bold",
-        bbox=dict(facecolor="white", edgecolor=ENSEMBLE, linewidth=0.65,
-                  boxstyle="round,pad=0.32", alpha=0.95),
-        zorder=9)
+    # Two callouts, both in the empty space above the curve, with dashed
+    # leaders that land on their point and cross nothing.
+    for idx, y_lab, col in ((i_top_same, 0.710, WARM_DK),
+                            (i_top_cross, 0.628, MUTED)):
+        a, b = labels[idx]
+        ax.annotate(
+            rf"{a}$\times${b} ($r\!=\!{rs[idx]:.2f}$)",
+            xy=(ranks[idx], rs[idx]), xytext=(ranks[idx] - 28, y_lab),
+            fontsize=TINY, color=col, ha="right", va="center",
+            arrowprops=dict(arrowstyle="-", color=col, lw=0.5, alpha=0.6,
+                            shrinkA=2, shrinkB=3,
+                            linestyle=(0, (2.2, 1.8))),
+            zorder=8)
 
-ax.set_xlabel("Model-pair rank (sorted by $r$)")
-ax.set_ylabel("Pearson $r$")
-ax.set_xlim(-5, len(_rs) + 5)
-ax.set_ylim(-0.02, 0.72)
-ax.set_xticks([1, 100, 200])
-ax.set_yticks([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7])
-ax.set_yticklabels(["0.0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"])
-ax.tick_params(axis="y", labelsize=8.6, labelleft=True)
-ax.tick_params(axis="x", labelsize=8.6)
+    ax.set_xlabel("Model-pair rank (sorted by $r$)", labelpad=2)
+    ax.set_ylabel(r"Pearson $r$ across 500 items", labelpad=2)
+    ax.set_xlim(-6, len(rs) + 6)
+    ax.set_ylim(Y_LO, Y_HI)
+    ax.set_xticks([1, 100, 200, len(rs)])
+    ax.set_yticks([0.0, 0.2, 0.4, 0.6])
+    ax.set_yticklabels(["0.0", "0.2", "0.4", "0.6"])
 
-leg = ax.legend(fontsize=7.4, loc="lower right",
-                bbox_to_anchor=(0.995, 0.015),
-                frameon=True, edgecolor="#cccccc", framealpha=0.95,
-                handlelength=1.2, borderpad=0.34, labelspacing=0.30,
-                handletextpad=0.45)
-leg.get_frame().set_linewidth(0.55)
+    ax.legend(loc="lower right", bbox_to_anchor=(1.005, -0.01),
+              frameon=False, handlelength=0.9, handletextpad=0.40,
+              labelspacing=0.28, borderaxespad=0.0, fontsize=TINY,
+              scatterpoints=1)
 
-# ── KDE side-strip ──────────────────────────────────────────────────
-ax = ax_kde
-_y_grid = np.linspace(-0.02, 0.72, 250)
-kde_w = gaussian_kde(_w_r, bw_method=0.30)
-kde_c = gaussian_kde(_c_r, bw_method=0.30)
-_dw = kde_w(_y_grid)
-_dc = kde_c(_y_grid)
-# Normalise shared horizontal scale
-_maxd = max(_dw.max(), _dc.max())
-_dw = _dw / _maxd
-_dc = _dc / _maxd
+    fig.text(0.012, 0.982, bf("(b)"), fontsize=BODY, color=INK,
+             ha="left", va="top")
+    # The headline effect size lives in the top band -- the same strip that
+    # carries the legend in Fig. 2a -- so no text sits over the data.
+    fig.text(0.088, 0.962,
+             ("Family is a weak nudge:  "
+              rf"Cohen's $d\!=\!{cohen_d:.2f}$,  KS $p\!<\!10^{{-3}}$"),
+             fontsize=TINY, color=MUTED, ha="left", va="top")
 
-ax.fill_betweenx(_y_grid, 0, _dc, color=GREY, alpha=0.35,
-                 edgecolor=GREY_MID, linewidth=0.55, zorder=2)
-ax.fill_betweenx(_y_grid, 0, _dw, color=ENSEMBLE, alpha=0.45,
-                 edgecolor=ENSEMBLE, linewidth=0.55, zorder=3)
+    # ── density strip: the overlap is the point ──────────────────────
+    grid = np.linspace(Y_LO, Y_HI, 320)
+    d_same = gaussian_kde(r_same, bw_method=0.30)(grid)
+    d_cross = gaussian_kde(r_cross, bw_method=0.30)(grid)
+    scale = max(d_same.max(), d_cross.max())
+    d_same, d_cross = d_same / scale, d_cross / scale
 
-# Mean markers
-ax.plot([0, 0.95], [_c_r.mean()] * 2, color=GREY_MID, lw=1.4,
-        solid_capstyle="round", zorder=4)
-ax.plot([0, 0.95], [_w_r.mean()] * 2, color=ENSEMBLE, lw=1.8,
-        solid_capstyle="round", zorder=5)
+    # Outlines drawn separately so the fills do not stroke a spurious
+    # vertical rule down the x = 0 side of the strip.
+    ax_k.fill_betweenx(grid, 0, d_cross, facecolor=tint(FAINT, 0.55),
+                       edgecolor="none", zorder=2)
+    ax_k.fill_betweenx(grid, 0, d_same, facecolor=tint(WARM, 0.55),
+                       edgecolor="none", alpha=0.85, zorder=3)
+    ax_k.plot(d_cross, grid, color=FAINT, lw=0.5, zorder=3.5)
+    ax_k.plot(d_same, grid, color=WARM, lw=0.6, zorder=3.6)
+    ax_k.plot([0, 0.92], [r_cross.mean()] * 2, color=MUTED, lw=1.2,
+              solid_capstyle="round", zorder=4)
+    ax_k.plot([0, 0.92], [r_same.mean()] * 2, color=WARM_DK, lw=1.5,
+              solid_capstyle="round", zorder=5)
+    ax_k.text(1.02, r_same.mean() + 0.012, rf"$\bar r\!=\!{r_same.mean():.2f}$",
+              color=WARM_DK, fontsize=TINY, ha="left", va="bottom",
+              clip_on=False)
+    ax_k.text(1.02, r_cross.mean() - 0.012,
+              rf"$\bar r\!=\!{r_cross.mean():.2f}$",
+              color=MUTED, fontsize=TINY, ha="left", va="top", clip_on=False)
 
-# Mean labels on the right of the strip
-ax.text(1.05, _w_r.mean(), f"$\\bar r\\!=\\!{_w_r.mean():.2f}$",
-        color=ENSEMBLE, fontsize=7.2, ha="left", va="center",
-        fontweight="bold", clip_on=False)
-ax.text(1.05, _c_r.mean(), f"$\\bar r\\!=\\!{_c_r.mean():.2f}$",
-        color=GREY_MID, fontsize=7.2, ha="left", va="center",
-        clip_on=False)
+    ax_k.set_xlim(0, 1.02)
+    ax_k.set_xticks([])
+    ax_k.tick_params(axis="y", length=0, labelleft=False)
+    for side in ("left", "bottom"):
+        ax_k.spines[side].set_visible(False)
+    ax_k.text(0.5, 1.005, "density", transform=ax_k.transAxes,
+              fontsize=TINY, color=FAINT, ha="center", va="bottom",
+              style="italic")
 
-ax.set_xlim(0, 1.05)
-ax.set_xticks([])
-ax.tick_params(axis="y", length=0, labelleft=False)
-ax.spines["left"].set_visible(False)
-ax.spines["bottom"].set_visible(False)
-# Small label above the strip so its purpose reads
-ax.text(0.5, 1.01, "density", transform=ax.transAxes,
-        fontsize=7.2, color=GREY_MID, ha="center", va="bottom",
-        style="italic")
+    for ext in ("pdf", "png"):
+        fig.savefig(OUT / f"supplementary_figure.{ext}", dpi=300)
+    plt.close(fig)
 
-for ext in ("pdf", "png"):
-    fig.savefig(OUT / f"supplementary_figure.{ext}", dpi=300,
-                bbox_inches="tight", pad_inches=0.02,
-                facecolor="white", edgecolor="none")
+print(f"usetex={_usetex}  figsize=({FIG_W}, {FIG_H}) in")
+print(f"{M} models, {len(rs)} pairs; same-family n={n_same}, "
+      f"cross-family n={n_cross}")
+print(f"r range [{rs.min():.4f}, {rs.max():.4f}]  overall mean {mean_r:.4f}")
+print(f"same-family  mean {r_same.mean():.4f}  sd {r_same.std(ddof=1):.4f}")
+print(f"cross-family mean {r_cross.mean():.4f}  sd {r_cross.std(ddof=1):.4f}")
+print(f"Cohen's d {cohen_d:.4f}   KS D={ks.statistic:.4f} p={ks.pvalue:.3e}")
+for tag, idx in (("top same-family ", i_top_same),
+                 ("top cross-family", i_top_cross)):
+    a, b = labels[idx]
+    print(f"{tag}: {a} x {b}  r={rs[idx]:.4f}  rank {ranks[idx]}")
+print(f"y-limits [{Y_LO}, {Y_HI}]  all points on axis: "
+      f"{rs.min() > Y_LO and rs.max() < Y_HI}")
 print(f"Saved {OUT / 'supplementary_figure.pdf'}")
-plt.close(fig)

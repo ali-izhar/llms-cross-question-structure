@@ -3,7 +3,7 @@ TW z-score diagnostic: explain the 4-of-5-below-mean deficit.
 
 Phenomenon:
     Under the paper's null (Prop. 1), z = (lambda_max - lambda_+) / sigma_TW
-    converges to Tracy-Widom F1 (mean -1.77, std 1.27).  Observed MMLU:
+    converges to Tracy-Widom F1 (mean -1.21, std 1.27).  Observed MMLU:
         Qwen2.5-7B       z = -2.01
         Mistral-7B-v0.3  z = -2.37
         Phi-3-mini       z = -1.36
@@ -22,7 +22,7 @@ matching the empirical (K, N_b, {p_i}) of each model):
        at matching (K, N_b) to see if TW F1 holds at these sizes.
     H4 finite-K correction: compute empirical mean/std of z under
        independent Bernoulli at K=100 and compare to the asymptotic
-       -1.77 / 1.27.
+       -1.21 / 1.27.
 
 Output: results/tw_z_diagnostic.md plus figures/tw_z_diagnostic.pdf.
 """
@@ -58,8 +58,8 @@ MODELS = [
     ("SmolLM2-1.7B",     "correctness_matrix_HuggingFaceTB_SmolLM2-1.7B-Instruct.npy"),
 ]
 
-TW_MEAN_ASYMP = -1.7710868074         # F1 mean
-TW_STD_ASYMP  =  1.2683221878         # F1 std
+TW_MEAN_ASYMP = -1.2065335745         # F1 (GOE) mean
+TW_STD_ASYMP  =  1.2680224200         # F1 (GOE) std
 
 
 # ---------------------------------------------------------------------------
@@ -166,7 +166,7 @@ def mc_h2_no_filter(model: dict, rng: np.random.Generator, n_mc: int = N_MC) -> 
 def mc_h3_gaussian(model: dict, rng: np.random.Generator, n_mc: int = N_MC) -> np.ndarray:
     """H3: simulate K x Nb IID Gaussian columns, column-standardize,
     compute z.  If TW F1 holds at this (K, Nb), the distribution should
-    be centered at -1.77 with std 1.27."""
+    be centered at -1.21 with std 1.27."""
     K, Nb = model["K"], model["Nb"]
     zs = np.empty(n_mc)
     for m in range(n_mc):
@@ -228,7 +228,7 @@ def make_figure(results: list[dict], outpath: Path) -> None:
         zs = zs[np.isfinite(zs)]
         ax.hist(zs, bins=40, density=True, color="#bdd7e7", edgecolor="#2171b5", linewidth=0.6, alpha=0.9)
         # TW F1 mean reference line
-        ax.axvline(TW_MEAN_ASYMP, color="#888", linestyle="--", linewidth=1.0, label=r"TW$_1$ mean $-1.77$")
+        ax.axvline(TW_MEAN_ASYMP, color="#888", linestyle="--", linewidth=1.0, label=r"TW$_1$ mean $-1.21$")
         # Simulated mean
         ax.axvline(np.mean(zs), color="#2171b5", linestyle="-", linewidth=1.2, label=f"sim mean {np.mean(zs):.2f}")
         # Observed z
@@ -249,7 +249,7 @@ def make_figure(results: list[dict], outpath: Path) -> None:
                 yerr=[sim_means - sim_q05, sim_q95 - sim_means],
                 fmt="o", color="#2171b5", capsize=3, label="H1 sim mean (5-95%)")
     ax.scatter(xs + 0.12, obs, color="#d62728", marker="D", s=40, zorder=5, label="observed")
-    ax.axhline(TW_MEAN_ASYMP, color="#888", linestyle="--", linewidth=1.0, label=r"TW$_1$ mean $-1.77$")
+    ax.axhline(TW_MEAN_ASYMP, color="#888", linestyle="--", linewidth=1.0, label=r"TW$_1$ mean $-1.21$")
     ax.set_xticks(xs)
     ax.set_xticklabels([r["name"].split("-")[0] for r in results], rotation=30, ha="right", fontsize=8)
     ax.set_ylabel("TW $z$")

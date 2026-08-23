@@ -92,7 +92,7 @@ fig.subplots_adjust(left=0.165, right=0.97, bottom=0.175, top=0.965)
 # Lets the reader see at a glance that EVERY ensemble point sits above it.
 ax.axhline(sc100_auroc, color=GREY_LT, lw=0.9, ls=(0, (2, 2)), zorder=1)
 # Label BELOW the dashed line on the left margin.
-ax.text(0.015, sc100_auroc - 0.009, r"SC$_{100}$ ceiling",
+ax.text(0.015, sc100_auroc - 0.009, r"SC$_{100}$ (consistency)",
         transform=matplotlib.transforms.blended_transform_factory(
             ax.transAxes, ax.transData),
         fontsize=7.0, color=GREY_MID, ha="left", va="top",
@@ -102,19 +102,19 @@ ax.text(0.015, sc100_auroc - 0.009, r"SC$_{100}$ ceiling",
 ax.plot(sc_costs, sc_auroc_or, ":", color=ORACLE, lw=1.0,
         marker="s", ms=2.6, alpha=0.75,
         markeredgecolor="white", markeredgewidth=0.25,
-        label="SC (oracle, not deployable)", zorder=2)
+        label="SC (pass rate, uses labels)", zorder=2)
 
 # ── Ensemble curve: red, diamond markers — the hero ─────────────────
 ax.plot(ens_costs, ens_auroc, "-", color=ENSEMBLE, lw=2.0, zorder=5)
 ax.plot(ens_costs, ens_auroc, "D", color=ENSEMBLE, ms=5.4,
         markeredgecolor="white", markeredgewidth=0.6, zorder=6,
-        label="Ensemble (cross-model)")
+        label="Peer correctness (uses labels)")
 
 # ── SC operational: blue, circle markers ────────────────────────────
 ax.plot(sc_costs, sc_auroc_op, "-", color=BLUE, lw=1.6, zorder=4)
 ax.plot(sc_costs, sc_auroc_op, "o", color=BLUE, ms=4.8,
         markeredgecolor="white", markeredgewidth=0.5, zorder=5,
-        label="Self-consistency (operational)")
+        label="Sample consistency (uses labels)")
 
 # ── Headline-point emphasis: large outlined markers on Ens_2 & SC_100 ─
 ax.plot(ens2_cost, ens2_auroc, "D", color=ENSEMBLE, ms=10.5,
@@ -134,9 +134,8 @@ ax.plot(sc100_cost, sc100_auroc, "o", color=BLUE, ms=9.5,
 # both the Ensemble curve's rightmost marker and SC_100.
 ax.text(
     55, 0.81,
-    r"$\mathbf{Ensemble_{2}\ \succ\ SC_{100}}$" + "\n"
-    + rf"${HEAD_COST_RATIO}\times$ cheaper · "
-    + rf"$+{HEAD_DAUROC:.2f}$ AUROC",
+    r"$\mathbf{two\ peers\ rank\ better}$" + "\n"
+    + rf"$+{HEAD_DAUROC:.2f}$ AUROC · gold-using",
     fontsize=8.2, color=ENSEMBLE, ha="center", va="center",
     linespacing=1.4,
     bbox=dict(facecolor="white", edgecolor=ENSEMBLE, linewidth=0.7,

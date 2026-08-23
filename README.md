@@ -29,8 +29,9 @@ both sides. The headline result:
 | above-noise eigenvalues (d) | ≤ 1 across 5 families × 3 benchmarks | 4 (vs. ≤ 1 under a matched-difficulty Bernoulli null in 500 MC draws) |
 
 Per-question uncertainty lives *within* a model (split-half r = 0.994);
-multi-dimensional, cross-question uncertainty lives *between* them. Two peer
-models outperform 100-sample self-consistency at 1/40th the cost.
+multi-dimensional, cross-question uncertainty lives *between* them.
+A gold-using ranking diagnostic agrees in direction; it is not a
+label-free serving comparison.
 
 ## Repository layout
 
@@ -48,14 +49,12 @@ results/               .npy correctness matrices, per-model analysis JSONs,
 ## Reproducing the figures
 
 The committed `results/` directory contains every artifact the figures read
-from. To regenerate the five paper figures from the existing data:
+from. To regenerate the two paper figures from the existing data:
 
 ```bash
 uv sync                                              # install deps
-uv run python scripts/make_hero_figure.py            # Fig. 1 (hero)
-uv run python scripts/make_epsilon_sweep_figure.py   # Fig. 2 (eps robustness)
-uv run python scripts/make_selective_prediction_figure.py
-uv run python scripts/make_supplementary_figure.py
+.venv/bin/python scripts/make_hero_figure.py         # Fig. 1 (scree gap)
+.venv/bin/python scripts/make_epsilon_sweep_figure.py  # Fig. A1 (eps robustness)
 ```
 
 PDFs land in `paper/figures/`.

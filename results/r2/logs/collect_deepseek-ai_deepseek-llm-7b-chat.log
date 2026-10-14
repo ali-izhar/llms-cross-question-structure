@@ -1,0 +1,9 @@
+2026-10-13 02:44:57 [mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat] prompt check: 2000/2000 canonical; decode {'exact': 1996, 'added_token_literal': 4}; v2-pipeline-equal 0/2000; reference-hash-equal 2000/2000
+2026-10-13 02:44:57 pre-check mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'exact': 1996, 'added_token_literal': 4}, 'n_equal_to_v2_pipeline_ids': 0, 'n_equal_to_reference_hash': 2000}
+2026-10-13 02:44:57 deepseek-ai/deepseek-llm-7b-chat: loading vLLM engine {'model': 'deepseek-ai/deepseek-llm-7b-chat', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
+2026-10-13 02:46:33 engine ready in 97s; prompt_mode=chat_template; max_model_len=3072
+2026-10-13 02:46:35 [mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat] prompt check: 2000/2000 canonical; decode {'exact': 1996, 'added_token_literal': 4}; v2-pipeline-equal 0/2000; reference-hash-equal 2000/2000
+2026-10-13 02:46:35 [mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat] start K=4 N=500 T=0.0 block=4 passes
+2026-10-13 02:47:23 [mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat] passes 0-3 done, block acc=0.475, elapsed=48s
+2026-10-13 02:47:23 [mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat] DONE acc=0.4755 unparseable=0.0130 N_b=279 runtime=48s
+2026-10-13 02:47:23 deepseek-ai/deepseek-llm-7b-chat: finished; failed runs: []

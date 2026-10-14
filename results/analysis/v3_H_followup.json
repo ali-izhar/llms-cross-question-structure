@@ -1,0 +1,918 @@
+{
+  "meta": {
+    "specification": "# Specification H (written 2026-10-14 BEFORE any run of H; follow-up to hostile round 3, attack3_hostile.md)\nStatus: these are POST-HOC follow-ups. The two pairs below were named after the data were seen (round-2 audit and\nG4). H is fixed now so that its decisions are not tuned to its own results. Record deviations in the output.\n\n## H1. Size of the G1 family-wise test under one-ability truth (all-4 score)\n- Truth A: the all-4 2PL fit (marginal ML, the fit used for the paper's 2PL null). Truth B: the all-4 Rasch fit.\n- 300 datasets per truth, simulated with the null's own simulator (same unparsed-mask/column-split handling as the\n  paper's null), new seed namespace H.\n- For each dataset: refit BOTH the 2PL and the Rasch null on the simulated data, 500 null draws each, apply the\n  validity rule and G1 (T = max pct over ranks 2-4, leave-one-out null, alpha 0.05).\n- Report FP = P(valid and p_T < 0.05) with a 95% Clopper-Pearson CI, for each (truth, null), and the median p_T.\n- Decision: a null's all-4 rejection counts as size-controlled if FP <= 0.075 under BOTH truths. Otherwise report\n  the rejection as not size-controlled and give the calibrated p (rank of the real p_T among the truth p_T values).\n\n## H2. Is the pair removal exceptional? (all-4 score)\n- Pairs (fixed now): P1 = {Phi-3-mini-4k, Phi-3.5-mini}, P2 = {Meta-Llama-3-8B, Llama-3.1-8B}.\n- Pair removals: the 4 subsets that remove one member of P1 and one member of P2 (22 models each).\n- Reference: ALL 2-model removals that remove no member of P1 or P2 (C(20,2) = 190 subsets of 22 models).\n- For every subset: refit the 2PL and Rasch nulls, 1000 draws each, validity rule, G1 p_T.\n- Report: p_T for the 4 pair removals; the distribution of p_T over the 190 reference removals; the fraction of\n  reference removals that reject at 0.05; and the empirical rank (percentile) of each pair-removal p_T in the\n  reference distribution (per null).\n- Decision: \"the excess is carried by the two near-duplicate pairs\" if all 4 pair-removal p_T values exceed the 95th\n  percentile of the reference p_T distribution under both nulls. If only some do, report it as it is. If none do, the\n  paper must drop the pair attribution and say the excess is not attributable.\n\n## H3. Simple baselines (descriptive, no decision)\n- Per-model letter shares (pi_A..pi_D of answers, rotation 0) and max share; flag max > 0.5.\n- Residual correlation of every model pair after the all-4 2PL fit (observed minus 2PL-expected correctness,\n  Pearson over split columns); top 10 pairs with rank, and the rank of every sibling pair from prereg_G.\n- Purpose: show what the spectrum adds beyond these tables (hostile round 3 item 4).\n\n## Report\nJSON results/analysis/v3_H_followup.json (+ raw files raw_v3_H_*), S/H_report.md with each decision and any\ndeviation.\n",
+    "seed_namespace": {
+      "SEED_H": 2402610141,
+      "streams": {
+        "h1_truth": 1,
+        "h1_null": 2,
+        "h2_null": 3
+      }
+    },
+    "n": {
+      "H1_datasets_per_truth": 300,
+      "H1_null_draws": 500,
+      "H2_null_draws": 1000
+    },
+    "statistic": "v3_G_familywise.familywise (G1)",
+    "real_all4_G1_p_T": {
+      "2pl_post": 0.026486756621689155,
+      "rasch_jml": 0.04147926036981509
+    },
+    "P1": [
+      "microsoft/Phi-3-mini-4k-instruct",
+      "microsoft/Phi-3.5-mini-instruct"
+    ],
+    "P2": [
+      "meta-llama/Meta-Llama-3-8B-Instruct",
+      "meta-llama/Llama-3.1-8B-Instruct"
+    ]
+  },
+  "H1_size_under_one_ability_truth": {
+    "by_truth_and_null": {
+      "2pl_post": {
+        "2pl_post": {
+          "n": 300,
+          "fp_valid_and_p_T_lt_alpha": 0.06666666666666667,
+          "fp_ci95": [
+            0.0411940162138987,
+            0.10108564521140824
+          ],
+          "k": 20,
+          "frac_valid": 1.0,
+          "median_p_T": 0.4261477045908184,
+          "p_T_quantiles_5_25_50": [
+            0.04770459081836328,
+            0.20808383233532934,
+            0.4261477045908184
+          ],
+          "per_rank_rule_beyond_ge1_and_valid": 0.0033333333333333335,
+          "p_S_lt_alpha_and_valid": 0.07666666666666666,
+          "real_p_T": 0.026486756621689155,
+          "calibrated_p_of_real": 0.03333333333333333
+        },
+        "rasch_jml": {
+          "n": 300,
+          "fp_valid_and_p_T_lt_alpha": 0.06666666666666667,
+          "fp_ci95": [
+            0.0411940162138987,
+            0.10108564521140824
+          ],
+          "k": 20,
+          "frac_valid": 1.0,
+          "median_p_T": 0.38123752495009977,
+          "p_T_quantiles_5_25_50": [
+            0.03572854291417166,
+            0.18113772455089822,
+            0.38123752495009977
+          ],
+          "per_rank_rule_beyond_ge1_and_valid": 0.03333333333333333,
+          "p_S_lt_alpha_and_valid": 0.10666666666666667,
+          "real_p_T": 0.04147926036981509,
+          "calibrated_p_of_real": 0.056666666666666664
+        }
+      },
+      "rasch_jml": {
+        "2pl_post": {
+          "n": 300,
+          "fp_valid_and_p_T_lt_alpha": 0.08666666666666667,
+          "fp_ci95": [
+            0.05739483254705112,
+            0.12440736286509173
+          ],
+          "k": 26,
+          "frac_valid": 1.0,
+          "median_p_T": 0.35828343313373257,
+          "p_T_quantiles_5_25_50": [
+            0.03183632734530938,
+            0.16966067864271456,
+            0.35828343313373257
+          ],
+          "per_rank_rule_beyond_ge1_and_valid": 0.0033333333333333335,
+          "p_S_lt_alpha_and_valid": 0.08,
+          "real_p_T": 0.026486756621689155,
+          "calibrated_p_of_real": 0.04666666666666667
+        },
+        "rasch_jml": {
+          "n": 300,
+          "fp_valid_and_p_T_lt_alpha": 0.006666666666666667,
+          "fp_ci95": [
+            0.0008083864127997911,
+            0.02387349757217365
+          ],
+          "k": 2,
+          "frac_valid": 0.23333333333333334,
+          "median_p_T": 0.6516966067864272,
+          "p_T_quantiles_5_25_50": [
+            0.10778443113772455,
+            0.3662674650698603,
+            0.6516966067864272
+          ],
+          "per_rank_rule_beyond_ge1_and_valid": 0.0,
+          "p_S_lt_alpha_and_valid": 0.0,
+          "real_p_T": 0.04147926036981509,
+          "calibrated_p_of_real": 0.016666666666666666
+        }
+      }
+    },
+    "decision": {
+      "2pl_post": {
+        "size_controlled": false,
+        "fp_by_truth": {
+          "2pl_post": 0.06666666666666667,
+          "rasch_jml": 0.08666666666666667
+        },
+        "real_p_T": 0.026486756621689155,
+        "calibrated_p_by_truth": {
+          "2pl_post": 0.03333333333333333,
+          "rasch_jml": 0.04666666666666667
+        },
+        "statement": "the all-4 2pl_post rejection (p_T = 0.026) is NOT size-controlled; calibrated p = 0.033 (2pl_post truth), 0.047 (rasch_jml truth)"
+      },
+      "rasch_jml": {
+        "size_controlled": true,
+        "fp_by_truth": {
+          "2pl_post": 0.06666666666666667,
+          "rasch_jml": 0.006666666666666667
+        },
+        "real_p_T": 0.04147926036981509,
+        "calibrated_p_by_truth": {
+          "2pl_post": 0.056666666666666664,
+          "rasch_jml": 0.016666666666666666
+        },
+        "statement": "the all-4 rasch_jml rejection (p_T = 0.041) is size-controlled (FP <= 0.075 under both truths)"
+      }
+    }
+  },
+  "H2_pair_removal_vs_reference": {
+    "by_null": {
+      "2pl_post": {
+        "pair_removals": [
+          {
+            "removed": [
+              "Phi-3-mini-4k-instruct",
+              "Meta-Llama-3-8B-Instruct"
+            ],
+            "p_T": 0.5114885114885115,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 76.6,
+            "pct_rank1to4": [
+              32.4,
+              61.0,
+              64.2,
+              76.6
+            ]
+          },
+          {
+            "removed": [
+              "Phi-3-mini-4k-instruct",
+              "Llama-3.1-8B-Instruct"
+            ],
+            "p_T": 0.21878121878121878,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 91.3,
+            "pct_rank1to4": [
+              32.2,
+              68.3,
+              70.0,
+              91.3
+            ]
+          },
+          {
+            "removed": [
+              "Phi-3.5-mini-instruct",
+              "Meta-Llama-3-8B-Instruct"
+            ],
+            "p_T": 0.6853146853146853,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 65.0,
+            "pct_rank1to4": [
+              28.4,
+              55.9,
+              64.6,
+              65.0
+            ]
+          },
+          {
+            "removed": [
+              "Phi-3.5-mini-instruct",
+              "Llama-3.1-8B-Instruct"
+            ],
+            "p_T": 0.4985014985014985,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 77.4,
+            "pct_rank1to4": [
+              30.8,
+              65.7,
+              77.4,
+              73.5
+            ]
+          }
+        ],
+        "reference_n": 190,
+        "reference_p_T_quantiles_5_25_50_75_95": [
+          0.003996003996003996,
+          0.006993006993006993,
+          0.01848151848151848,
+          0.03296703296703297,
+          0.061038961038961004
+        ],
+        "reference_p95": 0.061038961038961004,
+        "reference_max": 0.0989010989010989,
+        "reference_frac_reject": 0.9,
+        "reference_frac_valid": 1.0,
+        "reference_top10_p_T": [
+          [
+            0.0989010989010989,
+            [
+              "Mistral-7B-Instruct-v0.2",
+              "Llama-3.2-1B-Instruct"
+            ]
+          ],
+          [
+            0.09290709290709291,
+            [
+              "Mistral-Small-Instruct-2409",
+              "Llama-3.2-1B-Instruct"
+            ]
+          ],
+          [
+            0.08591408591408592,
+            [
+              "gemma-2-2b-it",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.08291708291708291,
+            [
+              "Mistral-7B-Instruct-v0.2",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.07692307692307693,
+            [
+              "Ministral-8B-Instruct-2410",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.07492507492507493,
+            [
+              "zephyr-7b-beta",
+              "Llama-3.2-1B-Instruct"
+            ]
+          ],
+          [
+            0.07492507492507493,
+            [
+              "phi-2",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.07492507492507493,
+            [
+              "SmolLM2-1.7B-Instruct",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.07392607392607392,
+            [
+              "Mistral-Small-Instruct-2409",
+              "Llama-3.2-3B-Instruct"
+            ]
+          ],
+          [
+            0.061938061938061936,
+            [
+              "Ministral-8B-Instruct-2410",
+              "Llama-3.2-1B-Instruct"
+            ]
+          ]
+        ],
+        "n_pairs_exceeding_p95": 4,
+        "reference_mean_p_T_by_removed_model": {
+          "Llama-3.2-1B-Instruct": 0.046953046953046945,
+          "Llama-3.2-3B-Instruct": 0.01750880698249119,
+          "Ministral-8B-Instruct-2410": 0.028077185971922814,
+          "Mistral-7B-Instruct-v0.2": 0.021399652978600348,
+          "Mistral-7B-Instruct-v0.3": 0.025974025974025972,
+          "Mistral-Small-Instruct-2409": 0.05415636994584363,
+          "OLMo-2-1124-7B-Instruct": 0.015826278984173724,
+          "Qwen2-7B-Instruct": 0.009779693990220306,
+          "Qwen2.5-0.5B-Instruct": 0.01466954098533046,
+          "Qwen2.5-1.5B-Instruct": 0.03044324096955676,
+          "Qwen2.5-3B-Instruct": 0.019664545980335457,
+          "Qwen2.5-7B-Instruct": 0.006362058993637942,
+          "SmolLM2-1.7B-Instruct": 0.015931436984068563,
+          "Yi-1.5-6B-Chat": 0.031389662968610337,
+          "deepseek-llm-7b-chat": 0.015826278984173724,
+          "gemma-2-2b-it": 0.027551395972448607,
+          "gemma-2-9b-it": 0.026762710973237288,
+          "granite-3.1-8b-instruct": 0.018402649981597345,
+          "phi-2": 0.029759713970240284,
+          "zephyr-7b-beta": 0.0180345969819654
+        }
+      },
+      "rasch_jml": {
+        "pair_removals": [
+          {
+            "removed": [
+              "Phi-3-mini-4k-instruct",
+              "Meta-Llama-3-8B-Instruct"
+            ],
+            "p_T": 0.38161838161838163,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 84.6,
+            "pct_rank1to4": [
+              44.9,
+              84.6,
+              53.1,
+              70.3
+            ]
+          },
+          {
+            "removed": [
+              "Phi-3-mini-4k-instruct",
+              "Llama-3.1-8B-Instruct"
+            ],
+            "p_T": 0.3516483516483517,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 85.1,
+            "pct_rank1to4": [
+              40.8,
+              85.1,
+              62.1,
+              84.5
+            ]
+          },
+          {
+            "removed": [
+              "Phi-3.5-mini-instruct",
+              "Meta-Llama-3-8B-Instruct"
+            ],
+            "p_T": 0.35264735264735264,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 85.2,
+            "pct_rank1to4": [
+              43.2,
+              85.2,
+              51.8,
+              50.3
+            ]
+          },
+          {
+            "removed": [
+              "Phi-3.5-mini-instruct",
+              "Llama-3.1-8B-Instruct"
+            ],
+            "p_T": 0.32167832167832167,
+            "valid": true,
+            "reject": false,
+            "pct_rank_in_reference": 100.0,
+            "exceeds_ref_p95": true,
+            "T_pct": 87.0,
+            "pct_rank1to4": [
+              39.0,
+              87.0,
+              65.1,
+              64.1
+            ]
+          }
+        ],
+        "reference_n": 190,
+        "reference_p_T_quantiles_5_25_50_75_95": [
+          0.003996003996003996,
+          0.012987012987012988,
+          0.026973026973026972,
+          0.05094905094905095,
+          0.1005494505494505
+        ],
+        "reference_p95": 0.1005494505494505,
+        "reference_max": 0.13286713286713286,
+        "reference_frac_reject": 0.7368421052631579,
+        "reference_frac_valid": 1.0,
+        "reference_top10_p_T": [
+          [
+            0.13286713286713286,
+            [
+              "Qwen2.5-0.5B-Instruct",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.12987012987012986,
+            [
+              "Mistral-Small-Instruct-2409",
+              "Llama-3.2-1B-Instruct"
+            ]
+          ],
+          [
+            0.12687312687312688,
+            [
+              "Ministral-8B-Instruct-2410",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.11488511488511488,
+            [
+              "Mistral-Small-Instruct-2409",
+              "Llama-3.2-3B-Instruct"
+            ]
+          ],
+          [
+            0.11288711288711288,
+            [
+              "Yi-1.5-6B-Chat",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.1108891108891109,
+            [
+              "SmolLM2-1.7B-Instruct",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.10989010989010989,
+            [
+              "Qwen2.5-1.5B-Instruct",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.1088911088911089,
+            [
+              "Mistral-7B-Instruct-v0.2",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.1068931068931069,
+            [
+              "gemma-2-2b-it",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ],
+          [
+            0.1018981018981019,
+            [
+              "phi-2",
+              "Mistral-Small-Instruct-2409"
+            ]
+          ]
+        ],
+        "n_pairs_exceeding_p95": 4,
+        "reference_mean_p_T_by_removed_model": {
+          "Llama-3.2-1B-Instruct": 0.061675166938324845,
+          "Llama-3.2-3B-Instruct": 0.029128765970871235,
+          "Ministral-8B-Instruct-2410": 0.041327093958672914,
+          "Mistral-7B-Instruct-v0.2": 0.02844523897155476,
+          "Mistral-7B-Instruct-v0.3": 0.03827751196172249,
+          "Mistral-Small-Instruct-2409": 0.09148745990851254,
+          "OLMo-2-1124-7B-Instruct": 0.020242914979757082,
+          "Qwen2-7B-Instruct": 0.013039591986960409,
+          "Qwen2.5-0.5B-Instruct": 0.027761711972238288,
+          "Qwen2.5-1.5B-Instruct": 0.04847783795152217,
+          "Qwen2.5-3B-Instruct": 0.02960197697039802,
+          "Qwen2.5-7B-Instruct": 0.009096166990903832,
+          "SmolLM2-1.7B-Instruct": 0.02760397497239603,
+          "Yi-1.5-6B-Chat": 0.04800462695199537,
+          "deepseek-llm-7b-chat": 0.02681528997318471,
+          "gemma-2-2b-it": 0.042694147957305854,
+          "gemma-2-9b-it": 0.030022608969977396,
+          "granite-3.1-8b-instruct": 0.030075187969924817,
+          "phi-2": 0.03822493296177507,
+          "zephyr-7b-beta": 0.026973026973026972
+        }
+      }
+    },
+    "decision": {
+      "n_pairs_exceeding_ref_p95": {
+        "2pl_post": 4,
+        "rasch_jml": 4
+      },
+      "statement": "the excess is carried by the two near-duplicate pairs (all 4 pair-removal p_T above the reference 95th percentile under both nulls)"
+    }
+  },
+  "H3_baselines": {
+    "letter_shares_rotation0": {
+      "SmolLM2-1.7B-Instruct": {
+        "pi_A_B_C_D": [
+          0.066,
+          0.204,
+          0.174,
+          0.556
+        ],
+        "max_share": 0.556,
+        "max_letter": "D",
+        "flag_max_gt_0p5": true
+      },
+      "Qwen2.5-0.5B-Instruct": {
+        "pi_A_B_C_D": [
+          0.234,
+          0.062,
+          0.12,
+          0.576
+        ],
+        "max_share": 0.576,
+        "max_letter": "D",
+        "flag_max_gt_0p5": true
+      },
+      "Qwen2.5-1.5B-Instruct": {
+        "pi_A_B_C_D": [
+          0.216,
+          0.258,
+          0.242,
+          0.282
+        ],
+        "max_share": 0.282,
+        "max_letter": "D",
+        "flag_max_gt_0p5": false
+      },
+      "phi-2": {
+        "pi_A_B_C_D": [
+          0.294,
+          0.244,
+          0.256,
+          0.2
+        ],
+        "max_share": 0.294,
+        "max_letter": "A",
+        "flag_max_gt_0p5": false
+      },
+      "Phi-3-mini-4k-instruct": {
+        "pi_A_B_C_D": [
+          0.204,
+          0.254,
+          0.286,
+          0.252
+        ],
+        "max_share": 0.286,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "Phi-3.5-mini-instruct": {
+        "pi_A_B_C_D": [
+          0.174,
+          0.264,
+          0.308,
+          0.25
+        ],
+        "max_share": 0.308,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "Qwen2.5-3B-Instruct": {
+        "pi_A_B_C_D": [
+          0.212,
+          0.284,
+          0.24,
+          0.264
+        ],
+        "max_share": 0.284,
+        "max_letter": "B",
+        "flag_max_gt_0p5": false
+      },
+      "Qwen2-7B-Instruct": {
+        "pi_A_B_C_D": [
+          0.194,
+          0.266,
+          0.232,
+          0.308
+        ],
+        "max_share": 0.308,
+        "max_letter": "D",
+        "flag_max_gt_0p5": false
+      },
+      "Qwen2.5-7B-Instruct": {
+        "pi_A_B_C_D": [
+          0.216,
+          0.28,
+          0.258,
+          0.246
+        ],
+        "max_share": 0.28,
+        "max_letter": "B",
+        "flag_max_gt_0p5": false
+      },
+      "Mistral-7B-Instruct-v0.2": {
+        "pi_A_B_C_D": [
+          0.304,
+          0.11,
+          0.288,
+          0.174
+        ],
+        "max_share": 0.304,
+        "max_letter": "A",
+        "flag_max_gt_0p5": false
+      },
+      "Mistral-7B-Instruct-v0.3": {
+        "pi_A_B_C_D": [
+          0.348,
+          0.204,
+          0.206,
+          0.242
+        ],
+        "max_share": 0.348,
+        "max_letter": "A",
+        "flag_max_gt_0p5": false
+      },
+      "zephyr-7b-beta": {
+        "pi_A_B_C_D": [
+          0.212,
+          0.162,
+          0.274,
+          0.256
+        ],
+        "max_share": 0.274,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "OLMo-2-1124-7B-Instruct": {
+        "pi_A_B_C_D": [
+          0.206,
+          0.262,
+          0.27,
+          0.258
+        ],
+        "max_share": 0.27,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "Yi-1.5-6B-Chat": {
+        "pi_A_B_C_D": [
+          0.224,
+          0.284,
+          0.292,
+          0.2
+        ],
+        "max_share": 0.292,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "deepseek-llm-7b-chat": {
+        "pi_A_B_C_D": [
+          0.232,
+          0.342,
+          0.204,
+          0.204
+        ],
+        "max_share": 0.342,
+        "max_letter": "B",
+        "flag_max_gt_0p5": false
+      },
+      "granite-3.1-8b-instruct": {
+        "pi_A_B_C_D": [
+          0.234,
+          0.21,
+          0.292,
+          0.26
+        ],
+        "max_share": 0.292,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "Ministral-8B-Instruct-2410": {
+        "pi_A_B_C_D": [
+          0.316,
+          0.258,
+          0.228,
+          0.198
+        ],
+        "max_share": 0.316,
+        "max_letter": "A",
+        "flag_max_gt_0p5": false
+      },
+      "gemma-2-2b-it": {
+        "pi_A_B_C_D": [
+          0.2,
+          0.174,
+          0.31,
+          0.316
+        ],
+        "max_share": 0.316,
+        "max_letter": "D",
+        "flag_max_gt_0p5": false
+      },
+      "Llama-3.1-8B-Instruct": {
+        "pi_A_B_C_D": [
+          0.206,
+          0.258,
+          0.278,
+          0.258
+        ],
+        "max_share": 0.278,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "gemma-2-9b-it": {
+        "pi_A_B_C_D": [
+          0.222,
+          0.244,
+          0.304,
+          0.23
+        ],
+        "max_share": 0.304,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "Mistral-Small-Instruct-2409": {
+        "pi_A_B_C_D": [
+          0.192,
+          0.224,
+          0.256,
+          0.272
+        ],
+        "max_share": 0.272,
+        "max_letter": "D",
+        "flag_max_gt_0p5": false
+      },
+      "Llama-3.2-1B-Instruct": {
+        "pi_A_B_C_D": [
+          0.81,
+          0.042,
+          0.088,
+          0.05
+        ],
+        "max_share": 0.81,
+        "max_letter": "A",
+        "flag_max_gt_0p5": true
+      },
+      "Llama-3.2-3B-Instruct": {
+        "pi_A_B_C_D": [
+          0.232,
+          0.24,
+          0.304,
+          0.224
+        ],
+        "max_share": 0.304,
+        "max_letter": "C",
+        "flag_max_gt_0p5": false
+      },
+      "Meta-Llama-3-8B-Instruct": {
+        "pi_A_B_C_D": [
+          0.27,
+          0.322,
+          0.22,
+          0.188
+        ],
+        "max_share": 0.322,
+        "max_letter": "B",
+        "flag_max_gt_0p5": false
+      }
+    },
+    "n_models_max_share_gt_0p5": 3,
+    "residual_corr": {
+      "definition": "Pearson r across the 391 split all-4 columns of observed minus 2PL-expected correctness (expected = posterior mean of sigma(a_i (theta_m - b_i)) over each column's grid posterior, the MML fit of the paper's 2PL null)",
+      "n_pairs": 276,
+      "offdiag_mean": -0.0414588162925145,
+      "offdiag_sd": 0.07782246258783933,
+      "top10": [
+        {
+          "rank": 1,
+          "r": 0.40087833634640413,
+          "a": "Phi-3-mini-4k-instruct",
+          "b": "Phi-3.5-mini-instruct"
+        },
+        {
+          "rank": 2,
+          "r": 0.2667804463223155,
+          "a": "Llama-3.1-8B-Instruct",
+          "b": "Meta-Llama-3-8B-Instruct"
+        },
+        {
+          "rank": 3,
+          "r": 0.20403488071733275,
+          "a": "Mistral-7B-Instruct-v0.2",
+          "b": "Mistral-7B-Instruct-v0.3"
+        },
+        {
+          "rank": 4,
+          "r": 0.1896046756644237,
+          "a": "Mistral-7B-Instruct-v0.3",
+          "b": "Meta-Llama-3-8B-Instruct"
+        },
+        {
+          "rank": 5,
+          "r": 0.16846223853507666,
+          "a": "Mistral-7B-Instruct-v0.2",
+          "b": "zephyr-7b-beta"
+        },
+        {
+          "rank": 6,
+          "r": 0.14852343911228677,
+          "a": "SmolLM2-1.7B-Instruct",
+          "b": "OLMo-2-1124-7B-Instruct"
+        },
+        {
+          "rank": 7,
+          "r": 0.14253698506662357,
+          "a": "OLMo-2-1124-7B-Instruct",
+          "b": "Mistral-Small-Instruct-2409"
+        },
+        {
+          "rank": 8,
+          "r": 0.1261625405431513,
+          "a": "Mistral-7B-Instruct-v0.3",
+          "b": "zephyr-7b-beta"
+        },
+        {
+          "rank": 9,
+          "r": 0.0925569158330275,
+          "a": "deepseek-llm-7b-chat",
+          "b": "Mistral-Small-Instruct-2409"
+        },
+        {
+          "rank": 10,
+          "r": 0.0917168595580335,
+          "a": "Qwen2.5-0.5B-Instruct",
+          "b": "Qwen2.5-1.5B-Instruct"
+        }
+      ],
+      "sibling_pairs": [
+        {
+          "pair": [
+            "Phi-3-mini-4k-instruct",
+            "Phi-3.5-mini-instruct"
+          ],
+          "r": 0.40087833634640413,
+          "rank": 1
+        },
+        {
+          "pair": [
+            "Llama-3.1-8B-Instruct",
+            "Meta-Llama-3-8B-Instruct"
+          ],
+          "r": 0.2667804463223155,
+          "rank": 2
+        },
+        {
+          "pair": [
+            "Mistral-7B-Instruct-v0.2",
+            "Mistral-7B-Instruct-v0.3"
+          ],
+          "r": 0.20403488071733275,
+          "rank": 3
+        },
+        {
+          "pair": [
+            "Mistral-7B-Instruct-v0.2",
+            "zephyr-7b-beta"
+          ],
+          "r": 0.16846223853507666,
+          "rank": 5
+        },
+        {
+          "pair": [
+            "Mistral-7B-Instruct-v0.3",
+            "zephyr-7b-beta"
+          ],
+          "r": 0.1261625405431513,
+          "rank": 8
+        },
+        {
+          "pair": [
+            "Qwen2-7B-Instruct",
+            "Qwen2.5-7B-Instruct"
+          ],
+          "r": 0.03462836144512462,
+          "rank": 37
+        }
+      ]
+    }
+  },
+  "Deviations": [
+    "H1 truth = the paper's null simulator itself (v3_across.run_null via run_suite): the 2PL truth draws each question's (a_i, b_i) from its grid posterior (posterior draws, not the posterior mode) and every dataset has the 391 observed split columns, each conditioned on being split (the paper's column-split handling); the paper's 2PL/Rasch nulls have no unparsed mask, so neither has the truth. The hostile check (scratchpad/hostile3/size2pl.py) instead drew all 500 columns unconditioned and kept the split ones.",
+    "H1 calibrated p = fraction of truth datasets with p_T <= the real all-4 p_T of G1 (2000 draws); the truth p_T use 500 draws (grid 1/501). Reported for every (truth, null); the decision uses it only if FP > 0.075.",
+    "H2 percentile rank of a pair-removal p_T = 100 (#{ref < p} + #{ref = p} / 2) / 190; 'exceeds the 95th percentile' = p_T > np.percentile(reference p_T, 95). A pair subset counts as 'rejecting' only with a valid null.",
+    "Run detail (no effect on results): the part_run interleave listed the last 18 H1 jobs twice (812 jobs); seeds are deterministic, so each duplicate rewrote the same checkpoint; assemble reads the 600 unique H1 jobs.",
+    "H3 residual correlations use the MML 2PL of the paper's null (posterior-mean expected correctness), not the hostile reviewer's JML fit; ranks among the 276 pairs."
+  ]
+}

@@ -1,0 +1,1746 @@
+{
+  "meta": {
+    "specification": "# Specification I (written 2026-10-14 BEFORE any run of I; post hoc, from hostile round 4, attack4_hostile.md)\n\n## I1. Family-wise test without Llama-3.2-1B (23 models)\n- Scores: rotation 0 and all-4. Refit every null of the step-1 suite for that score on the 23-model data\n  (rotation 0: 2PL, Rasch, 3PL, letter-aware (rot-0 fit), KG-u, SP common tau if the code supports a refit;\n  all-4: 2PL, Rasch, 3PL, KG-l, KG-u, BA), 2000 new draws each, seed namespace I.\n- Report for each null: validity (single rule), per-rank percentiles of lambda_1..4, per-rank ranks beyond ability\n  (contiguous rule), G1 T and p_T, secondary p_S.\n- No decision rule: the paper reports the numbers as they are, under BOTH rules, for both scores.\n\n## I2. Joint removal (all-4)\n- Remove Llama-3.2-1B AND one model of each pair P1={Phi-3-mini, Phi-3.5-mini}, P2={Meta-Llama-3-8B, Llama-3.1-8B}\n  (4 subsets of 21 models). 2PL and Rasch, 1000 draws, validity + G1 p_T.\n- Also, from raw_v3_H_h2.json (no new run): the p_T of the reference removals that include Llama-3.2-1B (19 of 190),\n  and of the 15 reference removals whose two removed models have accuracy within the accuracy range of the pair\n  models (accuracy-matched control), with the range stated.\n\n## Output\nresults/analysis/v3_I_llama.json (+ raw_v3_I_*), S/I_report.md. Tests first: subset has exactly 23 / 21 models with\nnames matched exactly; same code path reproduces the full-data G1 p_T (0.026 / 0.041); new seed namespace.\n",
+    "seed_namespace": {
+      "SEED_I": 3602610143,
+      "streams": {
+        "i1": 1,
+        "i1_sp": 2,
+        "i2": 3
+      }
+    },
+    "n_draws": {
+      "I1": 2000,
+      "I2": 1000
+    },
+    "statistic": "v3_G_familywise.familywise (G1)",
+    "data_I1": "variant_data('no_llama1b'): 23 models, all 500 questions"
+  },
+  "I1_without_llama1b": {
+    "table": {
+      "rot0": {
+        "letter_post": {
+          "valid": true,
+          "pct_rank1to4": [
+            88.55,
+            72.2,
+            99.2,
+            99.5
+          ],
+          "ranks_above_p99": [
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 99.5,
+          "T_argmax_rank": 4,
+          "p_T": 0.014992503748125937,
+          "p_S": 0.0029985007496251873,
+          "G1_rejects_valid_and_p_T_lt_0p05": true,
+          "full_24_models_G1": {
+            "valid": true,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 1
+          },
+          "hostile_stored_1000_draw_p_T": 0.01
+        },
+        "3pl_post": {
+          "valid": true,
+          "pct_rank1to4": [
+            96.6,
+            48.2,
+            98.5,
+            99.9
+          ],
+          "ranks_above_p99": [
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 99.9,
+          "T_argmax_rank": 4,
+          "p_T": 0.0034982508745627187,
+          "p_S": 0.009495252373813094,
+          "G1_rejects_valid_and_p_T_lt_0p05": true,
+          "full_24_models_G1": {
+            "valid": true,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 1
+          },
+          "hostile_stored_1000_draw_p_T": 0.013
+        },
+        "2pl_post": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            100.0,
+            100.0,
+            100.0
+          ],
+          "ranks_above_p99": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 3,
+          "T_pct": 100.0,
+          "T_argmax_rank": 2,
+          "p_T": 0.001999000499750125,
+          "p_S": 0.0004997501249375312,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 3
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "fixed_margin": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            100.0,
+            100.0,
+            100.0
+          ],
+          "ranks_above_p99": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 3,
+          "T_pct": 100.0,
+          "T_argmax_rank": 2,
+          "p_T": 0.001999000499750125,
+          "p_S": 0.0004997501249375312,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 3
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "rasch_jml": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            100.0,
+            100.0,
+            100.0
+          ],
+          "ranks_above_p99": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 3,
+          "T_pct": 100.0,
+          "T_argmax_rank": 2,
+          "p_T": 0.001999000499750125,
+          "p_S": 0.0004997501249375312,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 3
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "ba_a4": {
+          "valid": false,
+          "pct_rank1to4": [
+            0.05,
+            55.55,
+            100.0,
+            100.0
+          ],
+          "ranks_above_p99": [
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 100.0,
+          "T_argmax_rank": 3,
+          "p_T": 0.001999000499750125,
+          "p_S": 0.0004997501249375312,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 1
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "kg_letter4": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            79.2,
+            99.65,
+            99.9
+          ],
+          "ranks_above_p99": [
+            1,
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 99.9,
+          "T_argmax_rank": 4,
+          "p_T": 0.0034982508745627187,
+          "p_S": 0.0009995002498750624,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 1
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "kg_uniform4": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            50.6,
+            99.15,
+            99.9
+          ],
+          "ranks_above_p99": [
+            1,
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 99.9,
+          "T_argmax_rank": 4,
+          "p_T": 0.0034982508745627187,
+          "p_S": 0.0029985007496251873,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": true,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 1
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "sp_common_tau": {
+          "valid": false,
+          "pct_rank1to4": [
+            99.5,
+            59.75,
+            96.75,
+            98.5
+          ],
+          "ranks_above_p99": [
+            1
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 98.5,
+          "T_argmax_rank": 4,
+          "p_T": 0.04397801099450275,
+          "p_S": 0.014992503748125937,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": true,
+            "p_T": 0.07946026986506746,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": null
+        }
+      },
+      "ge4": {
+        "3pl_post": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            8.65,
+            8.05,
+            14.45
+          ],
+          "ranks_above_p99": [
+            1
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 14.45,
+          "T_argmax_rank": 4,
+          "p_T": 0.9970014992503748,
+          "p_S": 0.9885057471264368,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.9920039980009995,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "2pl_post": {
+          "valid": true,
+          "pct_rank1to4": [
+            44.55,
+            77.9,
+            98.0,
+            96.1
+          ],
+          "ranks_above_p99": [],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 98.0,
+          "T_argmax_rank": 3,
+          "p_T": 0.059470264867566215,
+          "p_S": 0.022988505747126436,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": true,
+            "p_T": 0.026486756621689155,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": 0.065
+        },
+        "fixed_margin": {
+          "valid": false,
+          "pct_rank1to4": [
+            100.0,
+            99.05,
+            98.45,
+            93.35
+          ],
+          "ranks_above_p99": [
+            1,
+            2
+          ],
+          "ranks_beyond_ability_per_rank": 1,
+          "T_pct": 99.05,
+          "T_argmax_rank": 2,
+          "p_T": 0.02798600699650175,
+          "p_S": 0.0024987506246876563,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.011494252873563218,
+            "ranks_beyond_ability": 1
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "rasch_jml": {
+          "valid": true,
+          "pct_rank1to4": [
+            58.15,
+            90.6,
+            96.8,
+            94.4
+          ],
+          "ranks_above_p99": [],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 96.8,
+          "T_argmax_rank": 3,
+          "p_T": 0.08895552223888056,
+          "p_S": 0.01649175412293853,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": true,
+            "p_T": 0.04147926036981509,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": 0.116
+        },
+        "ba_a4": {
+          "valid": false,
+          "pct_rank1to4": [
+            0.0,
+            0.0,
+            85.1,
+            98.4
+          ],
+          "ranks_above_p99": [],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 98.4,
+          "T_argmax_rank": 4,
+          "p_T": 0.046476761619190406,
+          "p_S": 0.9430284857571214,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.020989505247376312,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "kg_letter4": {
+          "valid": false,
+          "pct_rank1to4": [
+            0.6,
+            0.05,
+            64.4,
+            94.7
+          ],
+          "ranks_above_p99": [],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 94.7,
+          "T_argmax_rank": 4,
+          "p_T": 0.15292353823088456,
+          "p_S": 0.9615192403798101,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.004997501249375313,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "kg_uniform4": {
+          "valid": true,
+          "pct_rank1to4": [
+            1.15,
+            0.0,
+            62.35,
+            94.75
+          ],
+          "ranks_above_p99": [],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 94.75,
+          "T_argmax_rank": 4,
+          "p_T": 0.15242378810594703,
+          "p_S": 0.9685157421289355,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.0034982508745627187,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": null
+        },
+        "sp_common_tau": {
+          "valid": false,
+          "pct_rank1to4": [
+            0.0,
+            30.6,
+            99.6,
+            99.8
+          ],
+          "ranks_above_p99": [
+            3,
+            4
+          ],
+          "ranks_beyond_ability_per_rank": 0,
+          "T_pct": 99.8,
+          "T_argmax_rank": 4,
+          "p_T": 0.005997001499250375,
+          "p_S": 0.010494752623688156,
+          "G1_rejects_valid_and_p_T_lt_0p05": false,
+          "full_24_models_G1": {
+            "valid": false,
+            "p_T": 0.001999000499750125,
+            "ranks_beyond_ability": 0
+          },
+          "hostile_stored_1000_draw_p_T": null
+        }
+      }
+    },
+    "stored_1000_draw_step1_reference": {
+      "rot0": {
+        "rasch_jml": {
+          "valid": false,
+          "p_T": 0.003996003996003996,
+          "p_S": 0.000999000999000999,
+          "T_pct": 100.0
+        },
+        "fixed_margin": {
+          "valid": false,
+          "p_T": 0.003996003996003996,
+          "p_S": 0.000999000999000999,
+          "T_pct": 100.0
+        },
+        "2pl_post": {
+          "valid": false,
+          "p_T": 0.003996003996003996,
+          "p_S": 0.000999000999000999,
+          "T_pct": 100.0
+        },
+        "3pl_post": {
+          "valid": true,
+          "p_T": 0.012987012987012988,
+          "p_S": 0.011988011988011988,
+          "T_pct": 99.6
+        },
+        "ba_a4": {
+          "valid": false,
+          "p_T": 0.003996003996003996,
+          "p_S": 0.000999000999000999,
+          "T_pct": 100.0
+        },
+        "kg_letter4": {
+          "valid": false,
+          "p_T": 0.003996003996003996,
+          "p_S": 0.000999000999000999,
+          "T_pct": 100.0
+        },
+        "kg_uniform4": {
+          "valid": false,
+          "p_T": 0.006993006993006993,
+          "p_S": 0.001998001998001998,
+          "T_pct": 99.8
+        },
+        "letter_post": {
+          "valid": true,
+          "p_T": 0.00999000999000999,
+          "p_S": 0.002997002997002997,
+          "T_pct": 99.7
+        }
+      },
+      "ge4": {
+        "rasch_jml": {
+          "valid": true,
+          "p_T": 0.11588411588411589,
+          "p_S": 0.011988011988011988,
+          "T_pct": 95.8
+        },
+        "fixed_margin": {
+          "valid": false,
+          "p_T": 0.03596403596403597,
+          "p_S": 0.004995004995004995,
+          "T_pct": 98.8
+        },
+        "2pl_post": {
+          "valid": true,
+          "p_T": 0.06493506493506493,
+          "p_S": 0.028971028971028972,
+          "T_pct": 97.6
+        },
+        "3pl_post": {
+          "valid": false,
+          "p_T": 0.999000999000999,
+          "p_S": 0.99000999000999,
+          "T_pct": 14.5
+        },
+        "ba_a4": {
+          "valid": false,
+          "p_T": 0.04595404595404595,
+          "p_S": 0.9470529470529471,
+          "T_pct": 98.5
+        },
+        "kg_letter4": {
+          "valid": false,
+          "p_T": 0.13786213786213786,
+          "p_S": 0.957042957042957,
+          "T_pct": 95.3
+        },
+        "kg_uniform4": {
+          "valid": true,
+          "p_T": 0.13986013986013987,
+          "p_S": 0.9790209790209791,
+          "T_pct": 95.2
+        }
+      }
+    }
+  },
+  "I2_joint_removal": {
+    "new_runs": [
+      {
+        "removed": [
+          "Llama-3.2-1B-Instruct",
+          "Phi-3-mini-4k-instruct",
+          "Meta-Llama-3-8B-Instruct"
+        ],
+        "M": 21,
+        "2pl_post": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            43.6,
+            56.1,
+            59.7,
+            75.6
+          ],
+          "T_pct": 75.6,
+          "T_argmax_rank": 4,
+          "p_T": 0.5224775224775224,
+          "k_T": 522,
+          "T_null_pct_quantiles_50_95_99": [
+            76.92692692692692,
+            98.3033033033033,
+            99.69969969969969
+          ],
+          "S": 72.39241047782201,
+          "p_S": 0.3436563436563437,
+          "S_null_p95_p99": [
+            75.61513838758083,
+            77.67045237403562
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.5644355644355644,
+            0.43956043956043955,
+            0.4035964035964036,
+            0.24475524475524477
+          ],
+          "rank_eigs_p99": [
+            87.42350466960694,
+            32.27576474613749,
+            25.7089117721845,
+            23.065301737842173
+          ],
+          "rank_eigs_p01": [
+            75.0261804733217,
+            24.204765815829383,
+            20.618716576303733,
+            19.343858028000074
+          ],
+          "observed_top_eigs": [
+            80.7136714154714,
+            28.03433991231808,
+            22.990644705199244,
+            21.36742586030468
+          ],
+          "reject_G1": false
+        },
+        "rasch_jml": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            51.9,
+            70.8,
+            51.6,
+            71.4
+          ],
+          "T_pct": 71.4,
+          "T_argmax_rank": 4,
+          "p_T": 0.5904095904095904,
+          "k_T": 590,
+          "T_null_pct_quantiles_50_95_99": [
+            76.97697697697697,
+            98.29829829829829,
+            99.69969969969969
+          ],
+          "S": 72.39241047782201,
+          "p_S": 0.31868131868131866,
+          "S_null_p95_p99": [
+            75.33491958432094,
+            76.89851565972685
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.48151848151848153,
+            0.29270729270729273,
+            0.48451548451548454,
+            0.2867132867132867
+          ],
+          "rank_eigs_p99": [
+            86.49314305714508,
+            31.432533599428634,
+            26.037617556364548,
+            22.85488845743921
+          ],
+          "rank_eigs_p01": [
+            75.02455438725478,
+            23.732025862170403,
+            20.778780804863473,
+            19.239338674691105
+          ],
+          "observed_top_eigs": [
+            80.7136714154714,
+            28.03433991231808,
+            22.990644705199244,
+            21.36742586030468
+          ],
+          "reject_G1": false
+        }
+      },
+      {
+        "removed": [
+          "Llama-3.2-1B-Instruct",
+          "Phi-3-mini-4k-instruct",
+          "Llama-3.1-8B-Instruct"
+        ],
+        "M": 21,
+        "2pl_post": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            47.0,
+            69.1,
+            59.1,
+            87.9
+          ],
+          "T_pct": 87.9,
+          "T_argmax_rank": 4,
+          "p_T": 0.2957042957042957,
+          "k_T": 295,
+          "T_null_pct_quantiles_50_95_99": [
+            77.22722722722722,
+            98.2032032032032,
+            99.69969969969969
+          ],
+          "S": 73.60326436694213,
+          "p_S": 0.22977022977022976,
+          "S_null_p95_p99": [
+            75.92919618791727,
+            77.99329278188075
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.5304695304695305,
+            0.3096903096903097,
+            0.4095904095904096,
+            0.12187812187812187
+          ],
+          "rank_eigs_p99": [
+            86.67839664696096,
+            31.706717996316566,
+            26.021256993759287,
+            22.821430095286814
+          ],
+          "rank_eigs_p01": [
+            74.69973979689028,
+            24.652000301545126,
+            20.76573990294938,
+            19.399188878390994
+          ],
+          "observed_top_eigs": [
+            80.69800401574815,
+            28.69571380684839,
+            23.10188014535559,
+            21.805670414738145
+          ],
+          "reject_G1": false
+        },
+        "rasch_jml": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            46.8,
+            80.2,
+            48.7,
+            84.1
+          ],
+          "T_pct": 84.1,
+          "T_argmax_rank": 4,
+          "p_T": 0.37962037962037964,
+          "k_T": 379,
+          "T_null_pct_quantiles_50_95_99": [
+            77.27727727727728,
+            98.3983983983984,
+            99.69969969969969
+          ],
+          "S": 73.60326436694213,
+          "p_S": 0.2097902097902098,
+          "S_null_p95_p99": [
+            75.84715253527642,
+            77.6311883360874
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.5324675324675324,
+            0.19880119880119881,
+            0.5134865134865135,
+            0.15984015984015984
+          ],
+          "rank_eigs_p99": [
+            86.15531709709789,
+            31.352094032536815,
+            26.571343661422574,
+            22.96039273411635
+          ],
+          "rank_eigs_p01": [
+            74.93051822557294,
+            24.13315483885213,
+            20.848955311739452,
+            19.370196099074082
+          ],
+          "observed_top_eigs": [
+            80.69800401574815,
+            28.69571380684839,
+            23.10188014535559,
+            21.805670414738145
+          ],
+          "reject_G1": false
+        }
+      },
+      {
+        "removed": [
+          "Llama-3.2-1B-Instruct",
+          "Phi-3.5-mini-instruct",
+          "Meta-Llama-3-8B-Instruct"
+        ],
+        "M": 21,
+        "2pl_post": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            40.6,
+            51.4,
+            54.3,
+            73.4
+          ],
+          "T_pct": 73.4,
+          "T_argmax_rank": 4,
+          "p_T": 0.5864135864135864,
+          "k_T": 586,
+          "T_null_pct_quantiles_50_95_99": [
+            78.32832832832833,
+            98.3033033033033,
+            99.69969969969969
+          ],
+          "S": 72.36751230345763,
+          "p_S": 0.3906093906093906,
+          "S_null_p95_p99": [
+            75.64806680309204,
+            77.32778632753143
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.5944055944055944,
+            0.4865134865134865,
+            0.45754245754245754,
+            0.26673326673326675
+          ],
+          "rank_eigs_p99": [
+            88.0722610730994,
+            31.57086725814111,
+            25.99878919914652,
+            22.882560275231857
+          ],
+          "rank_eigs_p01": [
+            76.43689990256429,
+            24.618783616734657,
+            20.58712653687201,
+            19.16893646842109
+          ],
+          "observed_top_eigs": [
+            81.30658575362824,
+            28.017505935885257,
+            23.030881806517367,
+            21.319124561055002
+          ],
+          "reject_G1": false
+        },
+        "rasch_jml": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            45.6,
+            72.1,
+            48.0,
+            66.8
+          ],
+          "T_pct": 72.1,
+          "T_argmax_rank": 2,
+          "p_T": 0.5964035964035964,
+          "k_T": 596,
+          "T_null_pct_quantiles_50_95_99": [
+            78.02802802802802,
+            98.1031031031031,
+            99.69969969969969
+          ],
+          "S": 72.36751230345763,
+          "p_S": 0.32367632367632365,
+          "S_null_p95_p99": [
+            75.24425522237271,
+            77.0419817345841
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.5444555444555444,
+            0.27972027972027974,
+            0.5204795204795205,
+            0.33266733266733267
+          ],
+          "rank_eigs_p99": [
+            86.46330011238771,
+            31.527079592443933,
+            25.956292023533717,
+            23.1348094012627
+          ],
+          "rank_eigs_p01": [
+            76.16077884245293,
+            23.84476396291717,
+            20.730033232738588,
+            19.465074744873743
+          ],
+          "observed_top_eigs": [
+            81.30658575362824,
+            28.017505935885257,
+            23.030881806517367,
+            21.319124561055002
+          ],
+          "reject_G1": false
+        }
+      },
+      {
+        "removed": [
+          "Llama-3.2-1B-Instruct",
+          "Phi-3.5-mini-instruct",
+          "Llama-3.1-8B-Instruct"
+        ],
+        "M": 21,
+        "2pl_post": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            38.9,
+            69.1,
+            59.7,
+            78.9
+          ],
+          "T_pct": 78.9,
+          "T_argmax_rank": 4,
+          "p_T": 0.4945054945054945,
+          "k_T": 494,
+          "T_null_pct_quantiles_50_95_99": [
+            78.42842842842842,
+            98.29829829829829,
+            99.69969969969969
+          ],
+          "S": 73.29631213340639,
+          "p_S": 0.23676323676323677,
+          "S_null_p95_p99": [
+            75.43206359546446,
+            77.21362028282842
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.6113886113886113,
+            0.3096903096903097,
+            0.4035964035964036,
+            0.21178821178821178
+          ],
+          "rank_eigs_p99": [
+            88.13946903487953,
+            31.695533051022508,
+            25.64396488884596,
+            22.73544162914841
+          ],
+          "rank_eigs_p01": [
+            76.33785685704046,
+            24.2248013188239,
+            20.773100187792345,
+            19.163059919661197
+          ],
+          "observed_top_eigs": [
+            81.30384450238108,
+            28.685333164895972,
+            23.152753844344353,
+            21.45822512416607
+          ],
+          "reject_G1": false
+        },
+        "rasch_jml": {
+          "n_draws": 1000,
+          "insufficient_draws": false,
+          "pct_rank1to4": [
+            46.1,
+            82.0,
+            50.9,
+            71.0
+          ],
+          "T_pct": 82.0,
+          "T_argmax_rank": 2,
+          "p_T": 0.4245754245754246,
+          "k_T": 424,
+          "T_null_pct_quantiles_50_95_99": [
+            77.67767767767768,
+            98.29829829829829,
+            99.69969969969969
+          ],
+          "S": 73.29631213340639,
+          "p_S": 0.1938061938061938,
+          "S_null_p95_p99": [
+            75.55082889433102,
+            77.72101899686496
+          ],
+          "valid": true,
+          "ranks_above_p99": [],
+          "ranks_beyond_ability": 0,
+          "mc_p_upper_rank1to4": [
+            0.5394605394605395,
+            0.18081918081918083,
+            0.4915084915084915,
+            0.2907092907092907
+          ],
+          "rank_eigs_p99": [
+            87.2112626405872,
+            31.343403742234276,
+            26.19511334254401,
+            23.17252693698425
+          ],
+          "rank_eigs_p01": [
+            76.37206695859541,
+            23.894305233145268,
+            20.958170940696167,
+            19.397075246302357
+          ],
+          "observed_top_eigs": [
+            81.30384450238108,
+            28.685333164895972,
+            23.152753844344353,
+            21.45822512416607
+          ],
+          "reject_G1": false
+        }
+      }
+    ],
+    "from_H2_no_new_run": {
+      "with_llama1b": {
+        "rows": [
+          {
+            "removed": [
+              "Mistral-7B-Instruct-v0.2",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.0989010989010989,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.0939060939060939,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "Mistral-Small-Instruct-2409",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.09290709290709291,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.12987012987012986,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "zephyr-7b-beta",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.07492507492507493,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.07992007992007992,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "Ministral-8B-Instruct-2410",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.061938061938061936,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.0939060939060939,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "Qwen2.5-3B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.059940059940059943,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.07292707292707293,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "Yi-1.5-6B-Chat",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.057942057942057944,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.07492507492507493,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "phi-2",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.05094905094905095,
+              "valid": true,
+              "reject": false
+            },
+            "rasch_jml": {
+              "p_T": 0.055944055944055944,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "gemma-2-2b-it",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.04995004995004995,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.08591408591408592,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "granite-3.1-8b-instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.04795204795204795,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.054945054945054944,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "OLMo-2-1124-7B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.04695304695304695,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.03596403596403597,
+              "valid": true,
+              "reject": true
+            }
+          },
+          {
+            "removed": [
+              "Qwen2.5-1.5B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.04495504495504495,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.03996003996003996,
+              "valid": true,
+              "reject": true
+            }
+          },
+          {
+            "removed": [
+              "Mistral-7B-Instruct-v0.3",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.04495504495504495,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.07992007992007992,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "gemma-2-9b-it",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.04095904095904096,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.024975024975024976,
+              "valid": true,
+              "reject": true
+            }
+          },
+          {
+            "removed": [
+              "Llama-3.2-1B-Instruct",
+              "Llama-3.2-3B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.029970029970029972,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.08091908091908091,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "SmolLM2-1.7B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.027972027972027972,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.05094905094905095,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "Qwen2.5-0.5B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.01898101898101898,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.028971028971028972,
+              "valid": true,
+              "reject": true
+            }
+          },
+          {
+            "removed": [
+              "Qwen2-7B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.01898101898101898,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.030969030969030968,
+              "valid": true,
+              "reject": true
+            }
+          },
+          {
+            "removed": [
+              "deepseek-llm-7b-chat",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.01898101898101898,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.052947052947052944,
+              "valid": true,
+              "reject": false
+            }
+          },
+          {
+            "removed": [
+              "Qwen2.5-7B-Instruct",
+              "Llama-3.2-1B-Instruct"
+            ],
+            "2pl_post": {
+              "p_T": 0.003996003996003996,
+              "valid": true,
+              "reject": true
+            },
+            "rasch_jml": {
+              "p_T": 0.003996003996003996,
+              "valid": true,
+              "reject": true
+            }
+          }
+        ],
+        "summary": {
+          "n": 19,
+          "2pl_post": {
+            "n_reject": 12,
+            "p_T_min_median_max": [
+              0.003996003996003996,
+              0.04695304695304695,
+              0.0989010989010989
+            ]
+          },
+          "rasch_jml": {
+            "n_reject": 6,
+            "p_T_min_median_max": [
+              0.003996003996003996,
+              0.055944055944055944,
+              0.12987012987012986
+            ]
+          }
+        }
+      },
+      "pair_removals": [
+        {
+          "removed": [
+            "Phi-3-mini-4k-instruct",
+            "Meta-Llama-3-8B-Instruct"
+          ],
+          "2pl_post": {
+            "p_T": 0.5114885114885115,
+            "valid": true,
+            "reject": false
+          },
+          "rasch_jml": {
+            "p_T": 0.38161838161838163,
+            "valid": true,
+            "reject": false
+          }
+        },
+        {
+          "removed": [
+            "Phi-3-mini-4k-instruct",
+            "Llama-3.1-8B-Instruct"
+          ],
+          "2pl_post": {
+            "p_T": 0.21878121878121878,
+            "valid": true,
+            "reject": false
+          },
+          "rasch_jml": {
+            "p_T": 0.3516483516483517,
+            "valid": true,
+            "reject": false
+          }
+        },
+        {
+          "removed": [
+            "Phi-3.5-mini-instruct",
+            "Meta-Llama-3-8B-Instruct"
+          ],
+          "2pl_post": {
+            "p_T": 0.6853146853146853,
+            "valid": true,
+            "reject": false
+          },
+          "rasch_jml": {
+            "p_T": 0.35264735264735264,
+            "valid": true,
+            "reject": false
+          }
+        },
+        {
+          "removed": [
+            "Phi-3.5-mini-instruct",
+            "Llama-3.1-8B-Instruct"
+          ],
+          "2pl_post": {
+            "p_T": 0.4985014985014985,
+            "valid": true,
+            "reject": false
+          },
+          "rasch_jml": {
+            "p_T": 0.32167832167832167,
+            "valid": true,
+            "reject": false
+          }
+        }
+      ],
+      "accuracy_matched_rot0_accuracy": {
+        "pair_model_accuracy": {
+          "Phi-3-mini-4k-instruct": 0.684,
+          "Phi-3.5-mini-instruct": 0.664,
+          "Meta-Llama-3-8B-Instruct": 0.644,
+          "Llama-3.1-8B-Instruct": 0.684
+        },
+        "range_as_specified": [
+          0.644,
+          0.684
+        ],
+        "as_specified": {
+          "rows": [],
+          "summary": {
+            "n": 0,
+            "2pl_post": {
+              "n_reject": 0,
+              "p_T_min_median_max": null
+            },
+            "rasch_jml": {
+              "n_reject": 0,
+              "p_T_min_median_max": null
+            }
+          }
+        },
+        "hostile_band": {
+          "band": [
+            0.62,
+            0.71
+          ],
+          "rows": [
+            {
+              "removed": [
+                "Qwen2.5-3B-Instruct",
+                "Mistral-Small-Instruct-2409"
+              ],
+              "2pl_post": {
+                "p_T": 0.05194805194805195,
+                "valid": true,
+                "reject": false
+              },
+              "rasch_jml": {
+                "p_T": 0.0989010989010989,
+                "valid": true,
+                "reject": false
+              }
+            },
+            {
+              "removed": [
+                "Yi-1.5-6B-Chat",
+                "Mistral-Small-Instruct-2409"
+              ],
+              "2pl_post": {
+                "p_T": 0.03796203796203796,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.11288711288711288,
+                "valid": true,
+                "reject": false
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-3B-Instruct",
+                "Yi-1.5-6B-Chat"
+              ],
+              "2pl_post": {
+                "p_T": 0.03496503496503497,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.026973026973026972,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "granite-3.1-8b-instruct",
+                "Mistral-Small-Instruct-2409"
+              ],
+              "2pl_post": {
+                "p_T": 0.027972027972027972,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.061938061938061936,
+                "valid": true,
+                "reject": false
+              }
+            },
+            {
+              "removed": [
+                "Qwen2-7B-Instruct",
+                "Qwen2.5-7B-Instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.025974025974025976,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.024975024975024976,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Yi-1.5-6B-Chat",
+                "granite-3.1-8b-instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.023976023976023976,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.053946053946053944,
+                "valid": true,
+                "reject": false
+              }
+            },
+            {
+              "removed": [
+                "Qwen2-7B-Instruct",
+                "Mistral-Small-Instruct-2409"
+              ],
+              "2pl_post": {
+                "p_T": 0.02097902097902098,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.04795204795204795,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-3B-Instruct",
+                "granite-3.1-8b-instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.012987012987012988,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.00999000999000999,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2-7B-Instruct",
+                "Yi-1.5-6B-Chat"
+              ],
+              "2pl_post": {
+                "p_T": 0.012987012987012988,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.006993006993006993,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2-7B-Instruct",
+                "granite-3.1-8b-instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.00999000999000999,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.008991008991008992,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-7B-Instruct",
+                "Mistral-Small-Instruct-2409"
+              ],
+              "2pl_post": {
+                "p_T": 0.008991008991008992,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.01898101898101898,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-7B-Instruct",
+                "granite-3.1-8b-instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.006993006993006993,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.003996003996003996,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-3B-Instruct",
+                "Qwen2-7B-Instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.003996003996003996,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.003996003996003996,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-3B-Instruct",
+                "Qwen2.5-7B-Instruct"
+              ],
+              "2pl_post": {
+                "p_T": 0.003996003996003996,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.00999000999000999,
+                "valid": true,
+                "reject": true
+              }
+            },
+            {
+              "removed": [
+                "Qwen2.5-7B-Instruct",
+                "Yi-1.5-6B-Chat"
+              ],
+              "2pl_post": {
+                "p_T": 0.003996003996003996,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.012987012987012988,
+                "valid": true,
+                "reject": true
+              }
+            }
+          ],
+          "summary": {
+            "n": 15,
+            "2pl_post": {
+              "n_reject": 14,
+              "p_T_min_median_max": [
+                0.003996003996003996,
+                0.012987012987012988,
+                0.05194805194805195
+              ]
+            },
+            "rasch_jml": {
+              "n_reject": 11,
+              "p_T_min_median_max": [
+                0.003996003996003996,
+                0.01898101898101898,
+                0.11288711288711288
+              ]
+            }
+          },
+          "removed_accuracy_range": [
+            0.628,
+            0.71
+          ]
+        }
+      },
+      "accuracy_matched_all4_accuracy": {
+        "pair_model_accuracy": {
+          "Phi-3-mini-4k-instruct": 0.526,
+          "Phi-3.5-mini-instruct": 0.506,
+          "Meta-Llama-3-8B-Instruct": 0.472,
+          "Llama-3.1-8B-Instruct": 0.474
+        },
+        "range_as_specified": [
+          0.472,
+          0.526
+        ],
+        "as_specified": {
+          "rows": [
+            {
+              "removed": [
+                "Qwen2-7B-Instruct",
+                "Mistral-Small-Instruct-2409"
+              ],
+              "2pl_post": {
+                "p_T": 0.02097902097902098,
+                "valid": true,
+                "reject": true
+              },
+              "rasch_jml": {
+                "p_T": 0.04795204795204795,
+                "valid": true,
+                "reject": true
+              }
+            }
+          ],
+          "summary": {
+            "n": 1,
+            "2pl_post": {
+              "n_reject": 1,
+              "p_T_min_median_max": [
+                0.02097902097902098,
+                0.02097902097902098,
+                0.02097902097902098
+              ]
+            },
+            "rasch_jml": {
+              "n_reject": 1,
+              "p_T_min_median_max": [
+                0.04795204795204795,
+                0.04795204795204795,
+                0.04795204795204795
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "Deviations": [
+    "I1 runs the whole step-1 suite of each score (v3_softpref.family_nulls): rotation 0 adds curveball, BA and KG-l to the listed nulls, all-4 adds curveball; nothing listed is left out. Each null is one job; its draws equal those of one run_suite call per score (child stream by the null's ALL_NULLS index).",
+    "I1 SP null: 'refit' = the stored 23-model base fit (raw_v3_F_base_fits.npz, no_llama1b; the same fit_sp call as F, which F checked equal to its sp fit), 2000 new draws conditional on the observed unparsed mask.",
+    "I2 accuracy-matched control: 'within the accuracy range of the pair models' (rotation-0 accuracy, as item07; also all-4 accuracy) is reported as specified; the specification's count of 15 comes from the hostile round-4 band 0.62-0.71 (acc_match.py), which is reported too. The counts differ (see the output)."
+  ]
+}

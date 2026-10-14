@@ -1,0 +1,16 @@
+{
+ "loo_rot0_lambda2_min_max_without_llama_3_2_1b_removal": [
+  47.14216958132464,
+  52.43558675390514
+ ],
+ "rot0_lambda2_all_models": 49.89282754557817,
+ "mean_over_rotations_rank1_obs_over_p99": {
+  "kg_letter4": 1.2185317094778316,
+  "kg_uniform4": 1.1844130956163528
+ },
+ "loo23_rot0_rank4_obs_minus_p99": {
+  "3pl_post": 0.3544286717902274,
+  "letter_post": 0.5664233060918029
+ },
+ "llama_3_2_1b_pi_A": 0.9041
+}

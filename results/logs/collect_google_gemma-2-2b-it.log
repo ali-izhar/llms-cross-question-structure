@@ -1,0 +1,6 @@
+2026-10-10 07:26:51 google/gemma-2-2b-it: loading vLLM engine {'model': 'google/gemma-2-2b-it', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.25, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
+2026-10-10 07:29:31 engine ready in 160s; prompt_mode=chat_template; max_model_len=3072
+2026-10-10 07:29:31 [mmlu_greedy_google_gemma-2-2b-it] start K=1 N=500 T=0.0 block=1 passes
+2026-10-10 07:29:35 [mmlu_greedy_google_gemma-2-2b-it] passes 0-0 done, block acc=0.568, elapsed=4s
+2026-10-10 07:29:35 [mmlu_greedy_google_gemma-2-2b-it] DONE acc=0.5680 unparseable=0.0000 N_b=None runtime=4s
+2026-10-10 07:29:35 google/gemma-2-2b-it: finished; failed runs: []

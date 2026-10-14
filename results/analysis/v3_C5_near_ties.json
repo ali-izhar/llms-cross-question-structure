@@ -1,0 +1,2149 @@
+{
+  "definition": "near tie: top-two first-token letter logprob gap < 0.13 nats in replicate A or in B (src/r2_analysis.py::gaps); the logprobs lie on a ~0.125-nat grid",
+  "n_near_tie_cells_by_rotation": [
+    595,
+    565,
+    641,
+    610
+  ],
+  "frac_near_tie_cells": 0.050229166666666665,
+  "n_questions_with_a_rot0_near_tie": 297,
+  "majority_rule": "near-tie cell set to the majority correctness over its 4 rotations; 2-2 ties unchanged",
+  "majority_n_cells_changed": 354,
+  "majority_n_cells_changed_rot0": 86,
+  "letter_preference": "pi fixed at the replicate-A estimate (a model property); the IRT part is refitted",
+  "seed": 20261013,
+  "n_draws_per_null": 1000,
+  "refitted_variants": {
+    "rot0_majority": {
+      "spectrum": {
+        "M": 24,
+        "n_cols": 458,
+        "lambda_plus": 28.820228281387436,
+        "lambda_plus_buffered": 30.26123969545681,
+        "top_eigs": [
+          86.29566462545611,
+          48.61083290240285,
+          29.728117285132456,
+          26.94190366588656,
+          25.58306570233452,
+          21.4413490554604
+        ],
+        "lambda2_over_lambda1": 0.5633056204316349,
+        "mp_count_strict": 3,
+        "mp_count_buffered": 2
+      },
+      "suite": {
+        "observed": {
+          "n_cols": 458,
+          "lambda_plus": 28.820228281387436,
+          "top_eigs": [
+            86.29566462545611,
+            48.61083290240285,
+            29.728117285132456,
+            26.94190366588656,
+            25.58306570233452,
+            21.4413490554604
+          ],
+          "lambda2_over_lambda1": 0.5633056204316349,
+          "count_above_1p05_edge": 2
+        },
+        "nulls": {
+          "2pl_post": {
+            "notes": "project 2PL: theta_m fixed effects, (log a_i, b_i) normal random effects integrated (marginal ML over questions, 41 x 401 grid); question-matched posterior draws",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 458.0,
+              "min": 458,
+              "max": 458
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 626,
+                "2": 374
+              },
+              "mean": 1.374,
+              "max": 2,
+              "frac_ge_observed": 0.374
+            },
+            "rank_eigs_mean": [
+              71.4915045806517,
+              29.75210020273453,
+              25.888238701020605,
+              23.83730855916702
+            ],
+            "rank_eigs_p95": [
+              76.18144307061293,
+              32.51149582421058,
+              27.945671087350338,
+              25.246459690736557
+            ],
+            "rank_eigs_p99": [
+              79.05144920265644,
+              33.81544899572694,
+              28.646730970784386,
+              26.09729714282854
+            ],
+            "rank_eig_over_edge_p99": [
+              2.7429154422662614,
+              1.1733234263645822,
+              0.9939800160876902,
+              0.9055201398138332
+            ],
+            "observed_minus_p99": [
+              7.24421542279967,
+              14.795383906675909,
+              1.0813863143480695,
+              0.8446065230580189
+            ],
+            "mc_pvalue_per_rank": [
+              0.000999000999000999,
+              0.000999000999000999,
+              0.000999000999000999,
+              0.001998001998001998
+            ],
+            "n_observed_ranks_1to4_above_p99": 4,
+            "observed_ranks_above_p99": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "contiguous_ranks_above_p99": 4,
+            "n_observed_ranks_above_p99_edge_normalized": 4,
+            "lambda2_over_lambda1": {
+              "observed": 0.5633056204316349,
+              "null_mean": 0.4167147988973476,
+              "null_p99": 0.4800421969998019,
+              "null_max": 0.5091197535723455,
+              "mc_p_upper": 0.000999000999000999,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              79.05144920265644,
+              33.81544899572694,
+              28.646730970784386,
+              26.09729714282854,
+              23.91560554157714,
+              22.853860352960574
+            ]
+          },
+          "3pl_post": {
+            "notes": "3PL with c = 0.25 (P = 0.25 + 0.75 sigma(a_i (theta_m - b_i))), project MML; posterior draws",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 458.0,
+              "min": 458,
+              "max": 458
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 554,
+                "3": 445,
+                "4": 1
+              },
+              "mean": 2.447,
+              "max": 4,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              83.37159789886294,
+              37.77379890231396,
+              30.077129995066173,
+              25.87477916930179
+            ],
+            "rank_eigs_p95": [
+              88.3534187081195,
+              41.37034041212604,
+              32.83093359365916,
+              27.868405728617144
+            ],
+            "rank_eigs_p99": [
+              90.14728238228379,
+              42.843623533392496,
+              34.25808320356503,
+              28.774684768109957
+            ],
+            "rank_eig_over_edge_p99": [
+              3.127917013776825,
+              1.4865816854428455,
+              1.1886818823600174,
+              0.9984197379412539
+            ],
+            "observed_minus_p99": [
+              -3.851617756827679,
+              5.767209369010352,
+              -4.529965918432573,
+              -1.8327811022233966
+            ],
+            "mc_pvalue_per_rank": [
+              0.18081918081918083,
+              0.000999000999000999,
+              0.5604395604395604,
+              0.18081918081918083
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              2
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.5633056204316349,
+              "null_mean": 0.45387976030831956,
+              "null_p99": 0.533612488470505,
+              "null_max": 0.5478198298782275,
+              "mc_p_upper": 0.000999000999000999,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              90.14728238228379,
+              42.843623533392496,
+              34.25808320356503,
+              28.774684768109957,
+              25.504990599354095,
+              23.144021408443066
+            ]
+          },
+          "letter_post": {
+            "notes": "letter-aware know-or-guess: P = pi_m(g) + (1 - pi_m(g)) sigma(a_i (theta_m - b_i)), g = shown gold letter, pi_m = model m's letter preference (4-rotation moment estimate); project MML",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 458.0,
+              "min": 458,
+              "max": 458
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 770,
+                "3": 230
+              },
+              "mean": 2.23,
+              "max": 3,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              82.28149885187612,
+              42.59231334798192,
+              29.252260784931526,
+              25.077199833351813
+            ],
+            "rank_eigs_p95": [
+              86.77773436522828,
+              45.910015604999124,
+              31.592546911885616,
+              26.88126913408074
+            ],
+            "rank_eigs_p99": [
+              88.07441524006494,
+              47.463206002064396,
+              32.72165174106377,
+              27.69674246547643
+            ],
+            "rank_eig_over_edge_p99": [
+              3.055992977576267,
+              1.6468712717559177,
+              1.1353710116930593,
+              0.9610174560401877
+            ],
+            "observed_minus_p99": [
+              -1.7787506146088248,
+              1.1476269003384516,
+              -2.993534455931318,
+              -0.7548387995898693
+            ],
+            "mc_pvalue_per_rank": [
+              0.06593406593406594,
+              0.003996003996003996,
+              0.37362637362637363,
+              0.04795204795204795
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              2
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.5633056204316349,
+              "null_mean": 0.5181592062597197,
+              "null_p99": 0.5936168960505384,
+              "null_max": 0.6175409109061716,
+              "mc_p_upper": 0.061938061938061936,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              88.07441524006494,
+              47.463206002064396,
+              32.72165174106377,
+              27.69674246547643,
+              24.902320860112255,
+              22.61145624058258
+            ]
+          },
+          "kg_letter4": {
+            "notes": "know-or-guess fitted on all 4 rotations (composite MML with pi_m letter preference); know once per cell, guess per rotation from pi_m; derived matrix",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 458.0,
+              "min": 458,
+              "max": 458
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 877,
+                "3": 123
+              },
+              "mean": 2.123,
+              "max": 3,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              79.19809235732349,
+              42.62034861611738,
+              28.647908429832594,
+              24.393185147285944
+            ],
+            "rank_eigs_p95": [
+              83.36149660646356,
+              45.65634974960172,
+              30.978633718625357,
+              26.16257140801115
+            ],
+            "rank_eigs_p99": [
+              84.93847285517818,
+              46.6708110698796,
+              32.11443102035832,
+              27.068630963848594
+            ],
+            "rank_eig_over_edge_p99": [
+              2.947182514513003,
+              1.619376870099962,
+              1.1143017573215521,
+              0.939223336455317
+            ],
+            "observed_minus_p99": [
+              1.357191770277936,
+              1.9400218325232501,
+              -2.386313735225862,
+              -0.1267272979620344
+            ],
+            "mc_pvalue_per_rank": [
+              0.002997002997002997,
+              0.000999000999000999,
+              0.22277722277722278,
+              0.012987012987012988
+            ],
+            "n_observed_ranks_1to4_above_p99": 2,
+            "observed_ranks_above_p99": [
+              1,
+              2
+            ],
+            "contiguous_ranks_above_p99": 2,
+            "n_observed_ranks_above_p99_edge_normalized": 2,
+            "lambda2_over_lambda1": {
+              "observed": 0.5633056204316349,
+              "null_mean": 0.5386260534303733,
+              "null_p99": 0.6016029648938718,
+              "null_max": 0.6349788421315881,
+              "mc_p_upper": 0.18581418581418582,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              84.93847285517818,
+              46.6708110698796,
+              32.11443102035832,
+              27.068630963848594,
+              24.395572610003008,
+              22.69224827498168
+            ]
+          }
+        },
+        "fits": {
+          "2pl": {
+            "loglik": -5800.272784320576,
+            "converged": true,
+            "hyper": [
+              -0.2615523965115793,
+              0.6990350258162812,
+              -0.5730164455503775,
+              2.737570902501585
+            ],
+            "corr_theta_vs_accuracy": 0.997504202983309
+          },
+          "3pl_post": {
+            "loglik": -5744.977510841783,
+            "converged": true,
+            "hyper": [
+              0.6839582900915275,
+              0.7249470709640972,
+              0.3040201100116169,
+              2.4022057903466667
+            ],
+            "corr_theta_vs_accuracy": 0.9855041789884167
+          },
+          "letter_post": {
+            "loglik": -5417.699855039842,
+            "converged": true,
+            "hyper": [
+              0.6298234429332429,
+              0.6658111288060505,
+              0.3030504608130706,
+              2.451984841194359
+            ],
+            "corr_theta_vs_accuracy": 0.9894849216198058
+          }
+        },
+        "seed": 20261013,
+        "n_draws_per_null": 1000,
+        "ranks_above_p99_by_null": {
+          "2pl_post": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "3pl_post": [
+            2
+          ],
+          "letter_post": [
+            2
+          ],
+          "kg_letter4": [
+            1,
+            2
+          ]
+        },
+        "ranks_beyond_ability": {
+          "2pl_post": 3,
+          "3pl_post": 1,
+          "letter_post": 1,
+          "kg_letter4": 1
+        }
+      }
+    },
+    "rot0_drop_questions_with_rot0_near_tie": {
+      "spectrum": {
+        "M": 24,
+        "n_cols": 170,
+        "lambda_plus": 13.406239807557101,
+        "lambda_plus_buffered": 14.076551797934957,
+        "top_eigs": [
+          43.25670066678951,
+          23.780350007593107,
+          14.291151490739646,
+          11.322546545025105,
+          9.369656638095876,
+          8.190009615916175
+        ],
+        "lambda2_over_lambda1": 0.5497495102729958,
+        "mp_count_strict": 3,
+        "mp_count_buffered": 3
+      },
+      "suite": {
+        "observed": {
+          "n_cols": 170,
+          "lambda_plus": 13.406239807557101,
+          "top_eigs": [
+            43.25670066678951,
+            23.780350007593107,
+            14.291151490739646,
+            11.322546545025105,
+            9.369656638095876,
+            8.190009615916175
+          ],
+          "lambda2_over_lambda1": 0.5497495102729958,
+          "count_above_1p05_edge": 3
+        },
+        "nulls": {
+          "2pl_post": {
+            "notes": "project 2PL: theta_m fixed effects, (log a_i, b_i) normal random effects integrated (marginal ML over questions, 41 x 401 grid); question-matched posterior draws",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 170.0,
+              "min": 170,
+              "max": 170
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 135,
+                "2": 855,
+                "3": 10
+              },
+              "mean": 1.875,
+              "max": 3,
+              "frac_ge_observed": 0.01
+            },
+            "rank_eigs_mean": [
+              39.875831066056755,
+              15.548199658937124,
+              11.776741929405661,
+              10.01678806107291
+            ],
+            "rank_eigs_p95": [
+              44.289625949962875,
+              17.91161916113977,
+              13.379577502089319,
+              11.124590234932679
+            ],
+            "rank_eigs_p99": [
+              46.02444385390334,
+              18.865151440395543,
+              14.074638580360523,
+              11.634617701179097
+            ],
+            "rank_eig_over_edge_p99": [
+              3.4330613590814143,
+              1.4071918532862029,
+              1.0498572890234772,
+              0.8678509312223894
+            ],
+            "observed_minus_p99": [
+              -2.7677431871138296,
+              4.915198567197564,
+              0.216512910379123,
+              -0.3120711561539924
+            ],
+            "mc_pvalue_per_rank": [
+              0.1088911088911089,
+              0.000999000999000999,
+              0.008991008991008992,
+              0.024975024975024976
+            ],
+            "n_observed_ranks_1to4_above_p99": 2,
+            "observed_ranks_above_p99": [
+              2,
+              3
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 2,
+            "lambda2_over_lambda1": {
+              "observed": 0.5497495102729958,
+              "null_mean": 0.39142889262402025,
+              "null_p99": 0.5027510283564182,
+              "null_max": 0.5259134062666263,
+              "mc_p_upper": 0.000999000999000999,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              46.02444385390334,
+              18.865151440395543,
+              14.074638580360523,
+              11.634617701179097,
+              10.271176074383087,
+              9.172939980616656
+            ]
+          },
+          "3pl_post": {
+            "notes": "3PL with c = 0.25 (P = 0.25 + 0.75 sigma(a_i (theta_m - b_i))), project MML; posterior draws",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 170.0,
+              "min": 170,
+              "max": 170
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 819,
+                "3": 181
+              },
+              "mean": 2.181,
+              "max": 3,
+              "frac_ge_observed": 0.181
+            },
+            "rank_eigs_mean": [
+              46.232869351578444,
+              19.136404295831394,
+              13.057590648765514,
+              10.25697192948935
+            ],
+            "rank_eigs_p95": [
+              50.51027270863975,
+              21.577843130799916,
+              14.912732695572508,
+              11.597596620012562
+            ],
+            "rank_eigs_p99": [
+              52.6061359737083,
+              22.758140720777625,
+              15.693923731815625,
+              12.223267120777116
+            ],
+            "rank_eig_over_edge_p99": [
+              3.9240038018754673,
+              1.6975782208482393,
+              1.1706432196572343,
+              0.9117595460202687
+            ],
+            "observed_minus_p99": [
+              -9.349435306918785,
+              1.0222092868154817,
+              -1.4027722410759793,
+              -0.9007205757520111
+            ],
+            "mc_pvalue_per_rank": [
+              0.8701298701298701,
+              0.003996003996003996,
+              0.13486513486513488,
+              0.0939060939060939
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              2
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.5497495102729958,
+              "null_mean": 0.4155347672803311,
+              "null_p99": 0.5299223245679132,
+              "null_max": 0.5807781957769347,
+              "mc_p_upper": 0.007992007992007992,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              52.6061359737083,
+              22.758140720777625,
+              15.693923731815625,
+              12.223267120777116,
+              10.261335696684311,
+              8.802935219748312
+            ]
+          },
+          "letter_post": {
+            "notes": "letter-aware know-or-guess: P = pi_m(g) + (1 - pi_m(g)) sigma(a_i (theta_m - b_i)), g = shown gold letter, pi_m = model m's letter preference (4-rotation moment estimate); project MML",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 170.0,
+              "min": 170,
+              "max": 170
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 937,
+                "3": 63
+              },
+              "mean": 2.063,
+              "max": 3,
+              "frac_ge_observed": 0.063
+            },
+            "rank_eigs_mean": [
+              45.80958573834256,
+              20.334985252496466,
+              12.409401214512553,
+              10.281670538806775
+            ],
+            "rank_eigs_p95": [
+              49.83669695509872,
+              22.91996817907254,
+              14.219621478539551,
+              11.604961454637518
+            ],
+            "rank_eigs_p99": [
+              51.249800991988984,
+              23.86314366437507,
+              15.359754157847956,
+              12.217010879680245
+            ],
+            "rank_eig_over_edge_p99": [
+              3.822831884828694,
+              1.7800027455068652,
+              1.1457167989184902,
+              0.9112928796629098
+            ],
+            "observed_minus_p99": [
+              -7.993100325199471,
+              -0.08279365678196271,
+              -1.0686026671083102,
+              -0.8944643346551402
+            ],
+            "mc_pvalue_per_rank": [
+              0.8611388611388612,
+              0.012987012987012988,
+              0.04295704295704296,
+              0.0979020979020979
+            ],
+            "n_observed_ranks_1to4_above_p99": 0,
+            "observed_ranks_above_p99": [],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 0,
+            "lambda2_over_lambda1": {
+              "observed": 0.5497495102729958,
+              "null_mean": 0.4450458681440494,
+              "null_p99": 0.5453731960571642,
+              "null_max": 0.6208503538371646,
+              "mc_p_upper": 0.00999000999000999,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              51.249800991988984,
+              23.86314366437507,
+              15.359754157847956,
+              12.217010879680245,
+              10.163652629584385,
+              8.752765280864638
+            ]
+          },
+          "kg_letter4": {
+            "notes": "know-or-guess fitted on all 4 rotations (composite MML with pi_m letter preference); know once per cell, guess per rotation from pi_m; derived matrix",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 170.0,
+              "min": 170,
+              "max": 170
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 984,
+                "3": 16
+              },
+              "mean": 2.016,
+              "max": 3,
+              "frac_ge_observed": 0.016
+            },
+            "rank_eigs_mean": [
+              45.991125823877894,
+              20.081664870604666,
+              11.875629003630214,
+              9.886660078979654
+            ],
+            "rank_eigs_p95": [
+              49.51909006302372,
+              22.15250619130651,
+              13.608690797666746,
+              11.129352843141763
+            ],
+            "rank_eigs_p99": [
+              51.130948225604584,
+              23.159866643643866,
+              14.17825844944573,
+              11.529854946323217
+            ],
+            "rank_eig_over_edge_p99": [
+              3.813966403672867,
+              1.7275438136343528,
+              1.0575865159038436,
+              0.8600364540565533
+            ],
+            "observed_minus_p99": [
+              -7.874247558815071,
+              0.6204833639492406,
+              0.11289304129391553,
+              -0.20730840129811234
+            ],
+            "mc_pvalue_per_rank": [
+              0.8931068931068931,
+              0.002997002997002997,
+              0.007992007992007992,
+              0.027972027972027972
+            ],
+            "n_observed_ranks_1to4_above_p99": 2,
+            "observed_ranks_above_p99": [
+              2,
+              3
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 2,
+            "lambda2_over_lambda1": {
+              "observed": 0.5497495102729958,
+              "null_mean": 0.43759631013486583,
+              "null_p99": 0.5277789478881287,
+              "null_max": 0.5449277104119785,
+              "mc_p_upper": 0.000999000999000999,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              51.130948225604584,
+              23.159866643643866,
+              14.17825844944573,
+              11.529854946323217,
+              9.962908389436127,
+              8.678088310246181
+            ]
+          }
+        },
+        "fits": {
+          "2pl": {
+            "loglik": -1821.163148781839,
+            "converged": true,
+            "hyper": [
+              -0.022325241091820387,
+              0.6936189085697474,
+              -1.889907864156369,
+              2.729238164631802
+            ],
+            "corr_theta_vs_accuracy": 0.9860289424091496
+          },
+          "3pl_post": {
+            "loglik": -1806.4049795427331,
+            "converged": true,
+            "hyper": [
+              0.7456073670443693,
+              0.8650386989355461,
+              -1.004338974037226,
+              2.3164469079081367
+            ],
+            "corr_theta_vs_accuracy": 0.9914966243129428
+          },
+          "letter_post": {
+            "loglik": -1712.9485262705361,
+            "converged": true,
+            "hyper": [
+              0.6047250733164371,
+              0.7336554365993987,
+              -1.0539991499797507,
+              2.4177115569375487
+            ],
+            "corr_theta_vs_accuracy": 0.9900942359242338
+          }
+        },
+        "seed": 20261013,
+        "n_draws_per_null": 1000,
+        "ranks_above_p99_by_null": {
+          "2pl_post": [
+            2,
+            3
+          ],
+          "3pl_post": [
+            2
+          ],
+          "letter_post": [],
+          "kg_letter4": [
+            2,
+            3
+          ]
+        },
+        "ranks_beyond_ability": {
+          "2pl_post": 2,
+          "3pl_post": 1,
+          "letter_post": 0,
+          "kg_letter4": 2
+        }
+      }
+    },
+    "all4_majority": {
+      "spectrum": {
+        "M": 24,
+        "n_cols": 407,
+        "lambda_plus": 26.194432733737223,
+        "lambda_plus_buffered": 27.504154370424086,
+        "top_eigs": [
+          88.0565934865289,
+          29.024529518418383,
+          23.171232016795532,
+          21.905613399272173,
+          19.891305679589088,
+          18.62789079632652
+        ],
+        "lambda2_over_lambda1": 0.32961222288094333,
+        "mp_count_strict": 2,
+        "mp_count_buffered": 2
+      },
+      "suite": {
+        "observed": {
+          "n_cols": 407,
+          "lambda_plus": 26.194432733737223,
+          "top_eigs": [
+            88.0565934865289,
+            29.024529518418383,
+            23.171232016795532,
+            21.905613399272173,
+            19.891305679589088,
+            18.62789079632652
+          ],
+          "lambda2_over_lambda1": 0.32961222288094333,
+          "count_above_1p05_edge": 2
+        },
+        "nulls": {
+          "rasch_jml": {
+            "notes": "Rasch, joint ML (row and column sums matched); conditional on split",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 407.0,
+              "min": 407,
+              "max": 407
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 787,
+                "2": 212,
+                "3": 1
+              },
+              "mean": 1.214,
+              "max": 3,
+              "frac_ge_observed": 0.213
+            },
+            "rank_eigs_mean": [
+              86.53248713028168,
+              26.339425427337776,
+              22.117947855416194,
+              20.28412282318651
+            ],
+            "rank_eigs_p95": [
+              90.3228823338987,
+              28.896376264708987,
+              23.903388536275646,
+              21.636377353318508
+            ],
+            "rank_eigs_p99": [
+              91.92631295895093,
+              29.850472260212797,
+              24.78450132067727,
+              22.170437217006285
+            ],
+            "rank_eig_over_edge_p99": [
+              3.5093836119059785,
+              1.139573151426439,
+              0.9461743864663261,
+              0.846379741923244
+            ],
+            "observed_minus_p99": [
+              -3.869719472422034,
+              -0.8259427417944138,
+              -1.6132693038817365,
+              -0.26482381773411134
+            ],
+            "mc_pvalue_per_rank": [
+              0.26173826173826176,
+              0.04395604395604396,
+              0.15284715284715283,
+              0.024975024975024976
+            ],
+            "n_observed_ranks_1to4_above_p99": 0,
+            "observed_ranks_above_p99": [],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 0,
+            "lambda2_over_lambda1": {
+              "observed": 0.32961222288094333,
+              "null_mean": 0.30448564721835203,
+              "null_p99": 0.3475429892497147,
+              "null_max": 0.3577625263274723,
+              "mc_p_upper": 0.08391608391608392,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              91.92631295895093,
+              29.850472260212797,
+              24.78450132067727,
+              22.170437217006285,
+              20.49886109883538,
+              19.321310185926347
+            ]
+          },
+          "fixed_margin": {
+            "notes": "curveball chain (exact row and column sums; = exact conditional Rasch null)",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 407.0,
+              "min": 407,
+              "max": 407
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 965,
+                "2": 35
+              },
+              "mean": 1.035,
+              "max": 2,
+              "frac_ge_observed": 0.035
+            },
+            "rank_eigs_mean": [
+              81.27783091307138,
+              25.052688887532444,
+              21.999933795496787,
+              20.380374717818572
+            ],
+            "rank_eigs_p95": [
+              82.50248138300631,
+              27.155723684831585,
+              23.670341644969028,
+              21.484005780468614
+            ],
+            "rank_eigs_p99": [
+              82.99714619378786,
+              28.682284012346987,
+              24.366682794331417,
+              21.975135278200494
+            ],
+            "rank_eig_over_edge_p99": [
+              3.1685032860777076,
+              1.0949763372964945,
+              0.9302237250951517,
+              0.8389238851466913
+            ],
+            "observed_minus_p99": [
+              5.059447292741041,
+              0.3422455060713965,
+              -1.1954507775358856,
+              -0.06952187892832029
+            ],
+            "mc_pvalue_per_rank": [
+              0.000999000999000999,
+              0.006993006993006993,
+              0.11688311688311688,
+              0.014985014985014986
+            ],
+            "n_observed_ranks_1to4_above_p99": 2,
+            "observed_ranks_above_p99": [
+              1,
+              2
+            ],
+            "contiguous_ranks_above_p99": 2,
+            "n_observed_ranks_above_p99_edge_normalized": 2,
+            "lambda2_over_lambda1": {
+              "observed": 0.32961222288094333,
+              "null_mean": 0.308238105354897,
+              "null_p99": 0.349631221658708,
+              "null_max": 0.36481479464302324,
+              "mc_p_upper": 0.08891108891108891,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              82.99714619378786,
+              28.682284012346987,
+              24.366682794331417,
+              21.975135278200494,
+              20.602110918190757,
+              19.357781405159496
+            ]
+          },
+          "2pl_post": {
+            "notes": "project 2PL: theta_m fixed effects, (log a_i, b_i) normal random effects integrated (marginal ML over questions, 41 x 401 grid); question-matched posterior draws",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 407.0,
+              "min": 407,
+              "max": 407
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 556,
+                "2": 444
+              },
+              "mean": 1.444,
+              "max": 2,
+              "frac_ge_observed": 0.444
+            },
+            "rank_eigs_mean": [
+              88.25774338939034,
+              27.3852153845398,
+              21.836644033265667,
+              20.032943305007404
+            ],
+            "rank_eigs_p95": [
+              92.46536907971492,
+              29.82571642297547,
+              23.59812275135195,
+              21.354456519538545
+            ],
+            "rank_eigs_p99": [
+              94.52481590161611,
+              30.883561554354536,
+              24.407043342434534,
+              22.04417875299026
+            ],
+            "rank_eig_over_edge_p99": [
+              3.60858419277286,
+              1.1790124210087563,
+              0.9317645314379871,
+              0.8415596923615899
+            ],
+            "observed_minus_p99": [
+              -6.468222415087212,
+              -1.8590320359361527,
+              -1.235811325639002,
+              -0.13856535371808576
+            ],
+            "mc_pvalue_per_rank": [
+              0.5414585414585414,
+              0.13486513486513488,
+              0.1068931068931069,
+              0.014985014985014986
+            ],
+            "n_observed_ranks_1to4_above_p99": 0,
+            "observed_ranks_above_p99": [],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 0,
+            "lambda2_over_lambda1": {
+              "observed": 0.32961222288094333,
+              "null_mean": 0.310478532888427,
+              "null_p99": 0.35396075923119885,
+              "null_max": 0.3777709066409731,
+              "mc_p_upper": 0.14785214785214784,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              94.52481590161611,
+              30.883561554354536,
+              24.407043342434534,
+              22.04417875299026,
+              20.123984840860775,
+              19.10052205061449
+            ]
+          },
+          "ba_a4": {
+            "notes": "Bock-Aitkin 2PL: theta ~ N(0,1) integrated, (a_i, d_i) fixed effects, 0 < a_i <= 4; simulated at ML theta_m (fixed effects given the items)",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 407.0,
+              "min": 407,
+              "max": 407
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 1000
+              },
+              "mean": 2.0,
+              "max": 2,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              98.32210522778296,
+              34.993464100560786,
+              22.63305948813672,
+              19.243759248695056
+            ],
+            "rank_eigs_p95": [
+              101.69722097866084,
+              37.37822104469105,
+              24.834550610912363,
+              20.734360754421957
+            ],
+            "rank_eigs_p99": [
+              103.04896554870713,
+              38.35315171163653,
+              25.6927191827023,
+              21.36582289831065
+            ],
+            "rank_eig_over_edge_p99": [
+              3.9340025644451084,
+              1.46417187581388,
+              0.9808465578875187,
+              0.8156627446561365
+            ],
+            "observed_minus_p99": [
+              -14.992372062178234,
+              -9.328622193218145,
+              -2.5214871659067697,
+              0.5397905009615229
+            ],
+            "mc_pvalue_per_rank": [
+              1.0,
+              1.0,
+              0.3196803196803197,
+              0.003996003996003996
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              4
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.32961222288094333,
+              "null_mean": 0.35598415201896405,
+              "null_p99": 0.3928646115561587,
+              "null_max": 0.404463258770557,
+              "mc_p_upper": 0.9690309690309691,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              103.04896554870713,
+              38.35315171163653,
+              25.6927191827023,
+              21.36582289831065,
+              19.458835729115588,
+              18.043423756516695
+            ]
+          },
+          "kg_letter4": {
+            "notes": "know-or-guess fitted on all 4 rotations (composite MML with pi_m letter preference); know once per cell, guess per rotation from pi_m; derived matrix",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 407.0,
+              "min": 407,
+              "max": 407
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 1000
+              },
+              "mean": 2.0,
+              "max": 2,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              103.25891193089231,
+              37.85132113191289,
+              22.638841312162523,
+              18.818224825254372
+            ],
+            "rank_eigs_p95": [
+              107.17763191953487,
+              40.44345407514472,
+              24.60157602692837,
+              20.286431007745218
+            ],
+            "rank_eigs_p99": [
+              108.62108374664786,
+              41.85722974745732,
+              25.600194291399408,
+              21.203974721116136
+            ],
+            "rank_eig_over_edge_p99": [
+              4.146724032956396,
+              1.5979437376228094,
+              0.977314322918226,
+              0.8094840203890499
+            ],
+            "observed_minus_p99": [
+              -20.56449026011896,
+              -12.832700229038934,
+              -2.428962274603876,
+              0.7016386781560371
+            ],
+            "mc_pvalue_per_rank": [
+              1.0,
+              1.0,
+              0.3156843156843157,
+              0.000999000999000999
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              4
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.32961222288094333,
+              "null_mean": 0.3666940974740469,
+              "null_p99": 0.40308286931431714,
+              "null_max": 0.41390043199089677,
+              "mc_p_upper": 0.988011988011988,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              108.62108374664786,
+              41.85722974745732,
+              25.600194291399408,
+              21.203974721116136,
+              18.942314569779516,
+              17.71006691481519
+            ]
+          }
+        },
+        "fits": {
+          "rasch_jml": {
+            "iterations": 20
+          },
+          "2pl": {
+            "loglik": -4524.864773128047,
+            "converged": true,
+            "hyper": [
+              0.3958473951122232,
+              0.41491177334496987,
+              0.7768916622003842,
+              2.171444723126702
+            ],
+            "corr_theta_vs_accuracy": 0.9932947737320568
+          },
+          "ba_a4": {
+            "a_max": 4.0,
+            "loglik": -3300.879315644491,
+            "converged": true,
+            "frac_slopes_at_bound": 0.10810810810810811,
+            "slope_quantiles_0_10_50_90_100": [
+              0.001,
+              0.18066827269550145,
+              1.107044042766016,
+              4.0,
+              4.0
+            ],
+            "theta_ml": [
+              -2.362818421041559,
+              -2.868484835114762,
+              0.15139151986827692,
+              -0.6597031876370504,
+              1.4013847908232133,
+              1.1963905559967118,
+              0.7276408887104101,
+              1.444538788543442,
+              2.2305558070258376,
+              -1.0178197462209508,
+              0.05570402493665845,
+              -0.5733441040848705,
+              -0.24655690947398246,
+              0.41080068092022415,
+              -1.6484413351824159,
+              0.7796317102806316,
+              0.7183173918286772,
+              -0.5888560704803332,
+              0.9858227805045738,
+              1.6706262479855734,
+              1.1630568362294045,
+              -4.353840644082555,
+              0.24767275870830233,
+              0.9680665297941586
+            ],
+            "theta_eap": [
+              -2.3274654390729106,
+              -2.8279785903105656,
+              0.14788460716217683,
+              -0.6516725340964092,
+              1.3881733497420794,
+              1.1850052258195225,
+              0.7197804476236058,
+              1.4309163723202365,
+              2.2087086631597623,
+              -1.0051538122945995,
+              0.053383106617036505,
+              -0.5665068919209714,
+              -0.24453652849053004,
+              0.4048522226329248,
+              -1.621946953991622,
+              0.7714572192103437,
+              0.7105115295215989,
+              -0.5818009924595926,
+              0.9761855186539995,
+              1.6548357891783478,
+              1.1519550475197557,
+              -4.175762459006458,
+              0.2431224625440772,
+              0.9585687102181153
+            ],
+            "corr_theta_ml_vs_accuracy": 0.9868481180744116
+          }
+        },
+        "seed": 20261013,
+        "n_draws_per_null": 1000,
+        "ranks_above_p99_by_null": {
+          "rasch_jml": [],
+          "fixed_margin": [
+            1,
+            2
+          ],
+          "2pl_post": [],
+          "ba_a4": [
+            4
+          ],
+          "kg_letter4": [
+            4
+          ]
+        },
+        "ranks_beyond_ability": {
+          "rasch_jml": 0,
+          "fixed_margin": 1,
+          "2pl_post": 0,
+          "ba_a4": 0,
+          "kg_letter4": 0
+        }
+      }
+    },
+    "all4_near_tie_rotations_ignored": {
+      "spectrum": {
+        "M": 24,
+        "n_cols": 413,
+        "lambda_plus": 26.504918976435764,
+        "lambda_plus_buffered": 27.830164925257552,
+        "top_eigs": [
+          88.36832010360646,
+          29.182621917078237,
+          23.34618749679793,
+          22.302776306353554,
+          20.0393958191083,
+          19.065516317610836
+        ],
+        "lambda2_over_lambda1": 0.3302385049626766,
+        "mp_count_strict": 2,
+        "mp_count_buffered": 2
+      },
+      "suite": {
+        "observed": {
+          "n_cols": 413,
+          "lambda_plus": 26.504918976435764,
+          "top_eigs": [
+            88.36832010360646,
+            29.182621917078237,
+            23.34618749679793,
+            22.302776306353554,
+            20.0393958191083,
+            19.065516317610836
+          ],
+          "lambda2_over_lambda1": 0.3302385049626766,
+          "count_above_1p05_edge": 2
+        },
+        "nulls": {
+          "rasch_jml": {
+            "notes": "Rasch, joint ML (row and column sums matched); conditional on split",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 413.0,
+              "min": 413,
+              "max": 413
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 880,
+                "2": 120
+              },
+              "mean": 1.12,
+              "max": 2,
+              "frac_ge_observed": 0.12
+            },
+            "rank_eigs_mean": [
+              85.08505059702999,
+              26.040780607984512,
+              22.485798272607802,
+              20.738919213032545
+            ],
+            "rank_eigs_p95": [
+              88.84892634699412,
+              28.569356375384668,
+              24.384734802890723,
+              22.029061383065745
+            ],
+            "rank_eigs_p99": [
+              90.7667969073341,
+              30.133354929552226,
+              25.29809849469161,
+              22.715110443024273
+            ],
+            "rank_eig_over_edge_p99": [
+              3.4245264808404223,
+              1.1368967004329396,
+              0.9544680561816816,
+              0.8570148983748704
+            ],
+            "observed_minus_p99": [
+              -2.3984768037276325,
+              -0.9507330124739894,
+              -1.9519109978936804,
+              -0.4123341366707187
+            ],
+            "mc_pvalue_per_rank": [
+              0.07892107892107893,
+              0.025974025974025976,
+              0.1878121878121878,
+              0.023976023976023976
+            ],
+            "n_observed_ranks_1to4_above_p99": 0,
+            "observed_ranks_above_p99": [],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 0,
+            "lambda2_over_lambda1": {
+              "observed": 0.3302385049626766,
+              "null_mean": 0.30620389761223366,
+              "null_p99": 0.3544377318409536,
+              "null_max": 0.38147318951261483,
+              "mc_p_upper": 0.0939060939060939,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              90.7667969073341,
+              30.133354929552226,
+              25.29809849469161,
+              22.715110443024273,
+              20.906809313913676,
+              19.758329641748425
+            ]
+          },
+          "fixed_margin": {
+            "notes": "curveball chain (exact row and column sums; = exact conditional Rasch null)",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 413.0,
+              "min": 413,
+              "max": 413
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 983,
+                "2": 17
+              },
+              "mean": 1.017,
+              "max": 2,
+              "frac_ge_observed": 0.017
+            },
+            "rank_eigs_mean": [
+              79.99420522794897,
+              24.9548586588109,
+              22.42601077339014,
+              20.845951788606715
+            ],
+            "rank_eigs_p95": [
+              81.17673484106928,
+              27.161509644672943,
+              23.914535991079827,
+              21.921506951746196
+            ],
+            "rank_eigs_p99": [
+              81.64132292419237,
+              28.24281143571963,
+              24.494711745429974,
+              22.490557130978505
+            ],
+            "rank_eig_over_edge_p99": [
+              3.0802328804240338,
+              1.0655686765475096,
+              0.9241572014314412,
+              0.8485427610993178
+            ],
+            "observed_minus_p99": [
+              6.726997179414099,
+              0.9398104813586059,
+              -1.148524248632043,
+              -0.1877808246249515
+            ],
+            "mc_pvalue_per_rank": [
+              0.000999000999000999,
+              0.002997002997002997,
+              0.15684315684315683,
+              0.017982017982017984
+            ],
+            "n_observed_ranks_1to4_above_p99": 2,
+            "observed_ranks_above_p99": [
+              1,
+              2
+            ],
+            "contiguous_ranks_above_p99": 2,
+            "n_observed_ranks_above_p99_edge_normalized": 2,
+            "lambda2_over_lambda1": {
+              "observed": 0.3302385049626766,
+              "null_mean": 0.31197351163559783,
+              "null_p99": 0.3540680353220861,
+              "null_max": 0.3652441163605266,
+              "mc_p_upper": 0.13686313686313686,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              81.64132292419237,
+              28.24281143571963,
+              24.494711745429974,
+              22.490557130978505,
+              21.098777810752164,
+              19.965631353491414
+            ]
+          },
+          "2pl_post": {
+            "notes": "project 2PL: theta_m fixed effects, (log a_i, b_i) normal random effects integrated (marginal ML over questions, 41 x 401 grid); question-matched posterior draws",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 413.0,
+              "min": 413,
+              "max": 413
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "1": 677,
+                "2": 323
+              },
+              "mean": 1.323,
+              "max": 2,
+              "frac_ge_observed": 0.323
+            },
+            "rank_eigs_mean": [
+              87.46288412978492,
+              27.237805775634662,
+              22.239962080216824,
+              20.482028743622934
+            ],
+            "rank_eigs_p95": [
+              91.52469301779395,
+              29.904857302677677,
+              24.068051573954115,
+              21.697985685000056
+            ],
+            "rank_eigs_p99": [
+              93.42305424179115,
+              31.13902316198674,
+              24.9477979118153,
+              22.36462831155224
+            ],
+            "rank_eig_over_edge_p99": [
+              3.5247440041167093,
+              1.1748394020623467,
+              0.9412516195199531,
+              0.8437916120941756
+            ],
+            "observed_minus_p99": [
+              -5.054734138184685,
+              -1.956401244908502,
+              -1.601610415017369,
+              -0.06185200519868772
+            ],
+            "mc_pvalue_per_rank": [
+              0.36563436563436563,
+              0.10589410589410589,
+              0.14485514485514486,
+              0.013986013986013986
+            ],
+            "n_observed_ranks_1to4_above_p99": 0,
+            "observed_ranks_above_p99": [],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 0,
+            "lambda2_over_lambda1": {
+              "observed": 0.3302385049626766,
+              "null_mean": 0.3116008806267014,
+              "null_p99": 0.35508078267101134,
+              "null_max": 0.37967867964706853,
+              "mc_p_upper": 0.14685314685314685,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              93.42305424179115,
+              31.13902316198674,
+              24.9477979118153,
+              22.36462831155224,
+              20.831489345988032,
+              19.441305184040836
+            ]
+          },
+          "ba_a4": {
+            "notes": "Bock-Aitkin 2PL: theta ~ N(0,1) integrated, (a_i, d_i) fixed effects, 0 < a_i <= 4; simulated at ML theta_m (fixed effects given the items)",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 413.0,
+              "min": 413,
+              "max": 413
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 1000
+              },
+              "mean": 2.0,
+              "max": 2,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              98.43230267346003,
+              34.97516077510102,
+              22.74929742891679,
+              19.583728185490738
+            ],
+            "rank_eigs_p95": [
+              101.38905502044473,
+              37.501583713082184,
+              24.874797309954843,
+              21.036542456848824
+            ],
+            "rank_eigs_p99": [
+              102.99439425198553,
+              38.51155820774533,
+              25.704318823236605,
+              21.816071362456157
+            ],
+            "rank_eig_over_edge_p99": [
+              3.885859615098346,
+              1.4529966396797547,
+              0.9697942803028021,
+              0.8230951915699787
+            ],
+            "observed_minus_p99": [
+              -14.626074148379061,
+              -9.328936290667095,
+              -2.3581313264386736,
+              0.48670494389739716
+            ],
+            "mc_pvalue_per_rank": [
+              1.0,
+              1.0,
+              0.3006993006993007,
+              0.003996003996003996
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              4
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.3302385049626766,
+              "null_mean": 0.3553886737780412,
+              "null_p99": 0.3930008504105995,
+              "null_max": 0.41133687641674327,
+              "mc_p_upper": 0.971028971028971,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              102.99439425198553,
+              38.51155820774533,
+              25.704318823236605,
+              21.816071362456157,
+              19.673886458161377,
+              18.357768094476285
+            ]
+          },
+          "kg_letter4": {
+            "notes": "know-or-guess fitted on all 4 rotations (composite MML with pi_m letter preference); know once per cell, guess per rotation from pi_m; derived matrix",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 413.0,
+              "min": 413,
+              "max": 413
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 1000
+              },
+              "mean": 2.0,
+              "max": 2,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              93.76795588511838,
+              34.52921117312193,
+              22.617515385035084,
+              19.68630296027259
+            ],
+            "rank_eigs_p95": [
+              97.90289678234875,
+              37.52228767363324,
+              24.783238724673748,
+              21.127337688696638
+            ],
+            "rank_eigs_p99": [
+              99.84186887143656,
+              38.43361565344297,
+              25.684972733545898,
+              21.920315241592604
+            ],
+            "rank_eig_over_edge_p99": [
+              3.7669184712543777,
+              1.4500559570701739,
+              0.9690643746687609,
+              0.8270281928075649
+            ],
+            "observed_minus_p99": [
+              -11.473548767830096,
+              -9.250993736364734,
+              -2.3387852367479667,
+              0.38246106476094965
+            ],
+            "mc_pvalue_per_rank": [
+              0.9820179820179821,
+              0.999000999000999,
+              0.2757242757242757,
+              0.004995004995004995
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              4
+            ],
+            "contiguous_ranks_above_p99": 0,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.3302385049626766,
+              "null_mean": 0.36841351982418385,
+              "null_p99": 0.41367921339913394,
+              "null_max": 0.437072523938839,
+              "mc_p_upper": 0.98001998001998,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              99.84186887143656,
+              38.43361565344297,
+              25.684972733545898,
+              21.920315241592604,
+              19.84469250222357,
+              18.71880208006394
+            ]
+          }
+        },
+        "fits": {
+          "rasch_jml": {
+            "iterations": 19
+          },
+          "2pl": {
+            "loglik": -4599.092677727722,
+            "converged": true,
+            "hyper": [
+              0.3651476718257018,
+              0.4258208518765027,
+              0.7630329460988539,
+              2.1821395913662496
+            ],
+            "corr_theta_vs_accuracy": 0.9938395858789605
+          },
+          "ba_a4": {
+            "a_max": 4.0,
+            "loglik": -3360.2161080632363,
+            "converged": true,
+            "frac_slopes_at_bound": 0.1016949152542373,
+            "slope_quantiles_0_10_50_90_100": [
+              0.001,
+              0.13059342227300394,
+              1.1051042257221722,
+              3.982875731604299,
+              4.0
+            ],
+            "theta_ml": [
+              -2.3738224006994044,
+              -2.886784759417826,
+              0.14512945054397675,
+              -0.5888728693454883,
+              1.3840618571475334,
+              1.1731650778235925,
+              0.7154090532943579,
+              1.477468808406716,
+              2.2034605969825263,
+              -1.0326961758242263,
+              0.05732096700128551,
+              -0.5860321743716888,
+              -0.24716516029261976,
+              0.39058181905544015,
+              -1.653059989048974,
+              0.7837430411004129,
+              0.7779910257113887,
+              -0.5858015246829548,
+              0.9966888591947201,
+              1.6244575005946986,
+              1.1855546994689132,
+              -4.357411716414539,
+              0.26563733784130406,
+              0.9553159954645208
+            ],
+            "theta_eap": [
+              -2.3379738012855205,
+              -2.8455666055942475,
+              0.141701218060093,
+              -0.5819408651412454,
+              1.37133344827125,
+              1.1620341946602442,
+              0.7075792082289318,
+              1.4639944832801766,
+              2.182205819508636,
+              -1.0196999513837368,
+              0.054973663812633446,
+              -0.5791399433686785,
+              -0.24520747271097504,
+              0.3847864361742738,
+              -1.6261770401341504,
+              0.7754920754847963,
+              0.769776632474821,
+              -0.5789125246891125,
+              0.9869220981026918,
+              1.609740198149691,
+              1.1743296585876624,
+              -4.173680974568465,
+              0.2609201478911576,
+              0.9458648253036082
+            ],
+            "corr_theta_ml_vs_accuracy": 0.984900561886085
+          }
+        },
+        "seed": 20261013,
+        "n_draws_per_null": 1000,
+        "ranks_above_p99_by_null": {
+          "rasch_jml": [],
+          "fixed_margin": [
+            1,
+            2
+          ],
+          "2pl_post": [],
+          "ba_a4": [
+            4
+          ],
+          "kg_letter4": [
+            4
+          ]
+        },
+        "ranks_beyond_ability": {
+          "rasch_jml": 0,
+          "fixed_margin": 1,
+          "2pl_post": 0,
+          "ba_a4": 0,
+          "kg_letter4": 0
+        }
+      }
+    },
+    "mean_majority": {
+      "spectrum": {
+        "M": 24,
+        "n_cols": 489,
+        "lambda_plus": 30.402735042633896,
+        "lambda_plus_buffered": 31.92287179476559,
+        "top_eigs": [
+          122.507218364946,
+          43.765058080388684,
+          29.58926471656561,
+          25.816746418169775,
+          23.159420715095205,
+          21.566961412339804
+        ],
+        "lambda2_over_lambda1": 0.3572447294494407,
+        "mp_count_strict": 2,
+        "mp_count_buffered": 2
+      },
+      "suite": {
+        "observed": {
+          "n_cols": 489,
+          "lambda_plus": 30.402735042633896,
+          "top_eigs": [
+            122.507218364946,
+            43.765058080388684,
+            29.58926471656561,
+            25.816746418169775,
+            23.159420715095205,
+            21.566961412339804
+          ],
+          "lambda2_over_lambda1": 0.3572447294494407,
+          "count_above_1p05_edge": 2
+        },
+        "nulls": {
+          "kg_letter4": {
+            "notes": "know-or-guess fitted on all 4 rotations (composite MML with pi_m letter preference); know once per cell, guess per rotation from pi_m; derived matrix",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 489.0,
+              "min": 489,
+              "max": 489
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 1000
+              },
+              "mean": 2.0,
+              "max": 2,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              98.88139394652772,
+              38.68379778735895,
+              26.417659438334965,
+              23.5853955041446
+            ],
+            "rank_eigs_p95": [
+              103.288057012981,
+              41.69223691985932,
+              28.48296569987939,
+              25.039430859189103
+            ],
+            "rank_eigs_p99": [
+              104.46864131449951,
+              42.8026944723509,
+              29.468892986926026,
+              25.73445869477168
+            ],
+            "rank_eig_over_edge_p99": [
+              3.436159318166693,
+              1.4078567080339477,
+              0.9692842747733604,
+              0.8464520925069446
+            ],
+            "observed_minus_p99": [
+              18.03857705044649,
+              0.9623636080377835,
+              0.12037172963958298,
+              0.08228772339809609
+            ],
+            "mc_pvalue_per_rank": [
+              0.000999000999000999,
+              0.003996003996003996,
+              0.007992007992007992,
+              0.00999000999000999
+            ],
+            "n_observed_ranks_1to4_above_p99": 4,
+            "observed_ranks_above_p99": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "contiguous_ranks_above_p99": 4,
+            "n_observed_ranks_above_p99_edge_normalized": 4,
+            "lambda2_over_lambda1": {
+              "observed": 0.3572447294494407,
+              "null_mean": 0.3913876316795567,
+              "null_p99": 0.4357614328072517,
+              "null_max": 0.46665931013359563,
+              "mc_p_upper": 0.97002997002997,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              104.46864131449951,
+              42.8026944723509,
+              29.468892986926026,
+              25.73445869477168,
+              23.86742281338538,
+              22.395608573168957
+            ]
+          },
+          "kg_uniform4": {
+            "notes": "know-or-guess on all 4 rotations with uniform guessing (pi = 0.25 per letter, 3PL-type)",
+            "n_draws": 1000,
+            "n_split_per_draw": {
+              "mean": 489.0,
+              "min": 489,
+              "max": 489
+            },
+            "count_above_1p05_edge": {
+              "distribution": {
+                "2": 995,
+                "3": 5
+              },
+              "mean": 2.005,
+              "max": 3,
+              "frac_ge_observed": 1.0
+            },
+            "rank_eigs_mean": [
+              101.50706992447455,
+              40.919730739477195,
+              27.984473236198813,
+              24.014832644487072
+            ],
+            "rank_eigs_p95": [
+              106.32340950852544,
+              44.044568017401396,
+              30.444546396738836,
+              25.864397106271372
+            ],
+            "rank_eigs_p99": [
+              108.12607332785359,
+              45.24485856215384,
+              31.50858843129841,
+              26.826165637517178
+            ],
+            "rank_eig_over_edge_p99": [
+              3.5564587586027345,
+              1.4881838261823075,
+              1.036373483738018,
+              0.8823602744917101
+            ],
+            "observed_minus_p99": [
+              14.38114503709241,
+              -1.479800481765153,
+              -1.9193237147328013,
+              -1.0094192193474036
+            ],
+            "mc_pvalue_per_rank": [
+              0.000999000999000999,
+              0.06993006993006994,
+              0.13286713286713286,
+              0.057942057942057944
+            ],
+            "n_observed_ranks_1to4_above_p99": 1,
+            "observed_ranks_above_p99": [
+              1
+            ],
+            "contiguous_ranks_above_p99": 1,
+            "n_observed_ranks_above_p99_edge_normalized": 1,
+            "lambda2_over_lambda1": {
+              "observed": 0.3572447294494407,
+              "null_mean": 0.4033829801987318,
+              "null_p99": 0.45526326114368704,
+              "null_max": 0.4744752063420386,
+              "mc_p_upper": 0.989010989010989,
+              "n_draws": 1000
+            },
+            "rank_eigs_p99_1to6": [
+              108.12607332785359,
+              45.24485856215384,
+              31.50858843129841,
+              26.826165637517178,
+              23.93762910518036,
+              22.24050176892621
+            ]
+          }
+        },
+        "fits": {},
+        "seed": 20261013,
+        "n_draws_per_null": 1000,
+        "ranks_above_p99_by_null": {
+          "kg_letter4": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "kg_uniform4": [
+            1
+          ]
+        },
+        "ranks_beyond_ability": {
+          "kg_letter4": 3,
+          "kg_uniform4": 0
+        }
+      }
+    }
+  },
+  "fractional_variants_spectra_only": {
+    "rot0_near_ties_as_missing_imputed_column_mean": {
+      "M": 24,
+      "n_cols": 451,
+      "lambda_plus": 28.461537869093306,
+      "lambda_plus_buffered": 29.884614762547972,
+      "top_eigs": [
+        81.86347194785071,
+        46.88192395570546,
+        29.228142792377845,
+        26.217311021268397,
+        25.363519708205732,
+        21.61225170398023
+      ],
+      "lambda2_over_lambda1": 0.572684285679583,
+      "mp_count_strict": 3,
+      "mp_count_buffered": 2
+    },
+    "mean_near_tie_rotations_ignored": {
+      "M": 24,
+      "n_cols": 488,
+      "lambda_plus": 30.35183283897912,
+      "lambda_plus_buffered": 31.86942448092808,
+      "top_eigs": [
+        121.46419158543429,
+        43.070932001689286,
+        29.756943894764795,
+        25.757350464773165,
+        23.73217408797855,
+        21.918205516798754
+      ],
+      "lambda2_over_lambda1": 0.3545977743687075,
+      "mp_count_strict": 2,
+      "mp_count_buffered": 2
+    }
+  },
+  "rotation_randomized_200_draws_vs_main_kg_null": {
+    "as_observed": {
+      "n_draws": 200,
+      "eig_median": [
+        79.6981292033707,
+        40.79348504714108,
+        32.08526141456358,
+        26.051494534907036
+      ],
+      "kg_letter4_randrot_p99_main": [
+        87.66271831084366,
+        43.14841339162,
+        34.028386512107836,
+        29.353022005880742
+      ],
+      "frac_draws_above_p99": [
+        0.0,
+        0.125,
+        0.145,
+        0.0
+      ]
+    },
+    "majority": {
+      "n_draws": 200,
+      "eig_median": [
+        79.95047743209771,
+        41.1146565232085,
+        31.94414300837117,
+        25.748570704271046
+      ],
+      "kg_letter4_randrot_p99_main": [
+        87.66271831084366,
+        43.14841339162,
+        34.028386512107836,
+        29.353022005880742
+      ],
+      "frac_draws_above_p99": [
+        0.0,
+        0.15,
+        0.105,
+        0.0
+      ]
+    }
+  }
+}

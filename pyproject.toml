@@ -1,7 +1,7 @@
 [project]
 name = "stochastic-sampling-dimensionality-gap"
 version = "0.1.0"
-description = "Code and data for 'Stochastic Sampling is Epistemically Shallow: The Dimensionality Gap Between Temperature Variation and Model Diversity in LLMs' (EIML@ICML 2026)."
+description = "Code and data for 'Where Cross-Question Structure in LLM Errors Comes From'."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [
@@ -24,3 +24,6 @@ dependencies = [
     "transformers>=5.5.0",
     "tueplots>=0.2.4",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["src", "scripts"]

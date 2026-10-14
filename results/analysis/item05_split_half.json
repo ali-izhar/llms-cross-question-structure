@@ -1,0 +1,128 @@
+{
+  "headline_run": "mmlu_iid-T1.0_Qwen_Qwen2.5-7B-Instruct",
+  "halves": "first K//2 passes vs the rest",
+  "eps": 0.05,
+  "runs": {
+    "mmlu_iid-T1.0_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "MMLU Qwen2.5-7B T1.0",
+      "K": 100,
+      "N": 500,
+      "N_b": 43,
+      "r_all_columns": 0.9974603438037217,
+      "r_borderline_columns": 0.9402555206030679,
+      "cross_check_within_power": "equal to 1e-12"
+    },
+    "mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3": {
+      "label": "MMLU Mistral-7B-v0.3",
+      "K": 100,
+      "N": 500,
+      "N_b": 83,
+      "r_all_columns": 0.9964681553130226,
+      "r_borderline_columns": 0.949320008314489
+    },
+    "mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct": {
+      "label": "MMLU Meta-Llama-3-8B",
+      "K": 100,
+      "N": 500,
+      "N_b": 173,
+      "r_all_columns": 0.9921108560862723,
+      "r_borderline_columns": 0.9526301575864599
+    },
+    "mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct": {
+      "label": "MMLU SmolLM2-1.7B",
+      "K": 100,
+      "N": 500,
+      "N_b": 406,
+      "r_all_columns": 0.9744151678264675,
+      "r_borderline_columns": 0.9578697267098969
+    },
+    "mmlu_iid-T1.0_microsoft_Phi-3-mini-4k-instruct": {
+      "label": "MMLU Phi-3-mini",
+      "K": 100,
+      "N": 500,
+      "N_b": 271,
+      "r_all_columns": 0.9860049424363393,
+      "r_borderline_columns": 0.9622485925753954
+    },
+    "hellaswag_iid-T1.0_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "HellaSwag Qwen2.5-7B",
+      "K": 50,
+      "N": 200,
+      "N_b": 16,
+      "r_all_columns": 0.9965501809696756,
+      "r_borderline_columns": 0.9531401884703866
+    },
+    "hellaswag_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3": {
+      "label": "HellaSwag Mistral-7B-v0.3",
+      "K": 50,
+      "N": 200,
+      "N_b": 65,
+      "r_all_columns": 0.981787723740872,
+      "r_borderline_columns": 0.9025520902811115
+    },
+    "hellaswag_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct": {
+      "label": "HellaSwag Meta-Llama-3-8B",
+      "K": 50,
+      "N": 200,
+      "N_b": 86,
+      "r_all_columns": 0.9793873504603787,
+      "r_borderline_columns": 0.9262076395599751
+    },
+    "gsm8k_iid-T1.0_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "GSM8K Qwen2.5-7B 256 tok",
+      "K": 30,
+      "N": 100,
+      "N_b": 62,
+      "r_all_columns": 0.9311739618216411,
+      "r_borderline_columns": 0.7832535113470919
+    },
+    "gsm8k_iidlong-T1.0_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "GSM8K Qwen2.5-7B 1024 tok",
+      "K": 30,
+      "N": 100,
+      "N_b": 19,
+      "r_all_columns": 0.9730010452764631,
+      "r_borderline_columns": 0.9004800544436488
+    },
+    "mmlu_iid-T0.5_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "MMLU Qwen2.5-7B T0.5",
+      "K": 30,
+      "N": 500,
+      "N_b": 25,
+      "r_all_columns": 0.9962063933962778,
+      "r_borderline_columns": 0.8631811411568717
+    },
+    "mmlu_iid-T1.5_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "MMLU Qwen2.5-7B T1.5",
+      "K": 30,
+      "N": 500,
+      "N_b": 85,
+      "r_all_columns": 0.9891048181105746,
+      "r_borderline_columns": 0.9090589989470899
+    },
+    "mmlu_sharedseed-T1.0_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "MMLU Qwen2.5-7B S1 shared seed",
+      "K": 100,
+      "N": 500,
+      "N_b": 41,
+      "r_all_columns": 0.997766945895509,
+      "r_borderline_columns": 0.9422550169316645
+    },
+    "mmlu_sharedprompt-T1.0_Qwen_Qwen2.5-7B-Instruct": {
+      "label": "MMLU Qwen2.5-7B S2 shared 5-shot",
+      "K": 100,
+      "N": 500,
+      "N_b": 93,
+      "r_all_columns": 0.9952818066880925,
+      "r_borderline_columns": 0.9528003139550023
+    },
+    "mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct": {
+      "label": "MMLU Meta-Llama-3-8B S2 shared 5-shot",
+      "K": 100,
+      "N": 500,
+      "N_b": 264,
+      "r_all_columns": 0.9864732874880962,
+      "r_borderline_columns": 0.955762966979044
+    }
+  }
+}

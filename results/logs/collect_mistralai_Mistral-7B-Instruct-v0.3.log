@@ -1,0 +1,22 @@
+2026-10-10 05:58:18 mistralai/Mistral-7B-Instruct-v0.3: loading vLLM engine {'model': 'mistralai/Mistral-7B-Instruct-v0.3', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
+2026-10-10 06:01:44 engine ready in 207s; prompt_mode=chat_template; max_model_len=3072
+2026-10-10 06:01:44 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] start K=100 N=500 T=1.0 block=10 passes
+2026-10-10 06:02:31 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 0-9 done, block acc=0.571, elapsed=46s
+2026-10-10 06:03:07 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 10-19 done, block acc=0.567, elapsed=83s
+2026-10-10 06:03:44 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 20-29 done, block acc=0.563, elapsed=119s
+2026-10-10 06:04:21 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 30-39 done, block acc=0.571, elapsed=156s
+2026-10-10 06:04:58 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 40-49 done, block acc=0.569, elapsed=193s
+2026-10-10 06:05:34 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 50-59 done, block acc=0.568, elapsed=230s
+2026-10-10 06:06:11 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 60-69 done, block acc=0.567, elapsed=267s
+2026-10-10 06:06:48 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 70-79 done, block acc=0.572, elapsed=304s
+2026-10-10 06:07:26 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 80-89 done, block acc=0.572, elapsed=341s
+2026-10-10 06:08:03 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 90-99 done, block acc=0.568, elapsed=378s
+2026-10-10 06:08:03 [mmlu_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] DONE acc=0.5688 unparseable=0.0095 N_b=87 runtime=378s
+2026-10-10 06:08:03 [hellaswag_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] start K=50 N=200 T=1.0 block=25 passes
+2026-10-10 06:08:51 [hellaswag_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 0-24 done, block acc=0.688, elapsed=48s
+2026-10-10 06:09:30 [hellaswag_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] passes 25-49 done, block acc=0.687, elapsed=87s
+2026-10-10 06:09:30 [hellaswag_iid-T1.0_mistralai_Mistral-7B-Instruct-v0.3] DONE acc=0.6875 unparseable=0.0148 N_b=69 runtime=87s
+2026-10-10 06:09:30 [mmlu_greedy_mistralai_Mistral-7B-Instruct-v0.3] start K=1 N=500 T=0.0 block=1 passes
+2026-10-10 06:09:44 [mmlu_greedy_mistralai_Mistral-7B-Instruct-v0.3] passes 0-0 done, block acc=0.574, elapsed=14s
+2026-10-10 06:09:44 [mmlu_greedy_mistralai_Mistral-7B-Instruct-v0.3] DONE acc=0.5740 unparseable=0.0000 N_b=None runtime=14s
+2026-10-10 06:09:44 mistralai/Mistral-7B-Instruct-v0.3: finished; failed runs: []

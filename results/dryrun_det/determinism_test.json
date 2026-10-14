@@ -1,0 +1,93 @@
+{
+ "deterministic": false,
+ "models": {
+  "mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat": {
+   "texts_identical": true,
+   "gen_ids_identical": true,
+   "parsed_identical": true,
+   "top_ids_identical": true,
+   "max_abs_diff_first_token_logprob": 0.0,
+   "cells": 80,
+   "deterministic_flags": {
+    "on": true,
+    "env": {
+     "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+     "VLLM_ENABLE_INDUCTOR_MAX_AUTOTUNE": "0",
+     "VLLM_USE_FLASHINFER_SAMPLER": "0"
+    },
+    "engine": {
+     "enforce_eager": true,
+     "kernel_config": {
+      "enable_flashinfer_autotune": false
+     }
+    }
+   }
+  },
+  "mmlu_greedyrot_Qwen_Qwen2.5-7B-Instruct": {
+   "texts_identical": true,
+   "gen_ids_identical": true,
+   "parsed_identical": true,
+   "top_ids_identical": false,
+   "max_abs_diff_first_token_logprob": 0.49983978271484375,
+   "cells": 80,
+   "deterministic_flags": {
+    "on": true,
+    "env": {
+     "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+     "VLLM_ENABLE_INDUCTOR_MAX_AUTOTUNE": "0",
+     "VLLM_USE_FLASHINFER_SAMPLER": "0"
+    },
+    "engine": {
+     "enforce_eager": true,
+     "kernel_config": {
+      "enable_flashinfer_autotune": false
+     }
+    }
+   }
+  },
+  "mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat": {
+   "texts_identical": false,
+   "gen_ids_identical": false,
+   "parsed_identical": false,
+   "top_ids_identical": false,
+   "max_abs_diff_first_token_logprob": 0.4508485794067383,
+   "cells": 80,
+   "deterministic_flags": {
+    "on": true,
+    "env": {
+     "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+     "VLLM_ENABLE_INDUCTOR_MAX_AUTOTUNE": "0",
+     "VLLM_USE_FLASHINFER_SAMPLER": "0"
+    },
+    "engine": {
+     "enforce_eager": true,
+     "kernel_config": {
+      "enable_flashinfer_autotune": false
+     }
+    }
+   }
+  },
+  "mmlu_greedyrot_microsoft_phi-2": {
+   "texts_identical": true,
+   "gen_ids_identical": true,
+   "parsed_identical": true,
+   "top_ids_identical": true,
+   "max_abs_diff_first_token_logprob": 0.0,
+   "cells": 80,
+   "deterministic_flags": {
+    "on": true,
+    "env": {
+     "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+     "VLLM_ENABLE_INDUCTOR_MAX_AUTOTUNE": "0",
+     "VLLM_USE_FLASHINFER_SAMPLER": "0"
+    },
+    "engine": {
+     "enforce_eager": true,
+     "kernel_config": {
+      "enable_flashinfer_autotune": false
+     }
+    }
+   }
+  }
+ }
+}

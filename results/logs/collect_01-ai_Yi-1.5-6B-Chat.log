@@ -1,0 +1,6 @@
+2026-10-10 07:12:20 01-ai/Yi-1.5-6B-Chat: loading vLLM engine {'model': '01-ai/Yi-1.5-6B-Chat', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
+2026-10-10 07:15:30 engine ready in 190s; prompt_mode=chat_template; max_model_len=3072
+2026-10-10 07:15:30 [mmlu_greedy_01-ai_Yi-1.5-6B-Chat] start K=1 N=500 T=0.0 block=1 passes
+2026-10-10 07:15:40 [mmlu_greedy_01-ai_Yi-1.5-6B-Chat] passes 0-0 done, block acc=0.628, elapsed=10s
+2026-10-10 07:15:40 [mmlu_greedy_01-ai_Yi-1.5-6B-Chat] DONE acc=0.6280 unparseable=0.0000 N_b=None runtime=10s
+2026-10-10 07:15:40 01-ai/Yi-1.5-6B-Chat: finished; failed runs: []

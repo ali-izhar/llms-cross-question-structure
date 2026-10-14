@@ -1,0 +1,885 @@
+{
+  "meta": {
+    "seed": 20260417,
+    "n_draws_per_null": 1000,
+    "mp_buffer": 1.05,
+    "matrix": "/home/izhar/Desktop/GitHub/research/stochastic-sampling-dimensionality-gap/results/analysis/matrices/ensemble_greedy_drop_model_mistral_v0.2.npy (23 models x 500 MMLU, tau=0)",
+    "columns": "split columns (0 < column sum < 24)",
+    "correlation": "columns centered, divided by population SD; R = Z^T Z / M; lambda_+ = (1+sqrt(N_split/M))^2",
+    "p99_rule": "observed lambda_j > 99th percentile of null lambda_j at the same rank j",
+    "runtime_s": 244.5
+  },
+  "observed": {
+    "n_split": 460,
+    "lambda_plus": 29.944271909999163,
+    "lambda_plus_buffered": 31.441485505499124,
+    "top_eigs": [
+      89.43742957932872,
+      51.1431755333909,
+      30.6709403862257,
+      28.008140308629844,
+      25.349271521842777,
+      21.882605308443228,
+      21.677245888007334,
+      18.219092821495412
+    ],
+    "count_above_1p05_edge": 2
+  },
+  "fits": {
+    "rasch_jml": {
+      "iterations": 10,
+      "max_abs_row_sum_residual": 7.00964619682054e-09,
+      "max_abs_col_sum_residual": 7.105427357601002e-15,
+      "theta": {
+        "HuggingFaceTB/SmolLM2-1.7B-Instruct": -0.6671,
+        "Qwen/Qwen2.5-0.5B-Instruct": -0.8693,
+        "Qwen/Qwen2.5-1.5B-Instruct": 0.4722,
+        "microsoft/phi-2": -0.006,
+        "microsoft/Phi-3-mini-4k-instruct": 1.12,
+        "microsoft/Phi-3.5-mini-instruct": 0.968,
+        "Qwen/Qwen2.5-3B-Instruct": 0.8046,
+        "Qwen/Qwen2-7B-Instruct": 0.8933,
+        "Qwen/Qwen2.5-7B-Instruct": 1.3235,
+        "mistralai/Mistral-7B-Instruct-v0.3": 0.3164,
+        "HuggingFaceH4/zephyr-7b-beta": 0.0918,
+        "allenai/OLMo-2-1124-7B-Instruct": 0.1898,
+        "01-ai/Yi-1.5-6B-Chat": 0.7752,
+        "deepseek-ai/deepseek-llm-7b-chat": -0.5248,
+        "ibm-granite/granite-3.1-8b-instruct": 0.7023,
+        "mistralai/Ministral-8B-Instruct-2410": 0.4865,
+        "google/gemma-2-2b-it": 0.2741,
+        "meta-llama/Llama-3.1-8B-Instruct": 1.12,
+        "google/gemma-2-9b-it": 1.4692,
+        "mistralai/Mistral-Small-Instruct-2409": 1.1354,
+        "meta-llama/Llama-3.2-1B-Instruct": -1.2892,
+        "meta-llama/Llama-3.2-3B-Instruct": 0.3729,
+        "meta-llama/Meta-Llama-3-8B-Instruct": 0.8193
+      }
+    },
+    "rasch_cml": {
+      "corr_theta_cml_vs_jml": 0.9999886306919269,
+      "sd_theta_cml": 0.6719591418257355,
+      "sd_theta_jml": 0.7066058815846605,
+      "max_abs_row_sum_residual": 5.666299529988237
+    },
+    "twopl_mml": {
+      "converged": true,
+      "iterations": 20,
+      "marginal_loglik": -5618.881569362531,
+      "hyper_mu_log_a": -0.273775673301378,
+      "hyper_sd_log_a": 0.7296604993496979,
+      "hyper_mu_b": -0.6037046331891057,
+      "hyper_sd_b": 2.6935269972660545,
+      "theta_scale": "mean 0, SD 1 over the 24 models",
+      "corr_theta_vs_accuracy": 0.9968988195921248,
+      "a_eap_quantiles_0_10_50_90_100_split_cols": [
+        0.22418129947910337,
+        0.4086922301187148,
+        0.803918277529476,
+        1.6918838800759626,
+        3.1117405950259593
+      ],
+      "max_posterior_mass_on_grid_boundary": 1.9403765680236584e-05,
+      "grid": {
+        "n_a": 41,
+        "n_b": 401,
+        "hw_a": 5.0,
+        "hw_b": 5.0
+      },
+      "grid_check": {
+        "grid": {
+          "n_a": 61,
+          "n_b": 801,
+          "hw_a": 6.0,
+          "hw_b": 6.0
+        },
+        "marginal_loglik": -5618.881647973521,
+        "hyper": [
+          -0.2737756319970624,
+          0.7296602403892374,
+          -0.6037047360927961,
+          2.6935243644530105
+        ],
+        "max_abs_theta_diff": 3.614084800318551e-07
+      },
+      "random_restarts": {
+        "n": 3,
+        "marginal_loglik": [
+          -5618.881569362591,
+          -5618.88156936256,
+          -5618.881569362615
+        ],
+        "max_abs_theta_diff": [
+          1.1798962262776769e-06,
+          2.034406588746762e-06,
+          2.0835748322234338e-06
+        ]
+      },
+      "theta": {
+        "HuggingFaceTB/SmolLM2-1.7B-Instruct": -1.4411,
+        "Qwen/Qwen2.5-0.5B-Instruct": -1.9121,
+        "Qwen/Qwen2.5-1.5B-Instruct": 0.0213,
+        "microsoft/phi-2": -0.7047,
+        "microsoft/Phi-3-mini-4k-instruct": 1.0339,
+        "microsoft/Phi-3.5-mini-instruct": 0.8552,
+        "Qwen/Qwen2.5-3B-Instruct": 0.4787,
+        "Qwen/Qwen2-7B-Instruct": 0.6499,
+        "Qwen/Qwen2.5-7B-Instruct": 1.2964,
+        "mistralai/Mistral-7B-Instruct-v0.3": -0.2482,
+        "HuggingFaceH4/zephyr-7b-beta": -0.4413,
+        "allenai/OLMo-2-1124-7B-Instruct": -0.3964,
+        "01-ai/Yi-1.5-6B-Chat": 0.5482,
+        "deepseek-ai/deepseek-llm-7b-chat": -1.2157,
+        "ibm-granite/granite-3.1-8b-instruct": 0.362,
+        "mistralai/Ministral-8B-Instruct-2410": 0.1882,
+        "google/gemma-2-2b-it": -0.3613,
+        "meta-llama/Llama-3.1-8B-Instruct": 0.9651,
+        "google/gemma-2-9b-it": 1.4563,
+        "mistralai/Mistral-Small-Instruct-2409": 0.9774,
+        "meta-llama/Llama-3.2-1B-Instruct": -2.4264,
+        "meta-llama/Llama-3.2-3B-Instruct": -0.1625,
+        "meta-llama/Meta-Llama-3-8B-Instruct": 0.477
+      }
+    }
+  },
+  "nulls": {
+    "a_rasch_jml": {
+      "notes": "Rasch, JML; conditional on split",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 978,
+          "2": 22
+        },
+        "mean": 1.022,
+        "max": 2,
+        "frac_ge_observed": 0.022
+      },
+      "rank_eigs_mean": [
+        55.19397778084358,
+        28.7367770114236,
+        26.55610218967602,
+        25.186920633107054
+      ],
+      "rank_eigs_p95": [
+        59.383464898149384,
+        30.82859532169796,
+        27.93125955945132,
+        26.16330247378998
+      ],
+      "rank_eigs_p99": [
+        61.389239441665524,
+        32.113855558226305,
+        28.697544494706094,
+        26.703909294391366
+      ],
+      "rank_eig_over_edge_p99": [
+        2.050116283547575,
+        1.0724540457937353,
+        0.95836507833484,
+        0.8917868958261177
+      ],
+      "observed_minus_p99": [
+        28.048190137663198,
+        19.029319975164597,
+        1.9733958915196048,
+        1.3042310142384785
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4
+    },
+    "a_rasch_cml": {
+      "notes": "Rasch, CML theta + ML b; conditional on split",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 978,
+          "2": 22
+        },
+        "mean": 1.022,
+        "max": 2,
+        "frac_ge_observed": 0.022
+      },
+      "rank_eigs_mean": [
+        52.27904647221765,
+        28.792377948323438,
+        26.669050717232867,
+        25.326445756712733
+      ],
+      "rank_eigs_p95": [
+        56.37604866753415,
+        30.955546121978895,
+        27.991255866620094,
+        26.355088628957773
+      ],
+      "rank_eigs_p99": [
+        58.36861591188193,
+        31.93720179619465,
+        28.80726891567402,
+        26.813998838742332
+      ],
+      "rank_eig_over_edge_p99": [
+        1.9492414471560802,
+        1.0665546282836817,
+        0.9620293658252058,
+        0.8954633767464704
+      ],
+      "observed_minus_p99": [
+        31.06881366744679,
+        19.205973737196253,
+        1.8636714705516795,
+        1.1941414698875121
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4
+    },
+    "b_fixed_margin": {
+      "notes": "curveball chain, exact row+column sums",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 982,
+          "2": 18
+        },
+        "mean": 1.018,
+        "max": 2,
+        "frac_ge_observed": 0.018
+      },
+      "rank_eigs_mean": [
+        51.942410212336284,
+        28.654908605148766,
+        26.65380416926105,
+        25.375072424300587
+      ],
+      "rank_eigs_p95": [
+        53.941837478055874,
+        30.768725517166832,
+        27.99770532622196,
+        26.4060618518226
+      ],
+      "rank_eigs_p99": [
+        54.89753621099887,
+        31.851773900656646,
+        28.474467379060215,
+        26.86195799359224
+      ],
+      "rank_eig_over_edge_p99": [
+        1.8333234608608793,
+        1.063701732217457,
+        0.9509153358159248,
+        0.8970649904038022
+      ],
+      "observed_minus_p99": [
+        34.53989336832985,
+        19.291401632734257,
+        2.1964730071654834,
+        1.1461823150376027
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4,
+      "mixing": {
+        "burnin_trades": 20000,
+        "thin_trades": 2000,
+        "lag1_autocorr_ranks_1to4": [
+          -0.010298468760061222,
+          0.025641559914690092,
+          0.008627290221372649,
+          -0.00883026691472712
+        ],
+        "restart_draws": 200,
+        "restart_trades": 5000,
+        "restart_rank_means": [
+          51.97085521627965,
+          28.789358189054884,
+          26.641886053212474,
+          25.414247204716652
+        ],
+        "chain_rank_means": [
+          51.942410212336284,
+          28.654908605148766,
+          26.65380416926105,
+          25.375072424300587
+        ],
+        "restart_rank_p99": [
+          54.74716938988618,
+          31.567446797419652,
+          28.44441942417669,
+          26.81843939281884
+        ]
+      }
+    },
+    "c_post_2pl": {
+      "notes": "2PL MML, (a_i, b_i) from posterior; conditional on split",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 635,
+          "2": 364,
+          "3": 1
+        },
+        "mean": 1.366,
+        "max": 3,
+        "frac_ge_observed": 0.365
+      },
+      "rank_eigs_mean": [
+        74.66594218015122,
+        30.893317003350504,
+        27.00415797599206,
+        24.731980321907294
+      ],
+      "rank_eigs_p95": [
+        80.23915500910837,
+        33.80763337390047,
+        29.13697679058832,
+        26.101447613321305
+      ],
+      "rank_eigs_p99": [
+        82.60733312371545,
+        35.24043624058501,
+        30.220854163000613,
+        26.638061878363203
+      ],
+      "rank_eig_over_edge_p99": [
+        2.75870234454192,
+        1.1768673603587376,
+        1.009236566306663,
+        0.8895878970918666
+      ],
+      "observed_minus_p99": [
+        6.830096455613273,
+        15.90273929280589,
+        0.4500862232250853,
+        1.3700784302666413
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.003996003996003996,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4
+    },
+    "c_prior_2pl": {
+      "notes": "2PL MML, (a_i, b_i) from prior; conditional on split",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 961,
+          "2": 39
+        },
+        "mean": 1.039,
+        "max": 2,
+        "frac_ge_observed": 0.039
+      },
+      "rank_eigs_mean": [
+        66.72244523663606,
+        28.58934680110012,
+        25.966221439258103,
+        24.502994849328598
+      ],
+      "rank_eigs_p95": [
+        72.06017937110056,
+        31.077138487714727,
+        27.43545045365819,
+        25.5845418290459
+      ],
+      "rank_eigs_p99": [
+        74.54313783051164,
+        32.572840104424216,
+        28.26844458207626,
+        26.088881413528217
+      ],
+      "rank_eig_over_edge_p99": [
+        2.489395569695578,
+        1.0877820039280137,
+        0.9440351285561462,
+        0.8712478130021412
+      ],
+      "observed_minus_p99": [
+        14.894291748817082,
+        18.570335428966686,
+        2.4024958041494386,
+        1.9192588951016276
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4
+    },
+    "c_post_2pl_stress_slopes_x1.25": {
+      "notes": "STRESS TEST, not a fitted null: 2PL posterior draws with every slope multiplied by 1.25",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 119,
+          "2": 872,
+          "3": 9
+        },
+        "mean": 1.89,
+        "max": 3,
+        "frac_ge_observed": 0.881
+      },
+      "rank_eigs_mean": [
+        87.46021255239272,
+        33.820353420723315,
+        27.79106607186756,
+        24.299756931176244
+      ],
+      "rank_eigs_p95": [
+        93.06956144413085,
+        37.377792426068105,
+        30.539068235534913,
+        26.02531789234639
+      ],
+      "rank_eigs_p99": [
+        96.29044629629874,
+        39.060391344370004,
+        31.30649420802247,
+        26.63013763881087
+      ],
+      "rank_eig_over_edge_p99": [
+        3.2156549534986314,
+        1.3044361693538702,
+        1.0454919158534768,
+        0.889323264190584
+      ],
+      "observed_minus_p99": [
+        -6.853016716970018,
+        12.082784189020899,
+        -0.6355538217967727,
+        1.3780026698189758
+      ],
+      "mc_pvalue_per_rank": [
+        0.2727272727272727,
+        0.000999000999000999,
+        0.04195804195804196,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 2,
+      "observed_ranks_above_p99": [
+        2,
+        4
+      ],
+      "contiguous_ranks_above_p99": 0,
+      "n_observed_ranks_above_p99_edge_normalized": 2,
+      "marginal_loglik_of_scaled_model_minus_fit": -12.20479404861453,
+      "loglik_note": "theta, sd_log_a, mu_b, sd_b held at the fit; the eigenvalue law depends only on a_i (theta_m - b_i), so this is the invariant 'steeper' direction. Holding the other parameters fixed makes |delta loglik| an upper bound on the profile penalty."
+    },
+    "c_post_2pl_stress_slopes_x1.5": {
+      "notes": "STRESS TEST, not a fitted null: 2PL posterior draws with every slope multiplied by 1.5",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 1,
+          "2": 939,
+          "3": 60
+        },
+        "mean": 2.059,
+        "max": 3,
+        "frac_ge_observed": 0.999
+      },
+      "rank_eigs_mean": [
+        99.00943937271973,
+        36.80853238095335,
+        28.508386986647324,
+        23.83204583045949
+      ],
+      "rank_eigs_p95": [
+        104.48528231056079,
+        40.45730095799045,
+        31.6268698722133,
+        25.92280931476773
+      ],
+      "rank_eigs_p99": [
+        106.78627289834878,
+        41.697467576026284,
+        33.061735031827574,
+        26.91337551835208
+      ],
+      "rank_eig_over_edge_p99": [
+        3.5661669523742905,
+        1.3925023023218817,
+        1.1041088302697186,
+        0.8987820975992745
+      ],
+      "observed_minus_p99": [
+        -17.348843319020062,
+        9.445707957364618,
+        -2.3907946456018756,
+        1.0947647902777646
+      ],
+      "mc_pvalue_per_rank": [
+        0.997002997002997,
+        0.000999000999000999,
+        0.13286713286713286,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 2,
+      "observed_ranks_above_p99": [
+        2,
+        4
+      ],
+      "contiguous_ranks_above_p99": 0,
+      "n_observed_ranks_above_p99_edge_normalized": 2,
+      "marginal_loglik_of_scaled_model_minus_fit": -40.72958866294266,
+      "loglik_note": "theta, sd_log_a, mu_b, sd_b held at the fit; the eigenvalue law depends only on a_i (theta_m - b_i), so this is the invariant 'steeper' direction. Holding the other parameters fixed makes |delta loglik| an upper bound on the profile penalty."
+    },
+    "c_post_2pl_stress_slopes_x2": {
+      "notes": "STRESS TEST, not a fitted null: 2PL posterior draws with every slope multiplied by 2",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 460.0,
+        "min": 460,
+        "max": 460
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "2": 781,
+          "3": 219
+        },
+        "mean": 2.219,
+        "max": 3,
+        "frac_ge_observed": 1.0
+      },
+      "rank_eigs_mean": [
+        118.75179836282376,
+        42.21698241869635,
+        29.93947094406364,
+        23.25950077676922
+      ],
+      "rank_eigs_p95": [
+        124.16858812384771,
+        45.867649102131985,
+        33.45864410538235,
+        25.66750012535673
+      ],
+      "rank_eigs_p99": [
+        126.66684124565589,
+        47.29286387655415,
+        34.83952024368733,
+        26.894320526646606
+      ],
+      "rank_eig_over_edge_p99": [
+        4.2300858617089485,
+        1.579362624634792,
+        1.163478622836494,
+        0.8981457491262594
+      ],
+      "observed_minus_p99": [
+        -37.22941166632717,
+        3.8503116568367517,
+        -4.1685798574616335,
+        1.1138197819832385
+      ],
+      "mc_pvalue_per_rank": [
+        1.0,
+        0.000999000999000999,
+        0.33766233766233766,
+        0.002997002997002997
+      ],
+      "n_observed_ranks_1to4_above_p99": 2,
+      "observed_ranks_above_p99": [
+        2,
+        4
+      ],
+      "contiguous_ranks_above_p99": 0,
+      "n_observed_ranks_above_p99_edge_normalized": 2,
+      "marginal_loglik_of_scaled_model_minus_fit": -120.89067352897109,
+      "loglik_note": "theta, sd_log_a, mu_b, sd_b held at the fit; the eigenvalue law depends only on a_i (theta_m - b_i), so this is the invariant 'steeper' direction. Holding the other parameters fixed makes |delta loglik| an upper bound on the profile penalty."
+    },
+    "a_rasch_jml_unconditional": {
+      "notes": "Rasch JML, unconditional; N_split varies; compare edge-normalized field",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 431.326,
+        "min": 418,
+        "max": 444
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 999,
+          "2": 1
+        },
+        "mean": 1.001,
+        "max": 2,
+        "frac_ge_observed": 0.001
+      },
+      "rank_eigs_mean": [
+        52.13309653034779,
+        26.533117372354752,
+        24.84239613068898,
+        23.628251467994843
+      ],
+      "rank_eigs_p95": [
+        56.26945435041833,
+        28.35568829432295,
+        26.075872699892578,
+        24.727631960220496
+      ],
+      "rank_eigs_p99": [
+        57.973328386040166,
+        29.333851913646438,
+        26.59710474795362,
+        25.089584403668496
+      ],
+      "rank_eig_over_edge_p99": [
+        2.033256863464822,
+        1.0233610396940118,
+        0.9330965325504447,
+        0.8809960679925729
+      ],
+      "observed_minus_p99": [
+        31.464101193288556,
+        21.809323619744465,
+        4.0738356382720795,
+        2.918555904961348
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4
+    },
+    "c_post_2pl_unconditional": {
+      "notes": "2PL posterior, all 500 columns, re-filter split; compare edge-normalized field",
+      "n_draws": 1000,
+      "n_split_per_draw": {
+        "mean": 444.51,
+        "min": 427,
+        "max": 465
+      },
+      "count_above_1p05_edge": {
+        "distribution": {
+          "1": 743,
+          "2": 257
+        },
+        "mean": 1.257,
+        "max": 2,
+        "frac_ge_observed": 0.257
+      },
+      "rank_eigs_mean": [
+        71.37364570305279,
+        29.583577971276256,
+        25.983652272683127,
+        23.962777054785033
+      ],
+      "rank_eigs_p95": [
+        76.94981024426839,
+        32.533793698579906,
+        28.01242206705914,
+        25.4558904806721
+      ],
+      "rank_eigs_p99": [
+        79.32227688030115,
+        33.76949410289228,
+        29.02889753709536,
+        26.188359496398547
+      ],
+      "rank_eig_over_edge_p99": [
+        2.7153350990067633,
+        1.1565402656348711,
+        0.9847419778579598,
+        0.9013358783762174
+      ],
+      "observed_minus_p99": [
+        10.115152699027576,
+        17.37368143049862,
+        1.6420428491303376,
+        1.819780812231297
+      ],
+      "mc_pvalue_per_rank": [
+        0.000999000999000999,
+        0.000999000999000999,
+        0.001998001998001998,
+        0.000999000999000999
+      ],
+      "n_observed_ranks_1to4_above_p99": 4,
+      "observed_ranks_above_p99": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "contiguous_ranks_above_p99": 4,
+      "n_observed_ranks_above_p99_edge_normalized": 4
+    }
+  },
+  "tetrachoric": {
+    "feasible": false,
+    "n_pairs": 105570,
+    "frac_pairs_with_a_zero_cell": 0.4362981907738941,
+    "reason": "With 24 models per 2x2 table, 43.6% of the 105570 question pairs have an empty cell, where the tetrachoric ML estimate sits on the boundary |r|=1. The resulting matrix is dominated by boundary values and is not positive semidefinite, and the MP edge does not apply to it. The 2PL null already handles the binary-data artifact that motivates tetrachoric correlations: null and observed go through the same Pearson pipeline."
+  },
+  "statement": {
+    "primary_null": "c_post_2pl (question-matched 2PL, conditional on split)",
+    "ranks_above_p99_by_null": {
+      "a_rasch_jml": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "a_rasch_cml": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "b_fixed_margin": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "c_post_2pl": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "c_prior_2pl": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "c_post_2pl_stress_slopes_x1.25": [
+        2,
+        4
+      ],
+      "c_post_2pl_stress_slopes_x1.5": [
+        2,
+        4
+      ],
+      "c_post_2pl_stress_slopes_x2": [
+        2,
+        4
+      ],
+      "a_rasch_jml_unconditional": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "c_post_2pl_unconditional": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "supported_sentence": "Against a one-factor 2PL null with heterogeneous slopes (question-matched, 1000 draws), eigenvalues 1, 2, 3, 4 exceed their rank-matched 99th percentiles: one ability direction plus 3.",
+    "rank1_above_primary_p99": true,
+    "n_ranks_2to4_contiguous_above_primary_p99": 3,
+    "ranks_above_p99_under_every_fitted_null": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "robustness": "Ranks above p99 under every fitted null (a_rasch_jml, a_rasch_cml, b_fixed_margin, c_post_2pl, c_prior_2pl, a_rasch_jml_unconditional, c_post_2pl_unconditional): [1, 2, 3, 4]. Under the unfitted stress tests that make every question steeper than fitted, the ranks above p99 are: x1.25: [2, 4]; x1.5: [2, 4]; x2: [2, 4]."
+  }
+}

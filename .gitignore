@@ -12,6 +12,7 @@ wheels/
 
 # Test / type caches
 .pytest_cache/
+.coverage
 .hypothesis/
 .mypy_cache/
 .ruff_cache/
@@ -38,11 +39,10 @@ paper/*.pptx
 paper/*.pdf
 texput.log
 
-# Experiment run logs (artifacts under results/ are kept; raw console
-# logs are large and recreated on each run)
+# Raw console logs (large; recreated on each run)
 results/*.log
 results/*.txt
 results/*.jsonl
 
-# poster
-poster/
+# Analysis checkpoints (large; recreated on each run)
+results/analysis/logs_*/ckpt/

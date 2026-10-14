@@ -1,0 +1,9 @@
+2026-10-13 03:08:52 [mmlu_greedyrot_google_gemma-2-2b-it] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
+2026-10-13 03:08:52 pre-check mmlu_greedyrot_google_gemma-2-2b-it: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'exact': 2000}, 'n_equal_to_v2_pipeline_ids': 2000, 'n_equal_to_reference_hash': 2000}
+2026-10-13 03:08:52 google/gemma-2-2b-it: loading vLLM engine {'model': 'google/gemma-2-2b-it', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.25, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
+2026-10-13 03:09:49 engine ready in 57s; prompt_mode=chat_template; max_model_len=3072
+2026-10-13 03:09:49 [mmlu_greedyrot_google_gemma-2-2b-it] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
+2026-10-13 03:09:49 [mmlu_greedyrot_google_gemma-2-2b-it] start K=4 N=500 T=0.0 block=4 passes
+2026-10-13 03:11:07 [mmlu_greedyrot_google_gemma-2-2b-it] passes 0-3 done, block acc=0.540, elapsed=78s
+2026-10-13 03:11:07 [mmlu_greedyrot_google_gemma-2-2b-it] DONE acc=0.5405 unparseable=0.0000 N_b=232 runtime=78s
+2026-10-13 03:11:07 google/gemma-2-2b-it: finished; failed runs: []

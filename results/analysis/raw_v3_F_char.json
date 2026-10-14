@@ -1,0 +1,2323 @@
+{
+  "meta": {
+    "seed": [
+      20261014,
+      11
+    ],
+    "n_perm": 5000,
+    "model_size": "nominal parameter count (billions) from the model name/card",
+    "replicate_B_difference": {
+      "n_cells_choice_differs": 6,
+      "n_cells_correctness_differs": 5,
+      "n_cells": 48000,
+      "choice_differs_by_model": {
+        "Qwen/Qwen2-7B-Instruct": 6
+      }
+    },
+    "replicate_B_note": "B differs from A in the chosen option in 6 of 48000 cells (Qwen/Qwen2-7B-Instruct), in correctness in 5; it tests GPU nondeterminism only, not resampling"
+  },
+  "targets": {
+    "full__ge2": {
+      "2": {
+        "eigenvalue": 42.29435281724116,
+        "r2_loading_on_cubic_difficulty": 0.22750091148351692,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.16478208457990656,
+          "perm_p": 0.009998000399920015,
+          "null_mean": 0.11082671978612928,
+          "null_p95": 0.14688727626266665,
+          "n_groups": 50,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.0064127207144360895,
+          "perm_p": 0.09618076384723055,
+          "null_mean": 0.0022981586967134823,
+          "null_p95": 0.008818506293978404,
+          "n_groups": 2,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.3496718729098475,
+          "perm_p": 0.586882623475305,
+          "null_mean": 0.3895152427232864,
+          "null_p95": 0.6565382345702281,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.1743280290026729,
+          "perm_p_two_sided": 0.3925607439256074
+        },
+        "corr_model_score_log_size": {
+          "r": 0.31931371145931464,
+          "perm_p_two_sided": 0.12428757124287572
+        },
+        "spearman_model_score_log_size": 0.46231046537422443,
+        "corr_model_score_letter_pref_max": {
+          "r": 0.07514166077694073,
+          "perm_p_two_sided": 0.6992300769923008
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": -0.20721665700548297,
+          "perm_p_two_sided": 0.2746725327467253
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.022063711401119658,
+          "perm_p": 0.020195960807838434,
+          "null_mean": 0.006841774459006731,
+          "null_p95": 0.01769318314315546,
+          "n_groups": 4,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "nutrition",
+            -0.0386
+          ],
+          [
+            "high_school_world_history",
+            -0.0327
+          ],
+          [
+            "college_medicine",
+            -0.032
+          ],
+          [
+            "high_school_european_history",
+            -0.0249
+          ],
+          [
+            "business_ethics",
+            -0.0223
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "miscellaneous",
+            0.0472
+          ],
+          [
+            "econometrics",
+            0.0382
+          ],
+          [
+            "astronomy",
+            0.0342
+          ],
+          [
+            "high_school_psychology",
+            0.0211
+          ],
+          [
+            "management",
+            0.0202
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 110,
+            "subject": "computer_security",
+            "loading": 0.0959,
+            "p_correct": 0.875
+          },
+          {
+            "index": 435,
+            "subject": "moral_scenarios",
+            "loading": -0.0935,
+            "p_correct": 0.25
+          },
+          {
+            "index": 457,
+            "subject": "philosophy",
+            "loading": 0.0922,
+            "p_correct": 0.917
+          },
+          {
+            "index": 139,
+            "subject": "econometrics",
+            "loading": 0.089,
+            "p_correct": 0.917
+          },
+          {
+            "index": 249,
+            "subject": "high_school_macroeconomics",
+            "loading": 0.0889,
+            "p_correct": 0.625
+          },
+          {
+            "index": 483,
+            "subject": "professional_law",
+            "loading": -0.0868,
+            "p_correct": 0.208
+          },
+          {
+            "index": 191,
+            "subject": "high_school_chemistry",
+            "loading": -0.0868,
+            "p_correct": 0.542
+          },
+          {
+            "index": 184,
+            "subject": "high_school_biology",
+            "loading": -0.0867,
+            "p_correct": 0.958
+          },
+          {
+            "index": 182,
+            "subject": "high_school_biology",
+            "loading": -0.0867,
+            "p_correct": 0.958
+          },
+          {
+            "index": 305,
+            "subject": "high_school_us_history",
+            "loading": -0.0867,
+            "p_correct": 0.958
+          },
+          {
+            "index": 423,
+            "subject": "moral_disputes",
+            "loading": -0.0867,
+            "p_correct": 0.958
+          },
+          {
+            "index": 426,
+            "subject": "moral_disputes",
+            "loading": -0.0867,
+            "p_correct": 0.958
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Llama-3.2-1B-Instruct",
+          "share": 0.30467466794805625
+        },
+        "participation_ratio_models": 5.653769680397587,
+        "model_scores_low_to_high": [
+          [
+            "Qwen2.5-0.5B-Instruct",
+            -0.499
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            -0.313
+          ],
+          [
+            "SmolLM2-1.7B-Instruct",
+            -0.285
+          ],
+          [
+            "phi-2",
+            -0.199
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.156
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.127
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            -0.104
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.079
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            -0.043
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.039
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.018
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            0.013
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.065
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            0.068
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.086
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.099
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            0.109
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.116
+          ],
+          [
+            "gemma-2-9b-it",
+            0.142
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.146
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            0.147
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            0.154
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.167
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            0.552
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.13793672481545868,
+            1.0,
+            0.005315318223764759,
+            0.01091691668361879
+          ],
+          "abs_r_model_scores_same_rank": 1.0
+        }
+      },
+      "3": {
+        "eigenvalue": 30.207473625697414,
+        "r2_loading_on_cubic_difficulty": 0.09259198147285197,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.15149370506595086,
+          "perm_p": 0.033793241351729654,
+          "null_mean": 0.11070266183403933,
+          "null_p95": 0.1469748777984928,
+          "n_groups": 50,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.0011466850647463313,
+          "perm_p": 0.48530293941211755,
+          "null_mean": 0.00228770661796755,
+          "null_p95": 0.008705526441267823,
+          "n_groups": 2,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.515574264828251,
+          "perm_p": 0.2519496100779844,
+          "null_mean": 0.389734344453539,
+          "null_p95": 0.7514383997876277,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.08865855684349688,
+          "perm_p_two_sided": 0.6552344765523448
+        },
+        "corr_model_score_log_size": {
+          "r": -0.2162220913112733,
+          "perm_p_two_sided": 0.29887011298870114
+        },
+        "spearman_model_score_log_size": 0.2143795937456347,
+        "corr_model_score_letter_pref_max": {
+          "r": 0.0718420566407033,
+          "perm_p_two_sided": 0.6798320167983202
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": -0.031312007957778984,
+          "perm_p_two_sided": 0.8528147185281472
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.003574698915834839,
+          "perm_p": 0.6584683063387322,
+          "null_mean": 0.006844037871215255,
+          "null_p95": 0.017944502945957817,
+          "n_groups": 4,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "miscellaneous",
+            -0.0545
+          ],
+          [
+            "global_facts",
+            -0.0348
+          ],
+          [
+            "high_school_psychology",
+            -0.0296
+          ],
+          [
+            "college_chemistry",
+            -0.0251
+          ],
+          [
+            "astronomy",
+            -0.0229
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "high_school_european_history",
+            0.041
+          ],
+          [
+            "high_school_macroeconomics",
+            0.037
+          ],
+          [
+            "human_aging",
+            0.0231
+          ],
+          [
+            "professional_law",
+            0.0199
+          ],
+          [
+            "high_school_microeconomics",
+            0.0198
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 415,
+            "subject": "miscellaneous",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 29,
+            "subject": "astronomy",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 413,
+            "subject": "miscellaneous",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 27,
+            "subject": "astronomy",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 286,
+            "subject": "high_school_psychology",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 411,
+            "subject": "miscellaneous",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 289,
+            "subject": "high_school_psychology",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 451,
+            "subject": "philosophy",
+            "loading": -0.1315,
+            "p_correct": 0.958
+          },
+          {
+            "index": 333,
+            "subject": "human_sexuality",
+            "loading": 0.1239,
+            "p_correct": 0.083
+          },
+          {
+            "index": 128,
+            "subject": "conceptual_physics",
+            "loading": 0.1076,
+            "p_correct": 0.333
+          },
+          {
+            "index": 265,
+            "subject": "high_school_microeconomics",
+            "loading": 0.1058,
+            "p_correct": 0.5
+          },
+          {
+            "index": 308,
+            "subject": "high_school_us_history",
+            "loading": 0.1055,
+            "p_correct": 0.542
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "share": 0.5003849718787361
+        },
+        "participation_ratio_models": 3.4382383899984097,
+        "model_scores_low_to_high": [
+          [
+            "SmolLM2-1.7B-Instruct",
+            -0.406
+          ],
+          [
+            "phi-2",
+            -0.288
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.182
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.175
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.167
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.143
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.123
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            -0.074
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            -0.054
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            -0.038
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            -0.02
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            0.003
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            0.017
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            0.03
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.047
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            0.06
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.07
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.075
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.093
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            0.102
+          ],
+          [
+            "gemma-2-9b-it",
+            0.108
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.143
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.214
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            0.707
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.07211940442941359,
+            0.005315318223764759,
+            1.0,
+            0.005707845611684756
+          ],
+          "abs_r_model_scores_same_rank": 1.0
+        }
+      },
+      "4": {
+        "eigenvalue": 22.95969204483556,
+        "r2_loading_on_cubic_difficulty": 0.023079922254743868,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.10361584429130764,
+          "perm_p": 0.6204759048190361,
+          "null_mean": 0.11076852682418444,
+          "null_p95": 0.1463198813974909,
+          "n_groups": 50,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.008242136505332709,
+          "perm_p": 0.05538892221555689,
+          "null_mean": 0.00228561451450445,
+          "null_p95": 0.008623552330189355,
+          "n_groups": 2,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.6142941761712714,
+          "perm_p": 0.059988002399520096,
+          "null_mean": 0.38722982244485676,
+          "null_p95": 0.6250041895949296,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.0650295518688105,
+          "perm_p_two_sided": 0.7579242075792421
+        },
+        "corr_model_score_log_size": {
+          "r": -0.2157472003088346,
+          "perm_p_two_sided": 0.30996900309969005
+        },
+        "spearman_model_score_log_size": -0.21220093933765063,
+        "corr_model_score_letter_pref_max": {
+          "r": -0.0649729901233275,
+          "perm_p_two_sided": 0.7497250274972502
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": 0.057836543463725736,
+          "perm_p_two_sided": 0.7472252774722528
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.01425010931085416,
+          "perm_p": 0.09918016396720655,
+          "null_mean": 0.006798044124882127,
+          "null_p95": 0.01779405750516892,
+          "n_groups": 4,
+          "n": 444,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "human_sexuality",
+            -0.037
+          ],
+          [
+            "moral_scenarios",
+            -0.0325
+          ],
+          [
+            "medical_genetics",
+            -0.0312
+          ],
+          [
+            "high_school_european_history",
+            -0.0274
+          ],
+          [
+            "clinical_knowledge",
+            -0.0252
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "college_chemistry",
+            0.0325
+          ],
+          [
+            "conceptual_physics",
+            0.026
+          ],
+          [
+            "college_physics",
+            0.0221
+          ],
+          [
+            "high_school_mathematics",
+            0.017
+          ],
+          [
+            "econometrics",
+            0.0147
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 407,
+            "subject": "medical_genetics",
+            "loading": -0.1446,
+            "p_correct": 0.167
+          },
+          {
+            "index": 379,
+            "subject": "machine_learning",
+            "loading": 0.1357,
+            "p_correct": 0.792
+          },
+          {
+            "index": 24,
+            "subject": "astronomy",
+            "loading": 0.1287,
+            "p_correct": 0.458
+          },
+          {
+            "index": 67,
+            "subject": "college_chemistry",
+            "loading": 0.1276,
+            "p_correct": 0.125
+          },
+          {
+            "index": 122,
+            "subject": "conceptual_physics",
+            "loading": 0.1233,
+            "p_correct": 0.708
+          },
+          {
+            "index": 84,
+            "subject": "college_mathematics",
+            "loading": 0.1129,
+            "p_correct": 0.417
+          },
+          {
+            "index": 336,
+            "subject": "human_sexuality",
+            "loading": -0.1107,
+            "p_correct": 0.458
+          },
+          {
+            "index": 250,
+            "subject": "high_school_mathematics",
+            "loading": 0.109,
+            "p_correct": 0.583
+          },
+          {
+            "index": 272,
+            "subject": "high_school_physics",
+            "loading": 0.107,
+            "p_correct": 0.083
+          },
+          {
+            "index": 278,
+            "subject": "high_school_physics",
+            "loading": 0.1054,
+            "p_correct": 0.417
+          },
+          {
+            "index": 159,
+            "subject": "elementary_mathematics",
+            "loading": -0.1034,
+            "p_correct": 0.375
+          },
+          {
+            "index": 241,
+            "subject": "high_school_macroeconomics",
+            "loading": 0.1019,
+            "p_correct": 0.583
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Mistral-7B-Instruct-v0.2",
+          "share": 0.20071447583683116
+        },
+        "participation_ratio_models": 7.490061933334978,
+        "model_scores_low_to_high": [
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.448
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.397
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.35
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            -0.118
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            -0.08
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            -0.07
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            -0.065
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            -0.059
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            -0.054
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            -0.037
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            -0.03
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.019
+          ],
+          [
+            "gemma-2-9b-it",
+            -0.019
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            -0.012
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            0.011
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.025
+          ],
+          [
+            "gemma-2-2b-it",
+            0.048
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.112
+          ],
+          [
+            "SmolLM2-1.7B-Instruct",
+            0.131
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            0.141
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            0.275
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            0.297
+          ],
+          [
+            "phi-2",
+            0.297
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            0.419
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.14812312194369048,
+            0.010916916683618789,
+            0.005707845611684755,
+            0.9999999999999999
+          ],
+          "abs_r_model_scores_same_rank": 1.0
+        }
+      }
+    },
+    "full__ge3": {
+      "2": {
+        "eigenvalue": 37.76867072917559,
+        "r2_loading_on_cubic_difficulty": 0.41011957138353516,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.09456792198733352,
+          "perm_p": 0.7832433513297341,
+          "null_mean": 0.11218340422727717,
+          "null_p95": 0.1495088324925386,
+          "n_groups": 50,
+          "n": 439,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.0027579785425131814,
+          "perm_p": 0.28314337132573486,
+          "null_mean": 0.002334369656765921,
+          "null_p95": 0.008979991140744097,
+          "n_groups": 2,
+          "n": 439,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.29605044071438147,
+          "perm_p": 0.6360727854429115,
+          "null_mean": 0.3880398406363155,
+          "null_p95": 0.6909623030670764,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.15583297208066965,
+          "perm_p_two_sided": 0.45895410458954106
+        },
+        "corr_model_score_log_size": {
+          "r": -0.0016003527486336917,
+          "perm_p_two_sided": 0.9935006499350065
+        },
+        "spearman_model_score_log_size": 0.278432033340367,
+        "corr_model_score_letter_pref_max": {
+          "r": 0.3035346956887636,
+          "perm_p_two_sided": 0.13758624137586242
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": -0.42715375706519,
+          "perm_p_two_sided": 0.052594740525947405
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.010392922159953882,
+          "perm_p": 0.19996000799840033,
+          "null_mean": 0.006749890736714471,
+          "null_p95": 0.01745418867290884,
+          "n_groups": 4,
+          "n": 439,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "high_school_world_history",
+            -0.027
+          ],
+          [
+            "college_physics",
+            -0.026
+          ],
+          [
+            "high_school_psychology",
+            -0.0244
+          ],
+          [
+            "high_school_government_and_politics",
+            -0.0171
+          ],
+          [
+            "marketing",
+            -0.0167
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "high_school_statistics",
+            0.0241
+          ],
+          [
+            "astronomy",
+            0.0209
+          ],
+          [
+            "econometrics",
+            0.0187
+          ],
+          [
+            "miscellaneous",
+            0.0183
+          ],
+          [
+            "medical_genetics",
+            0.0157
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 462,
+            "subject": "prehistory",
+            "loading": 0.1281,
+            "p_correct": 0.333
+          },
+          {
+            "index": 74,
+            "subject": "college_computer_science",
+            "loading": 0.1183,
+            "p_correct": 0.417
+          },
+          {
+            "index": 294,
+            "subject": "high_school_statistics",
+            "loading": 0.1126,
+            "p_correct": 0.167
+          },
+          {
+            "index": 499,
+            "subject": "professional_medicine",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 452,
+            "subject": "philosophy",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 446,
+            "subject": "nutrition",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 50,
+            "subject": "college_biology",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 426,
+            "subject": "moral_disputes",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 397,
+            "subject": "marketing",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 390,
+            "subject": "marketing",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 381,
+            "subject": "management",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          },
+          {
+            "index": 234,
+            "subject": "high_school_government_and_politics",
+            "loading": -0.1088,
+            "p_correct": 0.958
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Llama-3.2-1B-Instruct",
+          "share": 0.42881965823687485
+        },
+        "participation_ratio_models": 4.844518138921336,
+        "model_scores_low_to_high": [
+          [
+            "deepseek-llm-7b-chat",
+            -0.264
+          ],
+          [
+            "SmolLM2-1.7B-Instruct",
+            -0.212
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.202
+          ],
+          [
+            "phi-2",
+            -0.2
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.18
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.169
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.151
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            -0.136
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            -0.135
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.135
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            -0.07
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            -0.059
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            -0.04
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            -0.011
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.043
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            0.071
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.101
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            0.109
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.163
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.178
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.181
+          ],
+          [
+            "gemma-2-9b-it",
+            0.213
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.25
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            0.655
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.13612576415485503,
+            0.9997409986888249,
+            0.006437070104389054,
+            0.0008823473932971953
+          ],
+          "abs_r_model_scores_same_rank": 0.9999826234352363
+        }
+      },
+      "3": {
+        "eigenvalue": 25.45993336191643,
+        "r2_loading_on_cubic_difficulty": 0.09981774315187142,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.1351144698607569,
+          "perm_p": 0.14397120575884823,
+          "null_mean": 0.1123348603486987,
+          "null_p95": 0.14821354634371411,
+          "n_groups": 50,
+          "n": 439,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.0010923883058355493,
+          "perm_p": 0.47170565886822635,
+          "null_mean": 0.0022795543436416816,
+          "null_p95": 0.0089060975664444,
+          "n_groups": 2,
+          "n": 439,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.7186581762861122,
+          "perm_p": 0.01219756048790242,
+          "null_mean": 0.38891107319075185,
+          "null_p95": 0.6456586337089769,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.050066017055859224,
+          "perm_p_two_sided": 0.8168183181681832
+        },
+        "corr_model_score_log_size": {
+          "r": -0.44355213101415536,
+          "perm_p_two_sided": 0.0316968303169683
+        },
+        "spearman_model_score_log_size": -0.27886776422196385,
+        "corr_model_score_letter_pref_max": {
+          "r": -0.03411017322986324,
+          "perm_p_two_sided": 0.8669133086691331
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": 0.09254285311194296,
+          "perm_p_two_sided": 0.6438356164383562
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.009910327053633866,
+          "perm_p": 0.22915416916616677,
+          "null_mean": 0.006860301978448135,
+          "null_p95": 0.018368831312392947,
+          "n_groups": 4,
+          "n": 439,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "miscellaneous",
+            -0.05
+          ],
+          [
+            "medical_genetics",
+            -0.0331
+          ],
+          [
+            "philosophy",
+            -0.0322
+          ],
+          [
+            "high_school_geography",
+            -0.0299
+          ],
+          [
+            "human_sexuality",
+            -0.0223
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "high_school_macroeconomics",
+            0.041
+          ],
+          [
+            "high_school_biology",
+            0.033
+          ],
+          [
+            "college_medicine",
+            0.0262
+          ],
+          [
+            "marketing",
+            0.0226
+          ],
+          [
+            "electrical_engineering",
+            0.0167
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 226,
+            "subject": "high_school_geography",
+            "loading": -0.1259,
+            "p_correct": 0.917
+          },
+          {
+            "index": 204,
+            "subject": "high_school_computer_science",
+            "loading": 0.1188,
+            "p_correct": 0.625
+          },
+          {
+            "index": 447,
+            "subject": "nutrition",
+            "loading": -0.1149,
+            "p_correct": 0.958
+          },
+          {
+            "index": 339,
+            "subject": "human_sexuality",
+            "loading": -0.1149,
+            "p_correct": 0.958
+          },
+          {
+            "index": 451,
+            "subject": "philosophy",
+            "loading": -0.1149,
+            "p_correct": 0.958
+          },
+          {
+            "index": 454,
+            "subject": "philosophy",
+            "loading": -0.1149,
+            "p_correct": 0.958
+          },
+          {
+            "index": 29,
+            "subject": "astronomy",
+            "loading": -0.1149,
+            "p_correct": 0.958
+          },
+          {
+            "index": 331,
+            "subject": "human_sexuality",
+            "loading": -0.1149,
+            "p_correct": 0.958
+          },
+          {
+            "index": 392,
+            "subject": "marketing",
+            "loading": 0.1045,
+            "p_correct": 0.75
+          },
+          {
+            "index": 93,
+            "subject": "college_medicine",
+            "loading": 0.1031,
+            "p_correct": 0.625
+          },
+          {
+            "index": 415,
+            "subject": "miscellaneous",
+            "loading": -0.1007,
+            "p_correct": 0.917
+          },
+          {
+            "index": 366,
+            "subject": "logical_fallacies",
+            "loading": -0.0993,
+            "p_correct": 0.75
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "share": 0.32187851660985495
+        },
+        "participation_ratio_models": 6.585387925097276,
+        "model_scores_low_to_high": [
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.328
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.322
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.289
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            -0.286
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.178
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            -0.132
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            -0.117
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            -0.105
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            -0.102
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.035
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            -0.018
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            0.024
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.043
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.055
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            0.058
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.063
+          ],
+          [
+            "phi-2",
+            0.094
+          ],
+          [
+            "SmolLM2-1.7B-Instruct",
+            0.12
+          ],
+          [
+            "gemma-2-9b-it",
+            0.121
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            0.128
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.129
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.215
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.293
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            0.567
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.14014368538454292,
+            0.009387531008140632,
+            0.9992280877032219,
+            0.014771505336060324
+          ],
+          "abs_r_model_scores_same_rank": 0.9996922576505726
+        }
+      }
+    },
+    "no_llama1b__ge2": {
+      "2": {
+        "eigenvalue": 36.99084232717431,
+        "r2_loading_on_cubic_difficulty": 0.17108988976178696,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.1568329064651186,
+          "perm_p": 0.07938412317536493,
+          "null_mean": 0.1231801236467517,
+          "null_p95": 0.16339861446613477,
+          "n_groups": 50,
+          "n": 398,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.0015634493232624203,
+          "perm_p": 0.42391521695660866,
+          "null_mean": 0.002517353592707229,
+          "null_p95": 0.009988417118248036,
+          "n_groups": 2,
+          "n": 398,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.5602590618065091,
+          "perm_p": 0.23995200959808038,
+          "null_mean": 0.41124910297985723,
+          "null_p95": 0.7296458319187217,
+          "n_groups": 10,
+          "n": 23,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.19473798934256897,
+          "perm_p_two_sided": 0.36506349365063495
+        },
+        "corr_model_score_log_size": {
+          "r": -0.13711306855546818,
+          "perm_p_two_sided": 0.5090490950904909
+        },
+        "spearman_model_score_log_size": 0.2526010717692173,
+        "corr_model_score_letter_pref_max": {
+          "r": 0.04761083289188727,
+          "perm_p_two_sided": 0.7991200879912009
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": -0.016677442575642736,
+          "perm_p_two_sided": 0.9235076492350764
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.00538768042647442,
+          "perm_p": 0.5464907018596281,
+          "null_mean": 0.007626240036031356,
+          "null_p95": 0.019944701136679288,
+          "n_groups": 4,
+          "n": 398,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "high_school_psychology",
+            -0.0439
+          ],
+          [
+            "miscellaneous",
+            -0.0375
+          ],
+          [
+            "global_facts",
+            -0.0312
+          ],
+          [
+            "philosophy",
+            -0.0269
+          ],
+          [
+            "nutrition",
+            -0.0249
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "high_school_european_history",
+            0.057
+          ],
+          [
+            "high_school_macroeconomics",
+            0.0397
+          ],
+          [
+            "clinical_knowledge",
+            0.0381
+          ],
+          [
+            "human_aging",
+            0.0259
+          ],
+          [
+            "professional_medicine",
+            0.0221
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 311,
+            "subject": "high_school_world_history",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 341,
+            "subject": "international_law",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 25,
+            "subject": "astronomy",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 27,
+            "subject": "astronomy",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 29,
+            "subject": "astronomy",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 302,
+            "subject": "high_school_us_history",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 289,
+            "subject": "high_school_psychology",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 342,
+            "subject": "international_law",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 286,
+            "subject": "high_school_psychology",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 230,
+            "subject": "high_school_government_and_politics",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 56,
+            "subject": "college_biology",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          },
+          {
+            "index": 194,
+            "subject": "high_school_chemistry",
+            "loading": -0.1077,
+            "p_correct": 0.957
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "share": 0.41009407878866744
+        },
+        "participation_ratio_models": 3.9466239798852123,
+        "model_scores_low_to_high": [
+          [
+            "SmolLM2-1.7B-Instruct",
+            -0.521
+          ],
+          [
+            "phi-2",
+            -0.288
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.14
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.139
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.138
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            -0.136
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.136
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.135
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            -0.066
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            0.018
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            0.027
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            0.028
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            0.035
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.058
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            0.067
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.077
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.089
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.09
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            0.119
+          ],
+          [
+            "gemma-2-9b-it",
+            0.12
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.133
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.197
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            0.64
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.10091426363231201,
+            1.0,
+            0.01475151234825202,
+            0.005542804044226708
+          ],
+          "abs_r_model_scores_same_rank": 1.0
+        }
+      }
+    },
+    "full__rot0": {
+      "2": {
+        "eigenvalue": 49.892827545578136,
+        "r2_loading_on_cubic_difficulty": 0.04930684735190716,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.11333432833685401,
+          "perm_p": 0.3489302139572086,
+          "null_mean": 0.10632097813574183,
+          "null_p95": 0.14231355925841127,
+          "n_groups": 50,
+          "n": 460,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.0005740662924843183,
+          "perm_p": 0.6006798640271945,
+          "null_mean": 0.0021835838446582706,
+          "null_p95": 0.008554777017656702,
+          "n_groups": 2,
+          "n": 460,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.48750764884334213,
+          "perm_p": 0.3317336532693461,
+          "null_mean": 0.3939304563324839,
+          "null_p95": 0.7315455920248946,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.1565380827707753,
+          "perm_p_two_sided": 0.46565343465653436
+        },
+        "corr_model_score_log_size": {
+          "r": 0.25348452441938046,
+          "perm_p_two_sided": 0.22847715228477153
+        },
+        "spearman_model_score_log_size": 0.3790858669892321,
+        "corr_model_score_letter_pref_max": {
+          "r": 0.13152767942521917,
+          "perm_p_two_sided": 0.42575742425757424
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": -0.26249371783235703,
+          "perm_p_two_sided": 0.1705829417058294
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.4816955119706924,
+          "perm_p": 0.0001999600079984003,
+          "null_mean": 0.006583835233282926,
+          "null_p95": 0.017306844931241384,
+          "n_groups": 4,
+          "n": 460,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "high_school_government_and_politics",
+            -0.0316
+          ],
+          [
+            "college_physics",
+            -0.0274
+          ],
+          [
+            "clinical_knowledge",
+            -0.0268
+          ],
+          [
+            "high_school_european_history",
+            -0.0234
+          ],
+          [
+            "global_facts",
+            -0.023
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "electrical_engineering",
+            0.0274
+          ],
+          [
+            "formal_logic",
+            0.0263
+          ],
+          [
+            "miscellaneous",
+            0.0252
+          ],
+          [
+            "elementary_mathematics",
+            0.0236
+          ],
+          [
+            "high_school_world_history",
+            0.0203
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 475,
+            "subject": "professional_accounting",
+            "loading": -0.1015,
+            "p_correct": 0.083
+          },
+          {
+            "index": 68,
+            "subject": "college_chemistry",
+            "loading": -0.1015,
+            "p_correct": 0.083
+          },
+          {
+            "index": 216,
+            "subject": "high_school_european_history",
+            "loading": -0.1015,
+            "p_correct": 0.083
+          },
+          {
+            "index": 129,
+            "subject": "conceptual_physics",
+            "loading": 0.1015,
+            "p_correct": 0.917
+          },
+          {
+            "index": 27,
+            "subject": "astronomy",
+            "loading": 0.1015,
+            "p_correct": 0.917
+          },
+          {
+            "index": 273,
+            "subject": "high_school_physics",
+            "loading": -0.0942,
+            "p_correct": 0.125
+          },
+          {
+            "index": 272,
+            "subject": "high_school_physics",
+            "loading": 0.0937,
+            "p_correct": 0.042
+          },
+          {
+            "index": 163,
+            "subject": "formal_logic",
+            "loading": 0.0937,
+            "p_correct": 0.042
+          },
+          {
+            "index": 166,
+            "subject": "formal_logic",
+            "loading": 0.0937,
+            "p_correct": 0.042
+          },
+          {
+            "index": 169,
+            "subject": "formal_logic",
+            "loading": 0.0937,
+            "p_correct": 0.042
+          },
+          {
+            "index": 352,
+            "subject": "jurisprudence",
+            "loading": 0.0937,
+            "p_correct": 0.042
+          },
+          {
+            "index": 219,
+            "subject": "high_school_european_history",
+            "loading": -0.0937,
+            "p_correct": 0.958
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Llama-3.2-1B-Instruct",
+          "share": 0.4198725055287565
+        },
+        "participation_ratio_models": 3.4280501780165937,
+        "model_scores_low_to_high": [
+          [
+            "SmolLM2-1.7B-Instruct",
+            -0.519
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            -0.452
+          ],
+          [
+            "zephyr-7b-beta",
+            -0.136
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.107
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.091
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            -0.071
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            -0.054
+          ],
+          [
+            "phi-2",
+            -0.022
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            -0.009
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            -0.006
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            0.019
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.029
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            0.04
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.042
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            0.051
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            0.053
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.059
+          ],
+          [
+            "gemma-2-9b-it",
+            0.077
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.082
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            0.085
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.087
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            0.091
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            0.102
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            0.648
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.06626074538505312,
+            1.0,
+            0.014864583070965436,
+            0.0005869838900284907
+          ],
+          "abs_r_model_scores_same_rank": 0.9999999999999999
+        }
+      }
+    },
+    "full__ge4": {
+      "2": {
+        "eigenvalue": 28.97366986797432,
+        "r2_loading_on_cubic_difficulty": 0.3862740191139419,
+        "eta_sq_subject_after_cubic": {
+          "eta_sq": 0.14093897186759266,
+          "perm_p": 0.2419516096780644,
+          "null_mean": 0.12482333289134585,
+          "null_p95": 0.16501429187640207,
+          "n_groups": 50,
+          "n": 391,
+          "n_perm": 5000
+        },
+        "eta_sq_stem_vs_rest_after_cubic": {
+          "eta_sq": 0.008574726042109768,
+          "perm_p": 0.07638472305538892,
+          "null_mean": 0.002660213366196034,
+          "null_p95": 0.010312135946664872,
+          "n_groups": 2,
+          "n": 391,
+          "n_perm": 5000
+        },
+        "eta_sq_model_scores_by_family": {
+          "eta_sq": 0.42986004614938644,
+          "perm_p": 0.39532093581283745,
+          "null_mean": 0.3891991701001452,
+          "null_p95": 0.6719852636076691,
+          "n_groups": 10,
+          "n": 24,
+          "n_perm": 5000
+        },
+        "corr_model_score_accuracy": {
+          "r": 0.07292285965759378,
+          "perm_p_two_sided": 0.7334266573342666
+        },
+        "corr_model_score_log_size": {
+          "r": -0.2725613476871998,
+          "perm_p_two_sided": 0.197980201979802
+        },
+        "spearman_model_score_log_size": -0.1420482674005628,
+        "corr_model_score_letter_pref_max": {
+          "r": 0.3797053578600417,
+          "perm_p_two_sided": 0.0663933606639336
+        },
+        "corr_model_score_letter_pref_entropy": {
+          "r": -0.44544072321510797,
+          "perm_p_two_sided": 0.043795620437956206
+        },
+        "eta_sq_loadings_by_original_gold_letter": {
+          "eta_sq": 0.0035517635574258714,
+          "perm_p": 0.7056588682263547,
+          "null_mean": 0.007672460634928488,
+          "null_p95": 0.019551556115418183,
+          "n_groups": 4,
+          "n": 391,
+          "n_perm": 5000
+        },
+        "subjects_most_negative_after_cubic": [
+          [
+            "anatomy",
+            -0.0321
+          ],
+          [
+            "high_school_world_history",
+            -0.0276
+          ],
+          [
+            "college_physics",
+            -0.0264
+          ],
+          [
+            "college_chemistry",
+            -0.0259
+          ],
+          [
+            "moral_scenarios",
+            -0.0189
+          ]
+        ],
+        "subjects_most_positive_after_cubic": [
+          [
+            "high_school_statistics",
+            0.0372
+          ],
+          [
+            "abstract_algebra",
+            0.0357
+          ],
+          [
+            "professional_law",
+            0.0305
+          ],
+          [
+            "formal_logic",
+            0.0291
+          ],
+          [
+            "high_school_mathematics",
+            0.0223
+          ]
+        ],
+        "top_loading_questions": [
+          {
+            "index": 476,
+            "subject": "professional_accounting",
+            "loading": 0.1091,
+            "p_correct": 0.083
+          },
+          {
+            "index": 8,
+            "subject": "abstract_algebra",
+            "loading": 0.1091,
+            "p_correct": 0.083
+          },
+          {
+            "index": 0,
+            "subject": "abstract_algebra",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 3,
+            "subject": "abstract_algebra",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 481,
+            "subject": "professional_law",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 480,
+            "subject": "professional_law",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 159,
+            "subject": "elementary_mathematics",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 205,
+            "subject": "high_school_computer_science",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 248,
+            "subject": "high_school_macroeconomics",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 407,
+            "subject": "medical_genetics",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 4,
+            "subject": "abstract_algebra",
+            "loading": 0.1049,
+            "p_correct": 0.042
+          },
+          {
+            "index": 74,
+            "subject": "college_computer_science",
+            "loading": 0.1004,
+            "p_correct": 0.208
+          }
+        ],
+        "top_model_share_of_squared_scores": {
+          "model": "Qwen2.5-7B-Instruct",
+          "share": 0.3053881410818714
+        },
+        "participation_ratio_models": 5.99349827569696,
+        "model_scores_low_to_high": [
+          [
+            "zephyr-7b-beta",
+            -0.254
+          ],
+          [
+            "Mistral-7B-Instruct-v0.3",
+            -0.243
+          ],
+          [
+            "Mistral-7B-Instruct-v0.2",
+            -0.225
+          ],
+          [
+            "OLMo-2-1124-7B-Instruct",
+            -0.203
+          ],
+          [
+            "phi-2",
+            -0.177
+          ],
+          [
+            "gemma-2-2b-it",
+            -0.155
+          ],
+          [
+            "Meta-Llama-3-8B-Instruct",
+            -0.121
+          ],
+          [
+            "Llama-3.2-3B-Instruct",
+            -0.116
+          ],
+          [
+            "granite-3.1-8b-instruct",
+            -0.103
+          ],
+          [
+            "deepseek-llm-7b-chat",
+            -0.093
+          ],
+          [
+            "Ministral-8B-Instruct-2410",
+            -0.066
+          ],
+          [
+            "Llama-3.1-8B-Instruct",
+            -0.054
+          ],
+          [
+            "Mistral-Small-Instruct-2409",
+            -0.043
+          ],
+          [
+            "Qwen2.5-1.5B-Instruct",
+            -0.008
+          ],
+          [
+            "SmolLM2-1.7B-Instruct",
+            0.023
+          ],
+          [
+            "Phi-3.5-mini-instruct",
+            0.03
+          ],
+          [
+            "Qwen2.5-3B-Instruct",
+            0.041
+          ],
+          [
+            "Phi-3-mini-4k-instruct",
+            0.045
+          ],
+          [
+            "Yi-1.5-6B-Chat",
+            0.095
+          ],
+          [
+            "gemma-2-9b-it",
+            0.155
+          ],
+          [
+            "Qwen2.5-0.5B-Instruct",
+            0.195
+          ],
+          [
+            "Qwen2-7B-Instruct",
+            0.243
+          ],
+          [
+            "Llama-3.2-1B-Instruct",
+            0.482
+          ],
+          [
+            "Qwen2.5-7B-Instruct",
+            0.553
+          ]
+        ],
+        "replicate_B": {
+          "abs_r_loadings_with_B_eigvec_1to4": [
+            0.1503971625931136,
+            0.9997539022781171,
+            0.0020139442011480727,
+            0.0003628258912834805
+          ],
+          "abs_r_model_scores_same_rank": 0.9997222932551337
+        }
+      }
+    }
+  }
+}

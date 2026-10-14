@@ -1,0 +1,5 @@
+2026-10-12T19:09:55-04:00	deepseek-ai/deepseek-llm-7b-chat	mmlu_greedy_deepseek-ai_deepseek-llm-7b-chat	rc=0	sec=167
+2026-10-12T19:13:14-04:00	01-ai/Yi-1.5-6B-Chat	mmlu_greedy_01-ai_Yi-1.5-6B-Chat	rc=0	sec=199
+2026-10-12T19:17:00-04:00	allenai/OLMo-2-1124-7B-Instruct	mmlu_greedy_allenai_OLMo-2-1124-7B-Instruct	rc=0	sec=226
+2026-10-12T19:20:48-04:00	Qwen/Qwen2.5-7B-Instruct	mmlu_greedyrot_Qwen_Qwen2.5-7B-Instruct	rc=0	sec=228
+2026-10-12T19:22:49-04:00	microsoft/phi-2	mmlu_greedyrot_microsoft_phi-2	rc=0	sec=121

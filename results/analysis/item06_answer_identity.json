@@ -1,0 +1,128 @@
+{
+  "run_id": "mmlu_iid-T1.0_Qwen_Qwen2.5-7B-Instruct",
+  "eps": 0.05,
+  "N_b": 43,
+  "modal_wrong_letter_share": {
+    "mean_over_borderline": 0.9552047789221582,
+    "median": 1.0,
+    "min": 0.6551724137931034,
+    "n_questions": 43,
+    "n_unparseable_cells_in_borderline": 0
+  },
+  "letter_test_qwen": {
+    "n_items": 43,
+    "n_pairs": 903,
+    "max_cramers_v": {
+      "observed": 0.4062232368529982,
+      "null_p95": 0.7128728777398703,
+      "null_p99": 0.7210110905250765,
+      "perm_p": 0.7462537462537463
+    },
+    "max_mi_nats": {
+      "observed": 0.09188692116390647,
+      "null_p95": 0.09774507245481497,
+      "null_p99": 0.11287339318537927,
+      "perm_p": 0.0919080919080919
+    },
+    "exceeds_p99": false,
+    "n_permutations": 1000,
+    "elapsed_s": 60.9
+  },
+  "correctness_pattern_tests": {
+    "MMLU Qwen2.5-7B T1.0": {
+      "n_items": 43,
+      "n_pairs": 903,
+      "max_cramers_v": {
+        "observed": 0.35120189468963703,
+        "null_p95": 0.4467025737207821,
+        "null_p99": 0.4773707281862914,
+        "perm_p": 0.4965034965034965
+      },
+      "max_mi_nats": {
+        "observed": 0.06270638444918283,
+        "null_p95": 0.08043372370162095,
+        "null_p99": 0.09896741221028406,
+        "perm_p": 0.33166833166833165
+      },
+      "exceeds_p99": false,
+      "n_permutations": 1000,
+      "elapsed_s": 0.7
+    },
+    "MMLU Mistral-7B-v0.3": {
+      "n_items": 83,
+      "n_pairs": 3403,
+      "max_cramers_v": {
+        "observed": 0.4121730338719657,
+        "null_p95": 0.4677097890259638,
+        "null_p99": 0.5297625291131732,
+        "perm_p": 0.2917082917082917
+      },
+      "max_mi_nats": {
+        "observed": 0.07779799264295942,
+        "null_p95": 0.09239599136357014,
+        "null_p99": 0.10583313720336844,
+        "perm_p": 0.24675324675324675
+      },
+      "exceeds_p99": false,
+      "n_permutations": 1000,
+      "elapsed_s": 1.8
+    },
+    "MMLU Meta-Llama-3-8B": {
+      "n_items": 173,
+      "n_pairs": 14878,
+      "max_cramers_v": {
+        "observed": 0.47665210056447965,
+        "null_p95": 0.5298613741447789,
+        "null_p99": 0.5908327393838705,
+        "perm_p": 0.21678321678321677
+      },
+      "max_mi_nats": {
+        "observed": 0.07532673413782454,
+        "null_p95": 0.11102459719446593,
+        "null_p99": 0.12809666595962885,
+        "perm_p": 0.8051948051948052
+      },
+      "exceeds_p99": false,
+      "n_permutations": 1000,
+      "elapsed_s": 8.6
+    },
+    "MMLU SmolLM2-1.7B": {
+      "n_items": 406,
+      "n_pairs": 82215,
+      "max_cramers_v": {
+        "observed": 0.47721942193769407,
+        "null_p95": 0.5984791043650314,
+        "null_p99": 0.6453900709219859,
+        "perm_p": 0.7632367632367633
+      },
+      "max_mi_nats": {
+        "observed": 0.08994937960282304,
+        "null_p95": 0.12278107137960807,
+        "null_p99": 0.1356179530241084,
+        "perm_p": 0.8621378621378621
+      },
+      "exceeds_p99": false,
+      "n_permutations": 1000,
+      "elapsed_s": 42.7
+    },
+    "MMLU Phi-3-mini": {
+      "n_items": 271,
+      "n_pairs": 36585,
+      "max_cramers_v": {
+        "observed": 0.4241775107045579,
+        "null_p95": 0.5619133887314635,
+        "null_p99": 0.6453900709219859,
+        "perm_p": 0.955044955044955
+      },
+      "max_mi_nats": {
+        "observed": 0.10290132523178089,
+        "null_p95": 0.11569756108017129,
+        "null_p99": 0.12804241068790548,
+        "perm_p": 0.18181818181818182
+      },
+      "exceeds_p99": false,
+      "n_permutations": 1000,
+      "elapsed_s": 16.2
+    }
+  }
+}

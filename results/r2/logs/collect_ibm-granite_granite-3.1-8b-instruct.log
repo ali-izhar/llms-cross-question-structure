@@ -1,0 +1,9 @@
+2026-10-13 02:50:16 [mmlu_greedyrot_ibm-granite_granite-3.1-8b-instruct] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
+2026-10-13 02:50:16 pre-check mmlu_greedyrot_ibm-granite_granite-3.1-8b-instruct: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'exact': 2000}, 'n_equal_to_v2_pipeline_ids': 2000, 'n_equal_to_reference_hash': 2000}
+2026-10-13 02:50:16 ibm-granite/granite-3.1-8b-instruct: loading vLLM engine {'model': 'ibm-granite/granite-3.1-8b-instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
+2026-10-13 02:51:59 engine ready in 102s; prompt_mode=chat_template; max_model_len=3072
+2026-10-13 02:52:00 [mmlu_greedyrot_ibm-granite_granite-3.1-8b-instruct] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
+2026-10-13 02:52:00 [mmlu_greedyrot_ibm-granite_granite-3.1-8b-instruct] start K=4 N=500 T=0.0 block=4 passes
+2026-10-13 02:54:37 [mmlu_greedyrot_ibm-granite_granite-3.1-8b-instruct] passes 0-3 done, block acc=0.627, elapsed=157s
+2026-10-13 02:54:37 [mmlu_greedyrot_ibm-granite_granite-3.1-8b-instruct] DONE acc=0.6270 unparseable=0.0050 N_b=195 runtime=157s
+2026-10-13 02:54:37 ibm-granite/granite-3.1-8b-instruct: finished; failed runs: []

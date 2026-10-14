@@ -1,0 +1,6 @@
+2026-10-10 06:49:47 microsoft/phi-2: loading vLLM engine {'model': 'microsoft/phi-2', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.3, 'max_model_len': 2048, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
+2026-10-10 06:51:20 engine ready in 94s; prompt_mode=raw; max_model_len=2048
+2026-10-10 06:51:20 [mmlu_greedy_microsoft_phi-2] start K=1 N=500 T=0.0 block=1 passes
+2026-10-10 06:51:40 [mmlu_greedy_microsoft_phi-2] passes 0-0 done, block acc=0.524, elapsed=20s
+2026-10-10 06:51:40 [mmlu_greedy_microsoft_phi-2] DONE acc=0.5240 unparseable=0.0060 N_b=None runtime=20s
+2026-10-10 06:51:40 microsoft/phi-2: finished; failed runs: []

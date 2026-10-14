@@ -1,0 +1,653 @@
+{
+ "eps": 0.13,
+ "models": {
+  "HuggingFaceTB/SmolLM2-1.7B-Instruct": {
+   "near_tie_by_rotation": [
+    61,
+    47,
+    75,
+    63
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 198,
+   "gap_median_by_rotation": [
+    0.8750054240226746,
+    0.9375077486038208,
+    0.7500100135803223,
+    1.0
+   ]
+  },
+  "Qwen/Qwen2.5-0.5B-Instruct": {
+   "near_tie_by_rotation": [
+    44,
+    59,
+    58,
+    58
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 169,
+   "gap_median_by_rotation": [
+    1.1247718334197998,
+    0.9374775290489197,
+    0.9356434345245361,
+    0.9999151825904846
+   ]
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct": {
+   "near_tie_by_rotation": [
+    7,
+    10,
+    15,
+    15
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 45,
+   "gap_median_by_rotation": [
+    4.75,
+    4.5,
+    5.0625,
+    4.937498092651367
+   ]
+  },
+  "microsoft/phi-2": {
+   "near_tie_by_rotation": [
+    93,
+    95,
+    104,
+    83
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 243,
+   "gap_median_by_rotation": [
+    0.75,
+    0.75,
+    0.7499999403953552,
+    0.625
+   ]
+  },
+  "microsoft/Phi-3-mini-4k-instruct": {
+   "near_tie_by_rotation": [
+    18,
+    17,
+    19,
+    28
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 65,
+   "gap_median_by_rotation": [
+    2.25,
+    2.125,
+    2.25,
+    2.25
+   ]
+  },
+  "microsoft/Phi-3.5-mini-instruct": {
+   "near_tie_by_rotation": [
+    11,
+    1,
+    7,
+    7
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 25,
+   "gap_median_by_rotation": [
+    15.875,
+    14.25,
+    13.625,
+    14.25
+   ]
+  },
+  "Qwen/Qwen2.5-3B-Instruct": {
+   "near_tie_by_rotation": [
+    3,
+    0,
+    3,
+    2
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 7,
+   "gap_median_by_rotation": [
+    13.5,
+    13.375,
+    12.75,
+    13.25
+   ]
+  },
+  "Qwen/Qwen2-7B-Instruct": {
+   "near_tie_by_rotation": [
+    5,
+    6,
+    11,
+    7
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 26,
+   "gap_median_by_rotation": [
+    8.062421798706055,
+    7.5,
+    7.687500476837158,
+    7.375
+   ]
+  },
+  "Qwen/Qwen2.5-7B-Instruct": {
+   "near_tie_by_rotation": [
+    6,
+    3,
+    1,
+    3
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 13,
+   "gap_median_by_rotation": [
+    14.125,
+    14.5,
+    14.75,
+    14.5
+   ]
+  },
+  "mistralai/Mistral-7B-Instruct-v0.2": {
+   "near_tie_by_rotation": [
+    4,
+    3,
+    2,
+    1
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    7,
+    6,
+    7,
+    5
+   ],
+   "near_tie_any_rotation_questions": 9,
+   "gap_median_by_rotation": [
+    9.074131965637207,
+    7.875061988830566,
+    8.001806259155273,
+    8.312525749206543
+   ]
+  },
+  "mistralai/Mistral-7B-Instruct-v0.3": {
+   "near_tie_by_rotation": [
+    11,
+    9,
+    8,
+    8
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 34,
+   "gap_median_by_rotation": [
+    6.750009536743164,
+    6.875028610229492,
+    6.062559604644775,
+    6.62502384185791
+   ]
+  },
+  "HuggingFaceH4/zephyr-7b-beta": {
+   "near_tie_by_rotation": [
+    15,
+    12,
+    13,
+    8
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 44,
+   "gap_median_by_rotation": [
+    6.1862030029296875,
+    5.750277996063232,
+    5.6875691413879395,
+    6.000626564025879
+   ]
+  },
+  "allenai/OLMo-2-1124-7B-Instruct": {
+   "near_tie_by_rotation": [
+    30,
+    23,
+    32,
+    19
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 90,
+   "gap_median_by_rotation": [
+    2.4374754428863525,
+    2.062504768371582,
+    2.093769073486328,
+    2.125035047531128
+   ]
+  },
+  "01-ai/Yi-1.5-6B-Chat": {
+   "near_tie_by_rotation": [
+    5,
+    1,
+    3,
+    2
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 11,
+   "gap_median_by_rotation": [
+    8.25,
+    7.75,
+    8.5625,
+    9.0
+   ]
+  },
+  "deepseek-ai/deepseek-llm-7b-chat": {
+   "near_tie_by_rotation": [
+    22,
+    22,
+    17,
+    31
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 77,
+   "gap_median_by_rotation": [
+    2.0,
+    2.25,
+    2.0,
+    1.75
+   ]
+  },
+  "ibm-granite/granite-3.1-8b-instruct": {
+   "near_tie_by_rotation": [
+    21,
+    24,
+    18,
+    26
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 76,
+   "gap_median_by_rotation": [
+    3.625,
+    3.687500238418579,
+    3.625,
+    3.375
+   ]
+  },
+  "mistralai/Ministral-8B-Instruct-2410": {
+   "near_tie_by_rotation": [
+    51,
+    53,
+    70,
+    58
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 163,
+   "gap_median_by_rotation": [
+    1.374951720237732,
+    1.2506861686706543,
+    1.124986171722412,
+    1.125
+   ]
+  },
+  "google/gemma-2-2b-it": {
+   "near_tie_by_rotation": [
+    13,
+    11,
+    10,
+    10
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 42,
+   "gap_median_by_rotation": [
+    5.000022888183594,
+    4.75001859664917,
+    4.4375200271606445,
+    4.375011444091797
+   ]
+  },
+  "meta-llama/Llama-3.1-8B-Instruct": {
+   "near_tie_by_rotation": [
+    22,
+    27,
+    22,
+    24
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 81,
+   "gap_median_by_rotation": [
+    2.999999523162842,
+    2.6249990463256836,
+    2.749999761581421,
+    2.8749992847442627
+   ]
+  },
+  "google/gemma-2-9b-it": {
+   "near_tie_by_rotation": [
+    4,
+    5,
+    4,
+    6
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 18,
+   "gap_median_by_rotation": [
+    7.000016689300537,
+    7.00001335144043,
+    6.50002384185791,
+    6.875005722045898
+   ]
+  },
+  "mistralai/Mistral-Small-Instruct-2409": {
+   "near_tie_by_rotation": [
+    27,
+    24,
+    26,
+    21
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 81,
+   "gap_median_by_rotation": [
+    3.375,
+    3.375,
+    3.53125,
+    3.625
+   ]
+  },
+  "meta-llama/Llama-3.2-1B-Instruct": {
+   "near_tie_by_rotation": [
+    41,
+    42,
+    39,
+    38
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 109,
+   "gap_median_by_rotation": [
+    0.8759555816650391,
+    1.0000450611114502,
+    1.0,
+    0.999994158744812
+   ]
+  },
+  "meta-llama/Llama-3.2-3B-Instruct": {
+   "near_tie_by_rotation": [
+    54,
+    47,
+    57,
+    65
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 161,
+   "gap_median_by_rotation": [
+    1.375,
+    1.2499995231628418,
+    1.2500004768371582,
+    1.25
+   ]
+  },
+  "meta-llama/Meta-Llama-3-8B-Instruct": {
+   "near_tie_by_rotation": [
+    22,
+    21,
+    22,
+    22
+   ],
+   "undetermined_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "no_letter_in_top20_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "near_tie_any_rotation_questions": 72,
+   "gap_median_by_rotation": [
+    4.0,
+    3.875,
+    3.875,
+    3.75
+   ]
+  }
+ }
+}

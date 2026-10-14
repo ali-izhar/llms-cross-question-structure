@@ -1,0 +1,315 @@
+{
+  "meta": {
+    "n_perm": 5000,
+    "seed": 20261014,
+    "doc": "C1b: does each across-model direction move with the DISPLAYED letters when the options rotate?"
+  },
+  "A": {
+    "eigvec1": {
+      "1": {
+        "matched_rank_in_rotation": 1,
+        "model_score_match_abs_r": 0.9913721388237827,
+        "r_shown": 0.4301214635499413,
+        "r_orig": 0.09671389063426315,
+        "r_direct": 0.5513359890080874,
+        "D_shown_minus_orig": 0.33340757291567813,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 1,
+        "model_score_match_abs_r": 0.9906971186604863,
+        "r_shown": 0.4276709571213132,
+        "r_orig": -0.29125183574408403,
+        "r_direct": 0.3201664967252224,
+        "D_shown_minus_orig": 0.7189227928653972,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 1,
+        "model_score_match_abs_r": 0.9777844367802373,
+        "r_shown": 0.502813105707681,
+        "r_orig": -0.04951148045670331,
+        "r_direct": 0.46870698998752436,
+        "D_shown_minus_orig": 0.5523245861643843,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": -0.0001,
+        "B": 0.0433,
+        "C": 0.0432,
+        "D": 0.0243
+      }
+    },
+    "eigvec2": {
+      "1": {
+        "matched_rank_in_rotation": 2,
+        "model_score_match_abs_r": 0.9784944909272596,
+        "r_shown": 0.6422742343128994,
+        "r_orig": -0.36040267298792655,
+        "r_direct": -0.06289046364847026,
+        "D_shown_minus_orig": 1.002676907300826,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 2,
+        "model_score_match_abs_r": 0.9573679773049244,
+        "r_shown": 0.5978372739545227,
+        "r_orig": 0.07103870230842028,
+        "r_direct": 0.1622489607432557,
+        "D_shown_minus_orig": 0.5267985716461024,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 2,
+        "model_score_match_abs_r": 0.9480440681560044,
+        "r_shown": 0.6117799487703042,
+        "r_orig": -0.285568561833194,
+        "r_direct": -0.003024039023210314,
+        "D_shown_minus_orig": 0.8973485106034982,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": 0.0522,
+        "B": 0.0035,
+        "C": 0.0046,
+        "D": -0.0391
+      }
+    },
+    "eigvec3": {
+      "1": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.7501036598076734,
+        "r_shown": 0.0758799772691514,
+        "r_orig": 0.0315411793082399,
+        "r_direct": 0.2009134837284195,
+        "D_shown_minus_orig": 0.044338797960911495,
+        "perm_p_two_sided": 0.5696860627874425,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.7586966986164266,
+        "r_shown": 0.20030402612334264,
+        "r_orig": -0.3178588527878016,
+        "r_direct": 0.09044380552211448,
+        "D_shown_minus_orig": 0.5181628789111443,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.7358568629052626,
+        "r_shown": 0.02664216509197038,
+        "r_orig": 0.112850573839552,
+        "r_direct": 0.28929227006900465,
+        "D_shown_minus_orig": -0.08620840874758162,
+        "perm_p_two_sided": 0.28214357128574286,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": 0.0183,
+        "B": -0.0137,
+        "C": 0.0064,
+        "D": 0.0202
+      }
+    },
+    "eigvec4": {
+      "1": {
+        "matched_rank_in_rotation": 4,
+        "model_score_match_abs_r": 0.7488431125145928,
+        "r_shown": 0.310098878761348,
+        "r_orig": 0.18143068148004535,
+        "r_direct": 0.18492627555604324,
+        "D_shown_minus_orig": 0.12866819728130266,
+        "perm_p_two_sided": 0.09998000399920016,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 4,
+        "model_score_match_abs_r": 0.5073598874169417,
+        "r_shown": 0.31955978399535,
+        "r_orig": -0.2407332155867455,
+        "r_direct": 0.0840311130237853,
+        "D_shown_minus_orig": 0.5602929995820956,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.27808675308012404,
+        "r_shown": -0.014988611043829966,
+        "r_orig": -0.05654572576672465,
+        "r_direct": 0.05331847026910758,
+        "D_shown_minus_orig": 0.04155711472289468,
+        "perm_p_two_sided": 0.591881623675265,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": -0.0012,
+        "B": -0.0179,
+        "C": 0.0103,
+        "D": 0.01
+      }
+    }
+  },
+  "B": {
+    "eigvec1": {
+      "1": {
+        "matched_rank_in_rotation": 1,
+        "model_score_match_abs_r": 0.9913721388237827,
+        "r_shown": 0.4301214635499413,
+        "r_orig": 0.09671389063426315,
+        "r_direct": 0.5513359890080874,
+        "D_shown_minus_orig": 0.33340757291567813,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 1,
+        "model_score_match_abs_r": 0.9907702968768083,
+        "r_shown": 0.42583279870942375,
+        "r_orig": -0.28934674579735126,
+        "r_direct": 0.32145853913752087,
+        "D_shown_minus_orig": 0.715179544506775,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 1,
+        "model_score_match_abs_r": 0.9777023510992671,
+        "r_shown": 0.503143564974965,
+        "r_orig": -0.0484443779462127,
+        "r_direct": 0.469718034668317,
+        "D_shown_minus_orig": 0.5515879429211777,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": -0.0001,
+        "B": 0.0433,
+        "C": 0.0432,
+        "D": 0.0243
+      }
+    },
+    "eigvec2": {
+      "1": {
+        "matched_rank_in_rotation": 2,
+        "model_score_match_abs_r": 0.9784944909272596,
+        "r_shown": 0.6422742343128994,
+        "r_orig": -0.36040267298792655,
+        "r_direct": -0.06289046364847026,
+        "D_shown_minus_orig": 1.002676907300826,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 2,
+        "model_score_match_abs_r": 0.9566644503937745,
+        "r_shown": 0.5973395401789058,
+        "r_orig": 0.06974315040904833,
+        "r_direct": 0.16110030152118043,
+        "D_shown_minus_orig": 0.5275963897698575,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 2,
+        "model_score_match_abs_r": 0.9481431117443098,
+        "r_shown": 0.6128295745459161,
+        "r_orig": -0.28707985929596136,
+        "r_direct": -0.0036127508455363797,
+        "D_shown_minus_orig": 0.8999094338418775,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": 0.0522,
+        "B": 0.0035,
+        "C": 0.0046,
+        "D": -0.0391
+      }
+    },
+    "eigvec3": {
+      "1": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.7501036598076734,
+        "r_shown": 0.0758799772691514,
+        "r_orig": 0.0315411793082399,
+        "r_direct": 0.2009134837284195,
+        "D_shown_minus_orig": 0.044338797960911495,
+        "perm_p_two_sided": 0.5696860627874425,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.7557674370810077,
+        "r_shown": 0.1985902075523955,
+        "r_orig": -0.31873213132619516,
+        "r_direct": 0.08974435004479962,
+        "D_shown_minus_orig": 0.5173223388785907,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.7361217974270691,
+        "r_shown": 0.025106483160037905,
+        "r_orig": 0.11030460125522044,
+        "r_direct": 0.2881586094841219,
+        "D_shown_minus_orig": -0.08519811809518255,
+        "perm_p_two_sided": 0.2891421715656869,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": 0.0183,
+        "B": -0.0137,
+        "C": 0.0064,
+        "D": 0.0202
+      }
+    },
+    "eigvec4": {
+      "1": {
+        "matched_rank_in_rotation": 4,
+        "model_score_match_abs_r": 0.7488431125145928,
+        "r_shown": 0.310098878761348,
+        "r_orig": 0.18143068148004535,
+        "r_direct": 0.18492627555604324,
+        "D_shown_minus_orig": 0.12866819728130266,
+        "perm_p_two_sided": 0.09998000399920016,
+        "n_questions": 440
+      },
+      "2": {
+        "matched_rank_in_rotation": 4,
+        "model_score_match_abs_r": 0.5090876231051887,
+        "r_shown": 0.32100459712693485,
+        "r_orig": -0.2421280228578392,
+        "r_direct": 0.08337963031519766,
+        "D_shown_minus_orig": 0.563132619984774,
+        "perm_p_two_sided": 0.0001999600079984003,
+        "n_questions": 433
+      },
+      "3": {
+        "matched_rank_in_rotation": 3,
+        "model_score_match_abs_r": 0.2828984570826218,
+        "r_shown": -0.013146974021428873,
+        "r_orig": -0.055793890409399624,
+        "r_direct": 0.05217992116552936,
+        "D_shown_minus_orig": 0.04264691638797075,
+        "perm_p_two_sided": 0.5798840231953609,
+        "n_questions": 448
+      },
+      "profile_rotation0_by_letter": {
+        "A": -0.0012,
+        "B": -0.0179,
+        "C": 0.0103,
+        "D": 0.01
+      }
+    }
+  }
+}

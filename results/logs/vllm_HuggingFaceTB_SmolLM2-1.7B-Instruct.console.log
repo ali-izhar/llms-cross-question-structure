@@ -1,0 +1,101 @@
+
+=============
+== PyTorch ==
+=============
+
+NVIDIA Release 26.04 (build 297444912)
+PyTorch Version 2.12.0a0+0291f96
+Container image Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+NOTE: CUDA Forward Compatibility mode ENABLED.
+  Using CUDA 13.2 driver version 595.58.03 with kernel driver version 580.126.09.
+  See https://docs.nvidia.com/deploy/cuda-compatibility/ for details.
+
+2026-10-10 06:35:27 HuggingFaceTB/SmolLM2-1.7B-Instruct: loading vLLM engine {'model': 'HuggingFaceTB/SmolLM2-1.7B-Instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.25, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
+INFO 10-10 06:35:27 [arg_utils.py:757] HF_HUB_OFFLINE is True, replace model_id [HuggingFaceTB/SmolLM2-1.7B-Instruct] to model_path [/root/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-1.7B-Instruct/snapshots/31b70e2e869a7173562077fd711b654946d38674]
+INFO 10-10 06:35:27 [api_utils.py:273] non-default args: {'tokenizer_mode': 'hf', 'dtype': 'bfloat16', 'max_model_len': 3072, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.25, 'max_num_seqs': 128, 'disable_log_stats': True, 'generation_config': 'vllm', 'model': '/root/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-1.7B-Instruct/snapshots/31b70e2e869a7173562077fd711b654946d38674'}
+ERROR 10-10 06:35:33 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+INFO 10-10 06:35:33 [model.py:611] Resolved architecture: LlamaForCausalLM
+INFO 10-10 06:35:33 [model.py:1745] Using max model len 3072
+INFO 10-10 06:35:33 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 10-10 06:35:33 [vllm.py:999] Asynchronous scheduling is enabled.
+INFO 10-10 06:35:33 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 10-10 06:35:34 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(EngineCore pid=175) INFO 10-10 06:35:39 [core.py:113] Initializing a V1 LLM engine (v0.23.0) with config: model='/root/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-1.7B-Instruct/snapshots/31b70e2e869a7173562077fd711b654946d38674', speculative_config=None, tokenizer='/root/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-1.7B-Instruct/snapshots/31b70e2e869a7173562077fd711b654946d38674', skip_tokenizer_init=False, tokenizer_mode=hf, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=3072, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=/root/.cache/huggingface/hub/models--HuggingFaceTB--SmolLM2-1.7B-Instruct/snapshots/31b70e2e869a7173562077fd711b654946d38674, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False}, 'max_cudagraph_capture_size': 256, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=175) ERROR 10-10 06:35:39 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+(EngineCore pid=175) INFO 10-10 06:35:40 [parallel_state.py:1568] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.17.0.2:46781 backend=nccl
+(EngineCore pid=175) INFO 10-10 06:35:40 [parallel_state.py:1903] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=175) INFO 10-10 06:35:40 [gpu_worker.py:303] Using V2 Model Runner
+(EngineCore pid=175) INFO 10-10 06:35:40 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=175) INFO 10-10 06:35:41 [model_runner.py:298] Loading model from scratch...
+(EngineCore pid=175) INFO 10-10 06:35:41 [cuda.py:378] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=175) INFO 10-10 06:35:41 [flash_attn.py:636] Using FlashAttention version 2
+(EngineCore pid=175) INFO 10-10 06:35:41 [weight_utils.py:922] Filesystem type for checkpoints: EXT4. Checkpoint size: 3.19 GiB. Available RAM: 100.19 GiB.
+(EngineCore pid=175) INFO 10-10 06:35:41 [weight_utils.py:945] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=175) Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore pid=175) Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:20<00:00, 20.11s/it]
+(EngineCore pid=175) Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:20<00:00, 20.11s/it]
+(EngineCore pid=175) 
+(EngineCore pid=175) INFO 10-10 06:36:02 [default_loader.py:397] Loading weights took 20.64 seconds
+(EngineCore pid=175) INFO 10-10 06:36:02 [model_runner.py:319] Model loading took 3.19 GiB and 21.899480 seconds
+(EngineCore pid=175) INFO 10-10 06:36:06 [backends.py:1089] Using cache directory: /root/.cache/vllm/torch_compile_cache/fd7cc15662/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=175) INFO 10-10 06:36:06 [backends.py:1148] Dynamo bytecode transform time: 3.79 s
+(EngineCore pid=175) [rank0]:W1010 06:36:07.391000 175 torch/_inductor/utils.py:1731] Not enough SMs to use max_autotune_gemm mode
+(EngineCore pid=175) INFO 10-10 06:36:08 [backends.py:378] Cache the graph of compile range (1, 8192) for later use
+(EngineCore pid=175) INFO 10-10 06:36:10 [backends.py:393] Compiling a graph for compile range (1, 8192) takes 3.34 s
+(EngineCore pid=175) INFO 10-10 06:36:11 [decorators.py:708] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/7105cec8e53ad621e829d390494ed42b14f9f24c83712d9ef9d1e8c5dbd5d675/rank_0_0/model
+(EngineCore pid=175) INFO 10-10 06:36:11 [monitor.py:53] torch.compile took 8.15 s in total
+(EngineCore pid=175) INFO 10-10 06:36:11 [monitor.py:81] Initial profiling/warmup run took 0.60 s
+(EngineCore pid=175) INFO 10-10 06:36:12 [gpu_worker.py:480] Available KV cache memory: 25.85 GiB
+(EngineCore pid=175) INFO 10-10 06:36:12 [kv_cache_utils.py:1744] GPU KV cache size: 141,168 tokens
+(EngineCore pid=175) INFO 10-10 06:36:12 [kv_cache_utils.py:1745] Maximum concurrency for 3,072 tokens per request: 45.95x
+(EngineCore pid=175) 2026-10-10 06:36:14,056 - INFO - autotuner.py:622 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=175) 2026-10-10 06:36:37,750 - INFO - autotuner.py:641 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(EngineCore pid=175) Capturing CUDA graphs (PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):  11%|█▏        | 4/35 [00:00<00:00, 33.97it/s]Capturing CUDA graphs (PIECEWISE):  23%|██▎       | 8/35 [00:00<00:00, 35.19it/s]Capturing CUDA graphs (PIECEWISE):  34%|███▍      | 12/35 [00:00<00:00, 34.10it/s]Capturing CUDA graphs (PIECEWISE):  49%|████▊     | 17/35 [00:00<00:00, 37.34it/s]Capturing CUDA graphs (PIECEWISE):  63%|██████▎   | 22/35 [00:00<00:00, 39.24it/s]Capturing CUDA graphs (PIECEWISE):  77%|███████▋  | 27/35 [00:00<00:00, 40.99it/s]Capturing CUDA graphs (PIECEWISE):  91%|█████████▏| 32/35 [00:00<00:00, 42.27it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 39.82it/s]
+(EngineCore pid=175) Capturing CUDA graphs (FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):   5%|▌         | 1/19 [00:40<12:07, 40.41s/it]Capturing CUDA graphs (FULL):  26%|██▋       | 5/19 [00:40<01:24,  6.04s/it]Capturing CUDA graphs (FULL):  53%|█████▎    | 10/19 [00:40<00:21,  2.41s/it]Capturing CUDA graphs (FULL):  79%|███████▉  | 15/19 [00:40<00:05,  1.31s/it]Capturing CUDA graphs (FULL): 100%|██████████| 19/19 [00:40<00:00,  2.15s/it]
+(EngineCore pid=175) INFO 10-10 06:37:19 [model_runner.py:701] Graph capturing finished in 42 secs, took 0.62 GiB
+(EngineCore pid=175) INFO 10-10 06:37:58 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=175) INFO 10-10 06:37:58 [core.py:306] init engine (profile, create kv cache, warmup model) took 115.42 s (compilation: 8.15 s)
+(EngineCore pid=175) INFO 10-10 06:37:58 [vllm.py:999] Asynchronous scheduling is enabled.
+(EngineCore pid=175) INFO 10-10 06:37:58 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+2026-10-10 06:37:58 engine ready in 151s; prompt_mode=chat_template; max_model_len=3072
+2026-10-10 06:37:58 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] start K=100 N=500 T=1.0 block=10 passes
+(EngineCore pid=175) WARNING 10-10 06:37:58 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _topk_log_softmax_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+2026-10-10 06:38:08 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 0-9 done, block acc=0.398, elapsed=10s
+2026-10-10 06:38:16 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 10-19 done, block acc=0.396, elapsed=17s
+2026-10-10 06:38:23 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 20-29 done, block acc=0.385, elapsed=25s
+2026-10-10 06:38:31 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 30-39 done, block acc=0.403, elapsed=33s
+2026-10-10 06:38:39 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 40-49 done, block acc=0.394, elapsed=41s
+2026-10-10 06:38:47 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 50-59 done, block acc=0.388, elapsed=49s
+2026-10-10 06:38:55 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 60-69 done, block acc=0.396, elapsed=57s
+2026-10-10 06:39:03 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 70-79 done, block acc=0.393, elapsed=65s
+2026-10-10 06:39:11 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 80-89 done, block acc=0.398, elapsed=73s
+2026-10-10 06:39:19 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 90-99 done, block acc=0.399, elapsed=81s
+2026-10-10 06:39:20 [mmlu_iid-T1.0_HuggingFaceTB_SmolLM2-1.7B-Instruct] DONE acc=0.3949 unparseable=0.0023 N_b=406 runtime=81s
+2026-10-10 06:39:20 [mmlu_greedy_HuggingFaceTB_SmolLM2-1.7B-Instruct] start K=1 N=500 T=0.0 block=1 passes
+2026-10-10 06:39:21 [mmlu_greedy_HuggingFaceTB_SmolLM2-1.7B-Instruct] passes 0-0 done, block acc=0.440, elapsed=1s
+2026-10-10 06:39:21 [mmlu_greedy_HuggingFaceTB_SmolLM2-1.7B-Instruct] DONE acc=0.4400 unparseable=0.0000 N_b=None runtime=1s
+2026-10-10 06:39:21 HuggingFaceTB/SmolLM2-1.7B-Instruct: finished; failed runs: []
+(EngineCore pid=175) INFO 10-10 06:39:21 [core.py:1178] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=175) INFO 10-10 06:39:21 [core.py:1297] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=175) INFO 10-10 06:39:21 [core.py:1328] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=175) INFO 10-10 06:39:21 [core.py:1191] [shutdown] EngineCore: exiting busy loop

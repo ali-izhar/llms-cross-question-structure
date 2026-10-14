@@ -1,0 +1,549 @@
+{
+  "eigenvalues": {
+    "rotation0": {
+      "A": [
+        85.93043672778376,
+        49.89282754557817,
+        29.691294094475765,
+        27.26678122688633
+      ],
+      "B": [
+        85.93043672778376,
+        49.89282754557817,
+        29.691294094475765,
+        27.26678122688633
+      ],
+      "max_abs_diff": 0.0
+    },
+    "rotation1": {
+      "A": [
+        83.15814396211971,
+        48.42577285630556,
+        30.838773648867317,
+        28.103485996736836
+      ],
+      "B": [
+        83.15814396211971,
+        48.42577285630556,
+        30.838773648867317,
+        28.103485996736836
+      ],
+      "max_abs_diff": 0.0
+    },
+    "rotation2": {
+      "A": [
+        81.47599117740836,
+        44.27740551719205,
+        33.87844264852571,
+        28.1391214841711
+      ],
+      "B": [
+        81.5268883164257,
+        44.32555509774876,
+        33.93948168649694,
+        28.172772533030923
+      ],
+      "max_abs_diff": 0.06103903797122712
+    },
+    "rotation3": {
+      "A": [
+        88.83048584355478,
+        54.673507880997334,
+        31.45141180096753,
+        25.05264349377664
+      ],
+      "B": [
+        88.74918203765489,
+        54.66211765928563,
+        31.466393816478714,
+        25.024905235864573
+      ],
+      "max_abs_diff": 0.08130380589989272
+    },
+    "randomized_median": {
+      "A": [
+        79.49070564585371,
+        40.8763905213839,
+        32.062618003707,
+        26.047784807303124
+      ],
+      "B": [
+        79.51430911776676,
+        40.889059179283464,
+        32.06170450628203,
+        26.047224677238376
+      ],
+      "max_abs_diff": 0.02360347191304868
+    },
+    "all4_correct": {
+      "A": [
+        92.12689679460775,
+        28.973669867974323,
+        23.29561721501721,
+        20.831903221031816
+      ],
+      "B": [
+        92.07708176299738,
+        28.906340380698943,
+        23.318812779927995,
+        20.82370991064533
+      ],
+      "max_abs_diff": 0.06732948727538002
+    },
+    "mean_over_rotations": {
+      "A": [
+        127.46325509328378,
+        43.079617203797,
+        28.509341816246454,
+        25.69780093209793
+      ],
+      "B": [
+        127.46705511231511,
+        43.07149176838979,
+        28.501483071514,
+        25.692651185387092
+      ],
+      "max_abs_diff": 0.00812543540720867
+    }
+  },
+  "null_verdicts": {
+    "rot0:rasch_jml": {
+      "A": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "B": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:fixed_margin": {
+      "A": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "B": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_post": {
+      "A": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "B": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_prior": {
+      "A": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "B": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:3pl_post": {
+      "A": [
+        2
+      ],
+      "B": [
+        2
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:letter_post": {
+      "A": [
+        2
+      ],
+      "B": [
+        2
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.26992580977819003
+    },
+    "rot0:ba_a4": {
+      "A": [
+        2,
+        4
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:ba_a8": {
+      "A": [
+        2,
+        4
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:kg_letter4": {
+      "A": [
+        1,
+        2,
+        4
+      ],
+      "B": [
+        1,
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.21000464444751543
+    },
+    "rot0:kg_uniform4": {
+      "A": [
+        2
+      ],
+      "B": [
+        2
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.9131194217879965
+    },
+    "rot0:2pl_post_stress_x1.25": {
+      "A": [
+        2,
+        4
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_post_stress_x1.5": {
+      "A": [
+        2,
+        4
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_post_stress_x2": {
+      "A": [
+        2,
+        4
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_post_stress_x3": {
+      "A": [
+        4
+      ],
+      "B": [
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_post_stress_x5": {
+      "A": [],
+      "B": [],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "rot0:2pl_post_stress_x10": {
+      "A": [],
+      "B": [],
+      "agree": true,
+      "max_abs_diff_p99": 0.0
+    },
+    "randomized_representative:rasch_jml": {
+      "A": [
+        1,
+        2,
+        3
+      ],
+      "B": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "agree": false,
+      "max_abs_diff_p99": 0.06588685822329055
+    },
+    "randomized_representative:fixed_margin": {
+      "A": [
+        1,
+        2,
+        3
+      ],
+      "B": [
+        1,
+        2,
+        3
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.1586204914058449
+    },
+    "randomized_representative:2pl_post": {
+      "A": [
+        1,
+        2,
+        3
+      ],
+      "B": [
+        1,
+        2,
+        3
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.2925769495327941
+    },
+    "randomized_representative:3pl_post": {
+      "A": [],
+      "B": [],
+      "agree": true,
+      "max_abs_diff_p99": 0.26966363379227687
+    },
+    "randomized_representative:letter_post": {
+      "A": [],
+      "B": [],
+      "agree": true,
+      "max_abs_diff_p99": 1.255123716487347
+    },
+    "randomized_representative:ba_a4": {
+      "A": [
+        2,
+        3
+      ],
+      "B": [
+        2,
+        3
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.904417055810157
+    },
+    "all4_correct:rasch_jml": {
+      "A": [],
+      "B": [],
+      "agree": true,
+      "max_abs_diff_p99": 0.323142610788107
+    },
+    "all4_correct:fixed_margin": {
+      "A": [
+        1,
+        2
+      ],
+      "B": [
+        1,
+        2,
+        4
+      ],
+      "agree": false,
+      "max_abs_diff_p99": 0.15502849084738557
+    },
+    "all4_correct:2pl_post": {
+      "A": [],
+      "B": [
+        4
+      ],
+      "agree": false,
+      "max_abs_diff_p99": 0.45114884939299316
+    },
+    "all4_correct:2pl_prior": {
+      "A": [],
+      "B": [],
+      "agree": true,
+      "max_abs_diff_p99": 0.6381085085683402
+    },
+    "all4_correct:ba_a4": {
+      "A": [
+        4
+      ],
+      "B": [
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.5292574049557288
+    },
+    "all4_correct:ba_a8": {
+      "A": [
+        4
+      ],
+      "B": [],
+      "agree": false,
+      "max_abs_diff_p99": 0.7544839546738586
+    },
+    "all4_correct:kg_letter4": {
+      "A": [
+        4
+      ],
+      "B": [
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.4647685622782234
+    },
+    "all4_correct:kg_uniform4": {
+      "A": [
+        4
+      ],
+      "B": [
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.31854079173236016
+    },
+    "mean_over_rotations:kg_letter4": {
+      "A": [
+        1,
+        2,
+        4
+      ],
+      "B": [
+        1,
+        2,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.6175859668096138
+    },
+    "mean_over_rotations:kg_uniform4": {
+      "A": [
+        1
+      ],
+      "B": [
+        1
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.7812446046763029
+    },
+    "mean_over_rotations:indep4_2pl": {
+      "A": [
+        2,
+        3,
+        4
+      ],
+      "B": [
+        2,
+        3,
+        4
+      ],
+      "agree": true,
+      "max_abs_diff_p99": 0.3562283707161953
+    }
+  },
+  "letters": {
+    "rotation0_eta_sq_gold_letter": {
+      "A": [
+        0.22041821699107816,
+        0.4816955119706924,
+        0.08722220179979297,
+        0.06143206405544011
+      ],
+      "B": [
+        0.22041821699107816,
+        0.4816955119706924,
+        0.08722220179979297,
+        0.06143206405544011
+      ],
+      "max_abs_diff": 0.0
+    },
+    "rotation1_eta_sq_gold_letter": {
+      "A": [
+        0.22065873659942856,
+        0.40596321515287975,
+        0.05226253908780382,
+        0.14710070647305062
+      ],
+      "B": [
+        0.22065873659942856,
+        0.40596321515287975,
+        0.05226253908780382,
+        0.14710070647305062
+      ],
+      "max_abs_diff": 0.0
+    },
+    "rotation2_eta_sq_gold_letter": {
+      "A": [
+        0.19144904114417227,
+        0.3627114093446619,
+        0.10506685551924251,
+        0.11949776477816929
+      ],
+      "B": [
+        0.18992966381051923,
+        0.362608122306429,
+        0.10653692513113158,
+        0.12018597893689624
+      ],
+      "max_abs_diff": 0.001519377333653038
+    },
+    "rotation3_eta_sq_gold_letter": {
+      "A": [
+        0.2575471701042784,
+        0.37611849608236037,
+        0.04752772070547993,
+        0.040933572836806084
+      ],
+      "B": [
+        0.25774601669527686,
+        0.3773741654924543,
+        0.04606740580733695,
+        0.04160736697655269
+      ],
+      "max_abs_diff": 0.001460314898142974
+    }
+  },
+  "max_abs_eig_diff_overall": 0.08130380589989272,
+  "n_null_verdicts": 33,
+  "n_null_verdicts_disagree": 4,
+  "disagreeing_null_verdicts": [
+    "randomized_representative:rasch_jml",
+    "all4_correct:fixed_margin",
+    "all4_correct:2pl_post",
+    "all4_correct:ba_a8"
+  ],
+  "note": "rotation 0 is identical in A and B (the 6 A-vs-B letter flips are in rotations 2 and 3 of Qwen2-7B); B's letter preference pi is estimated from B's 4 rotations"
+}

@@ -1,10 +1,4 @@
-"""Verification tests for scripts/horn_vs_mp.py.
-
-1. Column-shuffle surrogate preserves per-column mean exactly.
-2. Horn PA on iid Bernoulli (no planted signal) yields d ≈ 0.
-3. Horn PA on a rank-1 planted signal detects at least 1 factor.
-4. eps=0.05 filter on Qwen MMLU reproduces paper's N_b = 121.
-"""
+"""Tests for horn_vs_mp.py: shuffle keeps marginals, Horn ~0 on iid, detects rank 1, Qwen N_b = 121."""
 
 from __future__ import annotations
 
@@ -17,7 +11,7 @@ import numpy.testing as npt
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from horn_vs_mp import borderline_filter, corr_eigs_desc, horn_pa
+from horn_vs_mp import borderline_filter, horn_pa
 
 
 def test_column_shuffle_preserves_marginals():
@@ -25,7 +19,6 @@ def test_column_shuffle_preserves_marginals():
     K, N = 100, 200
     C = (rng.random((K, N)) < 0.4).astype(np.float64)
     col_means_before = C.mean(axis=0)
-    # mimic internal shuffle: produce a shuffled copy and check marginals
     C2 = C.copy()
     rng2 = np.random.default_rng(1)
     for j in range(N):
@@ -63,7 +56,7 @@ def test_horn_detects_planted_signal():
 
 def test_eps_filter_matches_paper_Nb():
     """Paper Table 1: Qwen MMLU N_b = 121."""
-    path = ROOT / "results" / "correctness_matrix_Qwen_Qwen2.5-7B-Instruct.npy"
+    path = ROOT / "results" / "provenance" / "correctness_matrix_Qwen_Qwen2.5-7B-Instruct.npy"
     if not path.exists():
         print(f"SKIP  {path} not found")
         return

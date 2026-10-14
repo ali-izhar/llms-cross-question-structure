@@ -1,0 +1,775 @@
+{
+ "eps": 0.13,
+ "total_flips": 6,
+ "total_flips_on_near_tie": 6,
+ "models": {
+  "HuggingFaceTB/SmolLM2-1.7B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.123,
+   "flip_near_tie_share": null
+  },
+  "Qwen/Qwen2.5-0.5B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.1095,
+   "flip_near_tie_share": null
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0235,
+   "flip_near_tie_share": null
+  },
+  "microsoft/phi-2": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.1875,
+   "flip_near_tie_share": null
+  },
+  "microsoft/Phi-3-mini-4k-instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.041,
+   "flip_near_tie_share": null
+  },
+  "microsoft/Phi-3.5-mini-instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.013,
+   "flip_near_tie_share": null
+  },
+  "Qwen/Qwen2.5-3B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.004,
+   "flip_near_tie_share": null
+  },
+  "Qwen/Qwen2-7B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    0.994,
+    0.994
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    0.994,
+    0.996
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    3,
+    3
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    3,
+    2
+   ],
+   "n_texts_differ": 16,
+   "max_abs_diff_letter_logprob": 1.1219463348388672,
+   "n_flips": 6,
+   "n_flips_on_near_tie": 6,
+   "near_tie_rate_all_cells": 0.0235,
+   "flip_near_tie_share": 1.0
+  },
+  "Qwen/Qwen2.5-7B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.4994359016418457,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0065,
+   "flip_near_tie_share": null
+  },
+  "mistralai/Mistral-7B-Instruct-v0.2": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.4905567169189453,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.005,
+   "flip_near_tie_share": null
+  },
+  "mistralai/Mistral-7B-Instruct-v0.3": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.018,
+   "flip_near_tie_share": null
+  },
+  "HuggingFaceH4/zephyr-7b-beta": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.024,
+   "flip_near_tie_share": null
+  },
+  "allenai/OLMo-2-1124-7B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.052,
+   "flip_near_tie_share": null
+  },
+  "01-ai/Yi-1.5-6B-Chat": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0055,
+   "flip_near_tie_share": null
+  },
+  "deepseek-ai/deepseek-llm-7b-chat": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.22656846046447754,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.046,
+   "flip_near_tie_share": null
+  },
+  "ibm-granite/granite-3.1-8b-instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0445,
+   "flip_near_tie_share": null
+  },
+  "mistralai/Ministral-8B-Instruct-2410": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.00016558170318603516,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.116,
+   "flip_near_tie_share": null
+  },
+  "google/gemma-2-2b-it": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.022,
+   "flip_near_tie_share": null
+  },
+  "meta-llama/Llama-3.1-8B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0475,
+   "flip_near_tie_share": null
+  },
+  "google/gemma-2-9b-it": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0095,
+   "flip_near_tie_share": null
+  },
+  "mistralai/Mistral-Small-Instruct-2409": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.049,
+   "flip_near_tie_share": null
+  },
+  "meta-llama/Llama-3.2-1B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.10739690065383911,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.08,
+   "flip_near_tie_share": null
+  },
+  "meta-llama/Llama-3.2-3B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.0,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.1115,
+   "flip_near_tie_share": null
+  },
+  "meta-llama/Meta-Llama-3-8B-Instruct": {
+   "letter_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct_agreement_by_rotation": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "n_letter_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_correct_flips_by_rotation": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "n_texts_differ": 0,
+   "max_abs_diff_letter_logprob": 0.095802903175354,
+   "n_flips": 0,
+   "n_flips_on_near_tie": 0,
+   "near_tie_rate_all_cells": 0.0435,
+   "flip_near_tie_share": null
+  }
+ }
+}

@@ -1,0 +1,9 @@
+2026-10-12T21:03:54-04:00 model=microsoft/phi-2 runs=mmlu_greedyrot_microsoft_phi-2
+2026-10-12T21:05:02-04:00	microsoft/phi-2	mmlu_greedyrot_microsoft_phi-2	rc=0	sec=68
+2026-10-12T21:05:02-04:00 model=deepseek-ai/deepseek-llm-7b-chat runs=mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat
+2026-10-12T21:06:40-04:00	deepseek-ai/deepseek-llm-7b-chat	mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat	rc=0	sec=98
+2026-10-12T21:06:40-04:00 model=01-ai/Yi-1.5-6B-Chat runs=mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat
+2026-10-12T21:09:05-04:00	01-ai/Yi-1.5-6B-Chat	mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat	rc=0	sec=145
+2026-10-12T21:09:05-04:00 model=Qwen/Qwen2.5-7B-Instruct runs=mmlu_greedyrot_Qwen_Qwen2.5-7B-Instruct
+2026-10-12T21:11:57-04:00	Qwen/Qwen2.5-7B-Instruct	mmlu_greedyrot_Qwen_Qwen2.5-7B-Instruct	rc=0	sec=172
+done 2026-10-12T21:11:57-04:00

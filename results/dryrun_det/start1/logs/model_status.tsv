@@ -1,0 +1,4 @@
+2026-10-12T20:48:31-04:00	microsoft/phi-2	mmlu_greedyrot_microsoft_phi-2	rc=0	sec=67
+2026-10-12T20:50:23-04:00	deepseek-ai/deepseek-llm-7b-chat	mmlu_greedyrot_deepseek-ai_deepseek-llm-7b-chat	rc=0	sec=112
+2026-10-12T20:52:47-04:00	01-ai/Yi-1.5-6B-Chat	mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat	rc=0	sec=144
+2026-10-12T20:55:42-04:00	Qwen/Qwen2.5-7B-Instruct	mmlu_greedyrot_Qwen_Qwen2.5-7B-Instruct	rc=0	sec=175

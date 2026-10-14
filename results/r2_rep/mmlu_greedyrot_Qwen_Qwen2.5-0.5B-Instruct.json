@@ -1,0 +1,178 @@
+{
+ "run_id": "mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct",
+ "task": "mmlu",
+ "condition": "greedyrot",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "K": 4,
+ "N": 500,
+ "temperature": 0.0,
+ "dry_run": false,
+ "sampling_params": {
+  "n": 1,
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "min_p": 0.0,
+  "repetition_penalty": 1.0,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "max_tokens": 8,
+  "logprobs": 20,
+  "skip_special_tokens": true,
+  "stop": [],
+  "stop_token_ids": [],
+  "ignore_eos": false,
+  "seed": null
+ },
+ "seed_scheme": "none (temperature 0); pass k = option rotation k (option j shown at (j+k) mod 4)",
+ "seed_base": null,
+ "prompt_mode": "chat_template",
+ "rendered_prompt_q0_pass0": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nAnswer the following multiple choice question. Reply with ONLY the letter (A, B, C, or D).\n\nQuestion: Statement 1 | If a group has an element of order 10, then it has elements of orders 1, 2, and 5. Statement 2 | If a group has an element of order 2 and an element of order 3, then it has an element of order 6.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+ "prompt_tokens_q0_pass0": 143,
+ "prompt_ids_q0_pass0_sha": "d5876719ece63821",
+ "tokenization": {
+  "method": "tokenizers.Tokenizer.from_file(<snapshot>/tokenizer.json); chat template rendered with jinja2",
+  "tokenizer_json_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+  "chat_template_source": "tokenizer_config.json",
+  "pinned_template_date": "2026-10-10",
+  "tokenizers_version": "0.22.2",
+  "jinja2_version": "3.1.6",
+  "transformers_version": "5.12.1",
+  "huggingface_hub_version": "1.10.1",
+  "prompt_check": {
+   "n_prompts_checked": 2000,
+   "n_canonical": 2000,
+   "decode": {
+    "exact": 2000
+   },
+   "n_equal_to_v2_pipeline_ids": 2000,
+   "n_equal_to_reference_hash": 2000
+  },
+  "prompt_hash_all": "58bb7787516bb857",
+  "pins": {
+   "dir": "/workspace/results/dryrun_v3",
+   "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+   "tokenizer_json_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+   "allowed_decode_kinds": [
+    "exact"
+   ],
+   "reference_method": "transformers 4.46.3 apply_chat_template(tokenize=True); Yi: slow SentencePiece"
+  },
+  "n_texts_differing_from_vllm_detokenizer": 0
+ },
+ "scorer_sha256": "f804dbf14ef19530",
+ "parser_version": "v3.1",
+ "parse_reason_counts": {
+  "lead": 1989,
+  "no_letter": 11
+ },
+ "accuracy": 0.392,
+ "unparseable_rate": 0.0055,
+ "length_truncated_rate": 0.019,
+ "N_b_eps0.05": 361,
+ "n_always_correct": 63,
+ "n_always_wrong": 76,
+ "runtime_sec": 69.0,
+ "first_token_letter_logprob_coverage": 1.0,
+ "backend": "vllm",
+ "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+ "container_image": "gb10-vllm",
+ "vllm_version": "0.23.0",
+ "torch_version": "2.11.0+cu130",
+ "transformers_version": "5.12.1",
+ "engine_kwargs": {
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "dtype": "bfloat16",
+  "tensor_parallel_size": 1,
+  "gpu_memory_utilization": 0.25,
+  "max_model_len": 3072,
+  "seed": 0,
+  "generation_config": "vllm",
+  "enable_prefix_caching": true,
+  "max_num_seqs": 128,
+  "tokenizer_mode": "hf",
+  "trust_remote_code": false,
+  "enforce_eager": true,
+  "kernel_config": {
+   "enable_flashinfer_autotune": false
+  },
+  "async_scheduling": false,
+  "num_gpu_blocks_override": 2048
+ },
+ "engine_load_sec": 25.9,
+ "deterministic": {
+  "on": true,
+  "env": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "VLLM_ENABLE_INDUCTOR_MAX_AUTOTUNE": "0",
+   "VLLM_USE_FLASHINFER_SAMPLER": "0",
+   "VLLM_BATCH_INVARIANT": "1"
+  },
+  "engine": {
+   "enforce_eager": true,
+   "kernel_config": {
+    "enable_flashinfer_autotune": false
+   },
+   "async_scheduling": false,
+   "num_gpu_blocks_override": 2048
+  },
+  "batch_invariant": true,
+  "blocks_override": true
+ },
+ "logprobs_mode": "raw_logprobs (vLLM default: model log-softmax before temperature)",
+ "gpu": "NVIDIA GB10",
+ "memory_settings": {
+  "gpu_memory_utilization": 0.25,
+  "max_model_len": 3072,
+  "max_num_seqs": 128,
+  "enforce_eager": true,
+  "quantization": null,
+  "docker_memory_cap": "100g",
+  "host_used_gib_at_engine_ready": 23.9
+ },
+ "parsed_letter_counts": {
+  "A": 412,
+  "B": 185,
+  "C": 233,
+  "D": 1159,
+  "": 11
+ },
+ "accuracy_by_rotation": [
+  0.406,
+  0.386,
+  0.402,
+  0.374
+ ],
+ "unparseable_by_rotation": [
+  0.008,
+  0.004,
+  0.004,
+  0.006
+ ],
+ "letter_share_by_rotation": [
+  {
+   "A": 0.234,
+   "B": 0.062,
+   "C": 0.12,
+   "D": 0.576
+  },
+  {
+   "A": 0.19,
+   "B": 0.112,
+   "C": 0.112,
+   "D": 0.582
+  },
+  {
+   "A": 0.232,
+   "B": 0.096,
+   "C": 0.116,
+   "D": 0.552
+  },
+  {
+   "A": 0.168,
+   "B": 0.1,
+   "C": 0.118,
+   "D": 0.608
+  }
+ ]
+}

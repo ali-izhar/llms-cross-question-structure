@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "seed": 20260420,
+    "eps": 0.05,
+    "n_perm": 5000,
+    "null": "independent column shuffles across passes",
+    "row_order": "row k = pass k; passes ran in index order in vLLM batches (src/collect.py)",
+    "multiplicity": "Holm over 12 p-values (3 models x 4 tests)"
+  },
+  "models": [
+    {
+      "model": "MMLU Qwen2.5-7B S1 shared seed",
+      "K": 100,
+      "N_b": 41,
+      "per_pass_total_mean": 18.54,
+      "var_per_pass_total": 5.685252525252527,
+      "var_expected_under_null_analytic": 6.860606060606062,
+      "var_null_mean_mc": 6.858977777777779,
+      "var_null_p95": 8.513535353535353,
+      "dispersion_ratio_obs_over_expected": 0.8286808009422851,
+      "p_overdispersion": 0.8930213957208558,
+      "p_underdispersion": 0.10917816436712657,
+      "spearman_pass_index_vs_total": -0.10990580084923986,
+      "p_trend_two_sided": 0.2887422515496901,
+      "abs_spearman_pass_index_vs_top_pc": 0.08322056641377315,
+      "p_trend_top_pc_two_sided": 0.41871625674865026,
+      "holm_adjusted": {
+        "p_underdispersion": 0.8734253149370126,
+        "p_trend_two_sided": 1.0,
+        "p_trend_top_pc_two_sided": 1.0,
+        "p_overdispersion": 1.0
+      }
+    },
+    {
+      "model": "MMLU Qwen2.5-7B S2 shared 5-shot",
+      "K": 100,
+      "N_b": 93,
+      "per_pass_total_mean": 44.92,
+      "var_per_pass_total": 18.37737373737374,
+      "var_expected_under_null_analytic": 15.221010101010101,
+      "var_null_mean_mc": 15.22429898989899,
+      "var_null_p95": 18.90262626262626,
+      "dispersion_ratio_obs_over_expected": 1.2073688681248675,
+      "p_overdispersion": 0.07478504299140172,
+      "p_underdispersion": 0.9258148370325935,
+      "spearman_pass_index_vs_total": 0.0182196518392973,
+      "p_trend_two_sided": 0.8578284343131374,
+      "abs_spearman_pass_index_vs_top_pc": 0.13022502250225018,
+      "p_trend_top_pc_two_sided": 0.20175964807038593,
+      "holm_adjusted": {
+        "p_overdispersion": 0.6730653869226155,
+        "p_trend_top_pc_two_sided": 1.0,
+        "p_trend_two_sided": 1.0,
+        "p_underdispersion": 1.0
+      }
+    },
+    {
+      "model": "MMLU Meta-Llama-3-8B S2 shared 5-shot",
+      "K": 100,
+      "N_b": 264,
+      "per_pass_total_mean": 126.75,
+      "var_per_pass_total": 68.99747474747475,
+      "var_expected_under_null_analytic": 45.59888888888889,
+      "var_null_mean_mc": 45.68533333333333,
+      "var_null_p95": 56.473232323232324,
+      "dispersion_ratio_obs_over_expected": 1.5131393862600766,
+      "p_overdispersion": 0.0009998000399920016,
+      "p_underdispersion": 0.9992001599680064,
+      "spearman_pass_index_vs_total": -0.19436192828808957,
+      "p_trend_two_sided": 0.05458908218356329,
+      "abs_spearman_pass_index_vs_top_pc": 0.19504350435043502,
+      "p_trend_top_pc_two_sided": 0.04519096180763847,
+      "holm_adjusted": {
+        "p_overdispersion": 0.01199760047990402,
+        "p_trend_top_pc_two_sided": 0.4971005798840232,
+        "p_trend_two_sided": 0.5458908218356329,
+        "p_underdispersion": 1.0
+      }
+    }
+  ]
+}

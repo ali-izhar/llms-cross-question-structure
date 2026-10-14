@@ -1,0 +1,121 @@
+
+=============
+== PyTorch ==
+=============
+
+NVIDIA Release 26.04 (build 297444912)
+PyTorch Version 2.12.0a0+0291f96
+Container image Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+NOTE: CUDA Forward Compatibility mode ENABLED.
+  Using CUDA 13.2 driver version 595.58.03 with kernel driver version 580.126.09.
+  See https://docs.nvidia.com/deploy/cuda-compatibility/ for details.
+
+2026-10-10 06:09:58 meta-llama/Meta-Llama-3-8B-Instruct: loading vLLM engine {'model': 'meta-llama/Meta-Llama-3-8B-Instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
+INFO 10-10 06:09:58 [arg_utils.py:757] HF_HUB_OFFLINE is True, replace model_id [meta-llama/Meta-Llama-3-8B-Instruct] to model_path [/root/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/8afb486c1db24fe5011ec46dfbe5b5dccdb575c2]
+INFO 10-10 06:09:58 [api_utils.py:273] non-default args: {'tokenizer_mode': 'hf', 'dtype': 'bfloat16', 'max_model_len': 3072, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.4, 'max_num_seqs': 128, 'disable_log_stats': True, 'generation_config': 'vllm', 'model': '/root/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/8afb486c1db24fe5011ec46dfbe5b5dccdb575c2'}
+ERROR 10-10 06:10:04 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+INFO 10-10 06:10:04 [model.py:611] Resolved architecture: LlamaForCausalLM
+INFO 10-10 06:10:04 [model.py:1745] Using max model len 3072
+INFO 10-10 06:10:04 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 10-10 06:10:04 [vllm.py:999] Asynchronous scheduling is enabled.
+INFO 10-10 06:10:04 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 10-10 06:10:06 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(EngineCore pid=175) INFO 10-10 06:10:12 [core.py:113] Initializing a V1 LLM engine (v0.23.0) with config: model='/root/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/8afb486c1db24fe5011ec46dfbe5b5dccdb575c2', speculative_config=None, tokenizer='/root/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/8afb486c1db24fe5011ec46dfbe5b5dccdb575c2', skip_tokenizer_init=False, tokenizer_mode=hf, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=3072, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=/root/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/8afb486c1db24fe5011ec46dfbe5b5dccdb575c2, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False}, 'max_cudagraph_capture_size': 256, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=175) ERROR 10-10 06:10:12 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+(EngineCore pid=175) INFO 10-10 06:10:12 [parallel_state.py:1568] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.17.0.2:53663 backend=nccl
+(EngineCore pid=175) INFO 10-10 06:10:12 [parallel_state.py:1903] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=175) INFO 10-10 06:10:12 [gpu_worker.py:303] Using V2 Model Runner
+(EngineCore pid=175) INFO 10-10 06:10:13 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=175) INFO 10-10 06:10:13 [model_runner.py:298] Loading model from scratch...
+(EngineCore pid=175) INFO 10-10 06:10:13 [cuda.py:378] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=175) INFO 10-10 06:10:13 [flash_attn.py:636] Using FlashAttention version 2
+(EngineCore pid=175) INFO 10-10 06:10:14 [weight_utils.py:922] Filesystem type for checkpoints: EXT4. Checkpoint size: 14.96 GiB. Available RAM: 83.95 GiB.
+(EngineCore pid=175) INFO 10-10 06:10:14 [weight_utils.py:945] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=175) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=175) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:27<01:21, 27.08s/it]
+(EngineCore pid=175) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:54<00:54, 27.47s/it]
+(EngineCore pid=175) Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:22<00:27, 27.78s/it]
+(EngineCore pid=175) Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:30<00:00, 19.65s/it]
+(EngineCore pid=175) Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:30<00:00, 22.54s/it]
+(EngineCore pid=175) 
+(EngineCore pid=175) INFO 10-10 06:11:44 [default_loader.py:397] Loading weights took 90.33 seconds
+(EngineCore pid=175) INFO 10-10 06:11:45 [model_runner.py:319] Model loading took 14.96 GiB and 91.967482 seconds
+(EngineCore pid=175) INFO 10-10 06:11:49 [backends.py:1089] Using cache directory: /root/.cache/vllm/torch_compile_cache/c4cb22850c/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=175) INFO 10-10 06:11:49 [backends.py:1148] Dynamo bytecode transform time: 3.68 s
+(EngineCore pid=175) [rank0]:W1010 06:11:50.075000 175 torch/_inductor/utils.py:1731] Not enough SMs to use max_autotune_gemm mode
+(EngineCore pid=175) INFO 10-10 06:11:52 [backends.py:378] Cache the graph of compile range (1, 8192) for later use
+(EngineCore pid=175) INFO 10-10 06:11:55 [backends.py:393] Compiling a graph for compile range (1, 8192) takes 5.73 s
+(EngineCore pid=175) INFO 10-10 06:11:56 [decorators.py:708] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/b7baf8e97d4159e1da5fe9dde9bdd7cfd3c0f3f72e35b9c94778d4557f8c6184/rank_0_0/model
+(EngineCore pid=175) INFO 10-10 06:11:56 [monitor.py:53] torch.compile took 10.89 s in total
+(EngineCore pid=175) INFO 10-10 06:11:58 [monitor.py:81] Initial profiling/warmup run took 2.45 s
+(EngineCore pid=175) INFO 10-10 06:11:59 [gpu_worker.py:480] Available KV cache memory: 31.6 GiB
+(EngineCore pid=175) INFO 10-10 06:11:59 [kv_cache_utils.py:1744] GPU KV cache size: 258,880 tokens
+(EngineCore pid=175) INFO 10-10 06:11:59 [kv_cache_utils.py:1745] Maximum concurrency for 3,072 tokens per request: 84.27x
+(EngineCore pid=175) 2026-10-10 06:12:02,637 - INFO - autotuner.py:622 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=175) 2026-10-10 06:12:22,869 - INFO - autotuner.py:641 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(EngineCore pid=175) Capturing CUDA graphs (PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):   3%|▎         | 1/35 [00:00<00:03,  9.40it/s]Capturing CUDA graphs (PIECEWISE):   9%|▊         | 3/35 [00:00<00:03,  9.72it/s]Capturing CUDA graphs (PIECEWISE):  11%|█▏        | 4/35 [00:00<00:03,  9.64it/s]Capturing CUDA graphs (PIECEWISE):  14%|█▍        | 5/35 [00:00<00:03,  9.60it/s]Capturing CUDA graphs (PIECEWISE):  17%|█▋        | 6/35 [00:00<00:03,  9.54it/s]Capturing CUDA graphs (PIECEWISE):  20%|██        | 7/35 [00:00<00:02,  9.56it/s]Capturing CUDA graphs (PIECEWISE):  26%|██▌       | 9/35 [00:00<00:02, 10.19it/s]Capturing CUDA graphs (PIECEWISE):  31%|███▏      | 11/35 [00:01<00:02, 10.59it/s]Capturing CUDA graphs (PIECEWISE):  37%|███▋      | 13/35 [00:01<00:02, 10.61it/s]Capturing CUDA graphs (PIECEWISE):  43%|████▎     | 15/35 [00:01<00:01, 10.51it/s]Capturing CUDA graphs (PIECEWISE):  49%|████▊     | 17/35 [00:01<00:01, 10.43it/s]Capturing CUDA graphs (PIECEWISE):  54%|█████▍    | 19/35 [00:01<00:01, 10.75it/s]Capturing CUDA graphs (PIECEWISE):  60%|██████    | 21/35 [00:02<00:01, 10.82it/s]Capturing CUDA graphs (PIECEWISE):  66%|██████▌   | 23/35 [00:02<00:01, 11.29it/s]Capturing CUDA graphs (PIECEWISE):  71%|███████▏  | 25/35 [00:02<00:00, 11.07it/s]Capturing CUDA graphs (PIECEWISE):  77%|███████▋  | 27/35 [00:02<00:00, 11.02it/s]Capturing CUDA graphs (PIECEWISE):  83%|████████▎ | 29/35 [00:02<00:00, 10.94it/s]Capturing CUDA graphs (PIECEWISE):  89%|████████▊ | 31/35 [00:02<00:00, 11.34it/s]Capturing CUDA graphs (PIECEWISE):  94%|█████████▍| 33/35 [00:03<00:00, 11.94it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 35/35 [00:03<00:00, 11.89it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 35/35 [00:03<00:00, 10.87it/s]
+(EngineCore pid=175) Capturing CUDA graphs (FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):   5%|▌         | 1/19 [00:30<09:08, 30.47s/it]Capturing CUDA graphs (FULL):  16%|█▌        | 3/19 [00:30<02:07,  7.96s/it]Capturing CUDA graphs (FULL):  26%|██▋       | 5/19 [00:30<00:54,  3.91s/it]Capturing CUDA graphs (FULL):  37%|███▋      | 7/19 [00:30<00:27,  2.29s/it]Capturing CUDA graphs (FULL):  47%|████▋     | 9/19 [00:31<00:14,  1.46s/it]Capturing CUDA graphs (FULL):  58%|█████▊    | 11/19 [00:31<00:07,  1.02it/s]Capturing CUDA graphs (FULL):  68%|██████▊   | 13/19 [00:31<00:04,  1.47it/s]Capturing CUDA graphs (FULL):  79%|███████▉  | 15/19 [00:31<00:01,  2.06it/s]Capturing CUDA graphs (FULL):  89%|████████▉ | 17/19 [00:31<00:00,  2.81it/s](EngineCore pid=175) INFO 10-10 06:12:59 [model_runner.py:701] Graph capturing finished in 37 secs, took 0.83 GiB
+Capturing CUDA graphs (FULL): 100%|██████████| 19/19 [00:31<00:00,  3.75it/s]Capturing CUDA graphs (FULL): 100%|██████████| 19/19 [00:31<00:00,  1.68s/it]
+(EngineCore pid=175) INFO 10-10 06:13:39 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=175) INFO 10-10 06:13:39 [core.py:306] init engine (profile, create kv cache, warmup model) took 114.28 s (compilation: 10.89 s)
+(EngineCore pid=175) INFO 10-10 06:13:40 [vllm.py:999] Asynchronous scheduling is enabled.
+(EngineCore pid=175) INFO 10-10 06:13:40 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+2026-10-10 06:13:40 engine ready in 222s; prompt_mode=chat_template; max_model_len=3072
+2026-10-10 06:13:40 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] start K=100 N=500 T=1.0 block=10 passes
+(EngineCore pid=175) WARNING 10-10 06:13:40 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _topk_log_softmax_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer CachedTokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+2026-10-10 06:14:06 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 0-9 done, block acc=0.628, elapsed=26s
+2026-10-10 06:14:23 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 10-19 done, block acc=0.632, elapsed=43s
+2026-10-10 06:14:40 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 20-29 done, block acc=0.631, elapsed=59s
+2026-10-10 06:14:56 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 30-39 done, block acc=0.635, elapsed=76s
+2026-10-10 06:15:13 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 40-49 done, block acc=0.637, elapsed=93s
+2026-10-10 06:15:29 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 50-59 done, block acc=0.636, elapsed=109s
+2026-10-10 06:15:46 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 60-69 done, block acc=0.628, elapsed=126s
+2026-10-10 06:16:03 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 70-79 done, block acc=0.626, elapsed=142s
+2026-10-10 06:16:19 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 80-89 done, block acc=0.632, elapsed=159s
+2026-10-10 06:16:36 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 90-99 done, block acc=0.633, elapsed=176s
+2026-10-10 06:16:36 [mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] DONE acc=0.6318 unparseable=0.0002 N_b=173 runtime=176s
+2026-10-10 06:16:36 [hellaswag_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] start K=50 N=200 T=1.0 block=25 passes
+2026-10-10 06:17:00 [hellaswag_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 0-24 done, block acc=0.668, elapsed=24s
+2026-10-10 06:17:19 [hellaswag_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 25-49 done, block acc=0.669, elapsed=42s
+2026-10-10 06:17:19 [hellaswag_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] DONE acc=0.6684 unparseable=0.0167 N_b=86 runtime=42s
+2026-10-10 06:17:19 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] start K=100 N=500 T=1.0 block=10 passes
+2026-10-10 06:19:05 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 0-9 done, block acc=0.592, elapsed=106s
+2026-10-10 06:20:49 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 10-19 done, block acc=0.586, elapsed=210s
+2026-10-10 06:22:35 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 20-29 done, block acc=0.594, elapsed=316s
+2026-10-10 06:24:20 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 30-39 done, block acc=0.592, elapsed=421s
+2026-10-10 06:26:07 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 40-49 done, block acc=0.587, elapsed=528s
+2026-10-10 06:27:52 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 50-59 done, block acc=0.586, elapsed=634s
+2026-10-10 06:29:40 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 60-69 done, block acc=0.588, elapsed=741s
+2026-10-10 06:31:29 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 70-79 done, block acc=0.584, elapsed=850s
+2026-10-10 06:33:16 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 80-89 done, block acc=0.576, elapsed=957s
+2026-10-10 06:35:02 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] passes 90-99 done, block acc=0.580, elapsed=1063s
+2026-10-10 06:35:02 [mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct] DONE acc=0.5867 unparseable=0.0004 N_b=264 runtime=1063s
+2026-10-10 06:35:02 [mmlu_greedy_meta-llama_Meta-Llama-3-8B-Instruct] start K=1 N=500 T=0.0 block=1 passes
+2026-10-10 06:35:12 [mmlu_greedy_meta-llama_Meta-Llama-3-8B-Instruct] passes 0-0 done, block acc=0.644, elapsed=10s
+2026-10-10 06:35:12 [mmlu_greedy_meta-llama_Meta-Llama-3-8B-Instruct] DONE acc=0.6440 unparseable=0.0000 N_b=None runtime=10s
+2026-10-10 06:35:13 meta-llama/Meta-Llama-3-8B-Instruct: finished; failed runs: []
+(EngineCore pid=175) INFO 10-10 06:35:13 [core.py:1178] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=175) INFO 10-10 06:35:13 [core.py:1297] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=175) INFO 10-10 06:35:13 [core.py:1328] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=175) INFO 10-10 06:35:13 [core.py:1191] [shutdown] EngineCore: exiting busy loop

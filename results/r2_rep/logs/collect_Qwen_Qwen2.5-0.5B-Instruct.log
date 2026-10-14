@@ -1,0 +1,9 @@
+2026-10-13 01:34:52 [mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
+2026-10-13 01:34:52 pre-check mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'exact': 2000}, 'n_equal_to_v2_pipeline_ids': 2000, 'n_equal_to_reference_hash': 2000}
+2026-10-13 01:34:52 Qwen/Qwen2.5-0.5B-Instruct: loading vLLM engine {'model': 'Qwen/Qwen2.5-0.5B-Instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.25, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
+2026-10-13 01:35:18 engine ready in 26s; prompt_mode=chat_template; max_model_len=3072
+2026-10-13 01:35:19 [mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
+2026-10-13 01:35:19 [mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct] start K=4 N=500 T=0.0 block=4 passes
+2026-10-13 01:36:28 [mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct] passes 0-3 done, block acc=0.392, elapsed=69s
+2026-10-13 01:36:28 [mmlu_greedyrot_Qwen_Qwen2.5-0.5B-Instruct] DONE acc=0.3920 unparseable=0.0055 N_b=361 runtime=69s
+2026-10-13 01:36:28 Qwen/Qwen2.5-0.5B-Instruct: finished; failed runs: []

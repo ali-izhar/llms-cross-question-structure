@@ -1,6 +1,6 @@
 """Guards of src/collect.py on the host with a vllm stub: non-v3 outputs raise, reference hashes catch a
 self-consistent wrong tokenizer, unpinned decode kinds fail, and stale partial files are not resumed.
-Uses the pins in results/dryrun_v3/ and the local HF cache (skips if a model is not cached).
+Uses the pins in results/pins/ and the local HF cache (skips if a model is not cached).
 """
 
 from __future__ import annotations
@@ -23,8 +23,8 @@ sys.path.insert(0, str(HERE))
 import collect  # noqa: E402
 from plan import GREEDY, GREEDYROT, run_id  # noqa: E402
 
-V2 = HERE.parent / "results"
-CTX = {t: json.loads((V2 / f"questions_{t}.json").read_text()) for t in ("mmlu", "mmlu_dev", "hellaswag", "gsm8k")}
+RESULTS = HERE.parent / "results"
+CTX = {t: json.loads((RESULTS / f"questions_{t}.json").read_text()) for t in ("mmlu", "mmlu_dev", "hellaswag", "gsm8k")}
 NOLOG = lambda m: None  # noqa: E731
 
 

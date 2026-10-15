@@ -50,14 +50,16 @@ results/              per-run .npz + .json, questions_*.json, ensemble .npz, man
   r2/, r2_rep/        R2 replicates A and B
   analysis/           analysis outputs and SUMMARY.md
   provenance/         files from earlier versions that current code reads (see its README)
-  dryrun_v3/          prompt pins and reference hashes read by src/collect.py
-  dryrun_det*/        engine-determinism tests (PROTOCOL.md)
+  pins/               tokenizer pins and reference prompt hashes read by src/collect.py
+  determinism/        three-start engine-determinism summaries (PROTOCOL.md)
+  logs/               run status, event notes and the rescore record (other run logs are not versioned)
 paper/                LaTeX source, bibliography, style files, figures
 ```
 
 ## Reproducing
 
-The analysis environment is `uv sync` (Python ≥ 3.12); the analysis runs on CPU.
+The analysis environment is `uv sync` (Python ≥ 3.12; the `dev` group adds pytest and Hypothesis); the analysis
+runs on CPU.
 
 Data collection needs a GPU and a container with vLLM 0.23.0. The scripts use the local image `gb10-vllm`
 (NVIDIA GB10, aarch64, sm_121; torch 2.11.0+cu130, transformers 5.12.1, tokenizers 0.22.2). On other hardware,
@@ -68,8 +70,8 @@ in offline mode.
 
 ```bash
 HF_DATASETS_OFFLINE=1 HF_HUB_OFFLINE=1 .venv/bin/python src/prepare_questions.py
-nohup bash src/run_all.sh > results/logs/run_all.log 2>&1 &                  # sampled runs
-nohup bash results/run_r2_replicates.sh > results/r2_logs/run.log 2>&1 &     # R2, replicates A and B
+nohup bash src/run_all.sh > results/logs/run_all.log 2>&1 &              # sampled runs
+nohup bash src/run_r2_replicates.sh > results/logs/run_r2.log 2>&1 &     # R2, replicates A and B
 .venv/bin/python src/rescore.py --skip-condition greedy --backup <dir> --log results/logs/rescore_v31.json
 .venv/bin/python src/r2_analysis.py
 .venv/bin/python src/build_manifest.py
@@ -101,7 +103,8 @@ uv run python v3_softpref.py all        # SUMMARY section F (hours)
 uv run python v3_G_familywise.py all    # section G
 uv run python v3_H_followup.py all      # section H
 uv run python v3_I_llama.py all         # section I
-uv run python make_summary_v3.py        # SUMMARY.md up to section E; keeps the hand-written sections F-I
+uv run python v3_J_power2pl.py          # section J (about 30 min on 16 processes)
+uv run python make_summary_v3.py        # SUMMARY.md up to section E; keeps the hand-written sections F-J
 ```
 
 Sections F-I checkpoint to `results/analysis/logs_*/ckpt/` (not versioned). Their `assemble` part reads the
@@ -110,7 +113,7 @@ checkpoints, so run `all` (or `run`, then `assemble`).
 **3. Figures** (outputs in `paper/figures/`):
 
 ```bash
-for f in spectra power mechanism letters; do uv run python scripts/make_fig_$f.py; done
+for f in main power mechanism letters; do uv run python scripts/make_fig_$f.py; done
 ```
 
 **4. Tests and paper:**

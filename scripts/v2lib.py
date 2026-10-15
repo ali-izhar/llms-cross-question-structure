@@ -270,8 +270,7 @@ def exemplar_overlap_similarity(X: np.ndarray, ex_rows: np.ndarray, n_perm: int,
     H[np.arange(K)[:, None], ex_rows] = 1.0                                    # (K, pool) indicator
 
     def stat(Hk):
-        O = (Hk @ Hk.T)[iu]
-        share = O >= 1
+        share = (Hk @ Hk.T)[iu] >= 1                                           # pair shares an exemplar
         return float(s[share].mean() - s[~share].mean()) if share.any() and (~share).any() else np.nan, int(share.sum())
 
     obs, n_share = stat(H)

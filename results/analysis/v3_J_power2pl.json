@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "spec": "# J. Power of the all-4-correct test from the valid 2PL fit; the second eigenvalue of one-ability nulls\n\nWritten before the J run (2026-10-14). Post hoc: both questions arose from a blind read of the paper.\n\n## J1. Power from the 2PL fit to all-4-correct\n\nThe G3 power study simulates from the soft-preference (SP) fit, which is invalid on all-4-correct. J1 repeats\nit from the 2PL fit to the all-4-correct matrix, which is valid (G1).\n\n- Truth: the 2PL fit of `v3_across.Context(ge4(CR)).fit_2pl()` on the full data. For each column kept in the\n  observed matrix (the 391 split columns), (a_i, b_i) are drawn from the column's grid posterior, as the\n  `2pl_post` null does. A second ability z_m ~ N(0, 1), independent of theta, enters the STEM columns:\n  logit P(c_mi = 1) = a_i (theta_m - b_i) + s * a_med * sd(theta) * z_m * STEM_i,\n  with a_med the median posterior-mean slope over the kept columns and sd(theta) the SD of the fitted\n  abilities. s = 1: a second ability with the spread of the first and the median slope (the analogue of\n  G3 s = 1); s = 2 also; s = 0 gives the size under 2PL truth (compare H1).\n- Amendment (after a 2-dataset smoke test, before the full run): s = 0.5 added, because the smoke test\n  detected s = 1 in both datasets and the power curve needs a point below s = 1.\n- Columns are redrawn until split (as `twopl_sample(condition_on_split=True)`).\n- Each dataset: 2PL and Rasch nulls (`2pl_post`, `rasch_jml`) refitted, 500 draws, G1 statistic\n  (`v3_G_familywise.familywise`).\n- Detection: (a) family-wise: valid and p_M < 0.05; (b) per-rank: valid and rank 2 above the null's p99.\n- 200 datasets per s. Seeds: new namespace SEED_J.\n\n## J2. Why one ability lifts the second eigenvalue\n\nFor 200 draws of each valid null (all-4-correct: 2PL, Rasch; rotation 0: 3PL), the eigenvector-2 loadings of\nthe draw are correlated (Pearson, across kept columns) with the column pass rate of the draw. Reported: the\nmedian and the 5th-95th percentiles of |r|, and the same for eigenvector 3. Also reported for the observed\nmatrices. The \"difficulty factor\" of binary items (correlations of items of unequal difficulty are capped,\nso one trait gives a second component that orders items by difficulty) predicts a large |r| for eigenvector 2.\n",
+    "post_hoc": true,
+    "seed": 3502610143,
+    "n_datasets_per_s": 200,
+    "n_null_draws": 500,
+    "n_j2_draws": 200,
+    "n_kept_cols": 391,
+    "n_stem_kept": 125,
+    "a_med": 1.7114266583806237,
+    "sd_theta": 1.0,
+    "seconds": 1784.1819293498993
+  },
+  "J1_power_2pl_truth": {
+    "0": {
+      "2pl_post": {
+        "n": 200,
+        "frac_valid": 1.0,
+        "detect_familywise": 0.07,
+        "detect_familywise_ci95": [
+          0.038795570429562824,
+          0.11465973353711054
+        ],
+        "detect_rank2_per_rank": 0.0,
+        "detect_rank2_ci95": [
+          0.0,
+          0.01827534035513624
+        ],
+        "median_lambda2": 28.220122235134145
+      },
+      "rasch_jml": {
+        "n": 200,
+        "frac_valid": 1.0,
+        "detect_familywise": 0.07,
+        "detect_familywise_ci95": [
+          0.038795570429562824,
+          0.11465973353711054
+        ],
+        "detect_rank2_per_rank": 0.03,
+        "detect_rank2_ci95": [
+          0.011087455672254772,
+          0.064150626705027
+        ],
+        "median_lambda2": 28.220122235134145
+      }
+    },
+    "0.5": {
+      "2pl_post": {
+        "n": 200,
+        "frac_valid": 1.0,
+        "detect_familywise": 0.195,
+        "detect_familywise_ci95": [
+          0.14249187477905892,
+          0.2567856875265592
+        ],
+        "detect_rank2_per_rank": 0.005,
+        "detect_rank2_ci95": [
+          0.00012658102786701825,
+          0.02754189845720562
+        ],
+        "median_lambda2": 28.26572739116829
+      },
+      "rasch_jml": {
+        "n": 200,
+        "frac_valid": 1.0,
+        "detect_familywise": 0.205,
+        "detect_familywise_ci95": [
+          0.15131057199551945,
+          0.2676539207852852
+        ],
+        "detect_rank2_per_rank": 0.065,
+        "detect_rank2_ci95": [
+          0.035060708656979044,
+          0.10858723650381519
+        ],
+        "median_lambda2": 28.26572739116829
+      }
+    },
+    "1": {
+      "2pl_post": {
+        "n": 200,
+        "frac_valid": 1.0,
+        "detect_familywise": 0.91,
+        "detect_familywise_ci95": [
+          0.8614917915261779,
+          0.9457857455439036
+        ],
+        "detect_rank2_per_rank": 0.685,
+        "detect_rank2_ci95": [
+          0.6157223022745728,
+          0.7486946743454821
+        ],
+        "median_lambda2": 33.81380732129267
+      },
+      "rasch_jml": {
+        "n": 200,
+        "frac_valid": 1.0,
+        "detect_familywise": 0.925,
+        "detect_familywise_ci95": [
+          0.8793157746003387,
+          0.9574171962629073
+        ],
+        "detect_rank2_per_rank": 0.78,
+        "detect_rank2_ci95": [
+          0.7161387526864924,
+          0.8353639386882141
+        ],
+        "median_lambda2": 33.81380732129267
+      }
+    },
+    "2": {
+      "2pl_post": {
+        "n": 200,
+        "frac_valid": 0.99,
+        "detect_familywise": 0.99,
+        "detect_familywise_ci95": [
+          0.9643453316027603,
+          0.998786650986264
+        ],
+        "detect_rank2_per_rank": 0.975,
+        "detect_rank2_ci95": [
+          0.9426256488731541,
+          0.9918338338091575
+        ],
+        "median_lambda2": 48.274471781371986
+      },
+      "rasch_jml": {
+        "n": 200,
+        "frac_valid": 0.995,
+        "detect_familywise": 0.995,
+        "detect_familywise_ci95": [
+          0.9724581015427943,
+          0.999873418972133
+        ],
+        "detect_rank2_per_rank": 0.995,
+        "detect_rank2_ci95": [
+          0.9724581015427943,
+          0.999873418972133
+        ],
+        "median_lambda2": 48.274471781371986
+      }
+    }
+  },
+  "J2_eigvec_vs_pass_rate": [
+    {
+      "score": "ge4",
+      "null": "2pl_post",
+      "observed_abs_r_eigvec2_eigvec3": [
+        0.565315681872865,
+        0.04778022218879869
+      ],
+      "null_abs_r_eigvec2_p05_p50_p95": [
+        0.575,
+        0.624,
+        0.668
+      ],
+      "null_abs_r_eigvec3_p05_p50_p95": [
+        0.011,
+        0.074,
+        0.208
+      ]
+    },
+    {
+      "score": "ge4",
+      "null": "rasch_jml",
+      "observed_abs_r_eigvec2_eigvec3": [
+        0.565315681872865,
+        0.04778022218879869
+      ],
+      "null_abs_r_eigvec2_p05_p50_p95": [
+        0.559,
+        0.628,
+        0.671
+      ],
+      "null_abs_r_eigvec3_p05_p50_p95": [
+        0.011,
+        0.105,
+        0.266
+      ]
+    },
+    {
+      "score": "rot0",
+      "null": "3pl_post",
+      "observed_abs_r_eigvec2_eigvec3": [
+        0.04195945031250921,
+        0.09409276829335886
+      ],
+      "null_abs_r_eigvec2_p05_p50_p95": [
+        0.029,
+        0.086,
+        0.156
+      ],
+      "null_abs_r_eigvec3_p05_p50_p95": [
+        0.009,
+        0.088,
+        0.171
+      ]
+    }
+  ]
+}

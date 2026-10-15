@@ -2,7 +2,7 @@
 Written 2026-10-13, BEFORE any run of G. Do not change after results exist; record deviations in a
 "Deviations" section of the output, with the reason.
 
-Motivation: hostile round 2 (scratchpad/attack2_hostile.md item 1). The paper's per-rank 1% + contiguous-
+Motivation: hostile review round 2, item 1. The paper's per-rank 1% + contiguous-
 from-rank-2 rule finds nothing beyond ability on all-4; ranks 3-4 sit at the 97-99th pct of the valid 2PL and
 Rasch nulls, and a post-hoc joint statistic rejects. We fix the statistic here, before looking.
 

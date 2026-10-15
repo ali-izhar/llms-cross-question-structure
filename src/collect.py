@@ -34,9 +34,9 @@ from canonical_tok import CanonicalPrompter, ids_sha  # noqa: E402
 from plan import PLAN, positions_to_options, rotate, run_id as make_run_id, slug, v3_runs  # noqa: E402
 from scoring import LETTERS, PARSER_VERSION, parse_choice, score_gsm8k  # noqa: E402
 
-V2 = ROOT / "results"
+RESULTS = ROOT / "results"
 # per-model pins written by verify_prompts.py and reference_hashes.py
-PINS_DIR = V2 / "dryrun_v3"
+PINS_DIR = RESULTS / "pins"
 
 
 def load_pins(model: str, pins_dir: Path) -> dict:
@@ -568,7 +568,7 @@ def main() -> None:
     if args.dry_run:  # 20 questions, K <= 5
         args.n_questions = args.n_questions or 20
         args.k_cap = args.k_cap or 5
-    out_dir = Path(args.out_dir) if args.out_dir else (V2 / "dryrun" if args.dry_run else V2)
+    out_dir = Path(args.out_dir) if args.out_dir else (RESULTS / "dryrun" if args.dry_run else RESULTS)
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "logs").mkdir(exist_ok=True)
     logf = open(out_dir / "logs" / f"collect_{slug(args.model)}{'_dry' if args.dry_run else ''}.log", "a")
@@ -584,10 +584,10 @@ def main() -> None:
         want = set(args.runs.split(","))
         runs = [r for r in runs if make_run_id(args.model, r) in want]
     ctx = {
-        "mmlu": json.loads((V2 / "questions_mmlu.json").read_text()),
-        "mmlu_dev": json.loads((V2 / "questions_mmlu_dev.json").read_text()),
-        "hellaswag": json.loads((V2 / "questions_hellaswag.json").read_text()),
-        "gsm8k": json.loads((V2 / "questions_gsm8k.json").read_text()),
+        "mmlu": json.loads((RESULTS / "questions_mmlu.json").read_text()),
+        "mmlu_dev": json.loads((RESULTS / "questions_mmlu_dev.json").read_text()),
+        "hellaswag": json.loads((RESULTS / "questions_hellaswag.json").read_text()),
+        "gsm8k": json.loads((RESULTS / "questions_gsm8k.json").read_text()),
     }
     pins = load_pins(args.model, Path(args.pins_dir)) if args.plan == "v3" else None
     if args.n_questions is None:
@@ -672,7 +672,7 @@ def main() -> None:
             "max_model_len": max_len, "max_num_seqs": MAX_NUM_SEQS,
             "enforce_eager": engine_kwargs["enforce_eager"],
             "quantization": engine_kwargs.get("quantization"),
-            "docker_memory_cap": os.environ.get("V2_DOCKER_MEMORY", "none"),
+            "docker_memory_cap": os.environ.get("DOCKER_MEMORY", "none"),
             "host_used_gib_at_engine_ready": _host_used_gib(),
         },
     }

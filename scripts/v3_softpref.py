@@ -423,12 +423,12 @@ class SPSpec:
 
 def unpack(x: np.ndarray, spec: SPSpec, nongold: np.ndarray) -> dict:
     M, N = spec.M, spec.N
-    o = 0
-    theta = x[o:o + M]; o += M
-    a = x[o:o + N]; o += N
-    bfree = x[o:o + 3 * N].reshape(N, 3); o += 3 * N
-    lam = x[o:o + 3 * M].reshape(M, 3); o += 3 * M
-    logtau = x[o:o + spec.n_tau].copy() if spec.n_tau else -np.inf
+    o = np.cumsum([0, M, N, 3 * N, 3 * M])  # offsets of theta, a, b, lambda, tau in x
+    theta = x[o[0]:o[1]]
+    a = x[o[1]:o[2]]
+    bfree = x[o[2]:o[3]].reshape(N, 3)
+    lam = x[o[3]:o[4]].reshape(M, 3)
+    logtau = x[o[4]:o[4] + spec.n_tau].copy() if spec.n_tau else -np.inf
     if spec.with_tau is True:
         logtau = float(logtau[0])
     b = np.zeros((N, N_OPT))
@@ -1399,10 +1399,12 @@ def characterize(X: np.ndarray, XB: np.ndarray, ranks: list[int], d: dict, rng: 
         rec["model_scores_low_to_high"] = [(names[k].split("/")[-1], round(float(u[k]), 3)) for k in order]
         # Replicate B: same score from replicate B, eigenvector j (and best match among 1-4).
         common = keep & keepB
-        vA = np.zeros(X.shape[1]); vA[keep] = v
+        vA = np.zeros(X.shape[1])
+        vA[keep] = v
         rB = []
         for jj in range(N_RANKS):
-            vb = np.zeros(X.shape[1]); vb[keepB] = VB[:, jj]
+            vb = np.zeros(X.shape[1])
+            vb[keepB] = VB[:, jj]
             rB.append(abs(float(np.corrcoef(vA[common], vb[common])[0, 1])))
         rec["replicate_B"] = {"abs_r_loadings_with_B_eigvec_1to4": rB,
                               "abs_r_model_scores_same_rank": abs(float(np.corrcoef(u, UB[:, j - 1])[0, 1]))}

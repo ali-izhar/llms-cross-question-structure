@@ -1,6 +1,0 @@
-2026-10-10 06:51:54 microsoft/Phi-3.5-mini-instruct: loading vLLM engine {'model': 'microsoft/Phi-3.5-mini-instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.3, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
-2026-10-10 06:54:02 engine ready in 128s; prompt_mode=chat_template; max_model_len=3072
-2026-10-10 06:54:02 [mmlu_greedy_microsoft_Phi-3.5-mini-instruct] start K=1 N=500 T=0.0 block=1 passes
-2026-10-10 06:54:09 [mmlu_greedy_microsoft_Phi-3.5-mini-instruct] passes 0-0 done, block acc=0.668, elapsed=8s
-2026-10-10 06:54:09 [mmlu_greedy_microsoft_Phi-3.5-mini-instruct] DONE acc=0.6680 unparseable=0.0020 N_b=None runtime=8s
-2026-10-10 06:54:09 microsoft/Phi-3.5-mini-instruct: finished; failed runs: []

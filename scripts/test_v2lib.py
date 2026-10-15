@@ -84,11 +84,11 @@ def test_top_pc_matches_corr_eigs(seed):
 
 
 def test_spectrum_counts_matches_archive_z_at():
-    import archive_claims
+    import spectral_metrics
     C = np.load(RES / "correctness_matrix_Qwen_Qwen2.5-7B-Instruct.npy").astype(np.int8)
     from null_models import borderline_mask
     s = spectrum_counts(C[:, borderline_mask(C, 0.05)].astype(float))
-    z, nb, n_mp, n_buf = archive_claims.z_at(C, 0.05)
+    z, nb, n_mp, n_buf = spectral_metrics.z_at(C, 0.05)
     assert (s["n_cols"], s["mp_count_strict"], s["mp_count_buffered"]) == (nb, n_mp, n_buf) == (121, 0, 0)
     npt.assert_allclose(s["tw_z"], z, rtol=1e-12)
     npt.assert_allclose([s["lambda_plus"], s["lambda_max"]], [4.41, 4.17], atol=0.006)   # paper Table 1
@@ -132,9 +132,9 @@ def test_exemplar_overlap_equals_naive(seed):
     Z = standardize_columns(X.astype(float))
     sh, no = [], []
     for k in range(K):
-        for l in range(k + 1, K):
-            s = np.corrcoef(Z[k], Z[l])[0, 1]
-            (sh if len(set(ex[k]) & set(ex[l])) else no).append(s)
+        for j in range(k + 1, K):
+            s = np.corrcoef(Z[k], Z[j])[0, 1]
+            (sh if len(set(ex[k]) & set(ex[j])) else no).append(s)
     if not sh or not no:
         return
     got = exemplar_overlap_similarity(X, ex, 5, np.random.default_rng(0))
@@ -182,7 +182,7 @@ def test_pair_correlations_reproduce_paper_and_naive():
 
 
 def test_epsilon_margins_match_z_at():
-    import make_epsilon_sweep_figure as m
+    import spectral_metrics as m
     from null_models import borderline_mask, corr_eigs, mp_edge
     for slug in ("Qwen_Qwen2.5-7B-Instruct", "mistralai_Mistral-7B-Instruct-v0.3",
                  "microsoft_Phi-3-mini-4k-instruct", "meta-llama_Meta-Llama-3-8B-Instruct",

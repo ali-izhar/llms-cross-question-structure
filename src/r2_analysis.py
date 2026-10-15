@@ -1,6 +1,6 @@
 """Rotation-run analyses: near ties, replicate A vs B agreement, and v2 greedy vs rotation 0.
 
-    .venv/bin/python src/r2_analysis.py [--r2 results/r2] [--v2 results] [--out results/r2]
+    .venv/bin/python src/r2_analysis.py [--r2 results/r2] [--out results/r2]
 """
 
 from __future__ import annotations
@@ -70,12 +70,11 @@ def a_vs_b(za, zb) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--r2", default=str(HERE.parent / "results" / "r2"))
-    ap.add_argument("--v2", default=str(HERE.parent / "results"))
-    ap.add_argument("--archive", default=str(HERE.parent / "results" / "provenance" / "v2_broken_tokenization"))
     ap.add_argument("--rep", default=str(HERE.parent / "results" / "r2_rep"))
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
-    r2, v2 = Path(a.r2), Path(a.v2)
+    r2 = Path(a.r2)
+    prov = HERE.parent / "results" / "provenance"
     out = Path(a.out) if a.out else r2
     qs = json.loads((HERE.parent / "results" / "questions_mmlu.json").read_text())
     nt, ag, ab = {}, {}, {}
@@ -88,14 +87,12 @@ def main() -> None:
         fb = Path(a.rep) / f.name
         if fb.exists():
             ab[m] = a_vs_b(z, np.load(fb))
-        g = v2 / f"mmlu_greedy_{slug(m)}.npz"
-        src = "results"  # v2_source labels keep the paths the files had when first written
-        if not g.exists() and (Path(a.archive) / g.name).exists():
-            g = Path(a.archive) / g.name
+        # v2_source labels keep the paths the files had when the output was first written
+        g = prov / "v2_greedy" / f"mmlu_greedy_{slug(m)}.npz"
+        src = "archive/results/v2_greedy"
+        if not g.exists():
+            g = prov / "v2_broken_tokenization" / g.name
             src = "archive (non-canonical v2 prompt ids)"
-        elif not g.exists():
-            g = HERE.parent / "results" / "provenance" / "v2_greedy" / g.name
-            src = "archive/results/v2_greedy"
         if g.exists():
             y = np.load(g)
             N = z["parsed"].shape[1]

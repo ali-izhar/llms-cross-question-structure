@@ -1,9 +1,0 @@
-2026-10-13 01:42:02 [mmlu_greedyrot_microsoft_phi-2] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
-2026-10-13 01:42:02 pre-check mmlu_greedyrot_microsoft_phi-2: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'exact': 2000}, 'n_equal_to_v2_pipeline_ids': 2000, 'n_equal_to_reference_hash': 2000}
-2026-10-13 01:42:02 microsoft/phi-2: loading vLLM engine {'model': 'microsoft/phi-2', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.3, 'max_model_len': 2048, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
-2026-10-13 01:42:23 engine ready in 21s; prompt_mode=raw; max_model_len=2048
-2026-10-13 01:42:24 [mmlu_greedyrot_microsoft_phi-2] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
-2026-10-13 01:42:24 [mmlu_greedyrot_microsoft_phi-2] start K=4 N=500 T=0.0 block=4 passes
-2026-10-13 01:43:27 [mmlu_greedyrot_microsoft_phi-2] passes 0-3 done, block acc=0.514, elapsed=63s
-2026-10-13 01:43:27 [mmlu_greedyrot_microsoft_phi-2] DONE acc=0.5145 unparseable=0.0080 N_b=232 runtime=63s
-2026-10-13 01:43:27 microsoft/phi-2: finished; failed runs: []

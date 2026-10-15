@@ -1,4 +1,4 @@
-# Specification I (written 2026-10-14 BEFORE any run of I; post hoc, from hostile round 4, attack4_hostile.md)
+# Specification I (written 2026-10-14 BEFORE any run of I; post hoc, from hostile review round 4)
 
 ## I1. Family-wise test without Llama-3.2-1B (23 models)
 - Scores: rotation 0 and all-4. Refit every null of the step-1 suite for that score on the 23-model data
@@ -16,5 +16,5 @@
   models (accuracy-matched control), with the range stated.
 
 ## Output
-results/analysis/v3_I_llama.json (+ raw_v3_I_*), S/I_report.md. Tests first: subset has exactly 23 / 21 models with
+results/analysis/v3_I_llama.json (+ raw_v3_I_*). Tests first: subset has exactly 23 / 21 models with
 names matched exactly; same code path reproduces the full-data G1 p_T (0.026 / 0.041); new seed namespace.

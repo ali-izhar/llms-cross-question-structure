@@ -97,6 +97,7 @@ class CanonicalPrompter:
     def _jinja(self):
         if self._env is None:
             import jinja2
+            import jinja2.ext
             from jinja2.sandbox import ImmutableSandboxedEnvironment
 
             def raise_exception(message):

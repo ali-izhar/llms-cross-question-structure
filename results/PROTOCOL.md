@@ -2,7 +2,7 @@
 
 This file states how every run in `results/` was collected and scored. Code: `src/` (`prepare_questions.py`,
 `plan.py`, `collect.py`, `canonical_tok.py`, `scoring.py`, `rescore.py`, `run_all.sh`, `run_v3.sh`,
-`r2_analysis.py`, `build_manifest.py`). The files from earlier versions that current outputs still read are in
+`run_r2_replicates.sh`, `r2_analysis.py`, `build_manifest.py`). The files from earlier versions that current outputs still read are in
 `results/provenance/` (see its README).
 
 ## Relation to the submitted version
@@ -66,8 +66,10 @@ add_special_tokens=False)`. vLLM receives the ids as `TokensPrompt`, so it adds 
    behaviour);
 4. the per-prompt hash equals an independent reference: transformers 4.46.3 `apply_chat_template(tokenize=True)`,
    Yi via the slow SentencePiece tokenizer, same pinned date (`src/reference_hashes.py`,
-   `results/dryrun_v3/reference_hashes.json`);
-5. the `tokenizer.json` sha256 and the snapshot revision equal the pins in `results/dryrun_v3/prompt_check.json`.
+   `results/pins/reference_hashes.json`);
+5. the `tokenizer.json` sha256 and the snapshot revision equal the pins in `results/pins/prompt_check.json`.
+
+The run JSONs record the pins directory under its former name (`results/dryrun_v3`).
 
 Completion texts are decoded with the canonical tokenizer (`texts`); vLLM's own text is kept as `texts_vllm`.
 
@@ -82,8 +84,7 @@ engine) per model, in sequence; the process exits between models. The reference 
   in bf16), `tensor_parallel_size=1`, `gpu_memory_utilization` 0.25 (≤2B), 0.30 (3–4B), 0.40 (6–9B), 0.48
   (Mistral-Small-22B), `max_model_len=min(3072, model limit)` (phi-2: 2048), engine `seed=0`,
   `generation_config="vllm"` (the model's `generation_config.json` defaults are not applied), prefix caching on,
-  `max_num_seqs=128`, `tokenizer_mode=hf`. A watchdog (`src/memwatch.sh`, log `logs/mem.log`) enforces a 100 GB
-  total-used cap.
+  `max_num_seqs=128`, `tokenizer_mode=hf`. A watchdog (`src/memwatch.sh`) enforces a 100 GB total-used cap.
 * SamplingParams: `n=1, temperature=T, top_p=1.0, top_k=0` (0 = disabled in vLLM 0.23; -1 is mapped to 0),
   `min_p=0, repetition_penalty=1.0, presence_penalty=0, frequency_penalty=0`, `max_tokens=8` (MMLU, HellaSwag) or
   `256` (GSM8K), `logprobs=20` (multiple-choice tasks), `skip_special_tokens=True`, no stop strings beyond EOS.
@@ -102,13 +103,13 @@ nats; 2/20 letters flipped). The v3 runs therefore use:
 - bf16; all 4 rotations of a model in one `generate` call.
 
 Both are recorded per run (`deterministic`, `engine_kwargs`). `run_v3.sh` drops `VLLM_BATCH_INVARIANT`, then the
-block override, only for a model that fails with them (`logs/model_status.tsv`); no R2 model needed this.
+block override, only for a model that fails with them; no R2 model needed this (all 48 runs record the full set).
 
-Three-start tests (20 questions x 4 rotations): with eager mode and no autotune only (`results/dryrun_det/`),
-phi-2 and Yi are identical, Qwen2.5-7B replies are identical but logprobs differ (0.375), and DeepSeek differs in
-3/80 letters. With the full flag set (`results/dryrun_det2/`), DeepSeek is identical (max diff 0) and Qwen2.5-7B
-replies are identical, but one start differs in 39/80 cells (top-1 logprob up to 0.019, tokens above -5 up to
-0.48). Generation is therefore not fully deterministic across engine starts, and R2 is run as two replicates.
+Three-start tests (20 questions x 4 rotations; per-model summaries in `results/determinism/`): with eager mode
+and no autotune only (`eager_only.json`), phi-2 and Yi are identical, Qwen2.5-7B replies are identical but letter
+logprobs differ (up to 0.375), and DeepSeek differs in 3/80 letters. With the full flag set (`full_flags.json`),
+DeepSeek is identical (max diff 0) and Qwen2.5-7B replies are identical, but one start differs in 39/80 cells
+(top-1 logprob up to 0.019, tokens above -5 up to 0.48). Generation is therefore not fully deterministic across engine starts, and R2 is run as two replicates.
 
 ## Conditions and seeds
 
@@ -132,11 +133,11 @@ in S1 every question of pass k sees the same noise vector over the vocabulary. A
 **Check.** At T=1 the first token is `argmax_j(log p_j + g_j)`. Within one pass, a common noise vector g must
 satisfy every question's choice; this is a system of difference constraints over the top-20 tokens, feasible iff
 its graph has no negative cycle. Qwen2.5-7B MMLU: S1 is feasible in 100/100 passes, the iid run in 0/100. (The
-check script, `verify_shared_seed.py`, is in git history.)
+check script is not in the repository.)
 
 ## R2: rotated options, two replicates
 
-24 models x 500 MMLU questions x 4 rotations, greedy (`results/run_r2_replicates.sh`). Rotation r shows original
+24 models x 500 MMLU questions x 4 rotations, greedy (`src/run_r2_replicates.sh`). Rotation r shows original
 option j at position (j + r) mod 4; rotation 0 is the original order. Each run (`mmlu_greedyrot_<model>`) stores,
 per (rotation, question): `parsed` (shown letter), `chosen_option` (original index, -1 = unparseable), `gold_rot`,
 `correct`, `letter_logprob_first` (shown positions) and `letter_logprob_first_by_option` (re-indexed to the

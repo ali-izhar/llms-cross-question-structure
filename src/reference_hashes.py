@@ -1,7 +1,7 @@
 """Reference hashes of the MMLU prompt ids from an independent tokenizer (transformers 4.46.3; Yi: slow SentencePiece).
 
     uv venv tf4 && uv pip install -p tf4 transformers==4.46.3 tokenizers==0.20.3 sentencepiece==0.2.2 jinja2 protobuf huggingface_hub
-    HF_HUB_OFFLINE=1 tf4/bin/python src/reference_hashes.py --out results/dryrun_v3/reference_hashes.json
+    HF_HUB_OFFLINE=1 tf4/bin/python src/reference_hashes.py --out results/pins/reference_hashes.json
 """
 
 from __future__ import annotations

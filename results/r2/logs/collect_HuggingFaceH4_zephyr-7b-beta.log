@@ -1,9 +1,0 @@
-2026-10-13 02:26:05 [mmlu_greedyrot_HuggingFaceH4_zephyr-7b-beta] prompt check: 2000/2000 canonical; decode {'metaspace_space_after_special': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
-2026-10-13 02:26:05 pre-check mmlu_greedyrot_HuggingFaceH4_zephyr-7b-beta: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'metaspace_space_after_special': 2000}, 'n_equal_to_v2_pipeline_ids': 2000, 'n_equal_to_reference_hash': 2000}
-2026-10-13 02:26:05 HuggingFaceH4/zephyr-7b-beta: loading vLLM engine {'model': 'HuggingFaceH4/zephyr-7b-beta', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
-2026-10-13 02:27:46 engine ready in 102s; prompt_mode=chat_template; max_model_len=3072
-2026-10-13 02:27:47 [mmlu_greedyrot_HuggingFaceH4_zephyr-7b-beta] prompt check: 2000/2000 canonical; decode {'metaspace_space_after_special': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
-2026-10-13 02:27:47 [mmlu_greedyrot_HuggingFaceH4_zephyr-7b-beta] start K=4 N=500 T=0.0 block=4 passes
-2026-10-13 02:28:46 [mmlu_greedyrot_HuggingFaceH4_zephyr-7b-beta] passes 0-3 done, block acc=0.523, elapsed=59s
-2026-10-13 02:28:46 [mmlu_greedyrot_HuggingFaceH4_zephyr-7b-beta] DONE acc=0.5230 unparseable=0.0845 N_b=227 runtime=59s
-2026-10-13 02:28:46 HuggingFaceH4/zephyr-7b-beta: finished; failed runs: []

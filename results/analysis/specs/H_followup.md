@@ -1,4 +1,4 @@
-# Specification H (written 2026-10-14 BEFORE any run of H; follow-up to hostile round 3, attack3_hostile.md)
+# Specification H (written 2026-10-14 BEFORE any run of H; follow-up to hostile review round 3)
 Status: these are POST-HOC follow-ups. The two pairs below were named after the data were seen (round-2 audit and
 G4). H is fixed now so that its decisions are not tuned to its own results. Record deviations in the output.
 
@@ -31,5 +31,4 @@ G4). H is fixed now so that its decisions are not tuned to its own results. Reco
 - Purpose: show what the spectrum adds beyond these tables (hostile round 3 item 4).
 
 ## Report
-JSON results/analysis/v3_H_followup.json (+ raw files raw_v3_H_*), S/H_report.md with each decision and any
-deviation.
+results/analysis/v3_H_followup.json (+ raw files raw_v3_H_*), with each decision and any deviation.

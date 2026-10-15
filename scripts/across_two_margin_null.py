@@ -206,7 +206,7 @@ def main(matrix_path: Path,
     fit_fine = fit_twopl_mml(C, **TWOPL_GRID_CHECK)
     rng_s = np.random.default_rng(SEED + 1)
     restarts = [fit_twopl_mml(C, **TWOPL_GRID, theta0=rng_s.standard_normal(M)) for _ in range(TWOPL_N_RESTARTS)]
-    a_eap, b_eap = fit.eap()
+    a_eap, _ = fit.eap()
     W = np.exp(fit.log_post)
     on_edge = (np.isclose(np.abs(fit.z_grid[:, 0]), TWOPL_GRID["hw_a"])
                | np.isclose(np.abs(fit.z_grid[:, 1]), TWOPL_GRID["hw_b"]))

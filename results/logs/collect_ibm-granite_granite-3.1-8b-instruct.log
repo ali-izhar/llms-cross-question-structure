@@ -1,6 +1,0 @@
-2026-10-10 07:18:30 ibm-granite/granite-3.1-8b-instruct: loading vLLM engine {'model': 'ibm-granite/granite-3.1-8b-instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
-2026-10-10 07:21:57 engine ready in 207s; prompt_mode=chat_template; max_model_len=3072
-2026-10-10 07:21:57 [mmlu_greedy_ibm-granite_granite-3.1-8b-instruct] start K=1 N=500 T=0.0 block=1 passes
-2026-10-10 07:22:31 [mmlu_greedy_ibm-granite_granite-3.1-8b-instruct] passes 0-0 done, block acc=0.626, elapsed=34s
-2026-10-10 07:22:31 [mmlu_greedy_ibm-granite_granite-3.1-8b-instruct] DONE acc=0.6260 unparseable=0.0040 N_b=None runtime=34s
-2026-10-10 07:22:31 ibm-granite/granite-3.1-8b-instruct: finished; failed runs: []

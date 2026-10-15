@@ -1,6 +1,0 @@
-2026-10-10 07:01:19 mistralai/Mistral-7B-Instruct-v0.2: loading vLLM engine {'model': 'mistralai/Mistral-7B-Instruct-v0.2', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
-2026-10-10 07:04:48 engine ready in 209s; prompt_mode=chat_template; max_model_len=3072
-2026-10-10 07:04:48 [mmlu_greedy_mistralai_Mistral-7B-Instruct-v0.2] start K=1 N=500 T=0.0 block=1 passes
-2026-10-10 07:05:00 [mmlu_greedy_mistralai_Mistral-7B-Instruct-v0.2] passes 0-0 done, block acc=0.458, elapsed=12s
-2026-10-10 07:05:00 [mmlu_greedy_mistralai_Mistral-7B-Instruct-v0.2] DONE acc=0.4580 unparseable=0.2160 N_b=None runtime=12s
-2026-10-10 07:05:00 mistralai/Mistral-7B-Instruct-v0.2: finished; failed runs: []

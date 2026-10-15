@@ -39,10 +39,14 @@ paper/*.pptx
 paper/*.pdf
 texput.log
 
-# Raw console logs (large; recreated on each run)
+# Run logs and checkpoints (recreated on each run). results/logs/ keeps the three files
+# that build_manifest.py reads or PROTOCOL.md cites.
 results/*.log
 results/*.txt
 results/*.jsonl
-
-# Analysis checkpoints (large; recreated on each run)
-results/analysis/logs_*/ckpt/
+results/**/logs/*
+!results/logs/events.log
+!results/logs/model_status.tsv
+!results/logs/rescore_v31.json
+results/analysis/logs_*/
+results/dryrun/

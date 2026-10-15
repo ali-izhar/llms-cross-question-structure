@@ -1,25 +1,32 @@
 """Appendix figure: what the shared component couples (item02_shared_randomness.json).
 
-(a) letter-share variance / its shuffle-null mean; (b) eta^2 of the top eigenvector's loadings by gold
-letter; (c) per-letter r between a pass's exemplar gold-letter count and its answer share (S2 runs).
-Run: python scripts/make_fig_mechanism.py -> paper/figures/fig_mechanism.pdf + .png
+Story: a shared seed (Qwen) and a shared prompt (Llama) couple the questions of a pass through the
+answer letter -- letter shares vary far beyond their shuffle null and the top eigenvector's loadings
+group by gold letter -- while the independent runs and Qwen with a shared prompt stay at the null.
+
+(a) across-pass variance of the letter shares / its shuffle-null mean (log x), tick = shuffle-null p99, dashed line = shuffle mean;
+(b) eta^2 of the top eigenvector's question loadings by gold letter, tick = permutation-null p95.
+Significance is read as "marker beyond its tick" (permutation p < .01 in (a), < .05 in (b) coincide
+with that for every row; asserted below). The exemplar-letter correlations (old panel c) are stated
+in the appendix text.
+Data: results/analysis/item02_shared_randomness.json (read live).
+Run: .venv/bin/python scripts/make_fig_mechanism.py -> paper/figures/fig_mechanism.pdf + .png
 """
 
 from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.lines import Line2D
 from matplotlib.ticker import FixedLocator, NullLocator
 
 import figstyle as S
 
-W, H = S.TEXTWIDTH, 1.95
+W, H = S.COLUMNWIDTH, 1.75
+MS = 4.6  # single-point marker size, shared by all four figures
 S1 = "mmlu_sharedseed-T1.0_Qwen_Qwen2.5-7B-Instruct"
 Q2 = "mmlu_sharedprompt-T1.0_Qwen_Qwen2.5-7B-Instruct"
 L2 = "mmlu_sharedprompt-T1.0_meta-llama_Meta-Llama-3-8B-Instruct"
-P_A, P_B, P_C = 0.01, 0.05, 0.05
-LETTERS = "ABCD"
+P_A, P_B = 0.01, 0.05          # thresholds matching the plotted null percentiles (p99, p95)
 
 
 if __name__ == "__main__":
@@ -40,108 +47,66 @@ if __name__ == "__main__":
          it2[L2]["top_pc"]["loadings_eta_sq_by_gold_letter"]),
     ]
     Y = np.arange(len(ROWS))[::-1].astype(float)
-    ECHO = {"Qwen": it2[Q2]["exemplar_alignment"]["letter_echo_exemplar_count_vs_answer_share"],
-            "Llama": it2[L2]["exemplar_alignment"]["letter_echo_exemplar_count_vs_answer_share"]}
 
     log = []
     with plt.rc_context(S.RC):
         fig = plt.figure(figsize=(W, H))
-        BOT, TOP = 0.42, H - 0.30
-        axa = fig.add_axes([1.30 / W, BOT / H, 1.75 / W, (TOP - BOT) / H])
-        axb = fig.add_axes([3.25 / W, BOT / H, 1.45 / W, (TOP - BOT) / H], sharey=axa)
-        axc = fig.add_axes([5.15 / W, BOT / H, 1.53 / W, (TOP - BOT) / H])
+        BOT, TOP = 0.50, H - 0.17
+        L0, PW, GAP = 1.13, 0.93, 0.17
+        axa = fig.add_axes((L0 / W, BOT / H, PW / W, (TOP - BOT) / H))
+        axb = fig.add_axes(((L0 + PW + GAP) / W, BOT / H, PW / W, (TOP - BOT) / H), sharey=axa)
 
-        def nullmark(ax, x, y):
-            ax.plot([x, x], [y - 0.28, y + 0.28], color=S.WHISK, lw=1.1, solid_capstyle="butt", zorder=2)
+        XA, XB = (0.6, 20.0), (-0.03, 0.8)
+
+        def nullmark(ax, x0, x, y):
+            # tick = null p99 (a) / p95 (b), drawn above the marker so a near-tie stays readable
+            ax.plot([x, x], [y - 0.30, y + 0.30], color=S.MUTED, lw=1.2, solid_capstyle="butt", zorder=5)
 
         for ax in (axa, axb):
             ax.xaxis.grid(True, color=S.GRID, lw=0.5)
             ax.set_axisbelow(True)
             ax.tick_params(axis="y", length=0)
             ax.spines["left"].set_visible(False)
-        # (a)
+
         for (lab, key, lsd, eta), y in zip(ROWS, Y):
             _, col, _, mk = S.SERIES[key]
-            ratio = lsd["ratio_obs_over_null_mean"]
-            p99 = lsd["null_p99"] / lsd["null_mean"]
-            nullmark(axa, p99, y)
-            filled = lsd["perm_p"] < P_A
-            axa.plot(ratio, y, ls="none", marker=mk, ms=5.0, mfc=col if filled else "white", mec=col,
-                     mew=0.9, zorder=4)
-            axa.annotate(f"{ratio:.1f}" + r"$\times$", xy=(max(ratio, p99), y), xytext=(6, 0), textcoords="offset points",
-                         ha="left", va="center", fontsize=S.SMALL, color=col)
-            log.append(("a", lab, ratio, p99, lsd["perm_p"]))
+            ratio, p99 = lsd["ratio_obs_over_null_mean"], lsd["null_p99"] / lsd["null_mean"]
+            # the "beyond the tick" reading must agree with the permutation test
+            assert (ratio > p99) == (lsd["perm_p"] < P_A), lab
+            assert (eta["eta_sq"] > eta["null_p95"]) == (eta["perm_p"] < P_B), lab
+            nullmark(axa, XA[0], p99, y)
+            # filled = beyond the null tick (significant), open = not, as in fig_main
+            fa, fb = ratio > p99, eta["eta_sq"] > eta["null_p95"]
+            axa.plot(ratio, y, ls="none", marker=mk, ms=MS * (1.15 if mk == "^" else 1.0), mfc=col if fa else "white", mec=col, mew=0.9, zorder=4)
+            nullmark(axb, 0.0, eta["null_p95"], y)
+            axb.plot(eta["eta_sq"], y, ls="none", marker=mk, ms=MS * (1.15 if mk == "^" else 1.0), mfc=col if fb else "white", mec=col, mew=0.9, zorder=4)
+            log.append((lab, round(ratio, 3), round(p99, 3), lsd["perm_p"],
+                        round(eta["eta_sq"], 3), round(eta["null_p95"], 3), eta["perm_p"]))
+
+        axa.axvline(1.0, color=S.FAINT, lw=0.8, ls="--", zorder=1)   # shuffle mean
         axa.set_xscale("log")
-        axa.set_xlim(0.6, 40)
-        axa.xaxis.set_major_locator(FixedLocator([1, 3, 10, 30]))
+        axa.set_xlim(*XA)
+        axa.xaxis.set_major_locator(FixedLocator([1, 3, 10]))
         axa.xaxis.set_minor_locator(NullLocator())
-        axa.set_xticklabels(["1", "3", "10", "30"])
-        axa.axvline(1.0, color=S.FAINT, lw=0.7, zorder=1)
+        axa.set_xticklabels(["1", "3", "10"])
         axa.set_yticks(Y)
         axa.set_yticklabels([r[0] for r in ROWS])
-        for t, (lab, key, _, _) in zip(axa.get_yticklabels(), ROWS):
+        for t, (_, key, _, _) in zip(axa.get_yticklabels(), ROWS):
             t.set_color(S.SERIES[key][1])
-        axa.set_ylim(-0.6, len(ROWS) - 0.4)
-        axa.set_xlabel("Letter-share variance / null mean", labelpad=2)
-        S.panel_tag(axa, "a", x=-0.02)
+        axa.set_ylim(-0.55, len(ROWS) - 0.45)
+        axa.set_xlabel("Letter-share variance\n" + r"($\times$ shuffle mean)", labelpad=2, linespacing=1.0)
+        S.panel_tag(axa, "a")
 
-        # (b)
-        for (lab, key, lsd, eta), y in zip(ROWS, Y):
-            _, col, _, mk = S.SERIES[key]
-            nullmark(axb, eta["null_p95"], y)
-            filled = eta["perm_p"] < P_B
-            axb.plot(eta["eta_sq"], y, ls="none", marker=mk, ms=5.0, mfc=col if filled else "white", mec=col,
-                     mew=0.9, zorder=4)
-            axb.annotate(f"{eta['eta_sq']:.2f}", xy=(max(eta["eta_sq"], eta["null_p95"]), y), xytext=(6, 0), textcoords="offset points",
-                         ha="left", va="center", fontsize=S.SMALL, color=col)
-            log.append(("b", lab, eta["eta_sq"], eta["null_p95"], eta["perm_p"]))
-        axb.set_xlim(-0.02, 1.0)
-        axb.xaxis.set_major_locator(FixedLocator([0, 0.25, 0.5, 0.75, 1.0]))
-        axb.set_xticklabels(["0", ".25", ".5", ".75", "1"])
+        axb.set_xlim(*XB)
+        axb.xaxis.set_major_locator(FixedLocator([0, 0.25, 0.5, 0.75]))
+        axb.set_xticklabels(["0", "0.25", "0.5", "0.75"])
         axb.tick_params(axis="y", labelleft=False)
-        axb.set_xlabel(r"$\eta^2$ of top loadings by gold letter", labelpad=2)
-        S.panel_tag(axb, "b", x=-0.02)
+        axb.set_xlabel(r"$\eta^2$ of top loadings" + "\nby gold letter", labelpad=2, linespacing=1.0)
+        S.panel_tag(axb, "b")
 
-        # (c)
-        S.ygrid(axc)
-        axc.axhline(0, color=S.WHISK, lw=0.9, zorder=1)
-        xs = np.arange(4)
-        for name, dx, mk in (("Qwen", -0.12, "^"), ("Llama", 0.12, "v")):
-            col = S.WARM if name == "Qwen" else S.WARM_DK
-            col = S.SERIES["sharedprompt"][1] if name == "Llama" else S.tint(S.SERIES["sharedprompt"][1], 0.35)
-            for j, L in enumerate(LETTERS):
-                r, p = ECHO[name][L]["r"], ECHO[name][L]["perm_p_two_sided"]
-                axc.plot(j + dx, r, ls="none", marker=mk, ms=5.0, mfc=col if p < P_C else "white", mec=col,
-                         mew=0.9, zorder=4)
-                log.append(("c", name, L, r, p))
-        axc.set_xticks(xs)
-        axc.set_xticklabels(LETTERS)
-        axc.set_xlim(-0.55, 3.55)
-        axc.set_ylim(-0.2, 0.62)
-        axc.yaxis.set_major_locator(FixedLocator([-0.2, 0, 0.2, 0.4, 0.6]))
-        axc.set_yticklabels(["-0.2", "0", "0.2", "0.4", "0.6"])   # plain-string minus survives usetex/Times
-        axc.set_xlabel("Gold letter $L$ of the exemplars", labelpad=2)
-        axc.set_ylabel(r"Per-letter $r$", labelpad=2)
-        axc.text(3.45, 0.555, "Llama, shared prompt", ha="right", va="top", fontsize=S.SMALL,
-                 color=S.SERIES["sharedprompt"][1])
-        axc.text(3.45, 0.16, "Qwen, shared prompt", ha="right", va="bottom", fontsize=S.SMALL,
-                 color=S.tint(S.SERIES["sharedprompt"][1], 0.35))
-        S.panel_tag(axc, "c", x=-0.22)
-
-        h = [Line2D([], [], color=S.WHISK, lw=1.1, ls="none", marker="|", ms=7, mew=1.1,
-                    label="null p99 (a), p95 (b)"),
-             Line2D([], [], ls="none", marker="o", ms=5, mfc=S.MUTED, mec=S.MUTED,
-                    label=r"filled: permutation $p<.01$ (a), $<.05$ (b, c)"),
-             Line2D([], [], ls="none", marker="o", ms=5, mfc="white", mec=S.MUTED, mew=0.9, label="open: not significant")]
-        fig.legend(handles=h, loc="lower center", bbox_to_anchor=(0.5, (TOP + 0.06) / H), ncol=3,
-                   frameon=False, borderaxespad=0, handlelength=1.0, handletextpad=0.4,
-                   columnspacing=1.6, fontsize=S.SMALL)
         S.save(fig, "fig_mechanism")
 
     print(f"figsize={W}x{H} usetex={S.USETEX}")
+    print("   (row, ratio, null p99/mean, perm_p, eta2, null p95, perm_p)")
     for row in log:
         print("  ", row)
-    for name in ("Qwen", "Llama"):
-        run = Q2 if name == "Qwen" else L2
-        ps = it2[run]["exemplar_alignment"]["pass_pair_similarity_shared_exemplars_borderline"]
-        print(f"   pass-pair similarity (shares exemplar vs not) {name}: z={ps['z_vs_null']:.2f}")

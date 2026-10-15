@@ -1,9 +1,0 @@
-2026-10-13 00:58:35 [mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat] prompt check: 80/80 canonical; decode {'exact': 80}; v2-pipeline-equal 0/80; reference-hash-equal 80/80
-2026-10-13 00:58:35 pre-check mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat: {'n_prompts_checked': 80, 'n_canonical': 80, 'decode': {'exact': 80}, 'n_equal_to_v2_pipeline_ids': 0, 'n_equal_to_reference_hash': 80}
-2026-10-13 00:58:35 01-ai/Yi-1.5-6B-Chat: loading vLLM engine {'model': '01-ai/Yi-1.5-6B-Chat', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}}
-2026-10-13 01:00:51 engine ready in 136s; prompt_mode=chat_template; max_model_len=3072
-2026-10-13 01:00:51 [mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat] prompt check: 80/80 canonical; decode {'exact': 80}; v2-pipeline-equal 0/80; reference-hash-equal 80/80
-2026-10-13 01:00:51 [mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat] start K=4 N=20 T=0.0 block=4 passes
-2026-10-13 01:00:53 [mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat] passes 0-3 done, block acc=0.475, elapsed=1s
-2026-10-13 01:00:53 [mmlu_greedyrot_01-ai_Yi-1.5-6B-Chat] DONE acc=0.4750 unparseable=0.0000 N_b=13 runtime=1s
-2026-10-13 01:00:53 01-ai/Yi-1.5-6B-Chat: finished; failed runs: []

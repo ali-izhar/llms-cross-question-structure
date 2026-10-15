@@ -1,6 +1,0 @@
-2026-10-10 07:05:13 HuggingFaceH4/zephyr-7b-beta: loading vLLM engine {'model': 'HuggingFaceH4/zephyr-7b-beta', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.4, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': False}
-2026-10-10 07:07:54 engine ready in 161s; prompt_mode=chat_template; max_model_len=3072
-2026-10-10 07:07:54 [mmlu_greedy_HuggingFaceH4_zephyr-7b-beta] start K=1 N=500 T=0.0 block=1 passes
-2026-10-10 07:08:07 [mmlu_greedy_HuggingFaceH4_zephyr-7b-beta] passes 0-0 done, block acc=0.566, elapsed=13s
-2026-10-10 07:08:07 [mmlu_greedy_HuggingFaceH4_zephyr-7b-beta] DONE acc=0.5660 unparseable=0.0200 N_b=None runtime=13s
-2026-10-10 07:08:07 HuggingFaceH4/zephyr-7b-beta: finished; failed runs: []

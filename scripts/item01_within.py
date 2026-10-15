@@ -13,9 +13,8 @@ import v2lib  # noqa: F401  (sets threads and sys.path)
 import numpy as np
 from v2lib import EPS, LABEL, RUNS, load_meta, matrix_path, write_json
 
-import archive_claims
+import spectral_metrics
 import horn_vs_mp
-import make_epsilon_sweep_figure as epsfig
 import tw_z_diagnostic as twd
 
 N_MC = 1000
@@ -42,10 +41,10 @@ def within_stats(run_id: str) -> dict:
     lp_km1 = (1 + np.sqrt(Nb / (K - 1))) ** 2
     sigma_tw = (1 + np.sqrt(gamma)) * (1 + 1 / np.sqrt(gamma)) ** (1 / 3) * K ** (-2 / 3)
     zs = twd.mc_h1_filter(model, np.random.default_rng(seed + 1), n_mc=N_MC)
-    sweep = archive_claims.tw_z_eps_sweep(C, LABEL[run_id], n_draws=N_EPS_NULL, seed=seed + 2,
-                                          epsilons=epsfig.EPSILONS)
+    sweep = spectral_metrics.tw_z_eps_sweep(C, LABEL[run_id], n_draws=N_EPS_NULL, seed=seed + 2,
+                                          epsilons=spectral_metrics.EPSILONS)
     for row in sweep["by_eps"]:
-        margin, s_tw, nb = epsfig.margin_and_tw(C, row["eps"])
+        margin, s_tw, nb = spectral_metrics.margin_and_tw(C, row["eps"])
         assert nb == row["N_b"]
         row["margin"] = float(margin)
         row["sigma_tw"] = float(s_tw)
@@ -81,7 +80,7 @@ def main() -> None:
     rows = [within_stats(r) for r, _, g in RUNS if g == "iid"]
     write_json("item01_within_table", {
         "meta": {"eps": EPS, "n_mc_null_z": N_MC, "n_horn_surrogates": N_SURR,
-                 "n_eps_sweep_null": N_EPS_NULL, "eps_sweep": epsfig.EPSILONS,
+                 "n_eps_sweep_null": N_EPS_NULL, "eps_sweep": spectral_metrics.EPSILONS,
                  "seeds": "crc32(run_id) (+1 MC null, +2 eps-sweep null)",
                  "edge": "lambda_+ = (1+sqrt(N_b/K))^2; *_K_minus_1 fields use N_b/(K-1)",
                  "mc_null": "H1 of scripts/tw_z_diagnostic.py: independent Bernoulli(f_i) over all N columns, borderline filter re-applied; percentile = fraction of null z <= observed z"},

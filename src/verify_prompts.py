@@ -1,7 +1,7 @@
 """Check every prompt of every planned run with CanonicalPrompter.check_prompt; writes the pins that collect.py reads.
 
 Also records agreement with transformers' render and ids. Runs in the gb10-vllm container:
-    src/docker_run.sh gb10-vllm python src/verify_prompts.py --out results/dryrun_v3/prompt_check.json [models...]
+    src/docker_run.sh gb10-vllm python src/verify_prompts.py --out results/pins/prompt_check.json [models...]
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from canonical_tok import CanonicalPrompter, ids_sha  # noqa: E402
 from collect import GSM8K_COT_PROMPT, exemplar_rows, hellaswag_user_text, mmlu_user_text  # noqa: E402
 from plan import ENSEMBLE_MODELS, GREEDYROT, PLAN, rotate, run_id  # noqa: E402
 
-V2 = HERE.parent / "results"
+RESULTS = HERE.parent / "results"
 LETTERS = "ABCD"
 
 
@@ -52,7 +52,7 @@ def main() -> None:
     a = ap.parse_args()
     from transformers import AutoTokenizer
 
-    ctx = {t: json.loads((V2 / f"questions_{t}.json").read_text()) for t in ("mmlu", "mmlu_dev", "hellaswag", "gsm8k")}
+    ctx = {t: json.loads((RESULTS / f"questions_{t}.json").read_text()) for t in ("mmlu", "mmlu_dev", "hellaswag", "gsm8k")}
     models = a.models or ENSEMBLE_MODELS
     report = {}
     all_ok = True
@@ -88,7 +88,7 @@ def main() -> None:
             r = {"n_prompts": n, "n_canonical": n_ok, "decode": decode, "n_v2_pipeline_equal": v2_eq,
                  "n_render_equal_transformers": render_eq, "problems": problems,
                  "q0_ids_sha": ids_sha(q0_ids), "q0_n_tokens": len(q0_ids)}
-            js = V2 / f"{rid}.json"
+            js = RESULTS / f"{rid}.json"
             if js.exists():
                 old = json.loads(js.read_text())
                 r["q0_render_equals_v2_saved"] = old.get("rendered_prompt_q0_pass0") == q0_render

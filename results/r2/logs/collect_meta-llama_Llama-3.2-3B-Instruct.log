@@ -1,9 +1,0 @@
-2026-10-13 03:50:17 [mmlu_greedyrot_meta-llama_Llama-3.2-3B-Instruct] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
-2026-10-13 03:50:17 pre-check mmlu_greedyrot_meta-llama_Llama-3.2-3B-Instruct: {'n_prompts_checked': 2000, 'n_canonical': 2000, 'decode': {'exact': 2000}, 'n_equal_to_v2_pipeline_ids': 2000, 'n_equal_to_reference_hash': 2000}
-2026-10-13 03:50:17 meta-llama/Llama-3.2-3B-Instruct: loading vLLM engine {'model': 'meta-llama/Llama-3.2-3B-Instruct', 'dtype': 'bfloat16', 'tensor_parallel_size': 1, 'gpu_memory_utilization': 0.3, 'max_model_len': 3072, 'seed': 0, 'generation_config': 'vllm', 'enable_prefix_caching': True, 'max_num_seqs': 128, 'tokenizer_mode': 'hf', 'trust_remote_code': False, 'enforce_eager': True, 'kernel_config': {'enable_flashinfer_autotune': False}, 'async_scheduling': False, 'num_gpu_blocks_override': 2048}
-2026-10-13 03:52:05 engine ready in 109s; prompt_mode=chat_template; max_model_len=3072
-2026-10-13 03:52:08 [mmlu_greedyrot_meta-llama_Llama-3.2-3B-Instruct] prompt check: 2000/2000 canonical; decode {'exact': 2000}; v2-pipeline-equal 2000/2000; reference-hash-equal 2000/2000
-2026-10-13 03:52:08 [mmlu_greedyrot_meta-llama_Llama-3.2-3B-Instruct] start K=4 N=500 T=0.0 block=4 passes
-2026-10-13 03:52:30 [mmlu_greedyrot_meta-llama_Llama-3.2-3B-Instruct] passes 0-3 done, block acc=0.578, elapsed=22s
-2026-10-13 03:52:30 [mmlu_greedyrot_meta-llama_Llama-3.2-3B-Instruct] DONE acc=0.5775 unparseable=0.0005 N_b=196 runtime=22s
-2026-10-13 03:52:30 meta-llama/Llama-3.2-3B-Instruct: finished; failed runs: []

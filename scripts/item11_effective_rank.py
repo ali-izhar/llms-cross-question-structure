@@ -10,7 +10,7 @@ import v2lib  # noqa: F401  (threads, sys.path)
 import numpy as np
 from v2lib import ENSEMBLE_NPY, LABEL, RUNS, matrix_path, write_json
 
-import archive_claims
+import spectral_metrics
 import d_across_null
 import ensemble_size_sweep as ess
 
@@ -49,7 +49,7 @@ def main() -> None:
     ks_fit = [k for k in meds if k < C.shape[0]]
     slope = float(np.polyfit(ks_fit, [meds[k] for k in ks_fit], 1)[0])
     mmlu_iid = [(LABEL[r], str(matrix_path(r))) for r, _, g in RUNS if g == "iid" and r.startswith("mmlu_iid-T1.0")]
-    share = archive_claims.effective_rank_share(models=mmlu_iid, ensemble_path=ENSEMBLE_NPY)
+    share = spectral_metrics.effective_rank_share(models=mmlu_iid, ensemble_path=ENSEMBLE_NPY)
     write_json("item11_effective_rank", {
         "column_filter": "split columns (0 < column sum < rows) of the matrix measured",
         "sweep_observed": sw, "sweep_slope_of_median_k_lt_M": slope, "null_per_M": ns,

@@ -139,7 +139,7 @@ def load(name: str) -> dict:
 
 def save(fig, name: str) -> Path:
     pdf = OUTDIR / f"{name}.pdf"
-    fig.savefig(pdf, bbox_inches=None, pad_inches=0.0, facecolor="white")
+    fig.savefig(pdf, bbox_inches="tight", pad_inches=0.01, facecolor="white")
     plt.close(fig)
     if shutil.which("pdftoppm"):
         subprocess.run(["pdftoppm", "-png", "-r", "300", "-singlefile", str(pdf), str(OUTDIR / name)],

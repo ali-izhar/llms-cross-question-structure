@@ -59,8 +59,9 @@ if __name__ == "__main__":
         XA, XB = (0.6, 20.0), (-0.03, 0.8)
 
         def nullmark(ax, x0, x, y):
-            # tick = null p99 (a) / p95 (b), drawn above the marker so a near-tie stays readable
-            ax.plot([x, x], [y - 0.30, y + 0.30], color=S.MUTED, lw=1.2, solid_capstyle="butt", zorder=5)
+            # tick = null p99 (a) / p95 (b), drawn below the marker; open markers have a white face, so a
+            # near-tie shows the marker whole with the tick visible above and below it
+            ax.plot([x, x], [y - 0.30, y + 0.30], color=S.MUTED, lw=1.2, solid_capstyle="butt", zorder=3)
 
         for ax in (axa, axb):
             ax.xaxis.grid(True, color=S.GRID, lw=0.5)

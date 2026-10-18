@@ -61,7 +61,7 @@ SER_B = [("r_shown", "shown letter", S.INK, "o", 2.0, 0.695),
 NULL_NAME = {"3pl_post": "3PL", "kg_uniform4": "KG-u", "2pl_post": "2PL", "rasch_jml": "Rasch"}
 DXC = 0.15  # horizontal offset of the two markers at one rank
 # null label beside its rank-2 marker: key -> (dx_pt, dy_pt, ha, va); tuned on the rendered PNG
-OFFSETS_C = {"3pl_post": (-2, -5, "center", "top"), "kg_uniform4": (5, 0, "left", "center"),
+OFFSETS_C = {"3pl_post": (3, -6, "left", "top"), "kg_uniform4": (5, 0, "left", "center"),
              "2pl_post": (-5, 0, "right", "center"), "rasch_jml": (1, -6, "left", "top")}
 
 
@@ -174,7 +174,7 @@ if __name__ == "__main__":
                  + min(r["x"] for r in rows_a if r["grp"] == "shared")) / 2
         ax.axvline(x_sep, color=S.HAIR, lw=0.7, zorder=0)
         ax.set_ylabel(r"$\lambda_{\max}/\lambda_+$", labelpad=2)
-        S.ref_label(ax, 1.0, r"$\lambda_+$", above=True)
+        S.ref_label(ax, 1.0, r"$\lambda_+$", above=False)
         S.panel_tag(ax, "a")
 
         # (b) rotation test: r with the shown letter's mean loading vs with the question's own loading

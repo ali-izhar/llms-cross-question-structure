@@ -56,7 +56,8 @@ rotated, it follows the letter, not the question, and it depends on one
 model, Llama-3.2-1B, without which only a smaller excess remains. Counting a
 question correct only if it is right in every rotation removes the part
 that acts on guesses. What remains is a marginal excess at the 5\% line,
-which a post hoc analysis ties to two pairs of near-duplicate models.
+which post hoc analyses tie to two pairs of near-duplicate models and
+to Llama-3.2-1B.
 \end{abstract}
 ]
 
@@ -142,14 +143,15 @@ benchmark dimensionality exist~\citep{benchscope2026}.
 We add that the correctness matrix records no letters, yet the second
 eigenvector of its correlation matrix follows a letter preference, and
 removing one model brings its eigenvalue within the range of one skill
-(Sec.~\ref{sec:across}).
+(post hoc; Sec.~\ref{sec:across}).
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_main.pdf}
 \vskip -0.05in
 \caption{\textbf{(a)}~Within one model: $\lambda_{\max}/\lambda_+$ (log
-axis) of each run; grey bar: 5--95\% of its simulated $z$, on this axis; circles:
+axis) of each run; grey bar: 5--95\% of its simulated distance from the edge ($z$,
+App.~\ref{app:within}), on this axis; circles:
 independent draws; filled: an eigenvalue above $\lambda_+$.
 \textbf{(b)}~Across models, rotations 1--3: correlation over questions
 of each question's eigenvector-2 loading with the mean rotation-0 loading
@@ -310,8 +312,8 @@ each detected structure thus comes from the pipeline, not from knowledge.
 
 In rotation 0, the first eigenvector of the 24-model matrix is skill: the models' scores on it correlate with
 their accuracy at $r=0.94$. Three nulls with guessing are adequate: the
-3PL, KG-u, and the letter-aware null, a know-or-guess null in which a
-guessing model uses its fitted letter preference. $\lambda_2$,
+3PL, KG-u, and the letter-aware null, a know-or-guess null, fitted to rotation 0, in
+which a guessing model follows its letter preference. $\lambda_2$,
 49.9 on 460 split questions, exceeds the 99th percentile
 of all three (Fig.~\ref{fig:main}c), no other eigenvalue does, and the
 max-statistic test rejects them ($p_M=0.002$).
@@ -342,13 +344,13 @@ models are right in exactly one or all four rotations
 (App.~\ref{app:ensemble}).
 % src: v3_G_familywise.json:G5_single_validity_rule.sp_table_A2.full.rot0.rank2_cal_p (0.010); G1_familywise.by_score_and_null.rot0.sp_common_tau.p_T (0.079)
 
-One model, Llama-3.2-1B, lifts $\lambda_2$ past the 3PL null. Removing it
+Post hoc, one model, Llama-3.2-1B, lifts $\lambda_2$ past the 3PL
+null. Removing it
 lowers $\lambda_2$ from 49.9 to 35.0, below the 99th percentile of the
 3PL null on the other 23 models; removing any other single model leaves
 it between 47.1 and 52.4. Without it, some structure remains: the
 letter grouping moves to eigenvector 3 ($\eta^2=0.21$), and the
-max-statistic test still rejects the 3PL null through $\lambda_4$
-($p_M=0.003$; App.~\ref{app:ensemble}).
+3PL null is still rejected through $\lambda_4$ ($p_M=0.003$; App.~\ref{app:ensemble}).
 % src: v3_C_rotations_A.json:kg_fits_4_rotations.letter_preference.<meta-llama/Llama-3.2-1B-Instruct>.pi_A_B_C_D[0] (0.90)
 % src: v3_B_leave_one_out.json:leave_one_out_spectra.<meta-llama/Llama-3.2-1B-Instruct>.rot0.top_eigs[1] (35.0); v3_summary_derived.json:loo_rot0_lambda2_min_max_without_llama_3_2_1b_removal ([47.1, 52.4]); without_llama_3_2_1b.rot0_suite.nulls.3pl_post.rank_eigs_p99[1] (40.07)
 % src: v3_I_llama.json:I1_without_llama1b.table.rot0.3pl_post.{valid true, p_T 0.0035, pct_rank1to4 [96.6, 48.2, 98.5, 99.9], T_argmax_rank 4} (post hoc)
@@ -361,7 +363,7 @@ All-4-correct cancels a letter preference that acts only on guesses. In
 the all-4-correct matrix (391 split questions), $\lambda_2$ lies below the 99th percentile of both
 adequate one-skill nulls, the 2PL and Rasch (Fig.~\ref{fig:main}c). Because the
 difficulty factor lifts the nulls' $\lambda_2$ above $\lambda_+$, a
-second skill could hide below their 99th percentile. A second skill as
+second skill could hide below their 99th percentile. In a post hoc simulation, a second skill as
 strong as the first, planted on the 125 kept questions from STEM
 subjects, is detected by the max-statistic test in more than 90\% of
 datasets; one half as strong, in about a fifth (App.~\ref{app:ensemble}).
@@ -373,7 +375,7 @@ What remains is a marginal excess on $\lambda_3$ and $\lambda_4$. The
 max-statistic test rejects both nulls ($p_M=0.026$ for the 2PL, $0.041$
 for Rasch), yet no eigenvalue exceeds the 99th percentile of both
 (Table~\ref{tab:fw}). The test also rejects slightly too often under one
-skill (up to 8.7\% of datasets at the 5\% level); recalibrated, its four
+skill (up to 8.7\% of datasets at the 5\% level); recalibrated post hoc, its four
 $p_M$ run from 0.017 to 0.057, and dropping the 217 questions with an
 unparseable reply ends the rejection. The excess sits at the 5\% line.
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.ge4.{2pl_post.pct_rank1to4 [31.45, 71.8, 98.45, 99.1], rasch_jml.pct_rank1to4 [54.15, 94.55, 96.95, 98.6], 2pl_post.p_T 0.0265, rasch_jml.p_T 0.0415}
@@ -391,7 +393,7 @@ one of Phi-3-mini and Phi-3.5-mini and one of Llama-3-8B and
 Llama-3.1-8B raises $p_M$ above 0.2 under both nulls, which none of 190
 removals of two other models does.
 % src: v3_H_followup.json:H2_pair_removal_vs_reference.by_null.{2pl_post,rasch_jml}.{pair_removals[*].p_T (0.219-0.685; 0.322-0.382), reference_n 190, reference_max (0.0989, 0.1329)}
-Llama-3.2-1B also matters: removing it alone ends the rejection
+Post hoc, Llama-3.2-1B also matters: removing it alone ends the rejection
 ($p_M=0.059$ for the 2PL, $0.089$ for Rasch), though 12 of the 19
 removals of it with another model outside the pairs still reject under
 the 2PL. Part of its letter preference may remain after all-4-correct, if
@@ -556,8 +558,7 @@ the Tracy--Widom scale of $\lambda_{\max}$ for Gaussian
 data~\citep{johnstone2001}. For correlation matrices the limit is
 proved, as far as we know, only without centering or for Gaussian
 entries~\citep{baopanzhou2012,pillaiyin2012}. Our columns are centered
-Bernoulli variables with unequal pass rates, so we simulate the null
-distribution of $z$.
+Bernoulli variables with unequal pass rates, so $z$ is calibrated by simulation.
 
 \subsection{Calibration}
 \label{app:stats}
@@ -773,8 +774,9 @@ are instruction-tuned. Rotation-0 accuracy runs from 35.0\%
 (Llama-3.2-1B) to 72.8\% (Gemma-2-9B).
 % src: item07_across_model.json:observed.accuracy_per_model.{meta-llama/Llama-3.2-1B-Instruct 0.35, google/gemma-2-9b-it 0.728}
 
-\paragraph{One-skill nulls.} In every null, skill is the only link
-between questions. Every simulated draw is conditioned on each kept
+\paragraph{One-skill nulls.} In every null, skill and, where present,
+the model's letter preference are the only links between questions; no
+null has a second skill. Every simulated draw is conditioned on each kept
 column staying split. The 2PL (Sec.~\ref{sec:method}) treats the skills
 as fixed and integrates the question parameters over a normal
 population, by marginal maximum likelihood; each simulated column draws
@@ -834,11 +836,11 @@ choices still depend on earlier analyses: an earlier post hoc joint
 statistic had already rejected,
 and the separate rank tests and the correlations between model pairs
 had already been computed. Removing single models or pairs, and the
-reported analyses of test size, power and the difficulty factor, were
-decided after seeing the results.
+reported analyses of size, power and the difficulty factor, came after
+the results.
 % src: results/analysis/specs/G_familywise.md Motivation ("a post-hoc joint statistic rejects"; S = lambda2+lambda3+lambda4 is defined there as a secondary statistic, so it is not the earlier one)
 
-\paragraph{Size.} Under a true one-skill model the test rejects slightly
+\paragraph{Size (post hoc).} Under a true one-skill model the test rejects slightly
 too often, and the adequacy rule can pick the wrong
 null. The size of a test is its false-positive rate
 when the null model is true. We simulate 300 all-4-correct datasets from
@@ -851,9 +853,9 @@ Rasch truth (Clopper--Pearson 95\% intervals 4.1--10.1\% and
 before the run. The Rasch test rarely rejects under Rasch truth (0.7\%),
 mainly because the refitted Rasch null is adequate in only 23\% of those
 datasets. The adequacy rule accepts the Rasch null on every 2PL dataset,
-although its slopes are wrong there, and rejects the correct Rasch null
-in most datasets drawn from it. The calibrated $p_M$ is the fraction of
-the 300 datasets from one truth whose $p_M$ is at most the observed one.
+despite wrong slopes, and rejects the correct Rasch null
+in most datasets drawn from it. The calibrated $p_M$ is the share of
+one truth's 300 datasets with $p_M$ at most the observed value.
 % src: v3_H_followup.json:meta.{n.H1_datasets_per_truth 300, n.H1_null_draws 500, specification (FP <= 0.075 rule)}; H1_size_under_one_ability_truth.by_truth_and_null.<truth>.<null>.{fp_valid_and_p_T_lt_alpha, fp_ci95 (Clopper-Pearson), frac_valid (rasch/rasch 0.233; 2pl/rasch 1.0), calibrated_p_of_real (mean of p_T(truth) <= p_T(real))}; H1_size_under_one_ability_truth.decision.{2pl_post.size_controlled false, rasch_jml.size_controlled true}
 
 \subsection{Rotation 0: the letter eigenvector}
@@ -903,7 +905,8 @@ rotations ($\tau=1.17$).
 \paragraph{Calibration of the SP null.} Against the calibrated SP null,
 $\lambda_2$ alone is unlikely ($p=0.010$), but the max-statistic test
 does not reject ($p_M=0.079$); neither verdict is fully validated.
-Simulations drop the cells unparseable in the data: without that mask, the observed
+Simulations keep the cells unparseable in the data unparseable, scored
+wrong: without that mask, the observed
 $\lambda_2$ lies at the 99.8th percentile of the null; with it, at the
 95.1st. Refitting inflates the slopes, so tail probabilities are recalibrated on 200 datasets from the fit, each with its own null
 of 1000 draws. The calibrated $p$ of rank $j$ is the fraction of those
@@ -932,8 +935,9 @@ questions).
 % src: v3_F_softpref.json ppc.hist_model (21 of 24 models observed > simulated at 4 rotations, max 0.060)
 % src: v3_F_softpref.json:step2_soft_preference.fits.full__tau__sigma4.{ppc_verdict.coverage_98.hist_model 0.825 (central-98% simulation interval, scripts/v3_softpref.py PPC_COVERAGE_MIN 0.90), ppc.hist_model.{observed_by_model, sim_mean_by_model}, ppc.hist_pooled.{observed[1] 0.196, sim_mean[1] 0.177, observed[4] 0.382, sim_mean[4] 0.366}}
 
-\paragraph{Without Llama-3.2-1B (post hoc).} Without Llama-3.2-1B, the rotation-0 excess moves from $\lambda_2$ to $\lambda_4$, which
-exceeds the 99th percentiles by small margins. The $\lambda_2$ of the other 23 models (Sec.~\ref{sec:across})
+\paragraph{Without Llama-3.2-1B (post hoc).} Without Llama-3.2-1B, the rotation-0 excess moves from $\lambda_2$ to higher ranks: $\lambda_4$
+exceeds the 99th percentile of both nulls by small margins, and
+$\lambda_3$ that of the letter-aware null in 2000 draws. The $\lambda_2$ of the other 23 models (Sec.~\ref{sec:across})
 lies below the 3PL null's 99th percentile, 40.1. The max-statistic
 test rejects the 3PL null ($p_M=0.003$; Sec.~\ref{sec:across}) and the
 letter-aware null ($p_M=0.015$), both through $\lambda_4$. Ranks 3 and 4 lie at the 98.5th to 99.9th percentiles of
@@ -966,7 +970,7 @@ eigenvectors.
 
 \subsection{All-4-correct: the marginal excess}
 
-\paragraph{Power.} The test detects a second skill as strong as the
+\paragraph{Power (post hoc).} The test detects a second skill as strong as the
 first, but usually not one half as strong. We simulate
 from the adequate all-4-correct 2PL fit plus a second skill. As in the
 2PL null, each of the 391 kept columns draws $(a_i,b_i)$ from its
@@ -978,20 +982,19 @@ $\mathrm{sd}(\theta)=1$, so at $s=1$ the second skill matches the first
 in spread and median slope. We refit both nulls to each of 200
 datasets per $s$ (500 draws; rates in Table~\ref{tab:fw}). At $s=1$ the
 rank-2 rule detects it in 69--78\% of datasets; at $s=2$
-the max-statistic test and the rank-2 rule detect it in at least 97\%.
-The median $\lambda_2$ is 28.2 at $s=0$, 28.3 at $s=0.5$ and 33.8 at
-$s=1$, against the observed 29.0.
+both tests detect it in at least 97\%. The median $\lambda_2$ is 28.2, 28.3
+and 33.8 at $s=0$, 0.5 and 1 (observed 29.0).
 % src: v3_J_power2pl.json:meta.{a_med 1.711, sd_theta 1.0, n_stem_kept 125, n_kept_cols 391, n_datasets_per_s 200, n_null_draws 500}; J1_power_2pl_truth.{0.{2pl_post,rasch_jml}.detect_familywise (0.07, 0.07), 2.*.{detect_familywise (0.99, 0.995), detect_rank2_per_rank (0.975, 0.995)}, {0,0.5,1}.2pl_post.median_lambda2 (28.2, 28.3, 33.8)}
 
-\paragraph{The difficulty factor.} On all-4-correct, eigenvector 2 behaves
+\paragraph{The difficulty factor (post hoc).} On all-4-correct, eigenvector 2 behaves
 like the difficulty factor that the one-skill nulls produce: its
 loadings follow each question's accuracy across models, the share of the 24 models answering it correctly, which runs opposite to difficulty.
 The observed $|r|$ between loading and accuracy, 0.57, lies just below the 2PL null's 5th
 percentile and inside the Rasch null's 5--95\% range. In the rotation-0 3PL null the loadings barely follow accuracy (median $|r|$
 0.09; observed 0.04). The observed all-4-correct loadings group by
 subject ($\eta^2=0.21$, $p=0.001$), but a cubic in accuracy explains
-39\% of their variance, and after its removal the subject grouping
-is at chance ($p=0.24$).
+39\% of their variance; after its removal the subject grouping is at
+chance ($p=0.24$).
 % src: v3_J_power2pl.json:J2_eigvec_vs_pass_rate[ge4 2pl_post, rasch_jml].{observed_abs_r_eigvec2_eigvec3[0] 0.565, null_abs_r_eigvec2_p05_p50_p95 ([0.575, 0.624, 0.668], [0.559, 0.628, 0.671])}; pass rate = column mean of the all-4-correct matrix (scripts/v3_J_power2pl.py loading_pass_corr)
 % src: v3_J_power2pl.json:J2_eigvec_vs_pass_rate[rot0 3pl_post].{null_abs_r_eigvec2_p05_p50_p95[1] 0.086, observed_abs_r_eigvec2_eigvec3[0] 0.042}
 % src: v3_C_rotations_A.json:C3_rotation_invariant.all4_correct.letters_subject_family.eigenvectors[1].eta_sq_by_subject.{eta_sq 0.207, perm_p 0.001}
@@ -1000,12 +1003,12 @@ is at chance ($p=0.24$).
 \begin{table}[t]
 \caption{Max-statistic test on all-4-correct (reject at $p_M<0.05$),
 against the 2PL and Rasch nulls. Pct.: percentile of each eigenvalue in
-the null (2000 draws); under the 2PL, $\lambda_4$ lies at the 99.1st,
-just below the 99th percentile in the 1000 draws of Fig.~\ref{fig:main}c. Subsets: number that reject, and the range or
+the null (2000 draws; 2PL $\lambda_4$ is just below its 99th percentile
+in the 1000 draws of Fig.~\ref{fig:main}c). Subsets: number that reject, and the range or
 maximum of $p_M$; sibling: one model kept from each sibling group;
 random: five of the other 15 models removed. Pair removals: one Phi and
-one Llama model removed. Two other models removed: the 190 removals of
-two models outside the pairs (fraction that reject, maximum $p_M$).
+one Llama model. Two other models removed: the 190 removals of two
+models outside the pairs (fraction that reject, maximum $p_M$).
 Unparseable: replies imputed, or questions dropped (1000 draws), either
 the 95 on which some model has no wrong parsed rotation and at least one
 unparseable one, or all 217 that contain one. Size: rejection rate in
@@ -1104,15 +1107,14 @@ Qwen2-7B, Qwen2.5-7B & & & 0.03 & 37 \\
 \end{table}
 
 \paragraph{Model families (post hoc).} The models'
-scores on all-4-correct eigenvector 4, whose eigenvalue lies below
-$\lambda_+$, group by family ($\eta^2=0.74$, $p=0.006$; Holm-corrected over the four eigenvectors
-tested, $p=0.024$).
+scores on all-4-correct eigenvector 4, whose eigenvalue (20.8) lies
+below $\lambda_+=25.4$, group by family ($\eta^2=0.74$, $p=0.006$; Holm over four eigenvectors,
+$p=0.024$).
 % src: v3_C_rotations_A.json:C3_rotation_invariant.all4_correct.letters_subject_family.eigenvectors[0..3].eta_sq_model_scores_by_family.perm_p (0.855, 0.404, 0.571, 0.006; Holm on eigvec 4: 4 x 0.006 = 0.024); eigenvectors[3].eta_sq_model_scores_by_family.eta_sq (0.74)
 
 \paragraph{Llama-3.2-1B (post hoc).} Llama-3.2-1B carries part, not all, of
-the excess. Removing it alone makes the KG-u
-null adequate
-($p_M=0.15$). The sum $\lambda_2+\lambda_3+\lambda_4$, specified with
+the excess. Removing it alone makes the KG-u null
+adequate ($p_M=0.15$). The sum $\lambda_2+\lambda_3+\lambda_4$, specified with
 the max-statistic test and not used for decisions, gives $p=0.023$
 (2PL) and $0.016$ (Rasch). Of the 190 removals, 12 of the 19 that include it still reject under the 2PL and 6 under Rasch. Removing it and one model per pair gives $p_M$ of 0.30--0.59 (2PL) and 0.38--0.60 (Rasch).
 % src: v3_I_llama.json:I1_without_llama1b.table.ge4.{2pl_post.{p_T 0.0595, p_S 0.0230}, rasch_jml.{p_T 0.0890, p_S 0.01649}, kg_uniform4.{valid true, p_T 0.1524}}; I2_joint_removal.new_runs[*].{2pl_post,rasch_jml}.p_T (0.296-0.586; 0.380-0.596)
@@ -1120,22 +1122,20 @@ the max-statistic test and not used for decisions, gives $p=0.023$
 \paragraph{Simple baselines.} Rotation-0 letter shares, which need no model fit, flag three models whose most frequent letter
 exceeds half of their replies (Table~\ref{tab:baselines}). These shares
 count unparseable replies; $\pi_m(\mathrm{A})=0.90$ of Llama-3.2-1B
-counts only guesses. A residual is a model's observed correctness minus
-its 2PL fitted probability, over the 391 split all-4-correct questions.
-Residual correlations between models rank the Phi and Llama pairs first
-and second of 276.
+counts only guesses. Correlations between models' 2PL residuals
+(observed correctness minus fitted probability, over the 391 split
+all-4-correct questions) rank the Phi and Llama pairs first and second
+of 276.
 % src: v3_H_followup.json:H3_baselines.{n_models_max_share_gt_0p5 3, residual_corr.{definition, n_pairs 276, sibling_pairs}}
 
 \paragraph{Other scores.} Counting a question correct in at least one,
-two or three rotations, or by the mean over rotations, supports no
-conclusion. At ``at least two'' the 2PL null is rejected ($p_M=0.002$)
-but the 3PL and SP nulls are not ($p_M=0.86$ and $0.85$); at ``at least
-three'' Rasch, KG-l and the 2PL are rejected ($p_M$ 0.008--0.010)
-but KG-u is not ($p_M=0.28$). These rejections mean little:
-in datasets from the one-skill SP fit, a refitted 2PL null is
-rejected in 98.5\% at ``at least two'', 58\% at ``at least
-three''. ``At least one'' gives $p_M=0.996$ (SP null); the mean score
-has no adequate null.
+two or three rotations, or by the mean, supports no conclusion. At ``at least two'' the 2PL null is rejected ($p_M=0.002$),
+not the 3PL or SP null ($0.86$, $0.85$); at ``at least three'' Rasch,
+KG-l and the 2PL are ($p_M$ 0.008--0.010), not KG-u ($0.28$). They mean little: the test rejects a
+refitted 2PL null in 98.5\% and 58\% (at least two, three) of datasets
+from the one-skill SP fit.
+``At least one'' gives $p_M=0.996$ (SP null); the mean score has no
+adequate null.
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.{ge2.2pl_post.p_T 0.0020, ge2.{3pl_post 0.862, sp_common_tau 0.853}.{valid true, p_T}, ge3.{rasch_jml 0.0080, kg_letter4 0.0075, 2pl_post 0.0095}.p_T, ge3.kg_uniform4.{valid true, p_T 0.277}, ge1.sp_common_tau.p_T 0.9955, mean.*.valid false}
 % src: v3_G_familywise.json:G2_calibration_under_SP_truth.{ge2.2pl_post.fp_valid_and_p_T_lt_alpha 0.985, ge3.2pl_post.fp_valid_and_p_T_lt_alpha 0.575}
 

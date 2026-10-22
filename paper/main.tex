@@ -364,9 +364,8 @@ the all-4-correct matrix (391 split questions), $\lambda_2$ lies below the 99th 
 adequate one-skill nulls, the 2PL and Rasch (Fig.~\ref{fig:main}c). Because the
 difficulty factor lifts the nulls' $\lambda_2$ above $\lambda_+$, a
 second skill could hide below their 99th percentile. In a post hoc simulation, a second skill as
-strong as the first, planted on the 125 kept questions from STEM
-subjects, is detected by the max-statistic test in more than 90\% of
-datasets; one half as strong, in about a fifth (App.~\ref{app:ensemble}).
+strong as the first, planted on the 125 kept STEM questions, is
+detected by the max-statistic test in over 90\% of datasets; one half as strong, in about a fifth (App.~\ref{app:ensemble}).
 % src: v3_C_rotations_A.json:C3_rotation_invariant.all4_correct.spectrum.{n_cols 391, lambda_plus 25.36, top_eigs}
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.ge4.{2pl_post.{valid true, rank_eigs_p99[1] 31.94}, rasch_jml.{valid true, rank_eigs_p99[1] 30.18}}; G5_single_validity_rule.sp_table_A2.full.ge4.plain_valid false
 % src: v3_J_power2pl.json:J1_power_2pl_truth.{1,0.5}.{2pl_post,rasch_jml}.{detect_rank2_per_rank (0.685, 0.78), detect_familywise (0.91, 0.925; 0.195, 0.205)}; meta.n_stem_kept (125 of 391) (post hoc)
@@ -416,14 +415,16 @@ and what remained after rotation is marginal and tied to a few models. A letter
 preference, even one carried by a single model, can create an
 eigenvector that an ensemble would read as missing knowledge. Scores that treat cross-model
 disagreement as epistemic~\citep{hamidieh2025} should be checked for letter
-preference. A shared seed leaves the distribution of each question's answers
-unchanged but feeds the same random numbers to every question in the
-pass, so a comparison across questions can detect it even when the
-number correct per pass shows nothing.
+preference; peer agreement can still flag errors, as two large peers do
+for Qwen2.5-7B better than 100 of its own samples (post hoc;
+App.~\ref{app:selective}). A shared seed leaves each question's answer
+distribution unchanged but feeds the same random numbers to every
+question in the pass, so a comparison across questions can detect it
+even when the number correct per pass shows nothing.
 
-The excess is marginal (Sec.~\ref{sec:all4}). The 217 questions with an
-unparseable reply may carry part of it, though dropping them also leaves 236
-split questions instead of 391. The rule for an adequate null, the single-model and pair
+The 217 questions with an unparseable reply may carry part of the
+marginal excess (Sec.~\ref{sec:all4}), though dropping them leaves only
+236 split questions. The rule for an adequate null, the single-model and pair
 removals that isolate the two pairs, and the analyses of test size,
 power and the difficulty factor were chosen after seeing the data
 (App.~\ref{app:ensemble}). Why the models in a pair fail together was
@@ -1138,5 +1139,44 @@ from the one-skill SP fit.
 adequate null.
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.{ge2.2pl_post.p_T 0.0020, ge2.{3pl_post 0.862, sp_common_tau 0.853}.{valid true, p_T}, ge3.{rasch_jml 0.0080, kg_letter4 0.0075, 2pl_post 0.0095}.p_T, ge3.kg_uniform4.{valid true, p_T 0.277}, ge1.sp_common_tau.p_T 0.9955, mean.*.valid false}
 % src: v3_G_familywise.json:G2_calibration_under_SP_truth.{ge2.2pl_post.fp_valid_and_p_T_lt_alpha 0.985, ge3.2pl_post.fp_valid_and_p_T_lt_alpha 0.575}
+
+
+%======================================================================
+\section{Selective prediction (post hoc)}
+\label{app:selective}
+
+For Qwen2.5-7B, agreement with two large models from other families
+predicts its MMLU errors better than 100 of its own samples, but a
+typical pair of peers does not; over five target models the gain varies,
+and it is absent for Phi-3-mini. An earlier
+version of this work reported this comparison with scores that used the
+gold labels; we recompute it without labels, from a specification
+written before the run.
+
+\paragraph{Scores.} The target is whether a model's greedy rotation-0
+answer is correct. Self-consistency with $K$ samples ($T=1$) scores a
+question by the share of samples that give the most frequent answer. A
+peer score is the share of $k$ other models whose greedy answer matches
+the target's. The peer rule uses no labels: one model per other family,
+largest first, which for Qwen2.5-7B gives Mistral-Small-22B and
+Gemma-2-9B. AUROC is the probability that a correct answer
+scores above a wrong one. Cost is in Qwen2.5-7B-equivalent forward passes ($B/7$ per
+greedy pass of a $B$-parameter model).
+
+\paragraph{Results.} For Qwen2.5-7B (greedy accuracy 0.71),
+self-consistency with 100 samples reaches AUROC 0.653 (95\% bootstrap
+interval 0.609--0.698). The two peers reach 0.774 (0.729--0.818), a
+gain of 0.12 (0.07--0.17; DeLong test~\citep{delong1988} $p=10^{-5}$) at about 1/22 of the
+cost; all 23 peers reach 0.758. For Qwen2.5-7B a typical pair does not: the
+mean over all 253 pairs is 0.671, not significantly above
+self-consistency, and 16\% of pairs are significantly above it. A shared letter preference
+does not explain the gain: with agreement measured in rotations 1--3,
+the mean AUROC is 0.788. Over the other targets the two-peer score beats self-consistency
+for Mistral-7B v0.3 (0.820 against 0.699), SmolLM2-1.7B (0.869 against
+0.677) and Llama-3-8B (0.813 against 0.759), but not for Phi-3-mini
+(0.801 against 0.809); for Mistral-7B v0.3 and SmolLM2-1.7B even a
+typical pair beats self-consistency. The evidence is one benchmark, 500 questions and
+five targets.
+% src: v3_selective.json:targets.<Qwen>.{SC_100 0.653 [0.609,0.698], P1_Ens2 0.774 [0.729,0.818], delta 0.121 [0.066,0.173] DeLong p 1e-5, cost factor 22.4, P2_all23 0.758, P3 pairs mean 0.671 (frac sig above 0.16), P1_Ens2_rotmean123 0.788}; secondary targets SC_100 / P1_Ens2; specs/K_selective.md (post hoc)
 
 \end{document}

@@ -44,21 +44,20 @@ Shared Seeds, Shared Prompts, and Answer-Letter Preference}
 
 \begin{abstract}
 When language models disagree on a question, the disagreement is often
-read as missing knowledge. If so, questions that need the same
-knowledge should be answered right or wrong together. We look for this
-structure with the eigenvalues of the correlation matrix between
-questions. Within one model, independently sampled answers show none
-that we can detect, but structure appears when all questions in one pass
-over the benchmark share a random seed or few-shot examples, drawn anew
-for each pass. Across 24 models, the largest
-structure beyond overall skill is a preference for one answer letter,
-mostly from one 1B-parameter model; when the options are rotated, it
-follows the letter far more than the question. Counting a question
-correct only if it is right in every rotation removes this structure,
-at least for a preference that acts on guesses. A marginal excess remains, mostly from
-two pairs of near-duplicate models, and a second skill half as strong as
-overall skill would usually be missed. Before reading disagreement as
-missing knowledge, sample independently and rotate the options.
+read as missing knowledge. Questions that need the same missing
+knowledge should then be answered right or wrong together. We look for
+this structure in the eigenvalues of the correlation matrix of the
+questions. Within one model, answers drawn independently show no
+structure the test can detect. Structure appears when all questions in one pass over the benchmark
+share one random seed or one few-shot prompt, drawn anew for each pass. Across 24 models, the largest structure beyond overall skill is a
+preference among answer letters. Without one model, Llama-3.2-1B, that
+eigenvalue falls within the range of one skill, though a weaker letter
+grouping remains. When
+the options are rotated, that structure follows the letter far more than
+the question. Counting a question correct only if it is right in every
+rotation removes this structure, at least when the preference acts only
+on the model's guesses. A marginally significant, fragile excess remains,
+tied post hoc to two pairs of near-duplicate models.
 \end{abstract}
 ]
 
@@ -68,78 +67,83 @@ missing knowledge, sample independently and rotate the options.
 \section{Introduction}
 \label{sec:intro}
 
-Self-consistency samples a language model several times on the same
-question and reads disagreement among the answers as uncertainty about
+Sampling-based methods such as self-consistency, SelfCheckGPT and
+semantic entropy sample a language model several times on the same
+question and read disagreement among the answers as uncertainty about
 the answer~\citep{selfconsistency2023,selfcheckgpt2023,semanticentropy2024}.
 In a deep ensemble, disagreement among the members is read as epistemic
-uncertainty: uncertainty that comes from missing knowledge, as opposed to
+uncertainty: the part that comes from missing knowledge, rather than from
 noise that would remain even if the model were
 known~\citep{lakshminarayanan2017,kendall2017uncertainties,huellermeier2021aleatoric}.
-Recent scores add disagreement between different models to
-self-consistency as exactly such an epistemic term~\citep{hamidieh2025}.
+Recent scores add disagreement between models to self-consistency and
+treat it as epistemic~\citep{hamidieh2025}.
 
 This reading makes a prediction. A model that lacks some piece of
-knowledge should fail on all the questions that need it, so its errors
-should cluster on related questions. We call the tendency of questions to
-be answered right or wrong together \emph{cross-question structure}.
-Models' errors are related: different models often choose the same wrong
+knowledge should fail every question that needs it, so across an
+ensemble those questions should be right or wrong together. We call that
+tendency \emph{cross-question structure}. Related structure is already
+documented: different models often choose the same wrong
 answer~\citep{correlatederrors2025}, and a few latent factors summarize
-their benchmark
-scores~\citep{burnell2023structure,ruan2024observational,iqtest2025}. We
-ask whether such structure comes from shared knowledge or from something
-else.
+benchmark scores~\citep{burnell2023structure,ruan2024observational,iqtest2025}.
+We ask whether cross-question structure really comes from shared
+knowledge.
 
-Two other sources can produce it, and both are easy to miss. The first is
-the evaluation pipeline. Call the $k$th answers to all questions
-\emph{pass}~$k$; like one member of an ensemble, a pass answers every
-question once. Within one model, a knowledge gap makes a question hard in
-every pass, but it does not make two questions succeed or fail together
-from one pass to the next. Something shared by the questions of a pass
-can. If all questions of a pass share one random seed, they share the
-sampler's random numbers, so a lucky draw for the letter ``B'' in one question is, at the same
-generation step, the same lucky draw in all of them. Within one model,
-then, any structure comes from the pipeline, not from knowledge, which
-makes the within-model runs a control. The second source is a
-habit of the model. Llama-3.2-1B, for instance, picks ``A'' nine times in
-ten when it guesses (Fig.~\ref{fig:example}). It therefore looks as if it knows every question
-whose correct answer is A, and across an ensemble those questions go
-right or wrong together, which is what shared missing knowledge would
-look like. Such letter preferences are known for single
-models~\citep{zheng2024selectors,pezeshkpour2024order,ding2026agree}. Missing knowledge
-should follow a question's content; a letter habit should follow the
-letter on which the answer is shown.
+Two other sources can produce the same structure, and both are easy to
+miss. The first is the evaluation pipeline. Within one model, knowledge
+is fixed, so each question has the same chance of a correct answer on
+every pass (pass~$k$ is the model's $k$th answer to every question, not
+pass@$k$). Knowledge therefore cannot make two questions right on the
+same passes and wrong on the others; only something the questions share
+inside a pass can. A shared random seed is one example. All questions in
+the pass then receive the same random numbers from the sampler, so a
+draw that favors the letter ``B'' at one generation step favors it in
+every question whose answer letter is emitted at that step. A shared
+few-shot prompt is another, since few-shot examples shape
+answers~\citep{zhao2021calibrate,min2022rethinking}.
+
+The second source is a letter preference of the model. Llama-3.2-1B is accurate when
+the correct answer is placed at ``A'', and below the 0.25 of a random
+guess when it is placed at the other letters (Fig.~\ref{fig:example}).
+It answers ``A'' in 81\% of its replies in the original option order, and a model fitted to its
+answers puts 0.90 of its guesses on ``A'' (App.~\ref{app:ensemble}). Questions whose correct answer is ``A'' then look like
+questions it knows, and across an ensemble those questions are right or
+wrong together. That is the pattern shared missing knowledge would
+produce. Letter preferences of single models (also called selection bias) are already
+documented~\citep{zheng2024selectors,pezeshkpour2024order,ding2026agree}.
+Rotating the options separates a letter preference from a knowledge gap. A knowledge gap stays with
+the question. A letter preference stays with the answer's letter.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_example.pdf}
 \vskip -0.08in
-\caption{Llama-3.2-1B is accurate where the answer is shown at A,
-whatever the question; Gemma-2-9B is about equally accurate at every
-letter. Filled: all 500 questions, Wilson 95\% CI. Open: each rotation
-alone (0--3, left to right), over the 118 to 129 questions whose answer
-it shows at that letter.}
+\caption{Llama-3.2-1B is accurate where the answer is placed at ``A'',
+in each of the four rotations; Gemma-2-9B is about equally accurate at every
+letter. Filled: all 500 questions, with the options rotated so that the
+correct answer is at that letter; bars: Wilson 95\% CI. Open: each of the four
+rotations alone (about 125 questions).}
 \label{fig:example}
 % src: scripts/make_fig_example.py (results/mmlu_ensemble_rotations.npz; 500 questions, 4 rotations)
 \end{figure}
 
-We test for both. Within one model, we compare runs that draw every
-answer independently with runs that share a seed or a few-shot prompt
-across questions (Sec.~\ref{sec:iid}). Across 24 models, we move the
-answer options to new letters, which changes the correct letter but not
-the content (Sec.~\ref{sec:across}), and then count a question correct
-only if a model is right under every letter order (Sec.~\ref{sec:all4}).
-Throughout, we measure structure as the excess of the eigenvalues of the
-question correlation matrix over what independent answers, or one skill
-per model, would produce. Independent sampling shows no structure that we
-can detect, and a shared seed or prompt creates it. Across models, the
-largest structure after skill is letter preference, mostly
-Llama-3.2-1B's; once letters are rotated, only a marginal excess
-remains, carried mostly by near-duplicate models. Spectral measures of
-benchmark dimensionality exist~\citep{benchscope2026}, and the pull of
-few-shot exemplars is known~\citep{zhao2021calibrate,min2022rethinking}.
-What we add is that a correctness matrix, which records no letters, still carries a letter habit, mostly one model's, as its second-largest
-direction
-(App.~\ref{app:background}).
+We test the two sources separately. Within one model, we compare
+independent draws with passes that share a seed or a few-shot prompt
+(Sec.~\ref{sec:iid}). Across 24 models, we rotate the options to new
+letters, so the gold letter (the letter of the correct option) changes
+and the question and options do not
+(Sec.~\ref{sec:across}), and we count a question correct only when the
+model is right in every rotation (\emph{all-4-correct};
+Sec.~\ref{sec:all4}). All three tests use the \emph{correctness
+matrix}: 1 if an answer is right, 0 if wrong. Structure is an eigenvalue
+of the correlation matrix of its questions that is larger than a null
+model allows:
+independent answers within one model, and, across models, one skill per
+model (a unidimensional item response model). Spectral summaries of
+benchmark dimensionality exist~\citep{benchscope2026}.
+We add that the correctness matrix records no letters, yet the second
+eigenvector of its correlation matrix follows a letter preference, and
+removing one model brings its eigenvalue within the range of one skill
+(Sec.~\ref{sec:across}).
 
 \begin{figure*}[t]
 \centering
@@ -148,15 +152,15 @@ direction
 \caption{\textbf{(a)}~Within one model: $\lambda_{\max}/\lambda_+$ (log
 axis) of each run; grey bar: 5--95\% of its simulations; circles:
 independent draws; filled: an eigenvalue above $\lambda_+$.
-\textbf{(b)}~Across models: correlation, over questions, of each
-question's eigenvector-2 loading in rotations 1--3 with the rotation-0
-mean loading of the questions whose gold letter it now shows, and with
-its own rotation-0 loading. \textbf{(c)}~$\lambda_2$--$\lambda_4$ of the
-24-model matrix in rotation 0 and all-4-correct (Sec.~\ref{sec:all4}),
-divided by the 99th percentile of two valid one-skill variants
-(App.~\ref{app:ensemble}; rotation 0: 3PL left, KG-u, a know-or-guess
-model that guesses at random, right;
-all-4-correct: 2PL left, Rasch right); filled: above it.}
+\textbf{(b)}~Across models, rotations 1--3: correlation over questions
+of each question's eigenvector-2 loading with the mean rotation-0 loading
+of the questions that had its new gold letter (same letter), or with its
+own rotation-0 loading (same question). \textbf{(c)}~$\lambda_2$--$\lambda_4$
+of the 24-model matrix in rotation 0 and all-4-correct, divided by the
+99th percentile (1000 draws) of two adequate one-skill nulls (rotation 0:
+3PL left and KG-u, uniform know-or-guess, right; all-4-correct: 2PL
+left, Rasch right); filled: above it. Other nulls:
+App.~\ref{app:ensemble} (soft-preference: not rejected).}
 \label{fig:main}
 % src: scripts/make_fig_main.py stdout (a: item01_within_table.json, item02_shared_randomness.json; b: v3_C1b_letter_following.json; c: v3_F_softpref.json rot0 suite 1000 draws, v3_C_rotations_A.json ge4 suite)
 \end{figure*}
@@ -165,90 +169,101 @@ all-4-correct: 2PL left, Rasch right); filled: above it.}
 \section{A spectral test for cross-question structure}
 \label{sec:method}
 
-We write the answers as a correctness matrix $\mathbf{C}$: entry
+We record the answers in a correctness matrix $\mathbf{C}$. Entry
 $c_{ki}$ is 1 if row $k$ answers question $i$ correctly and 0 otherwise.
 Within one model a row is a pass; across models a row is a model. We keep
 only questions that vary: within a model, the $N_b$ \emph{borderline}
 questions, whose pass rate $f_i$ (the share of passes that answer
 question $i$ correctly) lies between $\varepsilon=0.05$ and
-$1-\varepsilon$;
-across models, the \emph{split} questions, which some models answer
-correctly and others do not.
+$1-\varepsilon$; across models, the \emph{split} questions, which some 
+models answer correctly and others do not.
 
-Let $\mathbf{R}$ be the correlation matrix of the kept questions. A group
-of questions that tend to be right or wrong together gives $\mathbf{R}$
-a large eigenvalue. Its eigenvector, which we call a \emph{direction},
-says which questions belong to the group (each question's
-\emph{loading}) and which rows follow it (each row's \emph{score}). The
-question is how large is too large. If the questions were independent,
-the eigenvalues would fill the Marchenko--Pastur range, whose upper edge
-$\lambda_+=(1+\sqrt\gamma)^2$ depends only on the ratio $\gamma$ of
-questions to rows~\citep{marchenkopastur1967}.
+Let $\mathbf{R}$ be the matrix of Pearson (phi) correlations between the
+0/1 columns of the kept questions. If the
+questions were independent, every true correlation would be 0 and every
+eigenvalue would be 1. With a finite number of rows, the measured
+correlations are noisy, and the noise spreads the eigenvalues around 1.
+Marchenko and Pastur showed that the eigenvalues then fill a range
+whose upper edge is $\lambda_+=(1+\sqrt\gamma)^2$, where $\gamma$ is the
+number of questions divided by the number of
+rows~\citep{marchenkopastur1967}; as both numbers grow, the largest
+eigenvalue of such a matrix of independent entries converges to that
+edge~\citep{baisilverstein2010,jiang2004correlation}. More questions per
+row give a higher edge. For
+Llama-3-8B's 173 borderline questions and 100 passes, $\gamma=1.73$ and
+$\lambda_+=5.36$. An eigenvalue above that edge is evidence that some group of questions
+is right or wrong together more often than noise allows. Its eigenvector gives each question's
+\emph{loading}, how strongly it belongs to the group, and each
+row's \emph{score}, its projection.
 
-\paragraph{Within one model,} independence is the right reference: for a
-fixed model each question has its own chance of being answered correctly,
-and only the pipeline can tie questions together. We count the
-eigenvalues above $\lambda_+$ (the \emph{MP count}) and compare the
-largest with the same eigenvalue in 1000 simulated matrices of
-independent answers at the observed pass rates; we call such a simulated
-reference a \emph{null} (App.~\ref{app:stats}, which also gives a
-Tracy--Widom test~\citep{johnstone2001}).
+\paragraph{Within one model,} knowledge is fixed, so only the pipeline
+can make questions right or wrong together (Sec.~\ref{sec:intro}). This
+test checks the pipeline, not
+knowledge, and its null model is independence. We count the eigenvalues
+above the Marchenko--Pastur (MP) edge $\lambda_+$ (the \emph{MP count}). Because $\lambda_+$ is a limit
+for large matrices, we also compare the largest eigenvalue with its
+values in 1000 simulated matrices of the same size, in which each
+question keeps its observed pass rate and every answer is drawn
+independently (App.~\ref{app:stats}).
 
-\paragraph{Across models,} independence is the wrong reference. A stronger
-model answers more questions correctly, so every question is tied to model
-skill. The reference is instead an item response model that gives each
-model $m$ one skill $\theta_m$ and each question $i$ a difficulty $b_i$
-and a slope $a_i$: the model answers correctly with probability
-$\sigma(a_i(\theta_m-b_i))$, with $\sigma$ the logistic function (the two-parameter logistic, or 2PL,
-model~\citep{lordnovick1968}). One skill can already produce
-a second large eigenvalue with 0/1 answers, through a component that
-separates easy from hard questions, the \emph{difficulty factor} of
-binary items~\citep{ferguson1941,mcdonald1974}; judged by $\lambda_+$,
-that would look like structure. So we fit the one-skill model, simulate
-datasets from it, and say that the $j$th largest eigenvalue $\lambda_j$ (rank $j$)
-\emph{exceeds} it if it lies above the 99th percentile of the simulated
-$\lambda_j$. We fit several variants of this null: without guessing (the
-2PL, and Rasch, which gives every question the same
-slope~\citep{rasch1960}) and with guessing (the three-parameter 3PL,
-with a guessing floor of 0.25, and know-or-guess variants;
-App.~\ref{app:ensemble}),
-and keep a variant only if it is \emph{valid}: if it reproduces the
-observed first eigenvalue, which measures how tightly skill ties the
-answers together. An excess can also spread over several eigenvalues, so
-a \emph{family-wise test} asks whether the most extreme of the second to
-fourth eigenvalues is more extreme than in the simulations, with
-$p$-value $p_M$. We set the validity rule after our first analyses. We then wrote down
-the family-wise test and the \emph{sibling groups} of near-duplicate
-models (versions or fine-tunes of one base model at one size) before
-running them, but after a post-hoc joint statistic over ranks 2 to 4, which rejected, the per-rank tests
-and the model-pair correlations had been computed on the same data, so these tests are not
-independent of those earlier analyses. Removals of single models or model pairs, and
-the size, power and difficulty analyses, are post hoc.
+\paragraph{Across models,} independence is the wrong null model. A strong
+model is right on many questions and a weak one on few, so any two
+questions are correlated through skill alone; this gives one large
+eigenvalue, $\lambda_1$. The null model is a one-skill item response model. Model $m$
+has skill $\theta_m$, question $i$ has difficulty $b_i$ and discrimination (slope) $a_i$,
+and the probability of a correct answer is $\sigma(a_i(\theta_m-b_i))$,
+with $\sigma$ the logistic function. This is the two-parameter logistic
+(2PL) model~\citep{lordnovick1968}. With 0/1 answers, skill alone can
+also produce a second large eigenvalue, the \emph{difficulty factor} of
+binary items~\citep{ferguson1941,mcdonald1974}, because a 0/1 question
+correlates more strongly with questions of similar difficulty. In the
+all-4-correct matrix of Sec.~\ref{sec:all4} (391 split questions, 24
+models), $\lambda_+=25.4$, yet one-skill simulations
+have a median $\lambda_2$ of 28.2. We fit the model,
+simulate datasets from it, and say that $\lambda_j$, the $j$th
+largest eigenvalue (rank $j$), \emph{exceeds} the null when it lies above
+the 99th percentile of its simulations.
+
+Two nulls ignore guessing: the 2PL, and Rasch, which gives every
+question the same discrimination~\citep{rasch1960}. Because a model that does not know the
+answer is still right a quarter of the time, we also fit the
+three-parameter logistic (3PL), with its guessing parameter, the lowest
+chance of a correct answer, fixed at 0.25, and knowledge-or-random-guessing
+(\emph{know-or-guess}) nulls. In the uniform one, KG-u, a model that does not
+know the answer guesses one of the four letters with equal probability
+(App.~\ref{app:ensemble}). A null is \emph{adequate} when the
+observed $\lambda_1$, the skill eigenvalue, falls between that null's 1st
+and 99th percentiles; a null that cannot reproduce skill cannot judge
+what lies beyond it.
+
+Structure beyond skill can appear in $\lambda_2$, $\lambda_3$ or
+$\lambda_4$. The \emph{max-statistic test} tests all three at once: it
+takes the largest of their percentiles among simulated eigenvalues of the
+same rank and compares it with the same maximum in each simulated
+dataset. Its
+$p$-value is $p_M$.
 
 \paragraph{Rotations.} Each model answers every question four times, with
-the options moved zero, one, two or three letters later, cyclically. The
-\emph{gold letter}, the letter of the correct option, changes; the
-content does not. A pattern of content stays with the question, and a
-letter habit follows the letter. Counting a question correct only if it
-is right in all four rotations, which we call \emph{all-4-correct} (the
-CircularEval rule of~\citet{mmbench2024}), leaves a model that guesses by
-letter at most a $1/256$ chance on any question, the same for every
-question.
+the options moved zero (rotation 0, the original order), one, two or
+three letters later, cyclically. We count a question correct only if it
+is right in all four rotations: all-4-correct, the
+CircularEval rule of~\citet{mmbench2024}. A guess with any fixed letter preference is then correct
+with probability at most $1/256$ on every question, because the correct
+answer visits each letter once and the product of the four letter
+probabilities is at most $(1/4)^4$.
 
-\paragraph{Runs.} Within one model (App.~\ref{app:data}), twelve
-\emph{independent-draw runs} give every answer its own seed, as
-self-consistency does: five models on 500 MMLU
-questions~\citep{mmlu2021}, three on HellaSwag~\citep{zellers2019hellaswag},
-Qwen2.5-7B on GSM8K~\citep{gsm8k2021} at two output lengths, and
-Qwen2.5-7B on MMLU at temperatures 0.5 and 1.5, each with $K=30$ to 100
-passes (Table~\ref{tab:runs}). One \emph{shared-seed run} gives all
+\paragraph{Runs.} Within one model there are twelve
+\emph{independent-draw runs} on MMLU~\citep{mmlu2021},
+HellaSwag~\citep{zellers2019hellaswag} and GSM8K~\citep{gsm8k2021}, in
+which each answer has its own seed, as in self-consistency
+(Table~\ref{tab:runs}). Each run has $K=30$ to 100 passes. One \emph{shared-seed run} gives all
 questions of a pass one seed, and two \emph{shared-prompt runs} draw five MMLU
-development questions for each pass and place them, with their answers,
-before every question of that pass. Across models, 24 models from ten families answer the
-500 MMLU questions in all four rotations by greedy decoding. Replies that cannot be read as one answer are scored wrong. They are at
-most 1.65\% of replies within one model and 12.4\% of one model's
-replies across models, but 217 of the 500 questions have at least one
-(App.~\ref{app:data}).
+development questions (the few-shot \emph{exemplars}) for each pass and place them, with their answers,
+before every question of that pass. Across models, 24 models from ten
+families answer the 500 MMLU questions in all four rotations by greedy
+decoding. A reply that cannot be read as a single answer is \emph{unparseable}
+and scored wrong; across models, 217 of the 500 questions have at least one such
+reply (App.~\ref{app:data}).
 % src: item13_unparseable.json:rates_sampled_runs (max 0.0165); rates_greedy_24 (max 0.124, Mistral-7B v0.2, rotation 0); v3_G_familywise.json:G6_unparsed_variants.ge4__drop_any.n_questions_dropped (217)
 % src: item01_within_table.json:runs[*].{K, temperature, N} (MMLU K 100; HellaSwag K 50; GSM8K 256/1024 and MMLU T0.5/T1.5 K 30)
 
@@ -256,162 +271,181 @@ replies across models, but 217 of the 500 questions have at least one
 \section{Results}
 \label{sec:results}
 
-\subsection{Within one model: structure only from a shared component}
+\subsection{Within one model: detectable structure only from a shared seed or prompt}
 \label{sec:iid}
 
 In all 12 independent-draw runs, the MP count is zero: the largest
-eigenvalue stays below $\lambda_+$ and inside the range of its
-simulations
-(Fig.~\ref{fig:main}a; App.~\ref{app:stats}). The test can see weak
-structure. A factor shared by the questions of a pass, strong enough to
-make their 0/1 answers correlate at about 0.025, is detected in every
-simulation at Llama-3-8B's 173 borderline questions, though only in 47\%
-at Qwen2.5-7B's 43, and a cluster of nine questions can be missed
-(App.~\ref{app:power}).
+eigenvalue stays below $\lambda_+$ and between the 5th and 95th
+percentiles of its simulations
+(Fig.~\ref{fig:main}a; App.~\ref{app:stats}). The test detects weak
+structure spread over many questions: a factor shared by the questions of a pass, with latent
+correlation 0.05 (0/1 correlation about 0.025), is detected in every
+simulation at Llama-3-8B's 173 borderline questions, and in 47\% of
+simulations at Qwen2.5-7B's 43. A factor on only nine questions, by contrast, even at latent
+correlation 0.2 and picked at random
+or from one subject, is detected in at most a quarter of simulations (11 to 24\%; App.~\ref{app:power}).
 % src: item01_within_table.json:runs[*].mc_null_z.percentile_of_obs (min 0.102, max 0.835); runs[*].eps_sweep[*].mp_count (all 0)
 % src: item03_power.json:models.<MMLU Meta-Llama-3-8B>.scenarios[3].power_mp_strict (1.0); <MMLU Qwen2.5-7B T1.0>.scenarios[3].power_mp_strict (0.47); scenarios[7,9].power_mp_strict (0.232 random, 0.238 within one subject); latent rho 0.05, 0/1 correlation about rho/2
 
-Sharing a seed or a prompt changes this at once. In all three such runs
+Sharing a seed or a prompt changes this. In all three such runs
 the largest eigenvalue lies far above every simulation, and the MP count
-is two to four. The loadings show why. Our sampler (vLLM)
-divides each token's probability by a random number and emits the token
-with the largest ratio, so with a shared seed a letter that draws a small number at a given step
-is favored in every question of the pass that generates its letter at
-that step (App.~\ref{app:mechanism}).
-In Qwen2.5-7B's shared-seed run, the gold letter accordingly explains a share $\eta^2=0.73$ of the
-variance of the top direction's loadings (permutation
-$p=0.0002$). With a shared prompt, Llama-3-8B copies the answer letters of
-the exemplars, and its top direction also groups by gold letter.
-Qwen2.5-7B's does not, but two of its passes that happen to draw a common
-exemplar answer more alike than two that do not ($p=0.0005$).
+is two to four. For the shared seed, the cause is the sampler's shared random numbers
+(Sec.~\ref{sec:intro}; App.~\ref{app:mechanism}). In Qwen2.5-7B's
+shared-seed run, the gold letter explains 73\% of
+the variance of the top eigenvector's loadings ($\eta^2=0.73$,
+permutation $p=0.0002$). With a shared prompt, Llama-3-8B copies the exemplars' answer letters, and
+its top eigenvector also groups by gold
+letter ($\eta^2=0.53$). Qwen2.5-7B's top eigenvector does not group by gold
+letter. Its passes are coupled by the exemplars themselves: passes that share an
+exemplar agree more on borderline questions than passes that share
+none ($p=0.0005$).
 % src: item02_shared_randomness.json:runs.<run>.mc_null_z.percentile_of_obs (1.0 each); runs.<run>.mp_count_buffered (4, 2, 2)
 % src: item02_shared_randomness.json:runs.<sharedseed Qwen>.top_pc.loadings_eta_sq_by_gold_letter.{eta_sq 0.73, perm_p 0.0002}; <sharedprompt Llama> (0.53, 0.0002); <sharedprompt Qwen> perm_p (0.094)
 % src: item02_shared_randomness.json:runs.<sharedprompt Qwen>.exemplar_alignment.pass_pair_similarity_shared_exemplars_borderline.perm_p_upper (0.0005)
 
-\subsection{Across models: the second direction is letter preference}
+\subsection{Across models: the second eigenvector follows the answer letter}
 \label{sec:across}
 
-In rotation 0, the first direction of the 24-model matrix is skill: the
-models' scores on it correlate with their accuracy at $r=0.94$. Here only
-one-skill variants that allow guessing are valid. The second eigenvalue, 49.9 (the edge $\lambda_+$ is 28.9 for the 460
-split questions), exceeds the 99th percentile of each of the three valid variants that let a
-model guess at random (3PL and KG-u) or by its own letter preference (a
-\emph{letter-aware} know-or-guess null), and it is the
-only eigenvalue that does; the
-family-wise test rejects all three ($p_M=0.002$; Fig.~\ref{fig:main}c).
+In rotation 0, the first eigenvector of the 24-model matrix is skill: the
+models' scores on it correlate with their accuracy at $r=0.94$. Three
+nulls with guessing are adequate: the 3PL, KG-u, and the
+letter-aware null, a know-or-guess null in which a model that is
+guessing uses its own fitted letter preference. The second eigenvalue, 49.9 on 460
+split questions, exceeds the 99th percentile of all three, and no other
+eigenvalue does. The max-statistic test rejects them
+($p_M=0.002$; Fig.~\ref{fig:main}c).
+
+The loadings on this second eigenvector group by gold letter, and the
+models' scores on it follow their share of ``A'' answers ($r=0.76$) and,
+with the opposite sign, their share of ``D'' answers ($r=-0.90$). Within one rotation
+each question's gold letter is fixed, so letter and content cannot be
+told apart; across rotations they can. Suppose a question's
+correct answer moves from ``B'' in rotation 0 to ``C'' in rotation 1. If its
+loading comes from content, its new loading matches its own rotation-0
+loading. If it comes from a letter preference, its new loading matches
+the average rotation-0 loading of the questions whose answer was at ``C''. The eigenvector follows the letter
+($r=0.60$ to $0.64$) and barely follows the question ($r=-0.06$ to
+$0.16$; Fig.~\ref{fig:main}b).
+
+A fourth adequate null, the \emph{soft-preference} null, puts a fitted
+letter preference on top of one skill and lets it act on every answer,
+not only on guesses. The max-statistic test does not reject this null
+($p_M=0.079$), although the null fails its predictive check. A check of
+$\lambda_2$ on its own still finds the observed value unlikely
+($p=0.010$; App.~\ref{app:ensemble}). The fitted letter preference
+explains part of the eigenvector, not all of it.
+
+The eigenvalue depends on one model, Llama-3.2-1B. Removing it lowers
+$\lambda_2$ from 49.9 to 35.0, below the 99th percentile of
+the 3PL null on the other 23 models; removing any other single model
+leaves it between 47.1 and 52.4. Without Llama-3.2-1B the letter
+grouping moves to eigenvector 3 ($\eta^2=0.21$), and the
+max-statistic test still rejects the 3PL null through $\lambda_4$
+($p_M=0.003$; App.~\ref{app:ensemble}).
+
 % src: v3_B_extra.json:suite.observed.top_eigs; item07_across_model.json:observed.{n_split 460, lambda_plus 28.92}; v3_B_extra.json:letter_analysis.eigenvectors[0].model_score_corr.accuracy.r (0.94)
 % src: v3_F_softpref.json:step1_construction_family.table.full.rot0.{observed_pct_rank1to4_by_null.{3pl_post 76.4, kg_uniform4 98.7, 2pl_post 100, rasch_jml 100}, ranks_above_p99_by_null.{3pl_post,kg_uniform4,letter_post} ([2])}
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.rot0.{3pl_post,kg_uniform4,letter_post}.{valid true, p_T 0.0020}
-
-What is this second direction? Its loadings group by gold letter, and the models' scores on it follow their share of A answers ($r=0.76$)
-and, with the opposite sign, of D answers ($r=-0.90$). Within
-one rotation, however, a question's gold letter is fixed, so this cannot
-tell a letter habit from content. Rotation can. In rotations 1 to 3 we
-correlate each question's loading with two quantities from rotation 0:
-its own loading, and the average loading of the questions that had its
-new gold letter. A content direction would follow the first, a letter
-habit the second. The direction follows the letter ($r=0.60$ to 0.64)
-and hardly the question ($r=-0.06$ to 0.16; Fig.~\ref{fig:main}b), which
-leaves room for at most a small part that follows content. A fourth valid variant, the \emph{soft-preference} null, adds to one
-skill a fitted letter preference that acts on every answer, not only on
-guesses. The family-wise test does not reject it ($p_M=0.079$), but it
-makes the observed second eigenvalue unlikely ($p=0.010$;
-App.~\ref{app:ensemble}), so even an explicit letter habit on top of
-one skill does not fully reproduce the direction.
 % src: v3_B_extra.json:letter_analysis.eigenvectors[1].{eta_sq_by_shown_gold_letter.{eta_sq 0.482, perm_p 0.0002}, model_score_corr.share_D.r -0.90}
 % src: v3_C1b_letter_following.json:A.eigvec2.{1,2,3}.{r_shown 0.64/0.60/0.61, r_direct -0.06/0.16/-0.003}
 % src: v3_G_familywise.json:G5_single_validity_rule.sp_table_A2.full.rot0.rank2_cal_p (0.010); G1_familywise.by_score_and_null.rot0.sp_common_tau.p_T (0.079)
-
-Most of the direction is Llama-3.2-1B's habit. Removing it lowers the second eigenvalue from 49.9 to 35.0,
-below what one skill produces for the other 23 models, while removing any
-other single model leaves it between 47.1 and 52.4. A weaker excess then remains at the fourth eigenvalue, and the
-family-wise test still rejects the 3PL null ($p_M=0.003$;
-App.~\ref{app:ensemble}).
 % src: v3_C_rotations_A.json:kg_fits_4_rotations.letter_preference.<meta-llama/Llama-3.2-1B-Instruct>.pi_A_B_C_D[0] (0.90)
 % src: v3_B_leave_one_out.json:leave_one_out_spectra.<meta-llama/Llama-3.2-1B-Instruct>.rot0.top_eigs[1] (35.0); v3_summary_derived.json:loo_rot0_lambda2_min_max_without_llama_3_2_1b_removal ([47.1, 52.4]); without_llama_3_2_1b.rot0_suite.nulls.3pl_post.rank_eigs_p99[1] (40.07)
 % src: v3_I_llama.json:I1_without_llama1b.table.rot0.3pl_post.{valid true, p_T 0.0035, pct_rank1to4 [96.6, 48.2, 98.5, 99.9], T_argmax_rank 4} (post hoc)
+% src: v3_I_llama.json:I1_without_llama1b (letter grouping moves to eigvec 3, eta_sq 0.21) (post hoc)
 
-\subsection{After rotation: a marginal excess, mostly from two model pairs}
+\subsection{After rotation: a marginal excess that depends on two model pairs}
 \label{sec:all4}
 
-Counting a question correct only if it is right in all four rotations
-removes a letter habit that acts on guesses; whether a habit that also tilts answers a model partly knows survives,
-we cannot test
-(App.~\ref{app:ensemble}). In the all-4-correct matrix, the second
-eigenvalue lies inside the range of the valid one-skill variants
-(Fig.~\ref{fig:main}c). That range is wide, because one skill alone
-already lifts the second eigenvalue above $\lambda_+$ through the
-difficulty factor. Could a real second skill hide in it? We planted one
-in simulation, on the third of the questions that come from STEM
-subjects and as strong as the first skill (the same spread across models
-and the same median slope). The second eigenvalue alone
-caught it in 69 to 78\% of datasets, and the family-wise test in more
-than 90\%. A second skill half as strong would usually be missed
+All-4-correct cancels a letter preference that acts only on guesses. In
+the all-4-correct matrix (391 split questions), $\lambda_2$ lies below
+the 99th percentile of both adequate one-skill nulls
+(Fig.~\ref{fig:main}c). The difficulty factor makes those null
+distributions wide, and a real second skill could hide inside them. We
+planted one, as strong as the first, on the 125 kept questions from STEM
+subjects. The max-statistic test detected this planted skill in more than 90\% of
+datasets, and one half as strong in about a fifth
 (App.~\ref{app:ensemble}).
+
+What remains is a marginal excess on $\lambda_3$ and $\lambda_4$. Only
+$\lambda_4$ under the 2PL exceeds its 99th percentile, at the 99.1st in
+2000 draws (Table~\ref{tab:fw}; just below it in the 1000 of
+Fig.~\ref{fig:main}c), and no eigenvalue exceeds both nulls. The
+max-statistic test still rejects both ($p_M=0.026$ for the 2PL and
+$0.041$ for Rasch). Under a true one-skill model the same test rejects
+slightly too often, in up to 8.7\% of datasets at the 5\% level;
+recalibrated against datasets simulated from the fitted models, $p_M$
+is 0.033 and 0.047 for the 2PL test and 0.057 and 0.017 for the Rasch
+test. Dropping the 217 questions that contain an unparseable reply,
+which leaves 236 split questions, ends the rejection.
+
+The excess depends on near-duplicate models. Before running the
+max-statistic test, we listed the \emph{sibling groups}, successive
+releases or fine-tunes in one family at one size: Phi-3/3.5-mini,
+Llama-3/3.1-8B, Qwen2/2.5-7B, and Mistral-7B v0.2/v0.3 with Zephyr-7B.
+Keeping one model from each group, in any of the 24 ways, ends the
+rejection. Removing five other models at random instead keeps the
+rejection in all 24 draws. A follow-up, chosen after seeing this
+result, isolates two pairs. Removing one model from
+Phi-3-mini/Phi-3.5-mini and one from Llama-3-8B/Llama-3.1-8B raises
+$p_M$ above 0.2 under both nulls. None of 190 removals of two other
+models reaches 0.2. Llama-3.2-1B carries part of the excess:
+removing it alone ends the rejection ($p_M=0.059$ for the 2PL, $0.089$
+for Rasch), though 12 of the 19 removals of it with another non-pair model
+still reject under the 2PL. Whether all-4-correct removes a preference that
+also tilts answers a model partly knows cannot be tested: the
+soft-preference null is not adequate there. Letter shares flag
+Llama-3.2-1B, Qwen2.5-0.5B and SmolLM2-1.7B, and 2PL residual correlations flag the two
+pairs (App.~\ref{app:ensemble}).
+
 % src: v3_C_rotations_A.json:C3_rotation_invariant.all4_correct.spectrum.{n_cols 391, lambda_plus 25.36, top_eigs}
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.ge4.{2pl_post.{valid true, rank_eigs_p99[1] 31.94}, rasch_jml.{valid true, rank_eigs_p99[1] 30.18}}; G5_single_validity_rule.sp_table_A2.full.ge4.plain_valid false
 % src: v3_J_power2pl.json:J1_power_2pl_truth.{1,0.5}.{2pl_post,rasch_jml}.{detect_rank2_per_rank (0.685, 0.78), detect_familywise (0.91, 0.925; 0.195, 0.205)}; meta.n_stem_kept (125 of 391) (post hoc)
-
-What remains is a marginal excess spread over the third and fourth
-eigenvalues. No single eigenvalue exceeds both valid variants (no all-4-correct marker in Fig.~\ref{fig:main}c is filled), but the
-family-wise test rejects them ($p_M=0.026$ and 0.041; Table~\ref{tab:fw}),
-though it is slightly liberal here (Sec.~\ref{sec:discussion}).
-Most of this excess comes from near-duplicate models. Keeping one model
-of each sibling group (Phi-3/3.5-mini, Llama-3/3.1-8B, Qwen2/2.5-7B, and
-Mistral-7B v0.2/v0.3 with Zephyr-7B) ends the rejection in all 24 ways of choosing,
-while removing as many other models at random never does. A follow-up,
-chosen after seeing this result, isolates two pairs: removing one model
-of Phi-3-mini/Phi-3.5-mini and one of Llama-3-8B/Llama-3.1-8B raises
-$p_M$ above 0.2, more than any of 190 removals of two other models.
-Llama-3.2-1B carries part of the excess too: removing it alone also ends
-the rejection, though less clearly. Simple checks agree: letter shares flag
-Llama-3.2-1B among three letter-biased models, and residual correlations
-of the one-skill fit rank the two pairs first and second of 276
-(App.~\ref{app:ensemble}).
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.ge4.{2pl_post.pct_rank1to4 [31.45, 71.8, 98.45, 99.1], rasch_jml.pct_rank1to4 [54.15, 94.55, 96.95, 98.6], 2pl_post.p_T 0.0265, rasch_jml.p_T 0.0415}
 % src: v3_G_familywise.json:G4_siblings.sibling.ge4.*.n_reject_raw (0 of 24); G4_siblings.random_control.ge4.n_reject_raw_both_nulls (24)
 % src: v3_H_followup.json:H2_pair_removal_vs_reference.by_null.{2pl_post,rasch_jml}.{pair_removals[*].p_T (0.219-0.685; 0.322-0.382), reference_n 190, reference_max (0.0989, 0.1329)}
 % src: v3_I_llama.json:I1_without_llama1b.table.ge4.{2pl_post.p_T 0.0595, rasch_jml.p_T 0.0890} (post hoc); v3_H_followup.json:H3_baselines.{n_models_max_share_gt_0p5 3, residual_corr ranks 1, 2 of 276}
+% src: v3_H_followup.json:H1 calibrated_p_of_real (2PL test 0.033/0.047; Rasch test 0.057/0.017); v3_I_llama.json:I2 with_llama1b (12 of 19 reject 2PL, 6 Rasch); v3_H_followup.json:H3_baselines.letter_shares
 
 %======================================================================
 \section{Discussion}
 \label{sec:discussion}
 
-In our data, the structure beyond skill that we can attribute comes from
-something other than knowledge: from a seed or prompt shared within one
-model, and from a letter habit across models, mostly Llama-3.2-1B's.
-After rotation, a marginal excess of untested origin remains. One habit
-of one model is enough to create a direction that an ensemble would read
-as missing knowledge, and scores that treat cross-model disagreement as
-epistemic~\citep{hamidieh2025} should be checked for it. For self-consistency, a shared seed leaves the distribution of each question's answers
-unchanged but couples the questions of a pass, so it matters for any
-analysis that compares or pools answers across questions.
 
-The remaining excess is marginal. Under one skill per model, the
-family-wise test rejects in up to 8.7\% of simulated datasets at the
-5\% level, the calibrated $p_M$ are 0.017 to 0.057, and the rejection
-ends when the 217 questions with an unparseable reply are dropped, so
-parse failures may carry part of the excess, though only 236 split
-questions then remain. The
-two pairs were chosen after seeing the data, and why they fail together,
-whether through knowledge gaps from shared training data, contamination
-or another cause, we did not test; architecture, family, scale and
-training data vary together in the ensemble. The test can miss a second
-skill half as strong as the first, structure carried by a few models,
-and anything outside correctness, such as log-probabilities. Our runs
-cover instruction-tuned models of 1.7B to 8B parameters within one model
-and 500 MMLU questions across models, and the thresholds are not
-corrected for the several variants and scores we tried. We did not test
-whether item-level factor and item response
-analyses~\citep{metabench2025,benchscope2026,jeirt2025} or shared wrong
-answers~\citep{correlatederrors2025} carry the same letter confound.
+Within one model, detectable cross-question structure comes only from a
+shared seed or prompt; across models, the largest structure beyond skill
+is a letter preference, strongest in one model; after rotation, a
+marginally significant, fragile excess remains, tied post hoc to
+near-duplicate models. A letter preference, even one carried by a single model, can
+create an eigenvector that an
+ensemble would read as missing knowledge. Scores that treat cross-model
+disagreement as epistemic~\citep{hamidieh2025} should be checked for letter
+preference. A shared seed leaves the distribution of each question's answers
+unchanged but feeds the same random numbers to every question in the
+pass, so any analysis that compares or pools answers across questions
+can detect it.
+
+The excess is marginal (Sec.~\ref{sec:all4}). The 217 questions with an
+unparseable reply may carry part of it, though dropping them also leaves
+the test less power. The adequacy rule, the single-model and pair
+removals that isolate the two pairs, and the analyses of test size,
+power and the difficulty factor were chosen after seeing the data
+(App.~\ref{app:ensemble}). Why the models in a pair fail together was
+not tested; shared knowledge gaps from common training data,
+contamination and other causes remain open. In the
+ensemble, architecture, family, scale and training data vary together. The test
+can also miss structure carried by a few models, and anything outside the
+correctness matrix, such as log-probabilities. The within-model runs use
+instruction-tuned models of 1.7B to 8B, and the across-model runs 500
+MMLU questions. No threshold is corrected for the nulls and
+scoring rules tried.
 % src: v3_H_followup.json:H1_size_under_one_ability_truth (max 0.087; calibrated_p_of_real 0.017-0.057); v3_G_familywise.json:G6_unparsed_variants.ge4__drop_any.{n_questions_dropped 217, nulls.p_T 0.23, 0.12}
 
-Before reading an ensemble's errors as missing knowledge, we recommend
-drawing every sample with its own seed, rotating the answer options and
-counting a question correct only if it is right in every rotation,
-testing what remains against a fitted one-skill model, and checking
-whether near-duplicate models carry it.
+Before an ensemble's errors are read as missing knowledge, each answer
+needs its own seed. The options should be rotated, a question counted
+correct only if it is right in every rotation, and any remaining
+structure tested against a fitted one-skill model and checked for
+near-duplicate models.
 
 {\footnotesize
 \bibliography{references}
@@ -431,9 +465,9 @@ whether near-duplicate models carry it.
 \section{Background}
 \label{app:background}
 
-Which parts of the method are classical? The eigenvalue test and the
-one-skill models of educational testing are; what is new is the effect
-of a letter preference on a correctness matrix.
+The eigenvalue test and the one-skill models of educational testing are
+classical. What is new is the effect of a letter preference on a
+correctness matrix.
 
 \paragraph{Eigenvalue tests.} $n$ questions with pairwise correlation
 $\kappa$ have a population eigenvalue of $1+(n-1)\kappa$, which grows with $n$, so
@@ -443,30 +477,32 @@ with finite variance~\citep{marchenkopastur1967,baisilverstein2010} and
 for sample correlation matrices of i.i.d.\ entries~\citep{jiang2004correlation}.
 For Gaussian data, the largest eigenvalue minus $\lambda_+$, divided by
 $\sigma_{\mathrm{TW}}=(1+\sqrt\gamma)(1+1/\sqrt\gamma)^{1/3}K^{-2/3}$,
-converges to the Tracy--Widom law~\citep{johnstone2001}; this ratio is
+converges to the Tracy--Widom law~\citep{johnstone2001}. That ratio is
 our $z$. For correlation matrices the limit is proved, as far as we
 know, only without centering or for Gaussian
-entries~\citep{baopanzhou2012,pillaiyin2012}; our columns are Bernoulli with unequal pass rates and centered at their
-sample means, so we calibrate $z$ by
-simulation (App.~\ref{app:stats}).
+entries~\citep{baopanzhou2012,pillaiyin2012}. Our columns are Bernoulli,
+with unequal pass rates, and they are centered at their sample means, so
+$z$ is calibrated by simulation (App.~\ref{app:stats}).
 
 \paragraph{Option position.} \citet{ding2026agree} shuffle the options
 and find that part of a model's self-agreement depends on option
 position. In the option-level response model of \citet{fei2026wrong}, a
 per-model positional preference barely helps to predict held-out
 correctness (accuracy 0.840 with it, 0.838 without). Sec.~\ref{sec:across}
-shows that such a preference can still create the second direction of a
-correctness matrix.
+shows that such a preference can still create the second eigenvector of a
+correctness matrix. We did not test whether item-level factor and item
+response analyses~\citep{metabench2025,benchscope2026,jeirt2025}, or
+shared wrong answers~\citep{correlatederrors2025}, carry the same letter
+confound.
 % src: Fei et al. 2026, Table 1 (5-fold held-out accuracy, full 0.8395 vs without delta 0.8382); attack2_citations.md
 
 %======================================================================
 \section{Data collection}
 \label{app:data}
 
-Could the parser or the data explain the results? Within one model, no
-count changes when unparseable replies are dropped or imputed. Across
-models, dropping every question with an unparseable reply ends the
-marginal all-4-correct rejection.
+Within one model, no count changes when unparseable replies are dropped
+or imputed. Across models, dropping every question with an unparseable
+reply ends the marginal all-4-correct rejection.
 
 \paragraph{Questions.} MMLU: ten random questions from each of the
 first 50 subjects in alphabetical order. HellaSwag: 200 validation
@@ -480,18 +516,20 @@ sets.
 in its own chat template (raw text for Phi-2, which has none), checked
 against an independent reference tokenization; shared-prompt messages
 place the five exemplars, with their answer letters, before the
-question. Generation uses vLLM 0.23.0 in bfloat16 with plain temperature
-sampling and at most 8 new tokens for MMLU and HellaSwag and 256 (or
-1024) for GSM8K; the 24-model runs decode greedily with deterministic
+question. Generation uses vLLM 0.23.0 in bfloat16, with plain temperature
+sampling and at most 8 new tokens for MMLU and HellaSwag, and 256 or
+1024 for GSM8K. The 24-model runs decode greedily, with deterministic
 kernels. Every sample $(k,i)$ has its own seed, except in the
 shared-seed run. vLLM gives each seeded request its own random-number
-generator, so its noise does not depend on its position in a batch.
+generator, so the noise does not depend on the request's position in a
+batch.
 
-\paragraph{Scoring.} A multiple-choice reply is read as letter X when it
-begins with X (optionally after ``Answer:'', a parenthesis or bold
-markers) and does not negate or hedge it, or when its first line says
-``the answer is X'' or similar. A reply that names several letters, negates its letter,
-or fits neither rule is unparseable and scored wrong. A GSM8K reply is
+\paragraph{Scoring.} A multiple-choice reply counts as letter X in either
+of two cases. It begins with X, optionally after ``Answer:'', a
+parenthesis or bold markers, and it does not negate or hedge that
+letter. Or its first line says ``the answer is X'', or an equivalent
+phrase. A reply that names several letters, negates its letter, or fits
+neither case is unparseable and is scored wrong. A GSM8K reply is
 correct when the number after its last ``\#\#\#\#'', or else its last
 number, equals the gold answer.
 
@@ -501,13 +539,14 @@ ensemble, Mistral-7B v0.2 has 12.4\% and every other model at most
 9.6\%. Dropping every question with an unparseable reply, or imputing
 each such reply by the question's mean, leaves every count of the
 independent-draw runs at zero and both counts of Llama-3-8B's
-shared-prompt run at two. On all-4-correct, the family-wise test still
-rejects after imputation and without the 95 questions whose score an
-unparseable reply decides, but not without all 217 questions that have
-one (Table~\ref{tab:fw}). In rotation 0, dropping the 112 questions with
-an unparseable reply moves rank 2 to the 98.3rd percentile of the
-letter-aware null (App.~\ref{app:ensemble}); it stays above the 3PL
-null, and the family-wise test rejects both ($p_M=0.013$ and 0.004).
+shared-prompt run at two. On all-4-correct, the max-statistic test still
+rejects after imputation, and after dropping the 95 questions whose
+score an unparseable reply decides. It does not reject after dropping
+all 217 questions that have one (Table~\ref{tab:fw}). In rotation 0,
+dropping the 112 questions with an unparseable reply moves rank 2 to the
+98.3rd percentile of the letter-aware null. Rank 2 stays above the 3PL
+null. The max-statistic test rejects the letter-aware null
+($p_M=0.013$) and the 3PL ($p_M=0.004$; App.~\ref{app:ensemble}).
 % src: item13_unparseable.json:rates_sampled_runs.<hellaswag Llama>.unparseable_rate (0.0165); rates_greedy_24.<Mistral-7B-v0.2>.unparseable_rate (0.124); <zephyr-7b-beta> (0.096, the next largest)
 % src: item13_unparseable.json:within_model_sensitivity.*.{drop_questions_with_any_unparseable,impute_question_mean}.mp_count_* (0 for iid; 2/2 for Llama shared prompt)
 % src: v3_G_familywise.json:G6_unparsed_variants.{ge4__drop_affected.n_questions_dropped 95, ge4__drop_any.{n_questions_dropped 217, n_cols 236}, rot0__drop.{n_questions_dropped 112, nulls.letter_post.pct_rank1to4[1] 98.3, nulls.{letter_post,3pl_post}.p_T (0.013, 0.004), nulls.3pl_post.ranks_beyond_ability 1}, rot0__impute.nulls.*.ranks_beyond_ability (1, 1)}
@@ -524,11 +563,11 @@ tests independence.
 \section{Calibration of the within-model test}
 \label{app:stats}
 
-Is the within-model test calibrated? No theorem we know of gives the limit
-of $z$ for our matrix (App.~\ref{app:background}), so we judge $z$ and the MP
-count against Monte Carlo nulls of independent answers. Against them,
-no independent-draw run shows structure at any borderline threshold,
-and every shared-component run does at all of them.
+No theorem we know of gives the limit of $z$ for our matrix
+(App.~\ref{app:background}), so $z$ and the MP count are judged against
+Monte Carlo nulls of independent answers. Against those nulls, no
+independent-draw run shows structure at any borderline threshold, and
+every shared-seed or shared-prompt run shows it at all of them.
 
 \begin{table}[t]
 \caption{The test on every within-model run ($\varepsilon=0.05$).
@@ -562,7 +601,7 @@ GSM8K, 1024 tok. &  19 & 3.22 & 2.50 & $-2.97$ & 0/0 \\
 MMLU, $T=0.5$    &  25 & 3.66 & 3.39 & $-1.08$ & 0/0 \\
 MMLU, $T=1.5$    &  85 & 7.20 & 6.53 & $-2.07$ & 0/0 \\
 \midrule
-\multicolumn{6}{@{}l}{\emph{Shared component, MMLU} ($K=100$, $T=1$)} \\
+\multicolumn{6}{@{}l}{\emph{Shared seed or prompt, MMLU} ($K=100$, $T=1$)} \\
 Qwen, seed      &  41 & 2.69 & 10.00 & $+70.2$ & 4/4 \\
 Qwen, prompt    &  93 & 3.86 & 4.77 & $+7.9$ & 2/2 \\
 Llama, prompt   & 264 & 6.89 & 11.31 & $+30.9$ & 2/2 \\
@@ -579,20 +618,20 @@ borderline filter acts on each column alone, so the kept columns stay
 independent. At $K\le100$ the null distribution of $z$ is shifted from
 the Tracy--Widom law: every $z$ of the 12 independent-draw runs is
 negative, and their Monte Carlo nulls of $z$ have means between $-1.98$
-and $-1.47$. A $z$ above every draw of its null, as in the three
-shared-component runs, rejects independence, but it does not say
+and $-1.47$. A $z$ above every draw of its null, as in the three shared-seed and
+shared-prompt runs, rejects independence. The rejection does not say
 whether the dependence lies between questions or between passes.
 % src: item01_within_table.json:runs[*].mc_null_z.mean (min -1.979, max -1.472); runs[0..11].tw_z (all negative)
 
 \paragraph{Checks of independence.} Three further checks agree with
 independence. The number of correct borderline answers per pass varies
-as independent draws predict (observed over predicted variance 0.61 to
-1.09; no run overdispersed against a column-shuffle null, smallest
-$p=0.27$; the two lowest ratios, $p=0.039$ and $0.045$ for
-underdispersion, are not significant after a Holm correction over 48
-tests: 12 runs $\times$ over- and underdispersion and two trends over the
-pass index). This check cannot see a coupling that cancels in the
-number correct, such as the shared seed's (App.~\ref{app:mechanism}).
+as independent draws predict: the ratio of observed to predicted variance
+runs from 0.61 to 1.09. No run is overdispersed against a column-shuffle
+null (smallest $p=0.27$). The two lowest ratios, $p=0.039$ and $0.045$
+for underdispersion, are not significant after a Holm correction over 48
+tests, from 12 runs, over- and underdispersion, and two trends over the
+pass index. This check cannot detect a dependence that cancels in the number
+correct, such as the shared seed's (App.~\ref{app:mechanism}).
 Borderline questions of one subject are no more correlated than other
 pairs (Qwen2.5-7B and Llama-3-8B, MMLU, $T=1$: mean $-0.018$, $p=0.80$,
 and $0.002$, $p=0.37$). No pair of borderline questions is coupled
@@ -607,7 +646,7 @@ null 99th percentile 0.72).
 0.10, 0.15 and 0.20, with the filter re-applied to the data and to each
 of the 1000 null matrices, no independent-draw run has an eigenvalue
 above its edge or a $z$ above the 95th percentile of its null, and every
-shared-component run keeps at least two eigenvalues above its edge. The
+shared-seed or shared-prompt run keeps at least two eigenvalues above its edge. The
 six tests of a run are nested, and at $\varepsilon=0.20$ the three
 smallest sets have only 6, 7 and 10 questions.
 % src: item01_within_table.json:runs[*].eps_sweep[*].{mp_count (all 0), percentile_of_obs_in_null (max 94.2)}, eps_sweep[5].N_b (6, 7, 10)
@@ -617,10 +656,10 @@ smallest sets have only 6, 7 and 10 questions.
 \section{Power of the within-model test}
 \label{app:power}
 
-Could the within-model test miss weak structure? A factor shared by all
+The within-model test misses some weak structure. A factor shared by all
 borderline questions of a pass, with latent correlation 0.05, is found in
-every simulation at 173 borderline questions but in only 47\% at 43, and
-a cluster of nine questions is usually missed at every strength we
+every simulation at 173 borderline questions but in only 47\% at 43. A
+cluster of nine questions is usually missed at every strength we
 simulated.
 
 \paragraph{Simulation.} The matrices have the pass rates of two
@@ -655,30 +694,32 @@ many (Fig.~\ref{fig:power}). A cluster of fixed size is harder to
 detect there, because it is a smaller share of them: a 9-question
 cluster at $\rho=0.2$ is detected in 23\% of Qwen2.5-7B and 11\% of
 Llama-3-8B simulations. The false-positive rates are 4.6\% and 8.3\%
-for the MP count and 0.65\% and 0.35\% for the buffered count, which
-has less power (22\% and 99.8\% for a diffuse factor at $\rho=0.05$). We
-did not simulate other values of $N_b$.
+for the MP count and 0.65\% and 0.35\% for the buffered count. The
+buffered count has less power: 22\% and 99.8\% for a diffuse factor at
+$\rho=0.05$. We did not simulate other values of $N_b$.
 % src: item03_power.json:models.<Qwen|Llama>.scenarios[3].power_mp_buffered_1p05 (0.22, 0.998)
 % src: item03_power.json:models.<Qwen|Llama>.scenarios[3].power_mp_strict (0.47, 1.0); scenarios[7].power_mp_strict (0.232/0.108)
 % src: item03_power.json:models.<Qwen|Llama>.scenarios[0].{power_mp_strict 0.046/0.083, power_mp_buffered_1p05 0.0065/0.0035}
 
 %======================================================================
-\section{What the shared component couples}
+\section{What a shared seed or prompt couples}
 \label{app:mechanism}
 
-Where does a shared seed or prompt couple the questions? A shared seed
-couples them through the sampler's noise for each letter; a shared
-prompt, through the exemplars' answer letters for Llama-3-8B and through
-the exemplar set itself for Qwen2.5-7B.
+A shared seed couples the questions through the sampler's noise on each
+letter. A shared prompt couples them through the exemplars' answer
+letters for Llama-3-8B, and through the exemplar set itself for
+Qwen2.5-7B.
 
 \paragraph{Shared noise.} At each generation step, a seeded request draws
-one exponential random number, its noise, for every token and emits the token whose probability at temperature $T$, divided by its
-noise, is largest (Gumbel-max
-sampling), so each answer alone follows the model's distribution. Two
-requests with the same seed draw the same noise at every step, whatever their prompts, as coupled
-generation and counterfactual sampling use on purpose~\citep{corvelobenz2025coupled,ravfogel2025gumbel}.
-If a shared-seed pass draws a small noise value for ``B'' at some step,
-``B'' gains in every question whose letter is generated at that step.
+one exponential random number for every token. It emits the token whose
+probability at temperature $T$, divided by that number, is largest.
+This is Gumbel-max sampling, so each answer on its own follows the
+model's distribution. Two requests with the same seed draw the same
+numbers at every step, whatever their prompts. Coupled generation and
+counterfactual sampling use that sharing on
+purpose~\citep{corvelobenz2025coupled,ravfogel2025gumbel}. If a
+shared-seed pass draws a small number for ``B'' at some step, ``B'' is
+favored in every question whose answer letter is generated at that step.
 
 \begin{figure}[tb]
 \centering
@@ -686,9 +727,10 @@ If a shared-seed pass draws a small noise value for ``B'' at some step,
 \vskip -0.08in
 \caption{A shared seed or prompt makes a pass's letter shares vary
 beyond chance. Of the shared runs, only the seed run and Llama-3-8B's
-prompt run also group the top loadings by gold letter.
+prompt run also group the top eigenvector's loadings by gold letter.
 \textbf{(a)}~Across-pass variance of a pass's letter shares, summed over
-letters, divided by its mean when answers are shuffled across passes.
+letters, divided by the mean of that sum after answers are shuffled
+across passes.
 \textbf{(b)}~$\eta^2$ of the top eigenvector's loadings by gold letter.
 Grey tick: null 99th (a) or 95th (b) percentile; filled: beyond it.}
 \label{fig:mechanism}
@@ -696,37 +738,37 @@ Grey tick: null 99th (a) or 95th (b) percentile; filled: beyond it.}
 
 \paragraph{The shared-seed run.} In Qwen2.5-7B's shared-seed run, the
 across-pass variance of a pass's letter shares (its fractions of A, B, C
-and D answers), summed over letters, is 11.8 times its mean when each
-question's answers are shuffled across passes, against 1.03 in its
-independent-draw run (Fig.~\ref{fig:mechanism}a). A pass whose noise
+and D answers), summed over letters, is 11.8 times the mean of that
+sum after each question's answers are shuffled across passes, against
+1.03 in its independent-draw run (Fig.~\ref{fig:mechanism}a). A pass whose noise
 favors one letter gains on questions with that gold letter and loses on
-the others, so the top loadings group by gold letter
+the others, so the top eigenvector's loadings group by gold letter
 (Sec.~\ref{sec:iid}), while the gains and losses cancel in the number
 correct per pass (observed over predicted variance 0.83).
 % src: item02_shared_randomness.json:runs.<sharedseed Qwen>.{letter_share_dispersion.ratio_obs_over_null_mean 11.8, iid_control.letter_share_dispersion.ratio_obs_over_null_mean 1.03, pass_dispersion.dispersion_ratio_obs_over_expected 0.83}
 
 \paragraph{The shared-prompt runs.} Llama-3-8B copies the exemplars'
-letters, as few-shot prompts are known to make models
-do~\citep{zhao2021calibrate}: the number of a pass's exemplars whose
+letters. Few-shot prompts are known to induce that
+copying~\citep{zhao2021calibrate}. The number of a pass's exemplars whose
 answer is letter $L$ correlates with its share of answers $L$ at
-$r=0.35$ to 0.47. Its letter shares vary 11.3 times their shuffle mean,
+$r=0.35$ to $0.47$. Its letter shares vary 11.3 times their shuffle mean,
 and its number correct per pass is overdispersed (ratio 1.51,
 $p=0.001$). Qwen2.5-7B's letter shares vary 1.8 times their shuffle mean
-but do not follow the exemplars' letters ($|r|\le0.09$; loadings by gold
-letter $\eta^2=0.07$). Its passes that share an exemplar still answer
-the borderline questions more alike than passes that share none, by 10.7
-standard deviations of a null that permutes exemplar sets (5.9 for
-Llama-3-8B; $p=0.0005$ for both). Links to the exemplars' content are
-weak (subject grouping $p=0.042$, uncorrected; a same-subject exemplar
-adds 3.2 points of accuracy on borderline questions, $p=0.033$). Neither
-Llama-3-8B's nor the shared-seed direction groups by subject ($p=0.35$
-and 0.23).
+and do not follow the exemplars' letters ($|r|\le0.09$; loadings by gold
+letter $\eta^2=0.07$). Its passes that share an exemplar still agree
+more on the borderline questions than passes that share none, by 10.7
+standard deviations of a null that permutes exemplar sets (5.9 standard
+deviations for Llama-3-8B; $p=0.0005$ for both). Links to the exemplars'
+content are weak. Subject grouping of the loadings has $p=0.042$,
+uncorrected, and a same-subject exemplar adds 3.2 points of accuracy on
+borderline questions ($p=0.033$). Neither Llama-3-8B's top eigenvector nor that of the
+shared-seed run groups by subject ($p=0.35$ and $0.23$).
 % src: item02_shared_randomness.json:runs.<sharedprompt Llama>.{exemplar_alignment.letter_echo_exemplar_count_vs_answer_share.*.r 0.35..0.47, letter_share_dispersion.ratio_obs_over_null_mean 11.3, pass_dispersion 1.51 p 0.0010, exemplar_alignment.pass_pair_similarity_shared_exemplars_borderline.z_vs_null 5.9}
 % src: item02_shared_randomness.json:runs.<sharedseed Qwen>.top_pc.loadings_eta_sq_by_subject.perm_p (0.229); runs.<sharedprompt Llama>...perm_p (0.349)
 % src: item02_shared_randomness.json:runs.<sharedprompt Qwen>.letter_share_dispersion.{ratio_obs_over_null_mean 1.81, perm_p 0.0005}; SUMMARY.md line 424 (1.8)
 % src: item02_shared_randomness.json:runs.<sharedprompt Qwen>.exemplar_alignment.{letter_echo_*.r -0.088..0.086, pass_pair_similarity_*.{z_vs_null 10.7, perm_p_upper 0.0005}, subject_match_borderline.{mean_diff 0.0324, perm_p_two_sided 0.033}}; top_pc.loadings_eta_sq_by_subject.perm_p (0.042)
 
-\paragraph{An unexplained value.} Qwen2.5-7B's independent-draw run
+\paragraph{Gold letter below the edge.} Qwen2.5-7B's independent-draw run
 shows $\eta^2=0.21$ by gold letter ($p=0.023$;
 Fig.~\ref{fig:mechanism}b), although its $\lambda_{\max}$ lies below
 $\lambda_+$ and the answer-letter test of App.~\ref{app:stats} finds no
@@ -738,15 +780,15 @@ grouping of loadings. We do not interpret this value.
 \section{The 24-model ensemble}
 \label{app:ensemble}
 
-Do other nulls, scores or model removals change the across-model
-results? In rotation 0, every valid null whose letter preference, if
-any, acts only on guesses leaves the second eigenvalue in excess; the
-soft-preference null, whose preference acts on every answer, makes it
-unlikely but fits the data poorly. On all-4-correct, the marginal excess
-ends when one model of each of two pairs, Llama-3.2-1B (less clearly),
-or the 217 questions with an unparseable reply are removed.
+In rotation 0, every adequate null whose letter preference, if it has one,
+acts only on guesses leaves the second eigenvalue in excess. The
+soft-preference null, whose preference acts on every answer, makes that
+eigenvalue unlikely and still fits the data poorly. On all-4-correct,
+the marginal excess ends when one model from each of two pairs is
+removed, when Llama-3.2-1B is removed ($p_M=0.059$ and $0.089$), or when
+the 217 questions with an unparseable reply are removed.
 
-\subsection{Models, nulls and the family-wise test}
+\subsection{Models, nulls and the max-statistic test}
 
 \paragraph{Roster.} Five Qwen (Qwen2.5 at 0.5B, 1.5B, 3B and 7B;
 Qwen2-7B), five Mistral (Mistral-7B v0.2 and v0.3, Zephyr-7B-beta,
@@ -758,33 +800,32 @@ are instruction-tuned. Rotation-0 accuracy runs from 35.0\%
 (Llama-3.2-1B) to 72.8\% (Gemma-2-9B).
 % src: item07_across_model.json:observed.accuracy_per_model.{meta-llama/Llama-3.2-1B-Instruct 0.35, google/gemma-2-9b-it 0.728}
 
-\paragraph{One-skill nulls.} In all of them skill is the only link
-between questions, and every draw is conditioned on each kept column staying split. The 2PL
-(Sec.~\ref{sec:method}) treats the skills as fixed and integrates the
-question parameters over a normal population (marginal maximum
-likelihood); each simulated column draws its $(a_i,b_i)$ from its
-posterior, fitted on all 500 columns. Rasch is fitted by joint maximum
+\paragraph{One-skill nulls.} In every null, skill is the only link
+between questions, and every simulated draw is conditioned on each kept column
+staying split. The 2PL (Sec.~\ref{sec:method}) treats the skills as fixed and
+integrates the question parameters over a normal population, by marginal
+maximum likelihood. Each simulated column draws its $(a_i,b_i)$ from the
+posterior fitted on all 500 columns. Rasch is fitted by joint maximum
 likelihood. The 3PL is $0.25+0.75\,\sigma(a_i(\theta_m-b_i))$. In the
-uniform know-or-guess (KG-u) null, a model knows a question, with the
-2PL probability, in all four rotations at once, or else guesses a letter
-uniformly in each rotation; it is fitted to all four rotations and scored
-like the data. The letter know-or-guess (KG-l) null guesses from the
-model's letter preference $\pi_m$ instead; the letter-aware null is a
-know-or-guess model fitted to rotation 0 with $\pi_m$ from all four
-rotations. The soft-preference (SP) null is in App.~\ref{app:sp}. We
-also tried a Bock--Aitkin 2PL (skills integrated, slopes at most 4) and
-a fixed-margin null (uniform over 0/1 matrices with the observed
-margins).
+uniform know-or-guess null (KG-u), a model either knows a question, with
+the 2PL probability, in all four rotations at once, or guesses a letter
+uniformly in each rotation. KG-u is fitted to all four rotations and
+scored like the data. The letter know-or-guess null (KG-l) guesses from
+the model's letter preference $\pi_m$ instead. The letter-aware null is
+fitted to rotation 0 only, with $\pi_m$ taken from all four rotations.
+The soft-preference null is defined in App.~\ref{app:sp}. We also tried
+a Bock--Aitkin 2PL, with skills integrated and slopes at most 4, and a
+fixed-margin null, uniform over 0/1 matrices with the observed margins.
 
-\paragraph{Validity.} A null counts only if the observed $\lambda_1$
+\paragraph{Adequacy.} A null counts only if the observed $\lambda_1$
 lies between its 1st and 99th percentiles. In rotation 0 (1000 draws per
 null) it lies at the 76.4th percentile of the 3PL, 86.7th of the
 letter-aware, 98.7th of the KG-u and 85.7th of the SP null, which are
-valid, and at the 100th of the 2PL and Rasch. On all-4-correct (2000
+adequate, and at the 100th of the 2PL and Rasch. On all-4-correct (2000
 draws) it lies at the 31.5th and 54.2nd percentiles of the 2PL and
-Rasch, which are valid, at the 100th of the 3PL and at the 0th of the
-KG-u and SP. KG-l, Bock--Aitkin and fixed-margin are invalid for both.
-A valid null's per-rank count is the number of ranks $2,3,\ldots$ that
+Rasch, which are adequate, at the 100th of the 3PL and at the 0th of the
+KG-u and SP. KG-l, Bock--Aitkin and fixed-margin are inadequate for both.
+An adequate null's per-rank count is the number of ranks $2,3,\ldots$ that
 each exceed its 99th percentile, counted until one does not; the rank-2
 rule asks only about rank 2.
 % src: v3_F_softpref.json:step1_construction_family.table.full.{rot0,ge4}.observed_pct_rank1to4_by_null[*][0] (rot0: kg_letter4 99.9, ba_a4 0.0; ge4: 3pl 100, fixed_margin 100, ba_a4 0, kg_letter4 0, kg_uniform4 0); G1 ge4 sp_common_tau lambda1 pct 0.0
@@ -792,7 +833,7 @@ rule asks only about rank 2.
 % src: rotation 0: v3_F_softpref.json:step1_construction_family.table.full.rot0.observed_pct_rank1to4_by_null[*][0] (2pl 100, rasch 100, 3pl 76.4, letter 86.7, kg_uniform4 98.7); SP: v3_G_familywise.json:G5_single_validity_rule.sp_table_A2.full.rot0.lambda1_pct (85.7)
 % src: all-4-correct: v3_G_familywise.json:G1_familywise.by_score_and_null.ge4.<null>.pct_rank1to4[0] (2pl 31.45, rasch 54.15, 3pl 100.0, kg_uniform4 0.0, sp_common_tau 0.0); letter_post not fitted to ge4
 
-\paragraph{Family-wise test.} The test uses 2000 new null draws, with
+\paragraph{Max-statistic test.} The test covers ranks 2 to 4. It uses 2000 new null draws, with
 seeds disjoint from all earlier runs. Its statistic $M$ is the largest
 of the percentiles of $\lambda_2$, $\lambda_3$ and $\lambda_4$ among
 these draws, ties counted as half. Each draw's own $M_d$ is computed
@@ -802,65 +843,78 @@ the value in rotation 0.
 % src: v3_G_familywise.json:meta.{n_draws.G1 2000, alpha 0.05, seed_namespace}; G1_familywise.by_score_and_null.rot0.{3pl_post,kg_uniform4,letter_post}.p_T (0.0020)
 % src: SUMMARY.md C(3) (MC p 0.012); prereg_G.md Motivation (audit statistic)
 
+\paragraph{Order of analyses.} The adequacy rule was set after the first
+analyses. The max-statistic test and the list of sibling groups were
+written down before that test was run. The tests are still not
+independent of what came earlier: a statistic that pools ranks 2 to 4
+had already rejected on these data, and the separate rank tests and the
+correlations between model pairs had already been computed. Removing
+single models or pairs, and the analyses of test size, power and the
+difficulty factor, were decided after seeing the results.
+
 \paragraph{Size.} From each fitted one-skill model, 2PL and Rasch, we
 simulate 300 all-4-correct datasets, refit both nulls to each (500
-draws), and apply the validity rule and the family-wise test
+draws), and apply the adequacy rule and the max-statistic test
 (Table~\ref{tab:fw}). The 2PL test rejects in 6.7\% of datasets under
 2PL truth and 8.7\% under Rasch truth (95\% intervals 4.1--10.1\% and
 5.7--12.4\%), so it is not size-controlled by the bound of 7.5\% we
 set before the run. The Rasch
 test rarely rejects under Rasch truth (0.7\%), mainly because the
-refitted Rasch null is valid in only 23\% of those datasets. The
-validity rule is thus not sufficient: it accepts the Rasch null on every
+refitted Rasch null is adequate in only 23\% of those datasets. The
+adequacy rule is thus not sufficient: it accepts the Rasch null on every
 2PL dataset, despite wrong slopes, and rejects the correct Rasch model
 in most datasets drawn from it.
 % src: v3_H_followup.json:meta.{n.H1_datasets_per_truth 300, n.H1_null_draws 500, specification (FP <= 0.075 rule)}; H1_size_under_one_ability_truth.by_truth_and_null.<truth>.<null>.{fp_valid_and_p_T_lt_alpha, fp_ci95, frac_valid (rasch/rasch 0.233; 2pl/rasch 1.0), calibrated_p_of_real}; H1_size_under_one_ability_truth.decision.{2pl_post.size_controlled false, rasch_jml.size_controlled true}
 
 \paragraph{Other scores.} A question can also count as correct in at
-least one, two or three rotations, or by the mean. On these scores some
-valid nulls are rejected (2PL on at least two, $p_M=0.002$; Rasch, KG-l
-and 2PL on at least three, $p_M=0.008$, 0.007, 0.009) and others are not
-(3PL and SP on at least two, $p_M=0.86$ and 0.85; KG-u on at least three,
-0.28), but data from the SP fit, with no second factor, make the
-refitted 2PL null reject in 98.5\% and 58\% of datasets, so we draw no
-conclusion. At least one of 4 gives $p_M=0.996$; the mean has no valid
-null.
+least one, two or three rotations, or by the mean of the four. The 2PL
+rejects at ``at least two'' ($p_M=0.002$). Rasch, KG-l and the 2PL
+reject at ``at least three'' ($p_M=0.008$, $0.007$ and $0.009$). The
+3PL and the soft-preference null do not, at ``at least two''
+($p_M=0.86$ and $0.85$), nor does KG-u at ``at least three''
+($p_M=0.28$). Datasets drawn from the soft-preference fit, which has no
+second factor, make a refitted 2PL reject in 98.5\% of datasets at
+``at least two'' and in 58\% at ``at least three'', so these scores
+support no conclusion. ``At least one of four'' gives $p_M=0.996$. The
+mean score has no adequate null.
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.{ge2.2pl_post.p_T 0.0020, ge2.{3pl_post 0.862, sp_common_tau 0.853}.{valid true, p_T}, ge3.{rasch_jml 0.0080, kg_letter4 0.0075, 2pl_post 0.0095}.p_T, ge3.kg_uniform4.{valid true, p_T 0.277}, ge1.sp_common_tau.p_T 0.9955, mean.*.valid false}
 % src: v3_G_familywise.json:G2_calibration_under_SP_truth.{ge2.2pl_post.fp_valid_and_p_T_lt_alpha 0.985, ge3.2pl_post.fp_valid_and_p_T_lt_alpha 0.575}
 
-\subsection{Rotation 0: the letter direction}
+\subsection{Rotation 0: the letter eigenvector}
 \label{app:sp}
 
 \paragraph{Nulls with a letter preference.} The letter-aware, 3PL and
 KG-u nulls let a letter preference act only on guesses; the SP null lets
 it also tilt answers a model partly knows. In 200 datasets simulated
 from the SP fit, which has no second factor, rank 2 exceeds the
-letter-aware null in 60\% and the 3PL null in 99.5\% (each null
-refitted, 200 draws), so under such a preference alone rank 2 often exceeds them.
+letter-aware null in 60\% of datasets and the 3PL null in 99.5\%. Each
+null is refitted, with 200 draws. A letter preference of this kind, with
+no second skill, is often enough to put rank 2 above those two nulls.
 % src: v3_F_softpref.json:step1_construction_family.table.full.rot0.ranks_above_p99_by_null.letter_post ([2]); v3_G_familywise.json:G1_familywise.by_score_and_null.rot0.letter_post.{valid true, p_T 0.0020}
 % src: v3_F_softpref.json:step2b_step1_nulls_under_soft_preference_truth.summary.rot0.{letter_post 0.595, 3pl_post 0.995}.frac_rank2_above_p99
 
 \paragraph{The soft-preference null.} Model $m$ chooses option $j$ of
 question $i$ in a rotation with probability proportional to
 $\exp\!\big(b_{ij}+\mathbb{1}[j=g_i](a_i\theta_m+e_{mi})\big)\,\pi_m(L_j)$,
-where $g_i$ is the gold option, $b_{ij}$ a fitted intercept of option
-$j$ with $b_{i g_i}=0$, $L_j$ the letter at which the rotation shows
-option $j$, and $e_{mi}\sim N(0,\tau^2)$ is shared by the four rotations
-of a cell and independent across models. Skill is the only link between
-questions, and $\pi_m$ acts on every choice. The fit is penalized
-maximum likelihood over the parsed choices of all four rotations
-($\tau=1.17$). Simulations mask the cells unparseable in the data, and
-the rotation-0 result depends on this mask: the observed $\lambda_2$
-lies at the 99.8th percentile of the null without it and at the 95.1st
-with it. Refitting inflates the slopes, so we calibrate: we simulate 200
-datasets from the fit and refit each with its own null of 1000 draws;
-the calibrated $p$ of rank $j$ is the fraction of these datasets whose
-$\lambda_j$ percentile is at least the observed one. In rotation 0 the
-calibrated $p$ of $\lambda_2$ is 0.010 (0.015 by the convention
-$(1+k)/(1+n)$), and the family-wise test does not reject the SP null
-($p_M=0.079$). The SP null is invalid without Llama-3.2-1B and on
-all-4-correct, so we cannot test whether a preference that tilts partly
-known answers survives all-4-correct.
+where $g_i$ is the correct option, $b_{ij}$ is a fitted intercept for
+option $j$ with $b_{i g_i}=0$, $L_j$ is the letter at which the rotation
+places option $j$, and $e_{mi}\sim N(0,\tau^2)$ is shared by the four
+rotations of one model on one question and independent across models.
+The weight $a_i\theta_m+e_{mi}$ is added only for the correct option.
+$\pi_m$ multiplies every option, and skill is the only link between
+questions. The fit is penalized maximum likelihood
+on the parsed choices of all four rotations ($\tau=1.17$). Simulations
+drop the cells that are unparseable in the data. Without that mask, the
+observed $\lambda_2$ lies at the 99.8th percentile of the null; with the
+mask, at the 95.1st. Refitting inflates the slopes, so the tail
+probabilities are recalibrated on 200 datasets drawn from the fit, each
+with its own null of 1000 draws. The calibrated $p$ of rank $j$ is the
+fraction of those datasets whose percentile for $\lambda_j$ is at least
+the observed percentile. In rotation 0 that $p$ for $\lambda_2$ is
+0.010, or 0.015 under the convention $(1+k)/(1+n)$. The max-statistic test
+does not reject ($p_M=0.079$). The null is inadequate without
+Llama-3.2-1B and on all-4-correct, so a preference that tilts partly
+known answers is untested under all-4-correct.
 % src: v3_F_softpref.json:step2_soft_preference.fits.full__tau__sigma4.fit.tau (1.166); calibration.meta (200 datasets); SUMMARY.md F rotation-0 bullet (99.8 without mask, 95.1 with)
 % src: v3_F_softpref.json:step2_soft_preference.calibration.meta.{n_datasets_per_variant 200, n_null_per_dataset 1000}; step2b_step1_nulls_under_soft_preference_truth.meta.{n_datasets 200, n_null_draws 200}; v3_G_familywise.json:G5_single_validity_rule.sp_table_A2.full.rot0.rank2_cal_p_mc (0.0149 = 3/201)
 % src: v3_G_familywise.json:G5_single_validity_rule.sp_table_A2.{full.{rot0.{lambda1_pct 85.7, rank2_cal_p 0.010}, ge4.plain_valid false}, no_llama1b.rot0.plain_valid false}; G1_familywise.by_score_and_null.rot0.sp_common_tau.p_T (0.07946 -> 0.079)
@@ -873,9 +927,9 @@ model-by-count cells (90\% required), and the observed number of split
 questions under ``correct in at least two rotations'' lies above all
 simulations. The weakest, letter-biased models have too many questions
 correct in exactly one rotation, and 21 of 24 models too many in all four
-(largest excess 0.06). The calibration is exact only if each refit
-inflates the slopes as much as the first, and it does not correct this
-misfit, so the SP verdicts are not fully validated.
+(largest excess 0.06). The calibration is exact only if each refit inflates the slopes as much
+as the first. It does not correct the misfit, so the soft-preference
+verdicts are not fully validated.
 % src: v3_F_softpref.json:step2_soft_preference.fits.full__tau__sigma4.ppc_verdict.{n_cols_observed_pct.ge2 100.0, n_cols_pass.ge2 false}
 % src: SUMMARY.md F limits item 2 (refit inflation; calibrated p exact only if the second inflation equals the first); v3_F_softpref.json ppc.hist_model (21 of 24 models observed > simulated at 4 rotations, max 0.060)
 % src: v3_F_softpref.json:step2_soft_preference.fits.full__tau__sigma4.{ppc_verdict.coverage_98.hist_model 0.825, ppc.hist_model.{observed_by_model, sim_mean_by_model}, ppc.hist_pooled.{observed[1] 0.196, sim_mean[1] 0.177, observed[4] 0.382, sim_mean[4] 0.366}}
@@ -893,36 +947,37 @@ misfit, so the SP verdicts are not fully validated.
 \paragraph{Letter evidence.} The models' scores on eigenvector 2 track
 their share of D answers ($r=-0.90$, permutation $p=10^{-4}$;
 Fig.~\ref{fig:letters}). Eigenvector 1 also carries a letter part
-($\eta^2=0.22$ by gold letter), and eigenvectors 3 and 4 group by it
-more weakly but beyond chance ($\eta^2=0.087$ and $0.061$, $p=0.0002$
-each). Because gold letters are nearly balanced (118 to 129 per letter),
+($\eta^2=0.22$ by gold letter), and eigenvectors 3 and 4 group by gold
+letter more weakly, though still beyond chance ($\eta^2=0.087$ and
+$0.061$, $p=0.0002$ each). Because gold letters are nearly balanced (118 to 129 per letter),
 a letter preference leaves expected benchmark scores nearly unchanged.
 % src: results/mmlu_ensemble_rotations.npz:gold_idx (bincount 118, 124, 129, 129)
 % src: v3_B_extra.json:letter_analysis.eigenvectors[0,2,3].eta_sq_by_shown_gold_letter.eta_sq (0.22, 0.087, 0.061); v3_C1b_letter_following.json:A.eigvec2.{1,2,3}.model_score_match_abs_r (0.98/0.96/0.95)
 % src: v3_B_extra.json:letter_analysis.eigenvectors[1].model_score_corr.share_D.{r -0.90, perm_p_two_sided 1.0e-04}
 
-\paragraph{Without Llama-3.2-1B.} The 3PL and letter-aware nulls are
-both still rejected ($p_M=0.003$ and 0.015), and the letter grouping
-moves to eigenvector 3 ($\eta^2=0.21$). Ranks 3 and 4 lie at the 98.5th
-to 99.9th percentiles of these two nulls, and in their 1000 draws rank
-4 exceeds the 99th percentiles by only 0.35 and 0.57.
+\paragraph{Without Llama-3.2-1B.} The 3PL is still rejected
+($p_M=0.003$), and so is the letter-aware null ($p_M=0.015$). The letter
+grouping moves to eigenvector 3 ($\eta^2=0.21$). Ranks 3 and 4 lie at
+the 98.5th to 99.9th percentiles of these two nulls, and in their 1000
+draws rank 4 exceeds the 99th percentiles by only 0.35 and 0.57.
 % src: v3_I_llama.json:I1_without_llama1b.table.rot0.{3pl_post.{p_T 0.0035, pct_rank1to4 [96.6, 48.2, 98.5, 99.9], T_argmax_rank 4}, letter_post.{p_T 0.0150, pct_rank1to4 [88.55, 72.2, 99.2, 99.5], T_argmax_rank 4}} (post hoc); v3_B_leave_one_out.json:leave_one_out_spectra.<Llama-3.2-1B>.rot0_eta_sq_gold_letter_eigvec_1to4[2] (0.214)
 % src: v3_summary_derived.json:loo23_rot0_rank4_obs_minus_p99 (0.35, 0.57); v3_B_leave_one_out.json:without_llama_3_2_1b.rot0_suite.nulls.{3pl_post,letter_post}.observed_ranks_above_p99 ([4])
 
 \subsection{All-4-correct: the marginal excess}
 
-\paragraph{Power.} We simulate from the valid all-4-correct 2PL fit
+\paragraph{Power.} We simulate from the adequate all-4-correct 2PL fit
 plus a second skill. As in the 2PL null, each of the 391 kept columns
 draws $(a_i,b_i)$ from its posterior. On the 125 of them from the 18
 STEM subjects, the logit gains
 $s\,\bar a\,\mathrm{sd}(\theta)\,z_m$, where $z_m\sim N(0,1)$ is
 independent of $\theta_m$, $\bar a=1.71$ is the median slope and
-$\mathrm{sd}(\theta)=1$; at $s=1$ the second skill matches the first in
-spread and median slope. We refit both nulls to each of 200 datasets per
-$s$ (500 draws; rates in Table~\ref{tab:fw}). At $s=2$ the family-wise test and
-the rank-2 rule detect the second skill in at least 97\% of datasets. The median $\lambda_2$ is
-28.2 at $s=0$, 28.3 at $s=0.5$ and 33.8 at $s=1$, against the observed
-29.0.
+$\mathrm{sd}(\theta)=1$. At $s=1$ the second skill matches the first in
+spread and in median slope. We refit both nulls to each of 200 datasets
+per $s$ (500 draws; rates in Table~\ref{tab:fw}). At $s=1$ a test of
+$\lambda_2$ alone detects the second skill in 69 to 78\% of datasets. At $s=2$ the
+max-statistic test and the rank-2 rule detect the second skill in at least
+97\% of datasets. The median $\lambda_2$ is 28.2 at $s=0$, 28.3 at
+$s=0.5$ and 33.8 at $s=1$, against the observed 29.0.
 % src: v3_J_power2pl.json:meta.{a_med 1.711, sd_theta 1.0, n_stem_kept 125, n_kept_cols 391, n_datasets_per_s 200, n_null_draws 500}; J1_power_2pl_truth.{0.{2pl_post,rasch_jml}.detect_familywise (0.07, 0.07), 2.*.{detect_familywise (0.99, 0.995), detect_rank2_per_rank (0.975, 0.995)}, {0,0.5,1}.2pl_post.median_lambda2 (28.2, 28.3, 33.8)}
 
 \paragraph{The difficulty factor.} In the all-4-correct nulls, the
@@ -931,28 +986,29 @@ between loading and difficulty, 0.57, lies just below the 2PL null's
 5th percentile and inside the Rasch null's 5--95\% range. In the
 rotation-0 3PL null, by contrast, the median $|r|$ is 0.09 (observed
 0.04). The observed loadings group by subject ($\eta^2=0.21$,
-$p=0.001$), but a cubic in difficulty explains 39\% of their variance,
-and without that trend the grouping is at chance ($p=0.24$).
+$p=0.001$). A cubic in difficulty explains 39\% of their variance, and
+once that trend is removed the subject grouping is at chance
+($p=0.24$).
 % src: v3_J_power2pl.json:J2_eigvec_vs_pass_rate[rot0 3pl_post].{null_abs_r_eigvec2_p05_p50_p95[1] 0.086, observed_abs_r_eigvec2_eigvec3[0] 0.042}
 % src: v3_C_rotations_A.json:C3_rotation_invariant.all4_correct.letters_subject_family.eigenvectors[1].eta_sq_by_subject.{eta_sq 0.207, perm_p 0.001}
 % src: v3_F_softpref.json:step4_characterization.targets.full__ge4.2.{r2_loading_on_cubic_difficulty 0.386, eta_sq_subject_after_cubic.perm_p 0.242}
 
 \paragraph{Model families.} On all-4-correct, the models' scores on
-eigenvector 4, below $\lambda_+$, group by family ($\eta^2=0.74$,
-$p=0.006$); in rotation 0, same-family pairs correlate little more than
-other pairs (mean $r$ 0.414 against 0.375, $p=0.085$).
+eigenvector 4, whose eigenvalue lies below $\lambda_+$, group by family
+($\eta^2=0.74$, $p=0.006$). In rotation 0, same-family pairs correlate
+little more than other pairs (mean $r$ 0.414 against 0.375, $p=0.085$).
 % src: v3_C_rotations_A.json:C3_rotation_invariant.all4_correct.letters_subject_family.eigenvectors[3].eta_sq_model_scores_by_family.{eta_sq 0.74, perm_p 0.006}
 % src: item10_pair_correlations.json:family_tests_holm.eigvec4_family_eta_sq (0.017); qap_model_label_permutation.{mean_r_same 0.414, mean_r_cross 0.375, perm_p_one_sided 0.085}
 
 \begin{table}[t]
-\caption{Family-wise test on all-4-correct (reject at $p_M<0.05$).
+\caption{Max-statistic test on all-4-correct (reject at $p_M<0.05$).
 Subsets: number that reject, and the range or maximum of $p_M$. Pair
 removals: one Phi and one Llama model. Other two removed: the 190
 removals of two other models (fraction that reject, maximum $p_M$).
 Unparseable: replies imputed, or questions dropped, either the 95
 whose score they affect or all 217 that contain one (1000 draws). Size:
 rejection rate in 300 datasets simulated from each fitted one-skill
-model. Calibrated $p_M$: under 2PL and Rasch truth. Power: family-wise /
+model. Calibrated $p_M$: under 2PL and Rasch truth. Power: max-statistic /
 rank-2 rule, 200 datasets per strength $s$ (2PL fit).}
 \label{tab:fw}
 % src: v3_G_familywise.json:G1_familywise.by_score_and_null.ge4.{2pl_post,rasch_jml}.{pct_rank1to4, p_T}; G4_siblings.{sibling,random_control}.ge4.*.{n_reject_raw, p_T_min_median_max}; G6_unparsed_variants.{ge4__impute,ge4__drop_affected,ge4__drop_any}.nulls.*.p_T; v3_J_power2pl.json:J1_power_2pl_truth.{0.5,1}.*.{detect_familywise, detect_rank2_per_rank}
@@ -985,50 +1041,50 @@ Power, $s=1$ & 0.91 / 0.69 & 0.93 / 0.78 \\
 \vskip -0.1in
 \end{table}
 
-\paragraph{Sibling models.} We chose the sibling groups
-(Sec.~\ref{sec:method}) from model metadata. Keeping one model per group
-gives $2\cdot2\cdot3\cdot2=24$ subsets of 19 models; none rejects (both nulls refitted, 1000 draws; both valid in every
-subset), while all 24 controls, which remove five of
-the 15 other models at random, reject (Table~\ref{tab:fw}). The subsets
-overlap heavily, so this is one contrast, not 24 replicates, and the
-random removals are not matched in size to the group models and include
-models from the same developers (Phi-2, Qwen2.5 at 0.5B to 3B,
-Llama-3.2, Ministral-8B, Mistral-Small). In rotation 0 the letter
-direction does not depend on the siblings: the 3PL and letter-aware
-nulls are valid and reject in all 24 sibling subsets.
+\paragraph{Sibling models.} Keeping one model from each sibling group
+(Sec.~\ref{sec:all4}) gives $2\cdot2\cdot3\cdot2=24$ subsets of 19
+models. None rejects. Both nulls are refitted, with 1000 draws, and
+both are adequate in every subset. All 24 controls reject. Each removes
+five of the other 15 models at random (Table~\ref{tab:fw}). The subsets
+overlap, so this is one contrast, not 24 replicates. The five removed
+models are not matched in size to the sibling models, and the controls
+include other models from the same developers (Phi-2, Qwen2.5 at 0.5B
+to 3B, Llama-3.2, Ministral-8B, Mistral-Small). In rotation 0 the 3PL
+and letter-aware nulls are adequate, and both reject, in all 24 subsets.
 % src: v3_G_familywise.json:meta.preregistration (G4 clusters); G4_siblings.{sibling.ge4.*.n_valid 24, random_control.ge4.*.n_valid 24, sibling.rot0.{2pl_post.n_valid 0, rasch_jml.n_valid 0, kg_uniform4.n_valid 17, 3pl_post.{n_valid 24, n_reject_raw 24}, letter_post.{n_valid 24, n_reject_raw 24}}}; meta.n_draws.G4 1000
 
-\paragraph{The two pairs.} Removing one model of each of the two pairs of
-Sec.~\ref{sec:all4}, in all four ways, gives a larger $p_M$ under both
-nulls than every one of the 190 removals of two other models, of which
-90\% (2PL) and 74\% (Rasch) still reject (1000 draws; every null valid;
-Table~\ref{tab:fw}). The Qwen pair is not part of the excess (removals
-that include Qwen2-7B or Qwen2.5-7B reject more strongly, mean $p_M$ 0.010 and 0.006 under the 2PL), nor is the Mistral group (removing v0.2 and v0.3, the
-residual rank-3 pair of Table~\ref{tab:baselines}, keeps $p_M=0.019$;
-the other two removals in the group give 0.004 to 0.023), nor accuracy
-(the 15 removals of two models with rotation-0 accuracy 0.62 to 0.71,
-around the pair models' 0.644 to 0.684, give $p_M$ at most 0.052 (2PL) and 0.113 (Rasch), below all pair
-removals).
+\paragraph{The two pairs.} Removing one model from each of the two pairs
+in Sec.~\ref{sec:all4}, in all four ways, gives a larger $p_M$ under
+both nulls than any of the 190 removals of two other models. Of those
+190, 90\% still reject under the 2PL and 74\% under Rasch (1000 draws;
+every null adequate; Table~\ref{tab:fw}). The Qwen pair is not part of the excess: removals that include Qwen2-7B
+or Qwen2.5-7B reject more strongly, with mean $p_M$ 0.010 and 0.006
+under the 2PL. Nor is the Mistral group: removing Mistral-7B v0.2 and v0.3, the third-ranked pair
+in Table~\ref{tab:baselines}, leaves $p_M=0.019$, and the other two removals
+in that group give $p_M$ from 0.004 to 0.023. Nor is accuracy: the 15 removals of two
+models with rotation-0 accuracy 0.62 to 0.71, around the pair models'
+0.644 to 0.684, give $p_M$ at most 0.052 under the 2PL and 0.113 under
+Rasch, and every pair removal has a larger $p_M$.
 % src: v3_H_followup.json:meta.{P1, P2, n.H2_null_draws 1000}; H2_pair_removal_vs_reference.by_null.{2pl_post,rasch_jml}.{reference_n 190, reference_frac_valid 1.0, reference_frac_reject (0.9, 0.737), n_pairs_exceeding_p95 4, reference_mean_p_T_by_removed_model.{Qwen2-7B-Instruct 0.0098, Qwen2.5-7B-Instruct 0.0064}}
 % src: raw_v3_H_h2.json:subsets[116] (Mistral v0.2+v0.3: 0.019/0.019), subsets[117] (v0.2+Zephyr 0.004/0.013), subsets[128] (v0.3+Zephyr 0.016/0.023)
 % src: v3_I_llama.json:I2_joint_removal.from_H2_no_new_run.{accuracy_matched_rot0_accuracy.{pair_model_accuracy (0.684, 0.664, 0.644, 0.684), hostile_band.{band [0.62, 0.71], summary.{n 15, 2pl_post.p_T_min_median_max[2] 0.0519, rasch_jml.p_T_min_median_max[2] 0.1129}}}, with_llama1b.summary.{n 19, 2pl_post.{n_reject 12, max 0.0989}, rasch_jml.{n_reject 6, max 0.1299}}}
 
 \paragraph{Llama-3.2-1B.} Removing Llama-3.2-1B alone gives $p_M=0.059$
-(2PL) and 0.089 (Rasch) and makes the KG-u null valid ($p_M=0.15$); the
-sum $\lambda_2+\lambda_3+\lambda_4$, a secondary statistic fixed with the
-test but not used for decisions, still gives $p=0.023$ and 0.016. Of the 19 of those 190 removals that include it, 12 (2PL) and 6 (Rasch) still
-reject. Removing it together with one model of each pair gives $p_M$
-0.30 to 0.59 and 0.38 to 0.60, close to the pair removals.
+under the 2PL and $0.089$ under Rasch, and it makes the KG-u null adequate
+($p_M=0.15$). The sum $\lambda_2+\lambda_3+\lambda_4$, fixed with the
+test and not used for decisions, still gives $p=0.023$ and $0.016$. Of
+the 19 removals among the 190 that include Llama-3.2-1B, 12 still reject
+under the 2PL and 6 under Rasch. Removing it together with one model
+from each pair gives $p_M$ from 0.30 to 0.59 under the 2PL and from
+0.38 to 0.60 under Rasch.
 % src: v3_I_llama.json:I1_without_llama1b.table.ge4.{2pl_post.{p_T 0.0595, p_S 0.0230}, rasch_jml.{p_T 0.0890, p_S 0.01649}, kg_uniform4.{valid true, p_T 0.1524}}; I2_joint_removal.new_runs[*].{2pl_post,rasch_jml}.p_T (0.296-0.586; 0.380-0.596)
 
 \paragraph{Simple baselines.} Rotation-0 letter shares flag three
 models whose most frequent letter exceeds half of their replies
-(Table~\ref{tab:baselines}); these shares count unparseable replies,
-whereas the preference of 0.90 for A in
-Sec.~\ref{sec:intro} is estimated over guesses. Correlations of model
-pairs' residuals (observed minus 2PL-expected correctness over the 391
-all-4-correct columns) rank the Phi and Llama pairs first and second of
-276.
+(Table~\ref{tab:baselines}). These shares count unparseable replies. The
+preference of 0.90 for A in Sec.~\ref{sec:intro} is estimated over
+guesses. Residual correlations after the all-4-correct 2PL fit rank the
+Phi and Llama pairs first and second of 276.
 % src: v3_H_followup.json:H3_baselines.{n_models_max_share_gt_0p5 3, residual_corr.{definition, n_pairs 276, sibling_pairs}}
 
 \begin{table}[t]
@@ -1067,18 +1123,18 @@ Qwen2-7B, Qwen2.5-7B & & & 0.03 & 37 \\
 
 \subsection{Replicates, near ties and option references}
 
-\paragraph{Replicates.} We collected the ensemble twice to test GPU
-nondeterminism and report replicate A. Replicate B differs in 6 of
-48{,}000 chosen options and in eigenvalues by at most 0.081 over all
-matrices; in B alone, the all-4-correct $\lambda_4$ lies just above the
-2PL rank-4 99th percentile of 1000 draws (20.82 against 20.78). A near
-tie is a cell whose two most probable first-token letters differ by under
-0.13 nats in either replicate (5.0\% of cells). Replacing near ties by
-the majority answer over rotations changes no verdict; without the 297
-questions with a rotation-0 near tie (203 remain), rank 2 exceeds the 3PL
-but not the letter-aware null (both valid). Removing the 23 questions
-whose options refer to other options changes no per-rank count of
-rotation 0 or all-4-correct.
+\paragraph{Replicates.} The ensemble was collected twice, to test GPU
+nondeterminism. The paper reports replicate A. Replicate B differs in 6 of 48{,}000 chosen
+options, and in eigenvalues by at most 0.081. In B alone, the
+all-4-correct $\lambda_4$ is 20.82, just above the 2PL rank-4 99th
+percentile of 20.78 from 1000 draws. A near tie is a cell whose two
+most probable first-token letters differ by less than 0.13 nats in
+either replicate (5.0\% of cells). Replacing each near tie by the
+majority correctness over the four rotations changes no verdict. Dropping
+the 297 questions with a rotation-0 near tie leaves 203. Rank 2 then exceeds the 3PL but not the
+letter-aware null, and both nulls are adequate. Removing the 23
+questions whose options refer to other options changes no
+per-rank count in rotation 0 or on all-4-correct.
 % src: v3_C_rotations_B.json:C3_rotation_invariant.all4_correct.{spectrum.top_eigs[3] 20.82, suite.nulls.2pl_post.rank_eigs_p99[3] 20.78}
 % src: v3_F_softpref.json:step4_characterization.meta.replicate_B_difference.{n_cells_choice_differs 6, n_cells 48000}; v3_C4_replicate_agreement.json:max_abs_eig_diff_overall (0.081)
 % src: v3_C5_near_ties.json:{frac_near_tie_cells 0.050, n_questions_with_a_rot0_near_tie 297, refitted_variants.*.suite.*}; refitted_variants.rot0_drop_questions_with_rot0_near_tie.suite.nulls.{3pl_post,letter_post}.mc_pvalue_per_rank[0] (0.870, 0.861: lambda_1 at about the 13th and 14th pct)

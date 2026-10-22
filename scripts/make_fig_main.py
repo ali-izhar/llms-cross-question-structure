@@ -54,7 +54,7 @@ OFFSETS_A = {QWEN_S1: ("Qwen, shared seed", -5, 0, "right"),
 # (b) series: key -> (direct label, colour, marker, label x (rotation), label y (data))
 ROTS = ["1", "2", "3"]
 # filled circles in two inks: no diamond (the ensemble/null-test mark) and no fill code here
-SER_B = [("r_shown", "shown letter", S.INK, "o", 2.0, 0.695),
+SER_B = [("r_shown", "same letter", S.INK, "o", 2.0, 0.695),
          ("r_direct", "same question", S.FAINT, "o", 2.0, 0.235)]
 
 # (c) the two valid nulls per group, left / right of the rank; short names used as direct labels

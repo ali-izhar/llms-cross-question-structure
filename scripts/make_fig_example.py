@@ -96,7 +96,7 @@ if __name__ == "__main__":
         ax.tick_params(axis="x", length=0, pad=2)
         ax.yaxis.set_major_locator(FixedLocator([0, 0.5, 1.0]))
         ax.set_yticklabels(["0", "0.5", "1"])
-        ax.set_xlabel("Letter at which the correct answer is shown", labelpad=2)
+        ax.set_xlabel("Letter at which the correct answer is placed", labelpad=2)
         ax.set_ylabel("Accuracy", labelpad=2)
         S.save(fig, "fig_example")
 

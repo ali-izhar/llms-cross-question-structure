@@ -102,7 +102,7 @@ if __name__ == "__main__":
         axb.xaxis.set_major_locator(FixedLocator([0, 0.25, 0.5, 0.75]))
         axb.set_xticklabels(["0", "0.25", "0.5", "0.75"])
         axb.tick_params(axis="y", labelleft=False)
-        axb.set_xlabel(r"$\eta^2$ of top loadings" + "\nby gold letter", labelpad=2, linespacing=1.0)
+        axb.set_xlabel(r"$\eta^2$ by gold letter" + "\n(top eigenvector)", labelpad=2, linespacing=1.0)
         S.panel_tag(axb, "b")
 
         S.save(fig, "fig_mechanism")

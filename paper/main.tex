@@ -140,9 +140,9 @@ model allows:
 independent answers within one model, and, across models, one skill per
 model (a unidimensional item response model). Spectral summaries of
 benchmark dimensionality exist~\citep{benchscope2026}.
-We add that the correctness matrix records no letters, yet the second
-eigenvector of its correlation matrix follows a letter preference, and
-removing one model brings its eigenvalue within the range of one skill
+We add that the correctness matrix has no letters, yet the second
+eigenvector of its correlation matrix follows a letter preference;
+without one model, its eigenvalue is within the range of one skill
 (post hoc; Sec.~\ref{sec:across}).
 
 \begin{figure*}[t]
@@ -217,8 +217,9 @@ and the probability of a correct answer is $\sigma(a_i(\theta_m-b_i))$,
 with $\sigma$ the logistic function. This is the two-parameter logistic
 (2PL) model~\citep{lordnovick1968}. With 0/1 answers, skill alone can
 also produce a second large eigenvalue, the \emph{difficulty factor} of
-binary items~\citep{ferguson1941,mcdonald1974}, because a 0/1 question
-correlates more strongly with questions of similar difficulty. In the
+binary items~\citep{ferguson1941,mcdonald1974}: because the response
+curve is non-linear, a 0/1 question correlates more strongly with
+questions of similar difficulty. In the
 all-4-correct matrix of Sec.~\ref{sec:all4} (391 split questions, 24
 models), $\lambda_+=25.4$, yet one-skill simulations
 have a median $\lambda_2$ of 28.2. We fit the model,
@@ -238,11 +239,11 @@ observed $\lambda_1$, the skill eigenvalue, falls between that null's 1st
 and 99th percentiles; a null that cannot reproduce skill cannot judge
 what lies beyond it.
 
-Structure beyond skill can appear in $\lambda_2$, $\lambda_3$ or
-$\lambda_4$. The \emph{max-statistic test} tests all three at once: it
-takes the largest of their percentiles among simulations of the same
-rank and compares it with that maximum in each simulation. Its
-$p$-value is $p_M$.
+Because structure beyond skill can appear in $\lambda_2$, $\lambda_3$
+or $\lambda_4$, the \emph{max-statistic test} tests all three at once:
+it takes the largest of their percentiles among simulations of the same
+rank and compares it with that maximum in each simulation, giving the
+$p$-value $p_M$.
 
 \paragraph{Rotations.} Each model answers every question four times, with
 the options moved zero (rotation 0, the original order), one, two or
@@ -417,10 +418,10 @@ eigenvector that an ensemble would read as missing knowledge. Scores that treat 
 disagreement as epistemic~\citep{hamidieh2025} should be checked for letter
 preference; peer agreement can still flag errors, as two large peers do
 for Qwen2.5-7B better than 100 of its own samples (post hoc;
-App.~\ref{app:selective}). A shared seed leaves each question's answer
-distribution unchanged but feeds the same random numbers to every
-question in the pass, so a comparison across questions can detect it
-even when the number correct per pass shows nothing.
+App.~\ref{app:selective}). A shared seed keeps each question's answer
+distribution but feeds the same random numbers to all questions of a
+pass, so comparing questions can detect it when the number correct per pass
+does not.
 
 The 217 questions with an unparseable reply may carry part of the
 marginal excess (Sec.~\ref{sec:all4}), though dropping them leaves only
@@ -440,7 +441,7 @@ scoring rules tried.
 
 Before an ensemble's errors are read as missing knowledge, each sampled
 answer needs its own seed. The options should be rotated, a question counted
-correct only if it is right in every rotation, and any remaining
+correct only if right in every rotation, and any remaining
 structure tested against a fitted one-skill model and checked for
 near-duplicate models.
 
@@ -963,7 +964,7 @@ option position~\citep{ding2026agree}. In the option-level response
 model of \citet{fei2026wrong}, a per-model positional preference adds
 little to the prediction of held-out correctness (accuracy 0.840 with
 it, 0.838 without). We did not test whether letter preference affects
-item-level factor and item response
+item-level dimensionality, factor and item response
 analyses~\citep{metabench2025,benchscope2026,jeirt2025}, or analyses of
 shared wrong answers~\citep{correlatederrors2025}, as it affects these
 eigenvectors.
@@ -1147,7 +1148,7 @@ adequate null.
 
 For Qwen2.5-7B, agreement with two large models from other families
 predicts its MMLU errors better than 100 of its own samples, but a
-typical pair of peers does not; over five target models the gain varies,
+typical pair of peers does not do so significantly; over five target models the gain varies,
 and it is absent for Phi-3-mini. An earlier
 version of this work reported this comparison with scores that used the
 gold labels; we recompute it without labels, from a specification
@@ -1160,7 +1161,7 @@ peer score is the share of $k$ other models whose greedy answer matches
 the target's. The peer rule uses no labels: one model per other family,
 largest first, which for Qwen2.5-7B gives Mistral-Small-22B and
 Gemma-2-9B. AUROC is the probability that a correct answer
-scores above a wrong one. Cost is in Qwen2.5-7B-equivalent forward passes ($B/7$ per
+scores above a wrong one, ties counted as one half. Cost is in Qwen2.5-7B-equivalent forward passes ($B/7$ per
 greedy pass of a $B$-parameter model).
 
 \paragraph{Results.} For Qwen2.5-7B (greedy accuracy 0.71),

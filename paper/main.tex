@@ -470,10 +470,9 @@ five features of the data.
 \paragraph{Questions.} MMLU: ten random questions from each of the
 first 50 subjects in alphabetical order. HellaSwag: 200 validation
 items, sampled within each activity label. GSM8K: the first 100 test
-problems. In the shared-prompt runs, each pass draws five exemplars from the 285 MMLU development questions, so two passes can
-share an exemplar, and shows them, with their answer letters, before
-every question of the pass; both runs use the
-same exemplar sets.
+problems. In the shared-prompt runs, each pass draws its five exemplars from the 285 MMLU development
+questions, so two passes can share an exemplar; both runs use the same
+exemplar sets.
 
 \paragraph{Prompts and decoding.} Each model receives one user message
 in its own chat template (raw text for Phi-2, which has none), checked
@@ -777,8 +776,7 @@ are instruction-tuned. Rotation-0 accuracy runs from 35.0\%
 % src: item07_across_model.json:observed.accuracy_per_model.{meta-llama/Llama-3.2-1B-Instruct 0.35, google/gemma-2-9b-it 0.728}
 
 \paragraph{One-skill nulls.} In every null, skill and, where present,
-the model's letter preference are the only links between questions; no
-null has a second skill. Every simulated draw is conditioned on each kept
+the model's letter preference are the only links between questions. Every simulated draw is conditioned on each kept
 column staying split. The 2PL (Sec.~\ref{sec:method}) treats the skills
 as fixed and integrates the question parameters over a normal
 population, by marginal maximum likelihood; each simulated column draws
@@ -863,6 +861,10 @@ one truth's 300 datasets with $p_M$ at most the observed value.
 \subsection{Rotation 0: the letter eigenvector}
 \label{app:sp}
 
+This subsection gives the evidence that eigenvector 2 of rotation 0
+follows the gold letter, and tests nulls that contain a letter
+preference.
+
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_letters.pdf}
@@ -937,14 +939,14 @@ questions).
 % src: v3_F_softpref.json ppc.hist_model (21 of 24 models observed > simulated at 4 rotations, max 0.060)
 % src: v3_F_softpref.json:step2_soft_preference.fits.full__tau__sigma4.{ppc_verdict.coverage_98.hist_model 0.825 (central-98% simulation interval, scripts/v3_softpref.py PPC_COVERAGE_MIN 0.90), ppc.hist_model.{observed_by_model, sim_mean_by_model}, ppc.hist_pooled.{observed[1] 0.196, sim_mean[1] 0.177, observed[4] 0.382, sim_mean[4] 0.366}}
 
-\paragraph{Without Llama-3.2-1B (post hoc).} Without Llama-3.2-1B, the rotation-0 excess moves from $\lambda_2$ to higher ranks: $\lambda_4$
-exceeds the 99th percentile of both nulls by small margins, and
-$\lambda_3$ that of the letter-aware null in 2000 draws. The $\lambda_2$ of the other 23 models (Sec.~\ref{sec:across})
+\paragraph{Without Llama-3.2-1B (post hoc).} Without Llama-3.2-1B, the rotation-0 excess moves from $\lambda_2$ to higher ranks: in 2000
+draws, $\lambda_3$ and $\lambda_4$ lie at the 98.5th to 99.9th
+percentiles of the 3PL and letter-aware nulls, above the 99th for
+$\lambda_4$ under both and for $\lambda_3$ under the letter-aware null. The $\lambda_2$ of the other 23 models (Sec.~\ref{sec:across})
 lies below the 3PL null's 99th percentile, 40.1. The max-statistic
 test rejects the 3PL null ($p_M=0.003$; Sec.~\ref{sec:across}) and the
-letter-aware null ($p_M=0.015$), both through $\lambda_4$. Ranks 3 and 4 lie at the 98.5th to 99.9th percentiles of
-the 3PL and letter-aware nulls, and in their 1000 draws $\lambda_4$
-exceeds the 99th percentile by only 0.35 (3PL) and 0.57 (letter-aware).
+letter-aware null ($p_M=0.015$), both through $\lambda_4$. In their 1000 draws, $\lambda_4$ exceeds the
+99th percentile by only 0.35 (3PL) and 0.57 (letter-aware).
 % src: v3_B_leave_one_out.json:leave_one_out_spectra.<meta-llama/Llama-3.2-1B-Instruct>.rot0.top_eigs[1] (35.0); without_llama_3_2_1b.rot0_suite.nulls.3pl_post.rank_eigs_p99[1] (40.07); v3_summary_derived.json:loo_rot0_lambda2_min_max_without_llama_3_2_1b_removal ([47.1, 52.4])
 % src: v3_I_llama.json:I1_without_llama1b.table.rot0.{3pl_post.{p_T 0.0035, pct_rank1to4 [96.6, 48.2, 98.5, 99.9], T_argmax_rank 4}, letter_post.{p_T 0.0150, pct_rank1to4 [88.55, 72.2, 99.2, 99.5], T_argmax_rank 4}} (post hoc)
 % src: v3_summary_derived.json:loo23_rot0_rank4_obs_minus_p99 (3pl_post 0.354, letter_post 0.566); v3_B_leave_one_out.json:without_llama_3_2_1b.rot0_suite.nulls.{3pl_post,letter_post}.observed_ranks_above_p99 ([4])
@@ -972,6 +974,9 @@ eigenvectors.
 
 \subsection{All-4-correct: the marginal excess}
 
+This subsection gives the power of the test, the difficulty factor, and
+the removals behind the marginal excess.
+
 \paragraph{Power (post hoc).} The test detects a second skill as strong as the
 first, but usually not one half as strong. We simulate
 from the adequate all-4-correct 2PL fit plus a second skill. As in the
@@ -982,8 +987,7 @@ $z_m\sim N(0,1)$ is model $m$'s second skill, independent of
 $\theta_m$. The factor $\bar a=1.71$ is the median slope, and
 $\mathrm{sd}(\theta)=1$, so at $s=1$ the second skill matches the first
 in spread and median slope. We refit both nulls to each of 200
-datasets per $s$ (500 draws; rates in Table~\ref{tab:fw}). At $s=1$ the
-rank-2 rule detects it in 69--78\% of datasets; at $s=2$
+datasets per $s$ (500 draws; rates in Table~\ref{tab:fw}). At $s=2$
 both tests detect it in at least 97\%. The median $\lambda_2$ is 28.2, 28.3
 and 33.8 at $s=0$, 0.5 and 1 (observed 29.0).
 % src: v3_J_power2pl.json:meta.{a_med 1.711, sd_theta 1.0, n_stem_kept 125, n_kept_cols 391, n_datasets_per_s 200, n_null_draws 500}; J1_power_2pl_truth.{0.{2pl_post,rasch_jml}.detect_familywise (0.07, 0.07), 2.*.{detect_familywise (0.99, 0.995), detect_rank2_per_rank (0.975, 0.995)}, {0,0.5,1}.2pl_post.median_lambda2 (28.2, 28.3, 33.8)}

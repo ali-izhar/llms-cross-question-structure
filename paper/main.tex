@@ -261,11 +261,12 @@ which each answer has its own seed, as in self-consistency
 questions of a pass one seed, and two \emph{shared-prompt runs} draw five MMLU
 development questions (the few-shot \emph{exemplars}) for each pass and place them, with their answers,
 before every question of that pass. Across models, 24 models from ten
-families answer the 500 MMLU questions in all four rotations by greedy
-decoding. A reply that cannot be read as a single answer is \emph{unparseable}
-and scored wrong; across models, 217 of the 500 questions have at least one such
-reply (App.~\ref{app:data}).
-% src: item13_unparseable.json:rates_sampled_runs (max 0.0165); rates_greedy_24 (max 0.124, Mistral-7B v0.2, rotation 0); v3_G_familywise.json:G6_unparsed_variants.ge4__drop_any.n_questions_dropped (217)
+families answer the 500 MMLU questions in all four rotations,
+greedily. A reply that cannot be read as a single answer is \emph{unparseable}
+and scored wrong. Such replies are 1.3\% of the 48{,}000 ensemble replies but
+occur in 217 of 500 questions
+(App.~\ref{app:data}).
+% src: mmlu_ensemble_rotations.npz:chosen_option (-1 = unparseable; 1.32% of 48,000 cells; 217 questions with >=1); item13_unparseable.json:rates_sampled_runs (max 0.0165); rates_greedy_24 (max 0.124, Mistral-7B v0.2, rotation 0); v3_G_familywise.json:G6_unparsed_variants.ge4__drop_any.n_questions_dropped (217)
 % src: item01_within_table.json:runs[*].{K, temperature, N} (MMLU K 100; HellaSwag K 50; GSM8K 256/1024 and MMLU T0.5/T1.5 K 30)
 
 %======================================================================
@@ -395,11 +396,12 @@ one of Phi-3-mini and Phi-3.5-mini and one of Llama-3-8B and
 Llama-3.1-8B raises $p_M$ above 0.2 under both nulls, which none of 190
 removals of two other models does, and 2PL residual correlations rank
 these two pairs first and second of 276. Removing only Llama-3.2-1B, the
-model with the most skewed letter shares, also ends the rejection
-($p_M=0.059$ for the 2PL, $0.089$ for Rasch), though 12 of the 19
-removals of it with another model outside the pairs still reject under
-the 2PL. Its letter preference may partly remain after all-4-correct if it
-also tilts partly known answers, which no adequate null here can test (App.~\ref{app:ensemble}).
+model with the most skewed letter shares, ends the rejection
+($p_M=0.059$ for the 2PL, $0.089$ for Rasch), though 12 of 19
+removals of it with another non-pair model still reject under the 2PL,
+so its role is uncertain. Its preference may partly remain after
+all-4-correct if it also tilts partly known answers, which no adequate
+null here tests (App.~\ref{app:ensemble}).
 % src: v3_H_followup.json:H2_pair_removal_vs_reference.by_null.{2pl_post,rasch_jml}.{pair_removals[*].p_T (0.219-0.685; 0.322-0.382), reference_n 190, reference_max (0.0989, 0.1329)}
 % src: v3_I_llama.json:I1_without_llama1b.table.ge4.{2pl_post.p_T 0.0595, rasch_jml.p_T 0.0890} (post hoc); v3_H_followup.json:H3_baselines.{n_models_max_share_gt_0p5 3, residual_corr ranks 1, 2 of 276}
 % src: v3_I_llama.json:I2 with_llama1b (12 of 19 reject 2PL, 6 Rasch); v3_H_followup.json:H3_baselines.letter_shares
@@ -854,7 +856,9 @@ each fitted one-skill model, 2PL and Rasch, refit both nulls to each
 2PL null, rejects in 6.7\% of datasets under 2PL truth and 8.7\% under
 Rasch truth (Clopper--Pearson 95\% intervals 4.1--10.1\% and
 5.7--12.4\%), so under Rasch truth it exceeds the bound of 7.5\% we set
-before the run. The Rasch test rarely rejects under Rasch truth (0.7\%),
+before the run; for this reason Sec.~\ref{sec:all4} reports $p_M$
+recalibrated against these datasets, which puts the excess at the 5\%
+line. The Rasch test rarely rejects under Rasch truth (0.7\%),
 mainly because the refitted Rasch null is adequate in only 23\% of those
 datasets. The adequacy rule accepts the Rasch null on every 2PL dataset,
 despite wrong slopes, and rejects the correct Rasch null

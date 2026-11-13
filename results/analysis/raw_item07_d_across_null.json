@@ -116,5 +116,5 @@
       "n_undefined_mp": 0
     }
   },
-  "matrix_path": "/home/izhar/Desktop/GitHub/research/stochastic-sampling-dimensionality-gap/results/analysis/matrices/ensemble_greedy.npy"
+  "matrix_path": "/home/izhar/Desktop/GitHub/research/llms-cross-question-structure/results/analysis/matrices/ensemble_greedy.npy"
 }

@@ -3,7 +3,7 @@
     "seed": 20260417,
     "n_draws_per_null": 1000,
     "mp_buffer": 1.05,
-    "matrix": "/home/izhar/Desktop/GitHub/research/stochastic-sampling-dimensionality-gap/results/analysis/matrices/ensemble_greedy_drop_questions_any_unparseable.npy (24 models x 388 MMLU, tau=0)",
+    "matrix": "/home/izhar/Desktop/GitHub/research/llms-cross-question-structure/results/analysis/matrices/ensemble_greedy_drop_questions_any_unparseable.npy (24 models x 388 MMLU, tau=0)",
     "columns": "split columns (0 < column sum < 24)",
     "correlation": "columns centered, divided by population SD; R = Z^T Z / M; lambda_+ = (1+sqrt(N_split/M))^2",
     "p99_rule": "observed lambda_j > 99th percentile of null lambda_j at the same rank j",

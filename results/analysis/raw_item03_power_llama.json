@@ -7,7 +7,7 @@
     "n_sim_null": 2000,
     "n_horn_surrogates_per_sim": 100,
     "n_perm_subject_test": 2000,
-    "matrix": "/home/izhar/Desktop/GitHub/research/stochastic-sampling-dimensionality-gap/results/analysis/matrices/mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct.npy",
+    "matrix": "/home/izhar/Desktop/GitHub/research/llms-cross-question-structure/results/analysis/matrices/mmlu_iid-T1.0_meta-llama_Meta-Llama-3-8B-Instruct.npy",
     "generative_model": "c_ki = 1[sqrt(rho) u_k + sqrt(1-rho) e_ki < Phi^-1(f_i)] for loaded i, f_i observed pass rates (all 500 columns simulated, borderline filter re-applied)",
     "rules": {
       "mp_strict": "lambda_1 > lambda_+ (MP count >= 1)",

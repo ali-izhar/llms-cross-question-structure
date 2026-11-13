@@ -2,7 +2,7 @@
 
 Code, data and LaTeX source for the paper *Where Cross-Question Structure in LLM Errors Comes From: Shared Seeds,
 Shared Prompts, and Answer-Letter Preference* (Izhar Ali, Rowan University; EIML@ICML 2026).
-[PDF](paper/main.pdf)
+[arXiv:2607.20464](https://arxiv.org/abs/2607.20464) · [PDF](paper/main.pdf)
 
 For each run we record a binary correctness matrix (K samples or models × N questions) and count the eigenvalues
 of its question correlation matrix that exceed those produced by independent answers or, across models, by a
@@ -113,7 +113,7 @@ checkpoints, so run `all` (or `run`, then `assemble`).
 **3. Figures** (outputs in `paper/figures/`):
 
 ```bash
-for f in main power mechanism letters; do uv run python scripts/make_fig_$f.py; done
+for f in example main power mechanism letters; do uv run python scripts/make_fig_$f.py; done
 ```
 
 **4. Tests and paper:**
@@ -121,6 +121,20 @@ for f in main power mechanism letters; do uv run python scripts/make_fig_$f.py; 
 ```bash
 uv run python -m pytest -q
 cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
+```
+
+## Citation
+
+```bibtex
+@misc{ali2026crossquestion,
+  title         = {Where Cross-Question Structure in {LLM} Errors Comes From: Shared Seeds, Shared Prompts, and Answer-Letter Preference},
+  author        = {Ali, Izhar},
+  year          = {2026},
+  eprint        = {2607.20464},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  note          = {EIML@ICML 2026}
+}
 ```
 
 ## License

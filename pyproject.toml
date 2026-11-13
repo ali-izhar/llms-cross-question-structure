@@ -1,5 +1,5 @@
 [project]
-name = "stochastic-sampling-dimensionality-gap"
+name = "llms-cross-question-structure"
 version = "0.1.0"
 description = "Code and data for 'Where Cross-Question Structure in LLM Errors Comes From'."
 readme = "README.md"

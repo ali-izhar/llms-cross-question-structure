@@ -1584,7 +1584,7 @@ wheels = [
 ]
 
 [[package]]
-name = "stochastic-sampling-dimensionality-gap"
+name = "llms-cross-question-structure"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
